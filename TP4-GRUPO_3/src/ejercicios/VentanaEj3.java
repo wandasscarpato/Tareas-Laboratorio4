@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
@@ -120,6 +122,56 @@ public class VentanaEj3 extends JFrame {
 		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String Esp1 = null;
+				String Esp2 = null;
+				String Esp3 = null;
+				String Esp = null;
+				int Cont = 0;
+				int b = 0;
+				
+				if(chckbxProgramacin.isSelected()) {
+					Esp1 = "Programacion";
+					Esp = "Programacion";
+					Cont++;
+				}
+				if(chckbxAdministracin.isSelected()) {
+					Esp2 = "Administracion";
+					Esp = "Administracion";
+					Cont++;
+				}
+				if(chckbxDiseoGrfico.isSelected()) {
+					Esp3 = "Diseño Grafico";
+					Esp = "Diseño Grafico";
+					Cont++;
+				}
+				String Sistema = "Ninguno";
+				if(rdbtnWindows.isSelected()) {
+					Sistema = "Windows";
+					b++;
+				}
+				if(rdbtnMac.isSelected()) {
+					Sistema = "Mac";
+					b++;
+				}
+				if(rdbtnLinux.isSelected()) {
+					Sistema = "Linux";
+					b++;
+				}
+				if(Cont == 3) {
+					JOptionPane.showMessageDialog(null, Sistema+" - "+ Esp1 +" - " + Esp2 +" - "+ Esp3 +" - "+ textField.getText()+" Hs");
+				}else if(Cont == 2) {
+					if(Esp1 != null && Esp2 != null) {
+						JOptionPane.showMessageDialog(null, Sistema+" - "+ Esp1 +" - " + Esp2 +" - "+ textField.getText()+" Hs");
+					}else if(Esp1 != null && Esp3 != null) {
+						JOptionPane.showMessageDialog(null, Sistema+" - "+ Esp1 +" - " + Esp3 +" - "+ textField.getText()+" Hs");
+					}else { JOptionPane.showMessageDialog(null, Sistema+" - "+ Esp2 +" - " + Esp3 +" - "+ textField.getText()+" Hs"); }
+					}
+				else if(Cont == 1) {
+					JOptionPane.showMessageDialog(null, Sistema+" - "+ Esp +" - "+ textField.getText()+" Hs");
+				}
+				if(Cont == 0 || b == 0) {
+					JOptionPane.showMessageDialog(null," Porfavor complete todos los campos ");
+				}
 			}
 		});
 		btnAceptar.setBounds(308, 39, 89, 23);
