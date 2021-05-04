@@ -1,4 +1,4 @@
-package ejercicio1;
+package ejercicios;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,7 +14,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Ventana extends JFrame {
+public class VentanaEj1 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
@@ -32,7 +32,7 @@ public class Ventana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana frame = new Ventana();
+					VentanaEj1 frame = new VentanaEj1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,8 +43,8 @@ public class Ventana extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public VentanaEj1() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 740, 301);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -1,4 +1,4 @@
-package ejercicio3;
+package ejercicios;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
-public class ventana extends JFrame {
+public class VentanaEj3 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class ventana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventana frame = new ventana();
+					VentanaEj3 frame = new VentanaEj3();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,8 +41,8 @@ public class ventana extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventana() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public VentanaEj3() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 441, 367);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

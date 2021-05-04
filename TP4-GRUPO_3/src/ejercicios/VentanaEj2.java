@@ -1,4 +1,4 @@
-package ejercicio2;
+package ejercicios;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,12 +19,10 @@ import javax.swing.JTextPane;
 import java.awt.Panel;
 import java.awt.Canvas;
 import javax.swing.JLayeredPane;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JOptionPane;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextField;
-import java.awt.Choice;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Font;
@@ -33,8 +31,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
-public class Ventana extends JFrame {
+public class VentanaEj2 extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField txtNota_1;
 	private JTextField txtNota_2;
@@ -50,7 +50,7 @@ public class Ventana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana frame = new Ventana();
+					VentanaEj2 frame = new VentanaEj2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,9 +62,9 @@ public class Ventana extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana() {
+	public VentanaEj2() {
 		setTitle("Promedio");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 393, 315);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -114,17 +114,6 @@ public class Ventana extends JFrame {
 		
 		String[] msn = {"Aprobado","Desaprobado"};
 		cbTPS = new JComboBox(msn);
-		//ACTIONLISTENER
-		cbTPS.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(cbTPS.getSelectedItem() == "Desaprobado") {
-					txtCondicion.setText("Libre");
-				}
-				else {
-					txtCondicion.setText("");
-				}
-			}
-		});
 		cbTPS.setBounds(83, 109, 131, 20);
 		panel.add(cbTPS);
 		
@@ -156,6 +145,44 @@ public class Ventana extends JFrame {
 		panel_1.add(txtCondicion);
 		
 		JButton btnCalcular = new JButton("CALCULAR");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { 
+				
+				txtCondicion.setText("");
+				txtPromedio.setText("");
+				
+				
+				String tp= (String) cbTPS.getSelectedItem();
+				
+				if (txtNota_1.getText().equals("") || txtNota_2.getText().equals("") || txtNota_3.getText().equals("")) {
+					JOptionPane.showMessageDialog(null,"Ingrese todas las notas por favor");
+				}
+				else {		
+					float nota1= Float.parseFloat(txtNota_1.getText());
+					float nota2= Float.parseFloat(txtNota_2.getText());
+					float nota3= Float.parseFloat(txtNota_3.getText());
+					
+					float promedio=  (nota1 + nota2 + nota3)/3;
+					
+					if(tp == "Desaprobado") {
+						txtCondicion.setText("Libre");	
+					}
+					else {
+						if( nota1 < 6 || nota2 < 6 || nota3 < 6) {					
+							txtCondicion.setText("Libre");			
+						}
+						else if(promedio >= 8) {
+							txtCondicion.setText("Promocionado");
+						}
+						else if (promedio >= 6 && promedio < 8) {
+							txtCondicion.setText("Regular");
+						}
+							
+					}
+					txtPromedio.setText(String.format("%.2f", promedio));
+					}
+			}
+		});
 		btnCalcular.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCalcular.setBounds(272, 46, 99, 38);
 		contentPane.add(btnCalcular);
