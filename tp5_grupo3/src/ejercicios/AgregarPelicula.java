@@ -15,6 +15,7 @@ public class AgregarPelicula extends JPanel {
 	private DefaultListModel<Peliculas> dlModel;
 	private JComboBox<String> comboBox;
 	private JButton btnAceptar;
+	Peliculas peliculas = new Peliculas();
 	
 	/**
 	 * Create the panel.
@@ -28,7 +29,7 @@ public class AgregarPelicula extends JPanel {
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		JLabel lblID = new JLabel("");
+		JLabel lblID = new JLabel(peliculas.devuelveProximoId());
 		lblID.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblID.setBounds(209, 23, 99, 14);
 		add(lblID);
@@ -60,6 +61,8 @@ public class AgregarPelicula extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
+				lblID.setText(peliculas.devuelveProximoId());
 			}
 		});
 		btnAceptar.setBounds(76, 130, 129, 29);

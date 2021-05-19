@@ -1,18 +1,22 @@
 package ejercicios;
 
 public class Peliculas {
-	public int id=1;
+	public int id;
 	public String nombre;
 	public String genero;
 	
+	static int cont=0;
+	
 	public Peliculas(String nombre, String genero) {
-		this.id = id+1;
+		cont++;
+
+		this.id = cont;
 		this.nombre = nombre;
 		this.genero = genero;
 	}
 
 	public Peliculas() {
-		this.id = id+1;
+		this.id = cont;
 		this.nombre = "no definido";
 		this.genero = "no especificado";
 	}
@@ -41,6 +45,12 @@ public class Peliculas {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+	
+	//métodos
+	public String devuelveProximoId(){
+		return Integer.toString(cont+1);
+	}
+
 	//toString()
 	@Override
 	public String toString() {
