@@ -3,6 +3,8 @@ package ejercicios;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
@@ -25,7 +27,8 @@ public class AgregarPelicula extends JPanel {
 		setLayout(null);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(209, 48, 129, 20);
+		//cambie el valor de largo a 150
+		txtNombre.setBounds(209, 48, 150, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
@@ -35,8 +38,11 @@ public class AgregarPelicula extends JPanel {
 		add(lblID);
 		
 		comboBox = new JComboBox<String>();
-		comboBox.setBounds(209, 83, 129, 20);
+		//cambie el valor de largo a 150----------------------
+		comboBox.setBounds(209, 83, 150, 20);
 		add(comboBox);
+		//agregue item Seleccione un genero--------------------
+		comboBox.addItem("Seleccione un genero");
 		comboBox.addItem("Terror");
 		comboBox.addItem("Accion");
 		comboBox.addItem("Suspenso");
@@ -61,8 +67,21 @@ public class AgregarPelicula extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
-				lblID.setText(peliculas.devuelveProximoId());
+				//filtro por txtNombre
+				if(txtNombre.getText().length() != 0){
+					//filtro por si selecciono otro dato que no sea selecione un texto
+					if(comboBox.getSelectedItem().toString() != "Seleccione un genero") {
+					Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
+					lblID.setText(peliculas.devuelveProximoId());
+					}
+						else{
+							JOptionPane.showMessageDialog(null, "Porfavor seleccione un genero");
+						}
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Porfavor escriba un nombre");
+				}
+				
 			}
 		});
 		btnAceptar.setBounds(76, 130, 129, 29);
