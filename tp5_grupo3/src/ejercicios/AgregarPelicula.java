@@ -13,10 +13,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class AgregarPelicula extends JPanel {
+	
 	private JTextField txtNombre;
 	private DefaultListModel<Peliculas> dlModel;
 	private JComboBox<String> comboBox;
 	private JButton btnAceptar;
+	
 	Peliculas peliculas = new Peliculas();
 	
 	/**
@@ -67,13 +69,23 @@ public class AgregarPelicula extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//filtro por txtNombre
+			
+			//Filtro por txtNombre
 				if(txtNombre.getText().length() != 0){
 					//filtro por si selecciono otro dato que no sea selecione un texto
-					if(comboBox.getSelectedItem().toString() != "Seleccione un genero") {
-					Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
-					lblID.setText(peliculas.devuelveProximoId());
-					}
+						if(comboBox.getSelectedItem().toString() != "Seleccione un genero") {
+						Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
+						lblID.setText(peliculas.devuelveProximoId());
+							//Se guardan los datos
+								dlModel = new DefaultListModel<Peliculas>();
+								//list.setModel(dlModel);
+								peliculas.setId(Integer.parseInt(lblID.getText()));
+								peliculas.setNombre(txtNombre.getText());
+								peliculas.setGenero(comboBox.getToolTipText());
+								//Guarda los elemenos dentro del dlModel
+								dlModel.addElement(peliculas);
+							//----------------------
+						}
 						else{
 							JOptionPane.showMessageDialog(null, "Porfavor seleccione un genero");
 						}
@@ -81,7 +93,7 @@ public class AgregarPelicula extends JPanel {
 				else{
 					JOptionPane.showMessageDialog(null, "Porfavor escriba un nombre");
 				}
-				
+			//------------------------------------------------------------------
 			}
 		});
 		btnAceptar.setBounds(76, 130, 129, 29);
