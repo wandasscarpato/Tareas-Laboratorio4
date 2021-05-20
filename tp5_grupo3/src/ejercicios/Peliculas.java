@@ -48,12 +48,12 @@ public class Peliculas {
 	
 	//métodos
 	public String devuelveProximoId(){
-		return Integer.toString(cont+1);
+		return Integer.toString(cont++);
 	}
 
 	//toString()
 	@Override
 	public String toString() {
-		return  id + "nombre=" + nombre + ", genero=" + genero;
+		return  id-1 + "nombre=" + nombre + ", genero=" + genero;
 	}	
 }

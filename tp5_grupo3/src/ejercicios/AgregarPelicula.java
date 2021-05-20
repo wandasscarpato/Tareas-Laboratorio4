@@ -77,7 +77,7 @@ public class AgregarPelicula extends JPanel {
 						Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
 						lblID.setText(peliculas.devuelveProximoId());
 							//Se guardan los datos
-								dlModel = new DefaultListModel<Peliculas>();
+								
 								//list.setModel(dlModel);
 								peliculas.setId(Integer.parseInt(lblID.getText()));
 								peliculas.setNombre(txtNombre.getText());
@@ -100,4 +100,10 @@ public class AgregarPelicula extends JPanel {
 		add(btnAceptar);
 
 	}
+	
+	public void setDefaultListModel(DefaultListModel<Peliculas> listModelRecibido)
+	{
+		this.dlModel = listModelRecibido;
+	}
+	
 }

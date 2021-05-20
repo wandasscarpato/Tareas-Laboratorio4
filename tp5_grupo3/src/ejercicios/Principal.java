@@ -3,6 +3,7 @@ package ejercicios;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +17,7 @@ public class Principal extends JFrame {
 
 	
 	public JPanel contentPane;
+	private static DefaultListModel<Peliculas> dlModel;
 
 	/**
 	 * Launch the application.
@@ -25,6 +27,7 @@ public class Principal extends JFrame {
 			public void run() {
 				try {
 					Principal frame = new Principal();
+					dlModel = new DefaultListModel<Peliculas>();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,6 +54,7 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				AgregarPelicula agregar = new AgregarPelicula();
+				agregar.setDefaultListModel(dlModel);
 				contentPane.add(agregar);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -63,6 +67,7 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				ListarPeliculas listar = new ListarPeliculas();
+				listar.setDefaultListModel(dlModel);
 				contentPane.add(listar);
 				contentPane.repaint();
 				contentPane.revalidate();
