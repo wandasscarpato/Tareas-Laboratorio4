@@ -1,24 +1,15 @@
 package ejercicios;
 
-public class Peliculas {
+public class Peliculas implements java.lang.Comparable<Peliculas>{
 	public int id;
-	public String nombre;
-	public String genero;
+	private String nombre;
+	private categoria genero;
 	
 	static int cont=0;
-	
-	public Peliculas(String nombre, String genero) {
-		cont++;
 
-		this.id = cont;
-		this.nombre = nombre;
-		this.genero = genero;
-	}
-
+	// Contructor
 	public Peliculas() {
-		this.id = cont;
-		this.nombre = "no definido";
-		this.genero = "no especificado";
+		this.id = cont ++;
 	}
 
 	//Getters and setters
@@ -38,22 +29,24 @@ public class Peliculas {
 		this.nombre = nombre;
 	}
 
-	public String getGenero() {
+	public categoria getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(categoria genero) {
 		this.genero = genero;
 	}
 	
-	//métodos
-	public String devuelveProximoId(){
-		return Integer.toString(cont++);
-	}
-
-	//toString()
 	@Override
 	public String toString() {
-		return  id-1 + "nombre=" + nombre + ", genero=" + genero;
-	}	
+		return  id + " Nombre: " + nombre + ", Genero: " + genero.getCategoria();
+	}
+	
+	@Override
+	public int compareTo (Peliculas peli) {
+		if(peli.getNombre().compareTo(this.nombre) < 0){
+			return -1;
+		}
+		else return 1;
+	}
 }

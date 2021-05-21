@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Locale.Category;
 import java.awt.event.ActionEvent;
 
 public class AgregarPelicula extends JPanel {
@@ -34,12 +35,13 @@ public class AgregarPelicula extends JPanel {
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		JLabel lblID = new JLabel(peliculas.devuelveProximoId());
-		lblID.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblID.setBounds(209, 23, 99, 14);
-		add(lblID);
+		//VALOR LABEL ID
+		JLabel lbl_ID_valor = new JLabel();
+		lbl_ID_valor.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lbl_ID_valor.setBounds(209, 23, 99, 14);
+		add(lbl_ID_valor);
 		
-		comboBox = new JComboBox<String>();
+		comboBox = new JComboBox();
 		//cambie el valor de largo a 150----------------------
 		comboBox.setBounds(209, 83, 150, 20);
 		add(comboBox);
@@ -50,50 +52,48 @@ public class AgregarPelicula extends JPanel {
 		comboBox.addItem("Suspenso");
 		comboBox.addItem("Romantica");
 
+		//Solo label
+		JLabel lbl_ID = new JLabel("ID");
+		lbl_ID.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lbl_ID.setBounds(76, 23, 88, 14);
+		add(lbl_ID);
 		
-		JLabel lblNewLabel = new JLabel("ID");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setBounds(76, 23, 88, 14);
-		add(lblNewLabel);
+		//Solo label
+		JLabel lbl_Nombre = new JLabel("Nombre");
+		lbl_Nombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lbl_Nombre.setBounds(76, 52, 89, 14);
+		add(lbl_Nombre);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_1.setBounds(76, 52, 89, 14);
-		add(lblNewLabel_1);
+		//Solo label
+		JLabel lbl_genero = new JLabel("Genero");
+		lbl_genero.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lbl_genero.setBounds(76, 85, 88, 14);
+		add(lbl_genero);
 		
-		JLabel lblNewLabel_2 = new JLabel("Genero");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_2.setBounds(76, 85, 88, 14);
-		add(lblNewLabel_2);
-		
+		int tempID = 1;
+		String temp = Integer.toString(tempID);
+		lbl_ID_valor.setText(temp);
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-			//Filtro por txtNombre
-				if(txtNombre.getText().length() != 0){
-					//filtro por si selecciono otro dato que no sea selecione un texto
-						if(comboBox.getSelectedItem().toString() != "Seleccione un genero") {
-						Peliculas peliculas = new Peliculas(txtNombre.toString(), comboBox.getSelectedItem().toString());
-						lblID.setText(peliculas.devuelveProximoId());
-							//Se guardan los datos
-								
-								//list.setModel(dlModel);
-								peliculas.setId(Integer.parseInt(lblID.getText()));
-								peliculas.setNombre(txtNombre.getText());
-								peliculas.setGenero(comboBox.getToolTipText());
-								//Guarda los elemenos dentro del dlModel
-								dlModel.addElement(peliculas);
-							//----------------------
-						}
-						else{
-							JOptionPane.showMessageDialog(null, "Porfavor seleccione un genero");
-						}
+
+ 				if(txtNombre.getText().isEmpty() || comboBox.getSelectedItem() == "Seleccione un genero") {
+					JOptionPane.showMessageDialog(null, "Porfavor seleccione un genero");
 				}
-				else{
-					JOptionPane.showMessageDialog(null, "Porfavor escriba un nombre");
+				else {
+					Peliculas p = new Peliculas();
+					categoria cate = new categoria();
+					p.setNombre(txtNombre.getText());
+					cate.setCategoria((String) comboBox.getSelectedItem());
+					p.setGenero(cate);
+					String IDP = Integer.toString(p.getId()+1);
+					lbl_ID_valor.setText(IDP);
+					txtNombre.setText("");
+					comboBox.setSelectedIndex(0);
+					dlModel.addElement(p);
+					JOptionPane.showMessageDialog(null, "Se agrego la pelicula");
 				}
-			//------------------------------------------------------------------
+
 			}
 		});
 		btnAceptar.setBounds(76, 130, 129, 29);
