@@ -1,5 +1,6 @@
 /presentacion/
-/negocioImplement/
 /daoImplement/
-/dao/
+/negocioImplement/
+/entidad/
 /negocio/
+/dao/

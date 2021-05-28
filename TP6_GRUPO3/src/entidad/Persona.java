@@ -19,6 +19,10 @@ public class Persona {
 		this.apellido = apellido;
 	}
 
+	public Persona(String dni) {
+		super();
+		this.dni = dni;
+	}
 
 	public String getDni() {
 		return dni;

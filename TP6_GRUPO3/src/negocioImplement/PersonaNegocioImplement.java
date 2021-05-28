@@ -1,6 +1,9 @@
 package negocioImplement;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.swing.JList;
 
 import dao.PersonaDao;
 import daoImplement.PersonaDaoImplement;
@@ -29,8 +32,19 @@ public class PersonaNegocioImplement implements PersonaNegocio{
 
 	@Override
 	public boolean delete(Persona persona_eliminar) {
-		// TODO Auto-generated method stub
-		return false;
+		Boolean estado=false;
+		estado=pdao.delete(persona_eliminar);
+		return estado;
+	}
+	
+	@Override
+	public void listado(JList listado) {
+		try {
+			pdao.listado(listado);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

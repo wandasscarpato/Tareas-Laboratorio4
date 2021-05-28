@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 import dao.PersonaDao;
 import entidad.Persona;
@@ -13,6 +15,8 @@ import entidad.Persona;
 public class PersonaDaoImplement implements PersonaDao {
 	
 	private static final String insert = "INSERT INTO personas(dni, nombre, apellido) VALUES(?, ?, ?)";
+	private static final String delete = "DELETE FROM personas WHERE dni = ?";
+	private static final String listado = "Select Nombre FROM Personas";
 
 	@Override
 	public boolean insert(Persona persona) {
@@ -46,8 +50,30 @@ public class PersonaDaoImplement implements PersonaDao {
 
 	@Override
 	public boolean delete(Persona persona_eliminar) {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isDeleteExitoso = false;
+		try
+		{
+			statement = conexion.prepareStatement(delete);
+			statement.setString(1, persona_eliminar.getDni());
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				isDeleteExitoso = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return isDeleteExitoso;
 	}
 
 	@Override
@@ -60,6 +86,28 @@ public class PersonaDaoImplement implements PersonaDao {
 	public List<Persona> readAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public void listado(JList list) throws SQLException
+	{
+	    DefaultListModel model = new DefaultListModel();
+	    
+	    PreparedStatement statement;
+	    Connection conexion = Conexion.getConexion().getSQLConexion();
+	    statement = conexion.prepareStatement(listado);
+	    ResultSet resultSet = statement.executeQuery(listado);
+
+	    while (resultSet.next())
+	    {
+	        String itemCode = resultSet.getString("Nombre");
+	        model.addElement(itemCode);
+	    }
+	    list.setModel(model);
+
+	    resultSet.close();
+	    statement.close();
+
 	}
 	
 	public boolean chequearDni(String dni) {
