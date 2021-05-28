@@ -13,22 +13,13 @@ import javax.swing.JMenuItem;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	private JMenuBar menuBar;
+	private JMenu mnPersona;
+	private JMenuItem menuAgregar;
+	private JMenuItem menuEliminar;
+	private JMenuItem menuModificar;
+	private JMenuItem menuListar;
 
 	/**
 	 * Create the frame.
@@ -37,27 +28,62 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnPersona = new JMenu("Persona");
+		mnPersona = new JMenu("Persona");
 		menuBar.add(mnPersona);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar");
-		mnPersona.add(mntmNewMenuItem);
+		menuAgregar = new JMenuItem("Agregar");
+		mnPersona.add(menuAgregar);
 		
-		JMenuItem mntmEli = new JMenuItem("Modificar");
-		mnPersona.add(mntmEli);
+		menuModificar = new JMenuItem("Modificar");
+		mnPersona.add(menuModificar);
 		
-		JMenuItem mntmEliminar = new JMenuItem("Eliminar");
-		mnPersona.add(mntmEliminar);
+		menuEliminar = new JMenuItem("Eliminar");
+		mnPersona.add(menuEliminar);
 		
-		JMenuItem mntmListar = new JMenuItem("Listar");
-		mnPersona.add(mntmListar);
+		menuListar = new JMenuItem("Listar");
+		mnPersona.add(menuListar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
 	}
+
+	public JMenuItem getMenuAgregar() {
+		return menuAgregar;
+	}
+
+	public void setMenuAgregar(JMenuItem menuAgregar) {
+		this.menuAgregar = menuAgregar;
+	}
+
+	public JMenuItem getMenuEliminar() {
+		return menuEliminar;
+	}
+
+	public void setMenuEliminar(JMenuItem menuEliminar) {
+		this.menuEliminar = menuEliminar;
+	}
+
+	public JMenuItem getMenuModificar() {
+		return menuModificar;
+	}
+
+	public void setMenuModificar(JMenuItem menuModificar) {
+		this.menuModificar = menuModificar;
+	}
+
+	public JMenuItem getMenuListar() {
+		return menuListar;
+	}
+
+	public void setMenuListar(JMenuItem menuListar) {
+		this.menuListar = menuListar;
+	}
+
+	
 
 }
