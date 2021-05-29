@@ -1,6 +1,7 @@
 package presentacion.vista;
 
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -43,6 +44,7 @@ public class PanelEliminarPersonas extends JPanel {
 		
 		list = new JList();
 		list.setBounds(143, 36, 151, 135);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
 		
 		btnEliminar = new JButton("Eliminar");

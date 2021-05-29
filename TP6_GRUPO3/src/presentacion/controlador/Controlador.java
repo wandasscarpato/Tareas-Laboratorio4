@@ -69,31 +69,40 @@ public class Controlador {
 	
 	private void EventoClickBoton_EliminarPersona_PanelEliminarPersonas(ActionEvent a) {
 		
-		/// OBTENER EL VALOR QUE ESTA SELECCIONADO EN LA TABLA
-		String seleccion = this.pnlEliminarPersonas.getJlist().getSelectedValue().toString();
-		String DNI = seleccion.substring(seleccion.lastIndexOf(' ') + 1).trim();
-		Persona eliminarPersona = new Persona(DNI);
-	
-		boolean estado = pNeg.delete(eliminarPersona);
 		String mensaje;
+		
+		if(!(this.pnlEliminarPersonas.getJlist().isSelectionEmpty())){
 			
-		//pregunto si se elimino correctamente
-		if(estado==true){
-			mensaje="Persona eliminada con exito";
-			this.pnlEliminarPersonas.mostrarMensaje(mensaje);
-			// VOLVER A CARGAR EL PANEL
-			CargarListadoParaEliminar(this.pnlEliminarPersonas.getJlist());
+			/// OBTENER EL VALOR QUE ESTA SELECCIONADO EN LA TABLA
+			String seleccion = this.pnlEliminarPersonas.getJlist().getSelectedValue().toString();
+			String DNI = seleccion.substring(seleccion.lastIndexOf(' ') + 1).trim();
+			Persona eliminarPersona = new Persona(DNI);
+		
+			boolean estado = pNeg.delete(eliminarPersona);
+				
+			//pregunto si se elimino correctamente
+			if(estado==true){
+				mensaje="Persona eliminada con exito";
+				this.pnlEliminarPersonas.mostrarMensaje(mensaje);
+				// VOLVER A CARGAR EL PANEL
+				CargarListadoParaEliminar(this.pnlEliminarPersonas.getJlist());
+			} else {
+				
+				mensaje="Persona no eliminada.";
+				this.pnlEliminarPersonas.mostrarMensaje(mensaje);
+				
+			}
 		} else {
-			
-			mensaje="Persona no eliminada.";
+			mensaje="Por favor seleccione una persona primero.";
 			this.pnlEliminarPersonas.mostrarMensaje(mensaje);
-			
 		}
 		
 	}
 
 	private void CargarListadoParaEliminar(JList list) {
+		
 		pNeg.listado(list);
+		
 	}
 
 	private void EventoClickMenu_AbrirPanel_AgregarPersona(ActionEvent a) {
@@ -106,6 +115,7 @@ public class Controlador {
 	private void EventoClickMenu_AbrirPanel_EliminarPersona(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
 		ventanaPrincipal.getContentPane().add(pnlEliminarPersonas);
+		//Cargar listado cuando lo muestro
 		CargarListadoParaEliminar(this.pnlEliminarPersonas.getJlist());
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
