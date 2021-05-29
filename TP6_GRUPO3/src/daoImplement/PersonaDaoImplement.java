@@ -16,7 +16,7 @@ public class PersonaDaoImplement implements PersonaDao {
 	
 	private static final String insert = "INSERT INTO personas(dni, nombre, apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE dni = ?";
-	private static final String listado = "Select Nombre FROM Personas";
+	private static final String listado = "Select Nombre, Apellido, DNI FROM Personas";
 
 	@Override
 	public boolean insert(Persona persona) {
@@ -100,7 +100,7 @@ public class PersonaDaoImplement implements PersonaDao {
 
 	    while (resultSet.next())
 	    {
-	        String itemCode = resultSet.getString("Nombre");
+	        String itemCode = resultSet.getString("Nombre") + " " + resultSet.getString("Apellido") + " " + resultSet.getString("DNI");
 	        model.addElement(itemCode);
 	    }
 	    list.setModel(model);

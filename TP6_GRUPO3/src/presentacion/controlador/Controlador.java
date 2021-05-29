@@ -33,7 +33,6 @@ public class Controlador {
 				this.pnlAgregarPersonas.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPesona_PanelAgregarPersonas(a));
 				this.pnlEliminarPersonas.getBtnEliminar().addActionListener(a->EventoClickBoton_EliminarPersona_PanelEliminarPersonas(a));
 				
-				CargarListadoParaEliminar(this.pnlEliminarPersonas.getJlist());
 	}
 
 	private void EventoClickBoton_AgregarPesona_PanelAgregarPersonas(ActionEvent a) {
@@ -68,12 +67,12 @@ public class Controlador {
 		}
 	}
 	
-private void EventoClickBoton_EliminarPersona_PanelEliminarPersonas(ActionEvent a) {
+	private void EventoClickBoton_EliminarPersona_PanelEliminarPersonas(ActionEvent a) {
 		
-		//String dni = this.pnlEliminarPersonas.;
-	
-					/// OBTENER EL VALOR QUE ESTA SELECCIONADO EN LA TABLA
-		Persona eliminarPersona = new Persona("324324324");
+		/// OBTENER EL VALOR QUE ESTA SELECCIONADO EN LA TABLA
+		String seleccion = this.pnlEliminarPersonas.getJlist().getSelectedValue().toString();
+		String DNI = seleccion.substring(seleccion.lastIndexOf(' ') + 1).trim();
+		Persona eliminarPersona = new Persona(DNI);
 	
 		boolean estado = pNeg.delete(eliminarPersona);
 		String mensaje;
@@ -82,8 +81,8 @@ private void EventoClickBoton_EliminarPersona_PanelEliminarPersonas(ActionEvent 
 		if(estado==true){
 			mensaje="Persona eliminada con exito";
 			this.pnlEliminarPersonas.mostrarMensaje(mensaje);
-			// VOLVER A CARGAR EL PANEL CREO
-			//this.pnlEliminarPersonas.;
+			// VOLVER A CARGAR EL PANEL
+			CargarListadoParaEliminar(this.pnlEliminarPersonas.getJlist());
 		} else {
 			
 			mensaje="Persona no eliminada.";
@@ -107,6 +106,7 @@ private void EventoClickBoton_EliminarPersona_PanelEliminarPersonas(ActionEvent 
 	private void EventoClickMenu_AbrirPanel_EliminarPersona(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
 		ventanaPrincipal.getContentPane().add(pnlEliminarPersonas);
+		CargarListadoParaEliminar(this.pnlEliminarPersonas.getJlist());
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}
