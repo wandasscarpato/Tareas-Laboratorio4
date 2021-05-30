@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -16,6 +18,7 @@ public class PersonaDaoImplement implements PersonaDao {
 	
 	private static final String insert = "INSERT INTO personas(dni, nombre, apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE dni = ?";
+	private static final String update = "UPDATE personas SET Dni = ?, Nombre = ? , Apellido = ? WHERE Dni = ? ";
 	private static final String listado = "Select Nombre, Apellido, DNI FROM Personas";
 
 	@Override
@@ -77,17 +80,35 @@ public class PersonaDaoImplement implements PersonaDao {
 	}
 
 	@Override
-	public boolean modify(Persona persona_modificar) {
-		// TODO Auto-generated method stub
-		return false;
+	public int modify(Persona persona_modificar_A,Persona persona_modificar_S) 
+	{
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		int resultado = -2;
+		try 
+		{
+			//statement = conexion.prepareStatement("UPDATE personas SET Dni="+ personaNueva.getDni() +", Nombre = " + personaNueva.getNombre() + ", Apellido = " + personaNueva.getApellido() + "WHERE Dni = " + personaAnterior.getDni());
+			statement = conexion.prepareStatement(update);
+			statement.setString(1, persona_modificar_S.getDni());
+			statement.setString(2, persona_modificar_S.getNombre());
+			statement.setString(3, persona_modificar_S.getApellido());
+			statement.setString(4, persona_modificar_A.getDni());
+			if(statement.executeUpdate() > 0)
+			{
+				//conexion.commit();
+				resultado = 1;
+			}
+		}
+		catch (SQLException e) 
+		{
+			if(e instanceof SQLIntegrityConstraintViolationException) {
+				resultado = -1;
+			}
+			e.printStackTrace();
+		}
+		return resultado;
 	}
 
-	@Override
-	public List<Persona> readAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	@Override
 	public void listado(JList list) throws SQLException
 	{
@@ -107,7 +128,38 @@ public class PersonaDaoImplement implements PersonaDao {
 
 	    resultSet.close();
 	    statement.close();
+	}
 
+	@Override
+	public List<Persona> readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<Persona> listarPersonas()
+	{
+		PreparedStatement statement;
+		ResultSet resultSet; //Guarda el resultado de la query
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		try 
+		{
+			statement = conexion.prepareStatement(listado);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				Persona per = new Persona();
+				per.setDni(resultSet.getString("Dni"));
+				per.setNombre(resultSet.getString("Nombre"));
+				per.setApellido(resultSet.getString("Apellido"));
+				personas.add(per);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return personas;
 	}
 	
 	public boolean chequearDni(String dni) {
@@ -120,7 +172,6 @@ public class PersonaDaoImplement implements PersonaDao {
 			 String query = "Select dni from personas where dni="+dni;
 			 ResultSet rs= st.executeQuery(query);
 			 return rs.next();
-			 
 		} 
 		
 		catch (Exception e) 

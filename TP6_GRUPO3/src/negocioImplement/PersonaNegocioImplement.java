@@ -48,9 +48,17 @@ public class PersonaNegocioImplement implements PersonaNegocio{
 	}
 
 	@Override
-	public boolean modify(Persona persona_modificar) {
-		// TODO Auto-generated method stub
-		return false;
+	public int modify(Persona persona_modificar_A,Persona persona_modificar_S) {
+		int estado = -2;
+		if(persona_modificar_S.getDni().trim().length()>0 && persona_modificar_S.getNombre().trim().length()>0 && persona_modificar_S.getApellido().trim().length()>0) {
+			estado = pdao.modify(persona_modificar_A,persona_modificar_S);
+		}
+		return estado;
+	}
+	
+	@Override
+	public List<Persona> listarPersonas() {
+		return pdao.listarPersonas();
 	}
 
 	@Override

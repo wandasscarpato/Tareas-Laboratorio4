@@ -12,7 +12,8 @@ public interface PersonaNegocio {
 	public boolean chequearDni(String dni);
 	public boolean delete(Persona persona_eliminar);
 	public void listado(JList listado);
-	public boolean modify(Persona persona_modificar);
+	public int modify(Persona persona_modificar_A,Persona persona_modificar_S);
+	public List<Persona> listarPersonas();
 	public List<Persona> readAll();
 
 }

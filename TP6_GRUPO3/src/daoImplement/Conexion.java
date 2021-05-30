@@ -13,7 +13,7 @@ public class Conexion {
 		
 		try
 		{
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","root");
+			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","ROOT");
 			this.connection.setAutoCommit(false);
 			
 		}
