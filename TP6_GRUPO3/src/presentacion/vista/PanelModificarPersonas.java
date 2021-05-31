@@ -1,9 +1,10 @@
 package presentacion.vista;
 
 import javax.swing.*;
-import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.event.ListSelectionListener;
@@ -94,16 +95,19 @@ public class PanelModificarPersonas extends JPanel {
 		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(51, 189, 114, 20);
+		txtNombre.addKeyListener(klSoloLetras);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
 		txtApellido.setBounds(170, 189, 63, 20);
+		txtApellido.addKeyListener(klSoloLetras);
 		add(txtApellido);
 		txtApellido.setColumns(10);
 		
 		txtDni = new JTextField();
 		txtDni.setBounds(238, 189, 73, 20);
+		txtDni.addKeyListener(klSoloNumeros);
 		add(txtDni);
 		txtDni.setColumns(10);
 		
@@ -129,5 +133,56 @@ public class PanelModificarPersonas extends JPanel {
 	{
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
+	
+	//Eventos KeyListener
+		KeyListener klSoloLetras = new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (!Character.isLetter(e.getKeyChar())
+		                && (e.getKeyChar() != '\b')) {
+					e.consume();
+					mostrarMensaje("Ingrese solo letras");
+				} 		
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+	
+	KeyListener klSoloNumeros = new KeyListener() {
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			char caracter = e.getKeyChar();
+			if (!((caracter >= '0') && (caracter <= '9'))
+	                && (caracter != '\b')) {
+				e.consume();
+				mostrarMensaje("Ingrese solo números");
+			} 		
+		}
+
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	};
 	
 }

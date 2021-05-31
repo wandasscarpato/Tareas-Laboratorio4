@@ -8,8 +8,11 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import dao.PersonaDao;
 import entidad.Persona;
@@ -180,6 +183,27 @@ public class PersonaDaoImplement implements PersonaDao {
 			return false;
 		}
 			  
-	};
+	}
+
+	@Override
+	public void listarPersonas(JTable table) throws SQLException
+	{
+		
+		DefaultTableModel modelo = new DefaultTableModel();
+		PreparedStatement statement;
+		
+	    Connection conexion = Conexion.getConexion().getSQLConexion();
+	    statement = conexion.prepareStatement(listado);
+	    ResultSet resultSet = statement.executeQuery(listado);
+	    modelo.addColumn("Nombre");
+	    modelo.addColumn("Apellido");
+	    modelo.addColumn("DNI");
+    	while(resultSet.next()) {
+    		modelo.addRow(new Object[]{resultSet.getString("Nombre"),resultSet.getString("Apellido"),resultSet.getString("DNI")});
+    	}
+    	table.setModel(modelo);
+    	resultSet.close();
+ 	    statement.close();
+	}
 
 }

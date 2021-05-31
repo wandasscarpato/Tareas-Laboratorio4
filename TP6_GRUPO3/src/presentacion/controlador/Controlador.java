@@ -4,12 +4,14 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.JList;
+import javax.swing.JTable;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
 import presentacion.vista.PanelAgregarPersonas;
 import presentacion.vista.PanelEliminarPersonas;
 import presentacion.vista.PanelModificarPersonas;
+import presentacion.vista.PanelListarPersonas;
 import presentacion.vista.VentanaPrincipal;
 
 public class Controlador {
@@ -18,6 +20,7 @@ public class Controlador {
 	private PanelAgregarPersonas pnlAgregarPersonas;
 	private PanelModificarPersonas pnlModificarPersonas;
 	private PanelEliminarPersonas pnlEliminarPersonas;
+	private PanelListarPersonas pnlListarPersonas;
 	private PersonaNegocio pNeg;
 	private ArrayList<Persona> personasEnTabla;
 	
@@ -31,11 +34,13 @@ public class Controlador {
 				this.pnlAgregarPersonas = new PanelAgregarPersonas();
 				this.pnlModificarPersonas = new PanelModificarPersonas();
 				this.pnlEliminarPersonas = new PanelEliminarPersonas();
+				this.pnlListarPersonas=new PanelListarPersonas();
 				
 				this.ventanaPrincipal.getMenuAgregar().addActionListener(a->EventoClickMenu_AbrirPanel_AgregarPersona(a));
 				this.ventanaPrincipal.getMenuModificar().addActionListener(a->EventoClickMenu_AbrirPanel_ModificarPersona(a));
 				this.ventanaPrincipal.getMenuEliminar().addActionListener(a->EventoClickMenu_AbrirPanel_EliminarPersona(a));
-				
+				this.ventanaPrincipal.getMenuListar().addActionListener(a->EventoClickMenu_AbrirPanel_ListarPersonas(a));
+
 				this.pnlAgregarPersonas.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPesona_PanelAgregarPersonas(a));
 				this.pnlModificarPersonas.getBtnModificar().addActionListener(a->EventoClickBoton_ModificarPesona_PanelModificarPersonas(a));
 				this.pnlEliminarPersonas.getBtnEliminar().addActionListener(a->EventoClickBoton_EliminarPersona_PanelEliminarPersonas(a));
@@ -73,31 +78,41 @@ public class Controlador {
 	
 	private void EventoClickBoton_AgregarPesona_PanelAgregarPersonas(ActionEvent a) {
 		
+		String mensaje;
+		
 		String dni = this.pnlAgregarPersonas.getTxtDni().getText();
 		String nombre = this.pnlAgregarPersonas.getTxtNombre().getText();
 		String apellido = this.pnlAgregarPersonas.getTxtApellido().getText();
-		Persona nuevaPersona = new Persona(dni, nombre, apellido);
 		
-		//pregunto si existe el dni
-		if(pNeg.chequearDni(dni) == false) {
-			boolean estado = pNeg.insert(nuevaPersona);
-			String mensaje;
+		if(!(dni.equals("") || nombre.equals("") || apellido.equals("") )) {
 			
-			//pregunto si se agregó correctamente
-			if(estado==true)
-			{
-				mensaje="Persona agregada con exito";
-				this.pnlAgregarPersonas.getTxtNombre().setText("");
-				this.pnlAgregarPersonas.getTxtApellido().setText("");
-				this.pnlAgregarPersonas.getTxtDni().setText("");
-			}
-			else
-				mensaje="Persona no agregada, complete todos los campos";
+			Persona nuevaPersona = new Persona(dni, nombre, apellido);
 			
-			this.pnlAgregarPersonas.mostrarMensaje(mensaje);
+			//pregunto si existe el dni
+			if(pNeg.chequearDni(dni) == false) {
+				boolean estado = pNeg.insert(nuevaPersona);
+				
+				
+				//pregunto si se agregó correctamente
+				if(estado==true)
+				{
+					mensaje="Persona agregada con exito";
+					this.pnlAgregarPersonas.getTxtNombre().setText("");
+					this.pnlAgregarPersonas.getTxtApellido().setText("");
+					this.pnlAgregarPersonas.getTxtDni().setText("");
+				}
+				else
+					mensaje="Persona no agregada, complete todos los campos";
+				
+				this.pnlAgregarPersonas.mostrarMensaje(mensaje);
+				}
+			else {
+				mensaje="Dni ya existente en base de datos";
+				
+				this.pnlAgregarPersonas.mostrarMensaje(mensaje);
 			}
-		else {
-			String mensaje="Dni ya existente en base de datos";
+		} else {
+			mensaje="Complete todos los campos por favor.";
 			
 			this.pnlAgregarPersonas.mostrarMensaje(mensaje);
 		}
@@ -141,6 +156,9 @@ public class Controlador {
 		
 	}
 
+	private void CargarTablaParaListarPersonas(JTable table) {
+		pNeg.Listar(table);
+	}
 	private void EventoClickMenu_AbrirPanel_AgregarPersona(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
 		ventanaPrincipal.getContentPane().add(pnlAgregarPersonas);
@@ -148,6 +166,7 @@ public class Controlador {
 		ventanaPrincipal.getContentPane().revalidate();
 	}
 	
+
 	public void EventoClickMenu_AbrirPanel_ModificarPersona(ActionEvent a)
 	{		
 		ventanaPrincipal.getContentPane().removeAll();
@@ -157,6 +176,17 @@ public class Controlador {
 		this.personasEnTabla= (ArrayList<Persona>) pNeg.listarPersonas();
 		this.pnlModificarPersonas.llenarTabla(this.personasEnTabla);
 	}
+
+
+	private void EventoClickMenu_AbrirPanel_ListarPersonas(ActionEvent a) {
+		ventanaPrincipal.getContentPane().removeAll();
+		CargarTablaParaListarPersonas(this.pnlListarPersonas.getTable());
+		ventanaPrincipal.getContentPane().add(pnlListarPersonas);
+		ventanaPrincipal.getContentPane().repaint();
+		ventanaPrincipal.getContentPane().revalidate();
+	}
+	
+	
 
 	private void EventoClickMenu_AbrirPanel_EliminarPersona(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();

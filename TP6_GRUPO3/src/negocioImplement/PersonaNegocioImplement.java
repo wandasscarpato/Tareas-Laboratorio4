@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JList;
+import javax.swing.JTable;
 
 import dao.PersonaDao;
 import daoImplement.PersonaDaoImplement;
@@ -65,6 +66,17 @@ public class PersonaNegocioImplement implements PersonaNegocio{
 	public List<Persona> readAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean Listar(JTable table) {
+		try {
+			pdao.listarPersonas(table);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
