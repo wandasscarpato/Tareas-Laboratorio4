@@ -29,6 +29,8 @@ public class Persona {
 			
 			//List<Integer> listaHashes = new ArrayList<>();
 			//List<String> listaRegistrosSinRepetir = new ArrayList<>();
+			// Crea un lista para acomodar todo 
+			TreeSet<String> ListaRegistrosPorApellido = new TreeSet<String>();
 			
 			FileReader entrada;
 			
@@ -43,8 +45,26 @@ public class Persona {
 					linea=miBuffer.readLine();
 					if (linea != null) {
 						Listado.add(linea);
+						
+						//acomodo los datos para tener Apellido primero
+
+	                    String[] parts = linea.split("-");
+
+	                    String nombre = parts[0];
+
+	                    String apellido = parts[1];
+
+	                    String dni = parts[2];
+
+	                    ListaRegistrosPorApellido.add(apellido+"-"+ nombre +"-"+ dni);
+						
 					}
 				}
+				// este for lista las personas por apellido
+				for(String elementos : ListaRegistrosPorApellido){
+					System.out.println(elementos);
+				}
+				
 				
 				miBuffer.close();
 				entrada.close();

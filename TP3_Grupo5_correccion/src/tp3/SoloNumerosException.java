@@ -1,4 +1,4 @@
-package tp3;
+zpackage tp3;
 
 import java.io.IOException;
 
