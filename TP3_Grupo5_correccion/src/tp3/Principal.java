@@ -20,10 +20,10 @@ public class Principal {
 	*/
 		TreeSet<String> Listado = new TreeSet<String>();
 		
-		Persona persona = new Persona();
-		persona.setRuta("Personas.txt");
-		persona.leer(Listado);
-		//persona.mostrar(Listado);
+		Archivo archivo = new Archivo();
+		
+		archivo.setRuta("Personas.txt");
+		archivo.leer(Listado);
 	}
 
 }

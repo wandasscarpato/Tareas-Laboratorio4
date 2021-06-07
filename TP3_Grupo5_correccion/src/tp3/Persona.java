@@ -11,83 +11,48 @@ import java.util.TreeSet;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Persona {
-	private String ruta;
+	
+	private String Nombre;
+	private String Apellido;
+	private int Dni;
+	
+	public Persona() {
+		Nombre = "Sin Nombre";
+		Apellido= "Sin Apellido";
+		Dni=11111111; 
+	}
+	
+	public Persona(String Nombre, String Apellido, int Dni) {
+		this.Nombre=Nombre;
+		this.Apellido=Apellido;
+		this.Dni=Dni;
+	}
+	
+	
+	public String getNombre() {
+		return Nombre;
+	}
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+	public String getApellido() {
+		return Apellido;
+	}
+	public void setApellido(String apellido) {
+		Apellido = apellido;
+	}
 
-	//constructor
-		public Persona () {
-		}
-		
-		public String getRuta() {
-			return ruta;
-		}
+	public int getDni() {
+		return Dni;
+	}
 
-		public void setRuta(String ruta) {
-			this.ruta = ruta;
-		}
+	public void setDni(int dni) {
+		Dni = dni;
+	}
 
-		public void leer(TreeSet<String> Listado){
-			
-			//List<Integer> listaHashes = new ArrayList<>();
-			//List<String> listaRegistrosSinRepetir = new ArrayList<>();
-			// Crea un lista para acomodar todo 
-			TreeSet<String> ListaRegistrosPorApellido = new TreeSet<String>();
-			
-			FileReader entrada;
-			
-			try{
-				entrada= new FileReader(ruta);
-				BufferedReader miBuffer = new BufferedReader(entrada);
-				String linea="";
-				while(linea != null){
-					
-					int hashDeLaLineaActual = linea.hashCode();
-					
-					linea=miBuffer.readLine();
-					if (linea != null) {
-						Listado.add(linea);
-						
-						//acomodo los datos para tener Apellido primero
+	@Override
+	public String toString() {
+		return "Nombre:" + Nombre + ", Apellido:" + Apellido + ", Dni:" + Dni;
+	}
 
-	                    String[] parts = linea.split("-");
-
-	                    String nombre = parts[0];
-
-	                    String apellido = parts[1];
-
-	                    String dni = parts[2];
-	                    
-	                     //GRAUS
-	              try {
-	                    if(Dni.validarDni(dni)) {
-	                    	ListaRegistrosPorApellido.add(apellido+"-"+ nombre +"-"+ dni);
-							System.out.println("Se agrego al usuario: " + apellido + " " + nombre+ " ");
-						}
-	              }
-	              catch(Exception e){
-						
-					}
-	                    
-						
-					}
-				}
-				// este for lista las personas por apellido
-				for(String elementos : ListaRegistrosPorApellido){
-					System.out.println(elementos);
-				}
-				
-				
-				miBuffer.close();
-				entrada.close();
-			} catch (IOException e){
-				System.out.println("archivo no encontrado");
-			}
-		}
-		
-		/*public void mostrar(TreeSet<String> Listado){
-			
-			java.util.Iterator<String> iterator = Listado.iterator();
-			while (iterator.hasNext())
-			    System.out.println(iterator.next());
-		}*/
-		
 }
