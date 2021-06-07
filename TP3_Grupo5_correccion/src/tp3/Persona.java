@@ -55,8 +55,19 @@ public class Persona {
 	                    String apellido = parts[1];
 
 	                    String dni = parts[2];
-
-	                    ListaRegistrosPorApellido.add(apellido+"-"+ nombre +"-"+ dni);
+	                    
+	                    //ListaRegistrosPorApellido.add(apellido+"-"+ nombre +"-"+ dni);
+	                    
+	                    
+	                     //GRAUS
+	                    if(Dni.validarDni(dni)) {
+	                    	ListaRegistrosPorApellido.add(apellido+"-"+ nombre +"-"+ dni);
+							System.out.println("Se agrego al usuario: " + apellido + " " + nombre+ " ");
+						}
+	                    else {
+	                    	System.out.println("NO se agrego al usuario: " + apellido + " " + nombre+ " ");
+	                    }
+	                    
 						
 					}
 				}
