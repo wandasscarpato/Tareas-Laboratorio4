@@ -11,48 +11,53 @@ import java.util.TreeSet;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Persona {
-	
-	private String Nombre;
-	private String Apellido;
-	private int Dni;
-	
-	public Persona() {
-		Nombre = "Sin Nombre";
-		Apellido= "Sin Apellido";
-		Dni=11111111; 
-	}
-	
-	public Persona(String Nombre, String Apellido, int Dni) {
-		this.Nombre=Nombre;
-		this.Apellido=Apellido;
-		this.Dni=Dni;
-	}
-	
-	
-	public String getNombre() {
-		return Nombre;
-	}
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-	public String getApellido() {
-		return Apellido;
-	}
-	public void setApellido(String apellido) {
-		Apellido = apellido;
-	}
+	private String ruta;
 
-	public int getDni() {
-		return Dni;
-	}
+	//constructor
+		public Persona () {
+		}
+		
+		public String getRuta() {
+			return ruta;
+		}
 
-	public void setDni(int dni) {
-		Dni = dni;
-	}
+		public void setRuta(String ruta) {
+			this.ruta = ruta;
+		}
 
-	@Override
-	public String toString() {
-		return "Nombre:" + Nombre + ", Apellido:" + Apellido + ", Dni:" + Dni;
-	}
-
+		public void leer(TreeSet<String> Listado){
+			
+			//List<Integer> listaHashes = new ArrayList<>();
+			//List<String> listaRegistrosSinRepetir = new ArrayList<>();
+			
+			FileReader entrada;
+			
+			try{
+				entrada= new FileReader(ruta);
+				BufferedReader miBuffer = new BufferedReader(entrada);
+				String linea="";
+				while(linea != null){
+					
+					int hashDeLaLineaActual = linea.hashCode();
+					
+					linea=miBuffer.readLine();
+					if (linea != null) {
+						Listado.add(linea);
+					}
+				}
+				
+				miBuffer.close();
+				entrada.close();
+			} catch (IOException e){
+				System.out.println("archivo no encontrado");
+			}
+		}
+		
+		/*public void mostrar(TreeSet<String> Listado){
+			
+			java.util.Iterator<String> iterator = Listado.iterator();
+			while (iterator.hasNext())
+			    System.out.println(iterator.next());
+		}*/
+		
 }
