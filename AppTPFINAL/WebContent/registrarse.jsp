@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
+    <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
 
     <title>Document</title>
@@ -22,9 +22,10 @@
     <div class="card--modif cm3"></div>
     <!--Finaliza el header-->
     <div class="registrarse">
+        <h1>   Registro de usuario
+        </h1>
         <form>
-            <h2>   Registro de usuario
-            </h2>
+            <a class="volver" href="./index.jsp">volver al menu principal</a>
             <div class="form-div">
                 <div>
                     <div class="card--modif"></div>

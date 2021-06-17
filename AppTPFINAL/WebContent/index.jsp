@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="./css/style.css">
   <!--fuentes-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
@@ -24,6 +23,10 @@
     <img
       src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg"
       alt="">
+    <div class="ingresar">
+    <a href="./registrarse.jsp">Registrarme</a>
+    <a href="./InicioSesion.jsp">Iniciar sesion</a>
+    </div>
   </header>
   <div class="index">
     <div class="index-izquierda">
@@ -38,7 +41,7 @@
       </h3>
       <input type="button" value="Registrarse"> 
       <br>
-      <a href="iniciarSesion.html">ya tengo cuenta</a>
+      <a href="InicioSesion.jsp">ya tengo cuenta</a>
     </section>
     </div>
     <div class="index-derecha">

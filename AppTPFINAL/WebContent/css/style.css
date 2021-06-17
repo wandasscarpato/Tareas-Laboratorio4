@@ -1,19 +1,32 @@
-@charset "ISO-8859-1";
 body{
     margin: 0;
     max-width: 100%;
 }
 header{
     text-align: center;
-    padding: 1rem;
     border-bottom: 1px rgb(221, 22, 22) solid;
+    background-color: white;
 }
 header img{
     max-width: 5%;
+    margin: 1rem;
     border-radius: 10px;
 }
 ul{
     margin-bottom: 0!important;
+}
+.ingresar{
+    text-align: end;
+}
+.ingresar a, .volver{
+    padding: 0.5rem;
+    color: rgb(221, 22, 22)!important;
+}
+.volver {
+    padding-left: 3rem;
+}
+.ingresar a:hover, .volver:hover{
+    color: rgb(15, 15, 15)!important;
 }
 /*Principal*/
 div.index{
@@ -26,7 +39,7 @@ div.index{
 .index-izquierda section{
     padding-top: 200px;
 }
-.index-izquierda h2{
+.index-izquierda h2 {
     color: rgb(102, 100, 100);
     font-size: 1.5rem;
     font-family: 'Open Sans', sans-serif;
@@ -86,8 +99,6 @@ z-index: 2;
     font-family: 'Dela Gothic One', cursive;
     transition: 1s;
 }
-.chamuyo-izquierda p{
-}
 .chamuyo-izquierda-editar{
     font-size: 3rem;
     padding: 3rem;
@@ -101,8 +112,25 @@ z-index: 2;
     width: 10%;
     padding-left: 20%;
     height: 300px;
-    bottom: -120px;
+    bottom: -90px;
     z-index: -1;
+}
+.cm{
+    top: 15rem;
+    margin-left: 40%;
+    height: 300px;
+    right: 20px;
+    width: 5% !important;
+}
+.cm2{
+    top: 1rem;
+    margin-left: 40%;
+    height: 300px;
+    width: 5% !important;
+}
+.cm3{
+    top:35%;
+    left: -3%;
 }
 .chamuyo-derecha{
     margin-left: 15%;
@@ -160,11 +188,6 @@ footer ul{
     line-height: 6.5rem;
 }
 
-.Ejemplo{
-    display: grid;
-    grid-template-columns: 20% 20% 20%;
-    justify-content: center;
-}
 
 /*REGISTRO---------------*/
 .form-div{
@@ -172,8 +195,6 @@ footer ul{
     display: grid;
     grid-template-columns: 40%;
     justify-content: center;
-}
-.form-div div{
 }
 .form-div input, .genero{
     width: 69%;
@@ -186,7 +207,7 @@ footer ul{
     width: 30%;
     padding-bottom: 1rem;
 }
-.registrarse h2{
+.registrarse h1, .transacciones h1,.prestamo h1{
     padding: 20px;
     text-align: center;
     border-bottom: 1px red solid;
@@ -196,15 +217,81 @@ footer ul{
     width: 22.5%;
     border: 1px solid rgb(214, 6, 6);
 }
-form .btnRegistro{
+form .btnRegistro,.btnAgregarCuenta,.btnTransferir:hover,.btnPrestamo:HOVER{
 margin: auto;
-background-color: rgb(216, 9, 9);
-border: none;
+border: rgb(216, 9, 9) 2px solid;
 padding: 0.5rem 2rem;
-color: white;
+background-color: white;
+color: rgb(216, 9, 9);
 width: 99.5%;
 transition: 0.5s;
+
 }
-.btnRegistro:hover{
-    transform: scale(1.02) ;
+form .btnRegistro:hover,.btnAgregarCuenta:hover,.btnTransferir,.btnPrestamo{
+    transform: scale(1.05) ;
+    border-color: none;
+    background-color: rgb(216, 9, 9);
+    padding: 0.5rem 2rem;
+    color: white;
+}
+/*MIS CUENTAS*/
+.sectionTiposDeCuentas{
+    margin: 4rem;
+}
+.tiposDeCuentas{
+    padding: 5rem 0rem;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+.tiposDeCuentas div{
+    padding: 1rem 3rem;
+    width: 20%;
+    background-color: white;
+    box-shadow: 0 0 15px;
+    transition: 0.5s;
+}
+.tiposDeCuentas div:hover{
+transform: scale(1.05);
+}
+.btnAgregarCuenta{
+    display: block;
+    margin: auto;
+    width: 20%;
+}
+/*Modificando boots*/
+.btn-outline-success {
+    color: rgb(192, 8, 8);
+    border-color: rgb(192, 8, 8);
+}
+.btn-outline-success:hover{
+    background-color: rgb(192, 8, 8);
+    border-color: rgb(192, 8, 8);
+}
+
+/*TRANSFERIS*/
+.transacciones div, .prestamo div{
+    margin: 4rem;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+.formulario-transaccion,.formulario-prestamo{
+    width: 40%;
+    padding: 1rem;
+    margin: auto;
+}
+.formulario-transaccion input,.formulario-prestamo input,.formulario-prestamo select, .formulario-transaccion select{
+    width: 90%;
+    padding: 0.1rem;
+    margin-bottom: 2.5rem;
+}
+.formulario-transaccion label,.formulario-prestamo label{
+    width: 90%;
+    font-size: 1.2rem;
+}
+.btnTransferir,.btnPrestamo{
+    width: 40%!important;
+    padding: 0.4rem!important;
+    border: none;
+    margin:3%
 }
