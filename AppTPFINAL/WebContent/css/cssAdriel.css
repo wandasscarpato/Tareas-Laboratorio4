@@ -1,0 +1,94 @@
+@charset "ISO-8859-1";
+footer{
+    background-color: rgb(240, 239, 239);
+    display: grid !important;
+    grid-template-columns: 30% 30% 20% 20%;
+    padding: 3rem;
+    z-index: 3;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+}
+footer div{
+    padding-left: 15%;
+}
+footer div img{
+    max-width: 60%;
+}
+footer ul li{
+    list-style: none;
+    line-height: 3rem;
+
+}
+footer span{
+    font-size: 1.5rem;
+}
+footer ul{
+    padding: 0;
+}
+.footer-icono{
+    font-size: 2rem;
+    line-height: 6.5rem;
+}
+
+.Ejemplo{
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    justify-content: center;
+}
+body{
+    margin: 0;
+    max-width: 100%;
+}
+header{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px rgb(221, 22, 22) solid;
+}
+header img{
+    max-width: 5%;
+    border-radius: 10px;
+}
+ul{
+    margin-bottom: 0!important;
+}
+.Centar{
+	 width: 100%;
+  	max-width: 600px;
+  	margin: 0 auto;
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+}
+.Centar-Izquierda
+{
+	 width: 100%;
+  	max-width: 600px;
+  	margin: 0 auto;
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: flex-start;
+  	align-items: flex-start;
+}
+.Form{
+	 width: 100%;
+  	max-width: 600px;
+  	margin: 0 auto;
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+}
+
+.Form input {
+  width: 100%;
+  height: 30px;
+  margin: 0.5rem;
+}
+
+.Form button {
+  padding: 0.5em 1em;
+  border: none;
+  background: rgb(100, 200, 255);
+  cursor: pointer;
+}
