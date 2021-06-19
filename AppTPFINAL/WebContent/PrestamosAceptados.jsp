@@ -30,34 +30,38 @@
     		<div class="container" class="Centar">
   				<div class="row">
 	    			<div class="container">
-  						<div class="row row-cols-4">
-    						<div class="col"><h4>Detalles</h4></div>
-    						<div class="col"><h4>Fecha de Aprobacion</h4></div>
-    						<div class="col"><h4>Fecha de Expiracion</h4></div>
-    						<div class="col"><h4>Monto</h4></div>
+  						<div class="row row-cols-5">
+    						<div class="col"><h5>Detalles</h5></div>
+    						<div class="col"><h5>Fecha de Aprobacion</h5></div>
+    						<div class="col"><h5>Fecha de Expiracion</h5></div>
+    						<div class="col"><h5>Cuotas a pagar</h5></div>
+    						<div class="col"><h5>Monto</h5></div>
   						</div>
 					</div>
 					<div class="container">
-  						<div class="row row-cols-4">
+  						<div class="row row-cols-5">
     						<div class="col"><h5>Prestamos de Hipoteca</h5></div>
     						<div class="col">12/06/2022</div>
     						<div class="col">12/07/2022</div>
+    						<div class="col">3 de $638,62</div>
     						<div class="col">$1.915,86</div>
   						</div>
 					</div>
 					<div class="container">
-  						<div class="row row-cols-4">
+  						<div class="row row-cols-5">
     						<div class="col"><h5>Prestamos Personales</h5></div>
     						<div class="col">07/05/2022</div>
     						<div class="col">08/09/2022</div>
+    						<div class="col">2 de $1.207,92</div>
     						<div class="col">$2.415,84</div>
   						</div>
 					</div>
 					<div class="container">
-  						<div class="row row-cols-4">
+  						<div class="row row-cols-5">
     						<div class="col"><h5>Prestamos al Consumo</h5></div>
     						<div class="col">04/10/2019</div>
     						<div class="col">04/12/2020</div>
+    						<div class="col">6 de $528,098</div>
     						<div class="col">$3.168,59</div>
   						</div>
 					</div>
