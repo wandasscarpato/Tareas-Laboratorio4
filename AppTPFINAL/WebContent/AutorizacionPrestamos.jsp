@@ -48,8 +48,6 @@
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
           </nav>
@@ -78,7 +76,7 @@
 				<td>10 de cada mes</td>
 				<td>1.666,66</td>
 				<td>60</td>
-				<td>Si/No <input type="radio" name="Chec" = Value="true" style-alig></td>
+				<td>Si/No <input type="radio" name="Chec1" = Value="true" style-alig></td>
 			</tr>
 			<tr>
 				<td>41586203</td>
@@ -88,7 +86,7 @@
 				<td>10 de cada mes</td>
 				<td>1.666,66</td>
 				<td>60</td>
-				<td>Si/No <input type="radio" name="Chec" = Value="true" style-alig></td>
+				<td>Si/No <input type="radio" name="Chec2" = Value="true" style-alig></td>
 			</tr>
 			<tr>
 				<td>41586203</td>
@@ -98,7 +96,7 @@
 				<td>10 de cada mes</td>
 				<td>1.666,66</td>
 				<td>60</td>
-				<td>Si/No <input type="radio" name="Chec" = Value="true" style-alig></td>
+				<td>Si/No <input type="radio" name="Chec3" = Value="true" style-alig></td>
 			</tr>
 			<tr>
 				<td>41586203</td>
@@ -108,7 +106,7 @@
 				<td>10 de cada mes</td>
 				<td>1.666,66</td>
 				<td>60</td>
-				<td>Si/No <input type="radio" name="Chec" = Value="true" style-alig></td>
+				<td>Si/No <input type="radio" name="Chec4" = Value="true" style-alig></td>
 			</tr>
 			</table>
 		</form>

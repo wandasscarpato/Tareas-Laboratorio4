@@ -295,3 +295,7 @@ transform: scale(1.05);
     border: none;
     margin:3%
 }
+.buscadores{
+ display:grid;
+  grid-template-columns: 50% 50%;
+}

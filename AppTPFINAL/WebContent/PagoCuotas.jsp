@@ -21,11 +21,22 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Administrador
+                    Cuenta
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="Reportes.jsp">Inicio</a>
-                    <a class="dropdown-item" href="#">Cerrar sesion</a>
+                    <a class="dropdown-item" href="#">Mis datos</a>
+                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
+                    <a class="dropdown-item" href="#">Agregar cuenta</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Transferencias
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
+                    <a class="dropdown-item" href="#">Historial</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -34,52 +45,76 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="AutorizacionPrestamos.jsp">Prestamos a autorizar</a>
+                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Mis prestamos</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Usuarios
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Usuarios a cambiar contraseña</a>
-                  </div>
-                </li>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Menu de pagos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="PagoCuotas.jsp">Pagos</a>
+                    </div>
+                  </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-              </form>
             </div>
           </nav>
     </header>
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
+		      <p></p>
+	<div>
+		<form>
+			<table style="margin: 0 auto;" border="1">	
+			<tr>
+				<td><strong>Nº de cuota</strong></td>
+				<td><strong>Fecha</strong></td>
+				<td><strong>Importe</strong></td>
+				<td><strong>Pagado</strong></td>
+			</tr>
+			<tr>
+				<td>1/60</td>
+				<td>21-01-2021</td>
+				<td>1.666,66</td>
+				<td><input type="radio" name="Chec1" = Value="true" style-alig></td>
+			</tr>
+			<tr>
+				<td>2/60</td>
+				<td>21-02-2021</td>
+				<td>1.666,66</td>
+				<td><input type="radio" name="Chec2" = Value="true" style-alig></td>
+			</tr>
+			<tr>
+				<td>3/60</td>
+				<td>21-03-2021</td>
+				<td>1.666,66</td>
+				<td><input type="radio" name="Chec3" = Value="true" style-alig></td>
+			</tr>
+			<tr>
+				<td>4/60</td>
+				<td>21-04-2021</td>
+				<td>1.666,66</td>
+				<td><input type="radio" name="Chec4" = Value="true" style-alig></td>
+			</tr>
+			<tr>
+				<td>5/60</td>
+				<td>21-05-2021</td>
+				<td>1.666,66</td>
+				<td><input type="radio" name="Chec5" = Value="true" style-alig></td>
+			</tr>
+			<tr>
+				<td>6/60</td>
+				<td>21-06-2021</td>
+				<td>1.666,66</td>
+				<td><input type="radio" name="Chec6" = Value="true" style-alig></td>
+			</tr>
+			</table>
+		</form>
+     </div>
+     <p></p>
+     <input class="btnEnviarAutorizacionP" type="button" value="Pagar">
       <p></p>
-      	<div class="buscadores">
-		<div>
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		</div>
-		<div>
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		</div>
-		</div>
-      <section class="sectionTiposDeCuentas">
-        <div class="tiposDeCuentas">
-            <div>
-              <h2>Cantidad de clientes</h2>
-              <p>X</p>
-            </div>
-            <div>
-              <h2>Total en prestamos</h2>
-              <p>Total:</p>
-          </div>
-            <div>
-              <h2>Cambios de contraseñas</h2>
-              <p>Cantiadad de usuarios:</p>
-            </div>
-        </div>
-
-
       <!--Comienza el footer-->
     <footer>
         <div>
