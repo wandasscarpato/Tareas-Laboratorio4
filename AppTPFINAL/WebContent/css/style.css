@@ -227,7 +227,7 @@ width: 99.5%;
 transition: 0.5s;
 
 }
-form .btnRegistro:hover,.btnAgregarCuenta:hover,.btnTransferir,.btnPrestamo{
+form .btnRegistro:hover,.btnAgregarCuenta:hover,.btnTransferir,.btnPrestamo,.btnEnviarAutorizacionP{
     transform: scale(1.05) ;
     border-color: none;
     background-color: rgb(216, 9, 9);
