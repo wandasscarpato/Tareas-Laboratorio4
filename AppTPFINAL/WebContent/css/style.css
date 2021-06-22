@@ -207,7 +207,7 @@ footer ul{
     width: 30%;
     padding-bottom: 1rem;
 }
-.registrarse h1, .transacciones h1,.prestamo h1{
+.cuentas,.registrarse h1, .transacciones h1,.prestamo h1{
     padding: 20px;
     text-align: center;
     border-bottom: 1px red solid;

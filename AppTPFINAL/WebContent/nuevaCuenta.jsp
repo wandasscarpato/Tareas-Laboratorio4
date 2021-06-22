@@ -9,8 +9,11 @@
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href="./css/style.css">
+    
     <link rel="stylesheet" href="./css/cssDali.css">
+    <link rel="stylesheet" href="./css/style.css">
+    
+    
 
     <title>Document</title>
 </head>
