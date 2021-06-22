@@ -21,9 +21,11 @@
             alt="">
     </header>
     <!--Finaliza el header-->
-   fdsfsd
+   
+   <br><br>
    
    <body>
+   
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -68,8 +70,9 @@
 			</div>
 		</div>
 	</div>
+	<br><br>
 </div>
-</body>
+
    
    
     <!--Comienza el footer-->
@@ -138,5 +141,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
     crossorigin="anonymous"></script>
+
 
 </html>
