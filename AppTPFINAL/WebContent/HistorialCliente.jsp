@@ -18,7 +18,59 @@
 <body>
 
  <!--Finaliza el header-->
-    
+    <header>
+        <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Cuenta
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Mis datos</a>
+                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
+                    <a class="dropdown-item" href="#">Agregar cuenta</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Transferencias
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
+                    <a class="dropdown-item" href="#">Historial</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Prestamos
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Mis prestamos</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Menu de pagos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Pagos</a>
+                    </div>
+                  </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+    </header>
+    <div class="card--modif cm"></div>
     <!--Finaliza el header-->
     
     <br>
@@ -28,6 +80,7 @@
     <b><h2 class="Centar">Historial de Cuenta</h2></b>
     	<br>
     	<b><h3 class="Centar-Izquierda">Cuenta B</h3></b>
+    		<br>
     		<div class="container" class="Centar">
   				<div class="row">
 	    			<div class="container">
@@ -64,8 +117,7 @@
 					</div>
 				</div>
     			<br>
-    			<br>
-    			<br>
+
    			</div>
     </form>
    
