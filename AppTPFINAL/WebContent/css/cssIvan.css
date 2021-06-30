@@ -1,22 +1,9 @@
-
-
 .adminCuentas h1{
     padding: 20px;
     text-align: center;
     border-bottom: 1px red solid;
     background-color: white;
 }
-
-table.AdminCuentas th td {
-	border-collapse: collapse;
-	margin: 0 auto;
-	border: 1;
-}
-table.AdminCuentas tbody .check {
-	text-align: center;
-}
-
-
 .btnBuscar{
 margin: auto;
 border: rgb(216, 9, 9) 2px solid;
@@ -26,18 +13,29 @@ color: rgb(216, 9, 9);
 width: 20%;
 transition: 0.5s;
 }
-
+.table{
+	width: 100px;
+  	margin: 0 auto;
+}
 .form-divAdminCuentas{
     padding: 1rem;
     display: grid;
     grid-template-columns: 50%;
     justify-content: left;
 }
-
 .sectionMenuDeCuentas{
     margin: 4rem;
 }
 .menuDeCuentas{
+    padding: 5rem 0rem;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+.sectionModUsuario{
+    margin: 4rem;
+}
+.menuDeUsuario{
     padding: 5rem 0rem;
     display: flex;
     text-align: center;
@@ -53,7 +51,6 @@ transition: 0.5s;
 .tiposDeCuentas div:hover{
 transform: scale(1.05);
 }
-
 .btnMenuDeCuentas{
     transform: scale(1.05) ;
     border-color: none;
@@ -61,4 +58,9 @@ transform: scale(1.05);
     padding: 0.5rem 2rem;
     color: white;
 }
-
+.form-divModContra{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: left;
+}
