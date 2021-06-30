@@ -1,0 +1,12 @@
+package dao;
+
+import entidad.cuenta;
+
+public interface cuentaDao {
+	
+	public boolean insert(cuenta cuenta);
+	//public boolean delete(int cuenta_a_eliminar);
+	//public boolean modificar(cuenta cuenta_a_modificar);
+	//public List<cuenta> readAll();
+
+}
