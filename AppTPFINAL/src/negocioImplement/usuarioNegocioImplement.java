@@ -30,7 +30,7 @@ public class usuarioNegocioImplement implements usuarioNegocio {
 		return usuDao.obtenerUno(dni);
 	}
 	
-	public int modificar (usuario usu) {
+	public boolean modificar (usuario usu) {
 		return usuDao.modificar(usu);
 	}
 

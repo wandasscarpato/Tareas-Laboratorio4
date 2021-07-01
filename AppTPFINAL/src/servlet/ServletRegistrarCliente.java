@@ -15,17 +15,17 @@ import entidad.usuario;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class registrarClienteServlet
+ * Servlet implementation class ServletRegistrarCliente
  */
-@WebServlet("/RegistrarClienteServlet")
-public class RegistrarClienteServlet extends HttpServlet {
+@WebServlet("/ServletRegistrarCliente")
+public class ServletRegistrarCliente extends HttpServlet {
 	HttpSession session;
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistrarClienteServlet() {
+    public ServletRegistrarCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class RegistrarClienteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		clienteDaoImplement clienteDao = new clienteDaoImplement();
+		/*clienteDaoImplement clienteDao = new clienteDaoImplement();
 		cliente cli = new cliente();
 		
 		cli.setDNI(Integer.parseInt(request.getParameter("DNI")));
@@ -63,7 +63,7 @@ public class RegistrarClienteServlet extends HttpServlet {
 			response.sendRedirect("registrarCliente.jsp?Status=true");
 		} else {
 			response.sendRedirect("registrarCliente.jsp");
-		}
+		}*/
 		
 	}
 

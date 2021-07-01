@@ -27,7 +27,7 @@
     <div class="registrarse">
         <h1>   Registro de Cliente
         </h1>
-        <form action="RegistrarClienteServlet" method="post">
+        <form action="ServletRegistrarCliente" method="post">
             <a class="volver" href="./index.jsp">volver al menu principal</a>
             <div class="form-div">
                 <div>
