@@ -79,19 +79,29 @@
       
       
       <form class="form-div">
-       <label for="">Tipo de cuenta</label>
-                    <select class="cuenta" name="" id="">
-                        <option value="">Caja de ahorro</option>
-                        <option value="">Cuenta corriente</option>
-                        
-                    </select><br>
       
-      <label for="">Tipo de moneda</label>
-                    <select class="cuenta" name="" id="">
-                        <option value="">ARS</option>
-                        <option value="">USD</option>
-                       
-                    </select><br><br>
+       <div><label for="">DNI usuario: </label> 
+                    <input type="text" required> <br> </div>
+                    
+        <div><label for="">CBU: </label> 
+                    <input type="text" required> <br> </div>
+                    
+        <div><label for="">Saldo: </label> 
+                    <input type="text" required> <br>  </div>
+                                          
+                                          
+                                          
+       <div> <label for="">Tipo de cuenta</label>
+                    <select class="cuenta" name="" id="" style="width: 69%;">
+                        <option value="">Caja de ahorro - Pesos</option>
+                        <option value="">Caja de ahorro - USD</option>
+                        <option value="">Cuenta corriente - Pesos</option>
+                        <option value="">Cuenta corriente - USD</option>
+                        
+                    </select><br></div>
+      <div><label for="">Fecha creacion: </label> 
+                    <input type="text" required> <br></div>
+      <br><br>
                     
         <input class="btnRegistro" type="submit" value="Crear Cuenta">             
                     

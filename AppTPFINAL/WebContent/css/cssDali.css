@@ -173,3 +173,8 @@ footer ul{
 	text-align: center;
 	
 }
+
+.form-div label{
+    
+    text-align: left !important
+}
