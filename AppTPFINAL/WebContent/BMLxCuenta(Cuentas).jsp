@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="entidad.cliente" %>
+<%@page import="daoImplement.clienteDaoImplement" %>
+<%@page import="java.util.List" %>
+<%@page import="java.util.ArrayList" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -74,35 +79,88 @@
                     <div class="card--modif"></div>
                     <label for="">Ingrese el número de cuenta a gestionar: </label> 
                     <input type="text" required>
-                    <input class="btnBuscar" type="submit" value="Buscar"> <br>
+                    <input class="btnBuscar" type="submit" value="Buscar">
                     <div class="card--modif"></div>
                     <label for="">Datos de la cuenta N°"</label> 
                     <label for="">1234</label> 
                     <label for="">":</label> 
                   </div>
             </div>
-			<p></p>
-			<table style="margin: 0 auto;" border="1">	
-			<tr>
-				<td><strong>DNI</strong></td>
-				<td><strong>Tipo</strong></td>
-				<td><strong>Moneda</strong></td>
-				<td><strong>CBU</strong></td>
-				<td><strong>Saldo</strong></td>
-				<td><strong>Seleccionar</strong></td>
-			</tr>
-			<tr>
-				<td>12345678</td>
-				<td>Caja Ahorro</td>
-				<td>Pesos</td>
-				<td>1234567891234567891234</td>
-				<td>122.000</td>
-				<td style="text-align: center;"><input type="radio" name="Cuenta" = Value="1" style-alig></td>
-			</tr>
+            </form>
+            <form method="post" action="ServletListar">
+			<h3>Datos de los clientes</h3>
+			 <input class="btnBuscar" name="btnMostrarClientes" type="submit" value="Ver todas"> <br>
+			<div class="gridlistado">
+			
+			</div>
+			</form>	
+			<table border="1">
+				<tr> 
+				<th>DNI</th> 
+				<th>CUIL</th>
+				<th>NOMBRE</th>
+				<th>APELLIDO</th>
+				<th>NACIMIENTO</th>
+				<th>SEXO</th>
+				<th>DIRECCION</th>
+				<th>PROVINCIA</th>
+				<th>LOCALIDAD</th>
+				<th>TELEFONO</th>
+				<th>MAIL</th>
+				<th>ESTADO</th>
+				</tr>
+								<% 
+				//traigo la lista de usuarios
+				//me fijo que no este vacia
+				if(request.getAttribute("listaU")!=null){
+					
+					ArrayList<cliente> listacliente = new ArrayList<cliente>();
+					listacliente = (ArrayList<cliente>) request.getAttribute("listaU");
+					 
+						for(cliente cli: listacliente){%>
+							<tr>
+							<td><%= cli.getDNI() %></td>
+							<td><%= cli.getCUIL()%></td>
+							<td><%= cli.getNombre()%></td>				
+							<td><%= cli.getApellido()%></td>
+							<td><%= cli.getNacimiento()%></td>
+							<td><%= cli.getSexo()%></td>
+							<td><%= cli.getDireccion()%></td>
+							<td><%= cli.getID_Provincia()%></td>
+							<td><%= cli.getID_Localodad()%></td>
+							<td><%= cli.getTelefono()%></td>
+							<td><%= cli.getEmail()%></td>
+							<td><%= cli.getEstado()%></td>
+							</tr>
+							<%}
+						
+					} else {
+						ArrayList<cliente> listacliente2 = new ArrayList<cliente>();
+						clienteDaoImplement cDao = new clienteDaoImplement();
+						ArrayList<cliente> lista = cDao.listarClientes();
+						listacliente2 = lista;
+						
+						for(cliente cli: listacliente2){%>
+						<tr>
+						<td><%= cli.getDNI() %></td>
+						<td><%= cli.getCUIL()%></td>
+						<td><%= cli.getNombre()%></td>				
+						<td><%= cli.getApellido()%></td>
+						<td><%= cli.getNacimiento()%></td>
+						<td><%= cli.getSexo()%></td>
+						<td><%= cli.getDireccion()%></td>
+						<td><%= cli.getID_Provincia()%></td>
+						<td><%= cli.getID_Localodad()%></td>
+						<td><%= cli.getTelefono()%></td>
+						<td><%= cli.getEmail()%></td>
+						<td><%= cli.getEstado()%></td>
+						</tr>
+						<%}
+					}
+					%>
 			</table>
-		</form>
-     </div>
-  	<p></p>
+			
+				
   	<section class="sectionMenuDeCuentas">
         <div class="menuDeCuentas">
             <div>

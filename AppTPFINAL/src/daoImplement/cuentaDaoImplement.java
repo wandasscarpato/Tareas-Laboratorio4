@@ -2,15 +2,19 @@ package daoImplement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.cuentaDao;
 import entidad.cuenta;
+import entidad.usuario;
 
 public class cuentaDaoImplement implements cuentaDao {
 	
 	private static final String insert = "INSERT INTO cuenta (N_Cuenta, ID_Tipo, Fecha_cracion, CBU, Saldo, DNI, estado) VALUES (?,?, ?,?,?,?,?);";
-	
+	private static final String listado = "SELECT * FROM cliente";
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -49,5 +53,6 @@ public class cuentaDaoImplement implements cuentaDao {
 		
 		return isInsertExitoso;
 	}
-
+	
+	
 }

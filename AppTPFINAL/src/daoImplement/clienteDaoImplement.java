@@ -17,7 +17,8 @@ import entidad.cliente;
 public class clienteDaoImplement implements clienteDao {
 
 	private static final String listar = "SELECT DNI, CUIL, Nombre, Apellido, Sexo, Nacimiento, Direccion, ID_Localodad, ID_Provincia, Email, Telefono FROM CLiente";
-    private static final String insert = "INSERT INTO lab4.Cliente (DNI, CUIL, Nombre, Apellido,Sexo, Nacimiento, Direccion,ID_Localodad, ID_Provincia, Email, Telefono, Estado) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+	//private static final String listar = "SELECT * FROM CLiente";
+	private static final String insert = "INSERT INTO lab4.Cliente (DNI, CUIL, Nombre, Apellido,Sexo, Nacimiento, Direccion,ID_Localodad, ID_Provincia, Email, Telefono, Estado) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String delete = "UPDATE cliente SET estado = ? where DNI = ?";
 	//private static final String readall = "SELECT * FROM personas";
 		
@@ -60,30 +61,35 @@ public class clienteDaoImplement implements clienteDao {
         return isInsertExitoso;
     }
 	
-	 public List<cliente> listarClientes()
+	 public ArrayList<cliente> listarClientes()
 	    {
 	        PreparedStatement statement;
 	        ResultSet resultSet; //Guarda el resultado de la query
-	        ArrayList<cliente> usuarios = new ArrayList<cliente>();
+	        ArrayList<cliente> clientes = new ArrayList<cliente>();
 	        Connection Conexion = conexion.getConexion().getSQLConexion();
 	        try 
 	        {
 	            statement = Conexion.prepareStatement(listar);
 	            resultSet = statement.executeQuery();
 	            while(resultSet.next())
-	            {cliente clienteRs = new cliente();
+	            {
+	            	
+	            	cliente clienteRs = new cliente();
 	            
-	            clienteRs.setDNI(resultSet.getInt("DNI"));
-	            clienteRs.setCUIL(resultSet.getInt("CUIL"));
-	            clienteRs.setNombre(resultSet.getString("Nombre"));
-	            clienteRs.setApellido(resultSet.getString("Apellido"));
-	            clienteRs.setSexo(resultSet.getString("Sexo"));
-	            clienteRs.setNacimiento(resultSet.getString("Nacimiento"));
-	            clienteRs.setDireccion(resultSet.getString("Direccion"));
-	            clienteRs.setID_Localodad(resultSet.getInt("ID_Localodad"));
-	            clienteRs.setID_Provincia(resultSet.getInt("ID_Provincia"));
-	            clienteRs.setEmail(resultSet.getString("Email"));
-	            clienteRs.setTelefono(resultSet.getInt("Telefono"));
+		            clienteRs.setDNI(resultSet.getInt("DNI"));
+		            clienteRs.setCUIL(resultSet.getInt("CUIL"));
+		            clienteRs.setNombre(resultSet.getString("Nombre"));
+		            clienteRs.setApellido(resultSet.getString("Apellido"));
+		            clienteRs.setSexo(resultSet.getString("Sexo"));
+		            clienteRs.setNacimiento(resultSet.getString("Nacimiento"));
+		            clienteRs.setDireccion(resultSet.getString("Direccion"));
+		            clienteRs.setID_Localodad(resultSet.getInt("ID_Localodad"));
+		            clienteRs.setID_Provincia(resultSet.getInt("ID_Provincia"));
+		            clienteRs.setEmail(resultSet.getString("Email"));
+		            clienteRs.setTelefono(resultSet.getInt("Telefono"));
+		            clienteRs.setEstado(true);
+		            
+		            clientes.add(clienteRs);
 
 	            }
 	        } 
@@ -91,7 +97,7 @@ public class clienteDaoImplement implements clienteDao {
 	        {
 	            e.printStackTrace();
 	        }
-	        return usuarios;
+	        return clientes;
 	    }
 	
 	

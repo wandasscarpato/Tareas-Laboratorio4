@@ -144,7 +144,9 @@ public class cliente {
 		Telefono = telefono;
 	}
 
-
+	public boolean getEstado() {
+		return estado;
+	}
 	public boolean isEstado() {
 		return estado;
 	}
