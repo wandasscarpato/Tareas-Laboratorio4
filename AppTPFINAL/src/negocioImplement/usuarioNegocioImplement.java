@@ -34,4 +34,9 @@ public class usuarioNegocioImplement implements usuarioNegocio {
 		return usuDao.modificar(usu);
 	}
 
+	@Override
+	public int ValidarUsuario(String Usuario, String Clave) {
+		return usuDao.VerificarUsuario(Usuario, Clave);
+	}
+
 }

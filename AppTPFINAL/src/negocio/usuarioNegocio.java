@@ -9,5 +9,5 @@ public interface usuarioNegocio {
 	public List<usuario> listarUsuarios();
 	public usuario obtenerUno(int dni);
 	public boolean modificar (usuario usu);
-
+	public int ValidarUsuario(String Usuario,String Clave);
 }

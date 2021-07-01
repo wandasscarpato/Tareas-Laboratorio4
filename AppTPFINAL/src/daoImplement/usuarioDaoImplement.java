@@ -18,6 +18,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 	private static final String listado = "SELECT * FROM usuario";
 	private static final String insert = "INSERT INTO lab4.Usuario (DNI, Usuario, Pass) values (?,?,?)";
 	private static final String update = "UPDATE usuario SET Pass= ? WHERE DNI= ?";
+	private static final String Verificar = "Select count(DNI) from Usuario where Usuario= ? and Pass= ?";
 	
 	private conexion cn;
 	
@@ -125,6 +126,29 @@ public class usuarioDaoImplement implements usuarioDao  {
 			cn.close();
 		}*/
 		return estado;
+	}
+
+	@Override
+	public int VerificarUsuario(String Usuario, String Clave) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		try {
+			ps = Conexion.prepareStatement(Verificar);
+			ps.setString(1, Usuario);
+			ps.setString(2, Clave);
+			rs = ps.executeQuery();
+			if(rs.next()) 
+			{
+				return rs.getInt(1);
+			}
+			
+			return 1;
+			
+		} catch (SQLException ex) {
+			//Logger.getLogger(SqlUsuarios.Class.GetName()).log(Level.SEVERE, null, ex);
+			return 1;
+		}
 	}
 
 	
