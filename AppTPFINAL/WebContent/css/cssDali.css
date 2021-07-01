@@ -37,7 +37,7 @@ background-color: rgba(0,0,0,0.5) !important;
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
-color: #FFC312;
+color: #E31837;
 }
 
 .social_icon span:hover{
@@ -57,7 +57,7 @@ top: -45px;
 
 .input-group-prepend span{
 width: 50px;
-background-color: #FFC312;
+background-color: #E31837;
 color: black;
 border:0 !important;
 }
@@ -82,7 +82,7 @@ margin-right: 5px;
 
 .login_btn{
 color: black;
-background-color: #FFC312;
+background-color: #E31837;
 width: 100px;
 }
 

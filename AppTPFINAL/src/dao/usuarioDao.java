@@ -10,6 +10,6 @@ public interface usuarioDao {
 	public boolean modificar(usuario usuario_a_modificar);
 	public List<usuario> readAll();
 	public usuario obtenerUno(int dni);
-	boolean insert(usuario usuario);
+	public boolean insert(usuario usuario);
 
 }

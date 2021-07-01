@@ -11,17 +11,13 @@ import java.util.List;
 import dao.usuarioDao;
 
 import daoImplement.conexion;
-import datosImpl.Conexion;
-import datosImpl.Exception;
-import datosImpl.String;
-import entidad.Articulo;
-import entidad.Categoria;
 import entidad.usuario;
 
 public class usuarioDaoImplement implements usuarioDao  {
 
 	private static final String listado = "SELECT * FROM usuario";
 	private static final String insert = "INSERT INTO lab4.Usuario (DNI, Usuario, Pass) values (?,?,?)";
+	private static final String update = "UPDATE usuario SET Pass= ? WHERE DNI= ?";
 	
 	private conexion cn;
 	
@@ -30,63 +26,64 @@ public class usuarioDaoImplement implements usuarioDao  {
 	}
 	
 	@Override
-    public boolean insert(usuario usu) {
-		
-		boolean estado=true;
+	public boolean insert(usuario usuario) {
+        PreparedStatement statement;
+        Connection Conexion = conexion.getConexion().getSQLConexion();
+        boolean isInsertExitoso = false;
+        try
+        {
+            statement = Conexion.prepareStatement(insert);
+            statement.setInt(1,usuario.getDNI());
+            statement.setString(2, usuario.getUsuario());
+            statement.setString(3,usuario.getPass());
 
-		cn = new conexion();
-		cn.Open();	
+            if(statement.executeUpdate() > 0)
+            {
+                Conexion.commit();
+                isInsertExitoso = true;
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            try {
+                Conexion.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return isInsertExitoso;
+	}
 
-		System.out.println(insert);
-		try
-		 {
-			estado=cn.execute(insert);
-		 }
-		catch(Exception e)
-		{
+	public List<usuario> readAll() {
+		PreparedStatement statement;
+		Connection cn = conexion.getConexion().getSQLConexion();
+		List<usuario> lista = new ArrayList<usuario>();
+		try {
+			statement = cn.prepareStatement(listado);
+		    ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				
+				usuario usuarioRs = new usuario();
+				usuarioRs.setUsuario(rs.getString("Usuario"));
+				usuarioRs.setDNI(rs.getInt("DNI"));
+				usuarioRs.setPass(rs.getString("Pass"));
+				
+				lista.add(usuarioRs);
+			}
+		}
+		catch(SQLException e){
 			e.printStackTrace();
 		}
-		finally
-		{
-			cn.close();
-		}
-		return estado;
-	}
-
-	public List<usuario> readAll(){
 		
-		cn = new conexion();
-		cn.Open();
-		 List<usuario> list = new ArrayList<usuario>();
-		 try
-		 {
-			 ResultSet rs= cn.query(listado);
-			 while(rs.next())
-			 {
-				usuario usuRs = new usuario();
-				usuRs.setUsuario(rs.getString("Usuario"));
-				usuRs.setDNI(rs.getInt("DNI"));
-				usuRs.setPass(rs.getString("Pass"));
-					
-				list.add(usuRs);	
-			 } 
-		 }
-		 catch(Exception e)
-		 {
-			 e.printStackTrace();
-		 }
-		 finally
-		 {
-			 cn.close();
-		 }
-		 return list;
+		return lista;
 	}
-	
-
+			
+			
 	public usuario obtenerUno(int dni) {
-		cn = new conexion();
-		cn.Open();
-		usuario usu = new usuario();
+		/*cn = new conexion();
+		cn.Open();*/
+		usuario usu = new usuario();/*
 		try
 		 {
 			 ResultSet rs= cn.query("SELECT * FROM usuario WHERE DNI= " + dni);
@@ -103,14 +100,14 @@ public class usuarioDaoImplement implements usuarioDao  {
 		 finally
 		 {
 			 cn.close();
-		 }
+		 }*/
 		return usu;
 	}
 	
 	public boolean modificar(usuario usu) {
 		boolean estado=true;
 
-		cn = new conexion();
+		/*cn = new conexion();
 		cn.Open();	
 		
 		String query = "UPDATE usuario SET Pass= '"+usu.getPass()+"' WHERE DNI='"+usu.getDNI()+"'";
@@ -126,7 +123,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 		finally
 		{
 			cn.close();
-		}
+		}*/
 		return estado;
 	}
 

@@ -17,10 +17,10 @@
 </head>
 
 <body>
-<div id="mensaje"></div>
-    <header> <img src="" alt="">
-        <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg"
-            alt="">
+    <header>
+    	<a href="index.jsp">
+			<img src="./imgs/logo.png">
+        </a>
     </header>
     <div class="card--modif cm3"></div>
     <!--Finaliza el header-->
@@ -45,7 +45,7 @@
                     <label for="">CUIL</label>
                     <input  name="CUIL" type="number"><br>
                     <label for="">Sexo</label>
-                    <select class="genero" name="genero" id="">
+                    <select class="genero" name="genero" id="genero">
                         <option value="1">Masculino</option>
                         <option value="2">Femenino</option>
                         <option value="0">Otro</option>
@@ -55,13 +55,13 @@
                     <label for="">Direccion</label>
                     <input name="direccion" type="text"><br>
                     <label for="">Localidad</label>
-                     <select class="genero" name="localidad" id="">
+                     <select class="genero" name="localidad" id="localidad">
                         <option value="1">Pacheco</option>
                         <option value="2">Almagro</option>
                         <option value="3">Loma Verde</option>
                     </select>
                     <label for="">Provincia</label>
-                     <select class="genero" name="provincia" id="">
+                     <select class="genero" name="provincia" id="provincia">
                         <option value="1">Argentino</option>
                         <option value="2">Brasilero</option>
                         <option value="3">Italiano</option>

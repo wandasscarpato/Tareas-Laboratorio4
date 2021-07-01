@@ -20,9 +20,7 @@
 
 <body>
   <header>
-    <img
-      src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg"
-      alt="">
+    <a href="index.jsp"><img src="./imgs/logo.png"></a>
     <div class="ingresar">
     <a href="./registrarse.jsp">Registrarme</a>
     <a href="./InicioSesion.jsp">Iniciar sesion</a>
@@ -39,7 +37,9 @@
         <br>
         Descubrinos
       </h3>
-      <input type="button" value="Registrarse"> 
+      <a href="./registrarse.jsp">
+      <input type="button" value="Registrarse">
+      </a>
       <br>
       <a href="InicioSesion.jsp">ya tengo cuenta</a>
     </section>
