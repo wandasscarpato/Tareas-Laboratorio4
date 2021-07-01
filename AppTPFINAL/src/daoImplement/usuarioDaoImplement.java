@@ -17,10 +17,42 @@ public class usuarioDaoImplement implements usuarioDao  {
 
 	private static final String update = "UPDATE usuario SET Pass= ? WHERE DNI= ?";
 	private static final String listado = "SELECT * FROM usuario";
+	private static final String insert = "INSERT INTO lab4.Usuario (DNI, Usuario, Pass) values (?,?,?)";
 	
 	public usuarioDaoImplement() {
 		
 	}
+	
+	@Override
+    public boolean insert(usuario usuario) {
+        PreparedStatement statement;
+        Connection Conexion = conexion.getConexion().getSQLConexion();
+        boolean isInsertExitoso = false;
+        try
+        {
+            statement = Conexion.prepareStatement(insert);
+            statement.setInt(1,usuario.getDNI());
+            statement.setString(2, usuario.getUsuario());
+            statement.setString(3,usuario.getPass());
+
+            if(statement.executeUpdate() > 0)
+            {
+                Conexion.commit();
+                isInsertExitoso = true;
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            try {
+                Conexion.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return isInsertExitoso;
+    }
 
 	public List<usuario> readAll() {
 		PreparedStatement statement;

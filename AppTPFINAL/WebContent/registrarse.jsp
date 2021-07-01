@@ -1,5 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -11,10 +13,11 @@
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
 
-    <title>Document</title>
+    <title>Registro de Cliente</title>
 </head>
 
 <body>
+<div id="mensaje"></div>
     <header> <img src="" alt="">
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg"
             alt="">
@@ -22,65 +25,58 @@
     <div class="card--modif cm3"></div>
     <!--Finaliza el header-->
     <div class="registrarse">
-        <h1>   Registro de usuario
+        <h1>   Registro de Cliente
         </h1>
-        <form>
+        <form action="RegistrarClienteServlet" method="post">
             <a class="volver" href="./index.jsp">volver al menu principal</a>
             <div class="form-div">
                 <div>
                     <div class="card--modif"></div>
                     <label for="">Usuario</label> 
-                    <input type="text" required> <br>
+                    <input name="usuario" type="text" required> <br>
                     <label for="">Contraseña</label>
-                    <input type="text" required><br>
+                    <input  name="pass" type="password" required><br> 
                     <label for="">Nombre</label>
-                    <input type="text" required><br>
+                    <input  name="nombre"type="text" required><br>
                     <label for="">Apellido</label>
-                    <input type="number" required><br>
+                    <input  name="apellido" type="text" required><br>
                     <label for="">DNI</label>
-                    <input type="number" required><br>
+                    <input  name="DNI" type="number" required><br>
                     <label for="">CUIL</label>
-                    <input type="text"><br>
+                    <input  name="CUIL" type="number"><br>
                     <label for="">Sexo</label>
-                    <select class="genero" name="" id="">
-                        <option value="">Masculino</option>
-                        <option value="">Femenino</option>
-                        <option value="">Otro</option>
+                    <select class="genero" name="genero" id="">
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
+                        <option value="0">Otro</option>
                     </select>
-                    <label for="">Nacionalidad</label>
-                    <input type="text"><br>
                     <label for="">Fecha de nacimiento</label>
-                    <select class="fecha" name="" id="">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                    <select class="fecha" name="" id="">
-                        <option value="">enero</option>
-                        <option value="">febrero</option>
-                        <option value="">marzo</option>
-                    </select>
-                    <select class="fecha" name="" id="">
-                        <option value="">1999</option>
-                        <option value="">2000</option>
-                        <option value="">2001</option>
-                    </select> <br>
+                    <input  name="nacimiento" type="date"><br>
                     <label for="">Direccion</label>
-                    <input type="text"><br>
+                    <input name="direccion" type="text"><br>
                     <label for="">Localidad</label>
-                    <input type="text"><br>
+                     <select class="genero" name="localidad" id="">
+                        <option value="1">Pacheco</option>
+                        <option value="2">Almagro</option>
+                        <option value="3">Loma Verde</option>
+                    </select>
                     <label for="">Provincia</label>
-                    <input type="text"><br>
+                     <select class="genero" name="provincia" id="">
+                        <option value="1">Argentino</option>
+                        <option value="2">Brasilero</option>
+                        <option value="3">Italiano</option>
+                    </select>
                     <label for="">Correo electronico</label>
-                    <input type="text"><br>
+                    <input name="email" type="text"><br>
                     <label for="">Telefonos</label>
-                    <input type="text"><br>
+                    <input name="telefono" type="number"><br>
                     <input class="btnRegistro" type="submit" value="Registrarme">
                     <div class="card--modif cm2"></div>
                 </div>
             </div>
-            
+           
         </form>
+        
     </div>
     <!--Comienza el footer-->
     <footer>
@@ -142,11 +138,19 @@
         </div>
     </footer>
 </body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
     crossorigin="anonymous"></script>
-
+    <script>
+<% 
+  if (request.getParameter("Status")!=null){%>
+ 	 	
+ 		swal("Cliente creado", "", "success")
+ 	 <%
+  }%>
+</script>
 </html>

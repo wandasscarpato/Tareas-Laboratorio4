@@ -1,7 +1,5 @@
 package entidad;
 
-import java.util.Date;
-
 public class cliente {
 	
 	private int DNI;
@@ -9,7 +7,7 @@ public class cliente {
 	private String Nombre;
 	private String Apellido;
 	private String Sexo;
-	private Date Nacimiento = new Date();
+	private String Nacimiento;
 	private String Direccion;
 	private int ID_Localodad;
 	private int ID_Provincia;
@@ -21,22 +19,20 @@ public class cliente {
 		
 	}
 	
-	public cliente(int dNI, int cUIL, String nombre, String apellido, String sexo, Date nacimiento, String direccion,
-			int iD_Localodad, int iD_Provincia, String email, int telefono, boolean estado) {
-		super();
-		DNI = dNI;
-		CUIL = cUIL;
-		Nombre = nombre;
-		Apellido = apellido;
-		Sexo = sexo;
-		Nacimiento = nacimiento;
-		Direccion = direccion;
-		ID_Localodad = iD_Localodad;
-		ID_Provincia = iD_Provincia;
-		Email = email;
-		Telefono = telefono;
-		this.estado = estado;
-	}
+	public cliente(int DNI,int CUIL,String Nombre,String Apellido,String Sexo, String Nacimiento, String Direccion, int ID_Localodad,int ID_Provincia, String Email, int Telefono, boolean estado) {
+        this.DNI = DNI;
+        this.CUIL = CUIL;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Sexo = Sexo;
+        this.Nacimiento = Nacimiento;
+        this.Direccion = Direccion;
+        this.ID_Localodad = ID_Localodad;
+        this.ID_Provincia = ID_Provincia;
+        this.Email = Email;
+        this.Telefono = Telefono;
+        this.estado = estado;
+    }
 
 
 	public int getDNI() {
@@ -89,12 +85,12 @@ public class cliente {
 	}
 
 
-	public Date getNacimiento() {
+	public String getNacimiento() {
 		return Nacimiento;
 	}
 
 
-	public void setNacimiento(Date nacimiento) {
+	public void setNacimiento(String nacimiento) {
 		Nacimiento = nacimiento;
 	}
 
