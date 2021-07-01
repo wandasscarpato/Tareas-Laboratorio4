@@ -19,8 +19,8 @@
 <body>
 	<%
 	List<usuario> lista = new ArrayList<usuario>();
-	if (request.getAttribute("listaUsu") != null) {
-		lista = (List<usuario>) request.getAttribute("listaUsu");
+	if (request.getAttribute("listaU") != null) {
+		lista = (List<usuario>) request.getAttribute("listaU");
 	}
 	%>
     <header>

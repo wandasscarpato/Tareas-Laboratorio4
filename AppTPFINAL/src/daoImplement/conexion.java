@@ -1,53 +1,87 @@
 package daoImplement;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class conexion 
 {
-	public static conexion instancia;
-	private Connection connection;
+	private String host = "jdbc:mysql://localhost:3306/lab4";
+	private String user = "root";
+	private String pass = "root";
+	//private String dbName = "bdpersonas??profileSQL=true&useSSL=false";
+
+	protected Connection connection;
 	
-	private conexion()
+	
+	public Connection Open()
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lab4","root","root");
-			this.connection.setAutoCommit(false);
+			Class.forName("com.mysql.jdbc.Driver");
+			this.connection = DriverManager.getConnection(host, user, pass);
+			System.out.println("CONEXION OK");
 		}
-		catch(Exception e)
+		catch(ClassNotFoundException e)
 		{
+			System.out.println("ERROR CONTROLADOR");
 			e.printStackTrace();
 		}
-	}
-	
-	
-	public static conexion getConexion()   
-	{								
-		if(instancia == null)
+		catch(SQLException e)
 		{
-			instancia = new conexion();
+			System.out.println("ERROR CONEXION");
+			e.printStackTrace();
 		}
-		return instancia;
-	}
-
-	public Connection getSQLConexion() 
-	{
 		return this.connection;
 	}
 	
-	public void cerrarConexion()
+	
+	public ResultSet query(String query)
 	{
-		try 
+		Statement st;
+		ResultSet rs=null;
+		try
 		{
-			this.connection.close();
+			st= connection.createStatement();
+			rs= st.executeQuery(query);
 		}
-		catch (SQLException e) 
+		catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
-		instancia = null;
+		return rs;
+	}
+	
+	public boolean execute(String query)
+	{
+		Statement st;
+		boolean save = true;
+		try {
+			st = connection.createStatement();
+		    st.executeUpdate(query);
+		}
+		catch(SQLException e)
+		{
+			save = false;
+			e.printStackTrace();
+		}
+		return save;
+	}
+	
+	public boolean close()
+	{
+		boolean ok=true;
+		try {
+			connection.close();
+		}
+		catch(Exception e)
+		{
+			ok= false;
+			e.printStackTrace();
+		}
+		return ok;
 	}
 }

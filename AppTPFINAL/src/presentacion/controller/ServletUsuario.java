@@ -48,7 +48,7 @@ public class ServletUsuario extends HttpServlet {
 			if(usuNeg.listarUsuarios()!=null) {
 			List<usuario> lista= usuNeg.listarUsuarios();
 			request.setAttribute("listaU", lista);	
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/ModxUsuario.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/ModxUsuario(Admin).jsp");
 			dispatcher.forward(request, response);
 			}
 			else {
