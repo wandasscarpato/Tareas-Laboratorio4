@@ -107,26 +107,24 @@ public class usuarioDaoImplement implements usuarioDao  {
 	}
 	
 	public boolean modificar(usuario usu) {
-		boolean estado=true;
-
-		/*cn = new conexion();
-		cn.Open();	
-		
-		String query = "UPDATE usuario SET Pass= '"+usu.getPass()+"' WHERE DNI='"+usu.getDNI()+"'";
-
+		PreparedStatement statement;
+		Connection cn = conexion.getConexion().getSQLConexion();
+		boolean isModExitosa = true;
 		try
-		 {
-			estado=cn.execute(query);
-		 }
+		{
+			statement = cn.prepareStatement(update);
+			statement.setString(1, usu.getPass());
+			statement.setInt(2, usu.getDNI());
+			statement.executeUpdate();		
+			cn.commit();
+		}
 		catch(Exception e)
 		{
+			isModExitosa = false;
 			e.printStackTrace();
 		}
-		finally
-		{
-			cn.close();
-		}*/
-		return estado;
+		
+		return isModExitosa;
 	}
 
 	@Override

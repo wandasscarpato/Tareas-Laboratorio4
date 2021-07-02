@@ -84,12 +84,11 @@
                 <div>
                     <div class="card--modif"></div>
                     <label for="">Ingrese el DNI del usuario a modificar: </label> 
-                    <input type="text" name="txtDNI"> 
-                    <input class="btnBuscar" type="submit" name= "btnBuscar" value="Filtrar"><br>
+                    <input type="text" name="txtDNI" required> 
+                    <input class="btnBuscar" type="submit" name= "btnBuscar" value="Buscar"><br>
                   </div>
                   </form>
 			<p></p>
-			<form>
 			<table class="table">	
 			<tr>
 				<th>Usuario</th>
@@ -102,16 +101,17 @@
 			for (usuario usu : lista) {
 			%>
 			<tr>
-				<td><%=usu.getUsuario()%></td>
+			<form class="form-divModContra" method= "post" action="ServletUsuario">
+				<td><%=usu.getUsuario()%><input type="hidden" name="usuario" value="<%=usu.getUsuario()%>"></td>
 				<td><%=usu.getDNI()%><input type="hidden" name="dni" value="<%=usu.getDNI()%>"></td>
 				<td><%=usu.getPass()%></td>
 				<td style="text-align: center;"><input class="btnModificar" type="submit" name="btnModificar" value="Modificar"></td>
+			</form>
 			</tr>
 			<%
 			}
 			%>
 			</table>
-		</form>
       <!--Comienza el footer-->
     <footer>
         <div>
