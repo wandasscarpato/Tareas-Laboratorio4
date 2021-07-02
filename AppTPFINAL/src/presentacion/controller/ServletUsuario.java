@@ -66,7 +66,7 @@ public class ServletUsuario extends HttpServlet {
 			}
 		else if(request.getParameter("btnModificar")!= null) {
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/Modificacion(Admin).jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/ModDeUsuario(Admin).jsp");
 			dispatcher.forward(request, response);
 		}
 	}
