@@ -17,18 +17,63 @@
 </head>
 
 <body>
-    <header>
-    	<a href="index.jsp">
-			<img src="./imgs/logo.png">
-        </a>
-    </header>
+<header>
+    <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Administrador
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="Reportes.jsp">Inicio</a>
+                <a class="dropdown-item" href="#">Cerrar sesion</a>
+              </div>
+            </li>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Cuentas
+              </a>  
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="ABMLxCliente(Cuentas).jsp">Administrar cuentas</a>
+                <a class="dropdown-item" href="nuevaCuenta(ADMIN).jsp">Asignar cuentas</a>
+              </div> 
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Prestamos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="./PrestamosAceptados.jsp">Prestamos autorizados</a>
+                <a class="dropdown-item" href="./AutorizacionPrestamos.jsp">Prestamos a autorizar</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Usuarios-Clientes
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
+                <a class="dropdown-item" href="./BMLxCliente(Admin).jsp">Administras datos</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+          </form>
+        </div>
+      </nav>
+</header>
     <div class="card--modif cm3"></div>
     <!--Finaliza el header-->
     <div class="registrarse">
         <h1>   Registro de Cliente
         </h1>
         <form action="ServletRegistrarCliente" method="post">
-            <a class="volver" href="./index.jsp">volver al menu principal</a>
             <div class="form-div">
                 <div>
                     <div class="card--modif"></div>
