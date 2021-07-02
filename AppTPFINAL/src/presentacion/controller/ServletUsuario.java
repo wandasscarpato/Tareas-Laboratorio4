@@ -1,6 +1,7 @@
 package presentacion.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -41,7 +42,7 @@ public class ServletUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("btnFiltrar")!= null)
+		if(request.getParameter("btnList")!= null)
 			
 		{	
 			usuarioNegocio usuNeg = new usuarioNegocioImplement();
@@ -51,10 +52,22 @@ public class ServletUsuario extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/ModxUsuario(Admin).jsp");
 			dispatcher.forward(request, response);
 			}
-			else {
-				System.out.println("F");
+		}
+		else if(request.getParameter("btnBuscar")!= null) {
+			usuarioNegocio usuNeg = new usuarioNegocioImplement();
+			
+			int dni = Integer.parseInt(request.getParameter("txtDNI").toString()) ;
+			
+            List<usuario> lista= usuNeg.obtenerUno(dni);
+			request.setAttribute("listaU", lista);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/ModxUsuario(Admin).jsp");
+			dispatcher.forward(request, response);
 			}
+		else if(request.getParameter("btnModificar")!= null) {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/Modificacion(Admin).jsp");
+			dispatcher.forward(request, response);
 		}
 	}
-
 }

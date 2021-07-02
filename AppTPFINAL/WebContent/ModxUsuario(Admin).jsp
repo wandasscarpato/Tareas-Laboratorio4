@@ -62,9 +62,11 @@
                     aria-haspopup="true" aria-expanded="false">
                     Usuarios
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="ServletUsuario?Param=list">Usuarios a cambiar contraseña</a>
-                  </div>
+                  <form class="form-divModContra" method= "post" action="ServletUsuario">
+                  	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    	<button class="dropdown-item" name="btnList">Usuarios a cambiar contraseña</button>
+                  	</div>
+                  </form>
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
@@ -82,8 +84,8 @@
                 <div>
                     <div class="card--modif"></div>
                     <label for="">Ingrese el DNI del usuario a modificar: </label> 
-                    <input type="text" name="txtDNI">
-                    <input class="btnBuscar" type="submit" name= "btnFiltrar" value="Filtrar"> <br>
+                    <input type="text" name="txtDNI"> 
+                    <input class="btnBuscar" type="submit" name= "btnBuscar" value="Filtrar"><br>
                   </div>
                   </form>
 			<p></p>
@@ -93,7 +95,7 @@
 				<th>Usuario</th>
 				<th>DNI</th>
 				<th>Pass</th>
-			<!--<td><strong>Seleccionar</strong></td>-->
+				<th>Modificar</th>
 			</tr>
 			<%
 			if(lista!=null)
@@ -101,23 +103,15 @@
 			%>
 			<tr>
 				<td><%=usu.getUsuario()%></td>
-				<td><%=usu.getDNI()%></td>
+				<td><%=usu.getDNI()%><input type="hidden" name="dni" value="<%=usu.getDNI()%>"></td>
 				<td><%=usu.getPass()%></td>
-				<!--<td><input type="radio" name="Usuario" = Value="" style-alig></td>-->
+				<td style="text-align: center;"><input class="btnModificar" type="submit" name="btnModificar" value="Modificar"></td>
 			</tr>
 			<%
 			}
 			%>
 			</table>
 		</form>
-  	<p></p>
-  	<section class="sectionMenuDeCuentas">
-        <div class="menuDeCuentas">
-            <div>
-              <input class="btnMenuDeCuentas" type="button" value="Modificar usuario seleccionado">
-            </div>
-        </div>
- 	</section>
       <!--Comienza el footer-->
     <footer>
         <div>

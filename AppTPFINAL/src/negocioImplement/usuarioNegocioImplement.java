@@ -26,7 +26,7 @@ public class usuarioNegocioImplement implements usuarioNegocio {
 		return (List<usuario>) usuDao.readAll();
 	}
 	
-	public usuario obtenerUno(int dni) {
+	public List<usuario> obtenerUno(int dni) {
 		return usuDao.obtenerUno(dni);
 	}
 	

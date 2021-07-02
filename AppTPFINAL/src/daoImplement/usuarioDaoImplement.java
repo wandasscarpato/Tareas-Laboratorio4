@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,28 +82,28 @@ public class usuarioDaoImplement implements usuarioDao  {
 	}
 			
 			
-	public usuario obtenerUno(int dni) {
-		/*cn = new conexion();
-		cn.Open();*/
-		usuario usu = new usuario();/*
+	public List<usuario> obtenerUno(int dni) {
+		PreparedStatement statement;
+		Connection cn = conexion.getConexion().getSQLConexion();
+		List<usuario> lista = new ArrayList<usuario>();
+		usuario usu = new usuario();
 		try
 		 {
-			 ResultSet rs= cn.query("SELECT * FROM usuario WHERE DNI= " + dni);
+			 statement = cn.prepareStatement("SELECT * FROM usuario WHERE DNI= " + dni);
+			 ResultSet rs= statement.executeQuery();
 			 rs.next();
-			 
+		 
 			 usu.setUsuario(rs.getString("Usuario"));
 			 usu.setDNI(rs.getInt("DNI"));
-			 usu.setPass(rs.getString("Pass"));		 
+			 usu.setPass(rs.getString("Pass"));	
+			 
+			 lista.add(usu);
 		 }
 		 catch(Exception e)
 		 {
 			 e.printStackTrace();
 		 }
-		 finally
-		 {
-			 cn.close();
-		 }*/
-		return usu;
+		return lista;
 	}
 	
 	public boolean modificar(usuario usu) {
