@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -52,18 +53,34 @@ public class ServletListarCuentas extends HttpServlet {
 			}
 		}
 		else if(request.getParameter("btnBuscar") != null){
-			cuentaNegocio cueNeg = new cuentaNegocioImplement();
-			if(cueNeg.listarCuentas() != null) {
+				cuentaNegocio cueNeg = new cuentaNegocioImplement();
 				String dni = request.getParameter("txtDni");
-				//
-				//AGREGAR VERIFICACION DE DNI
-				//
-				List<cuenta> lista = cueNeg.ObtenerxDni(dni);
+				if(cueNeg.ObtenerxDni(dni) != null) {
+					//
+					//AGREGAR VERIFICACION DE DNI
+					//
+					List<cuenta> lista = cueNeg.ObtenerxDni(dni);
+					request.setAttribute("ListarCuentas", lista);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/ABMLxCliente(Cuentas).jsp");
+					dispatcher.forward(request, response);
+				}
+			}
+		else if(request.getParameter("btnBaja") != null){
+				cuentaNegocio cueNeg = new cuentaNegocioImplement();
+				int N_cuenta = Integer.parseInt(request.getParameter("N_Cuenta").toString());
+				cuenta c = new cuenta();
+				c.setN_Cuenta(N_cuenta);
+				c.setEstado(false);
+				cueNeg.modificar(c);
+				//LLAMO A LA LISTA
+				List<cuenta> lista = cueNeg.listarCuentas();
 				request.setAttribute("ListarCuentas", lista);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ABMLxCliente(Cuentas).jsp");
 				dispatcher.forward(request, response);
-			}
 		}
+			else {
+			System.out.println("--------FALLO DAR DE BAJA--------");	
+			}
 		
 	}
 

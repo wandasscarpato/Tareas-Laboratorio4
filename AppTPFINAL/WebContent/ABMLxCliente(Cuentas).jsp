@@ -103,7 +103,8 @@
 					
 					for(cuenta cue: listacuenta){%>
 					<tr>
-						<td><%= cue.getN_Cuenta() %></td>
+						<form action="ServletListarCuentas" method="post">
+						<td><%= cue.getN_Cuenta() %> <input type="hidden" name="N_Cuenta" value ="<%= cue.getN_Cuenta() %>"></td>
 						<td><%= cue.getTipo() %></td>
 						<td><%= cue.getMoneda() %></td>				
 						<td><%= cue.getCBU() %></td>
@@ -111,6 +112,7 @@
 						<td><%= cue.getEstado() %></td>
 						<td><input type="submit" name="btnBaja" value="Eliminar"></td>
 						<td><input type="submit" name="btnModificar" value="Modificar"></td>
+						</form>
 					</tr>
 					<%
 					}

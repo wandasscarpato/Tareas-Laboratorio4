@@ -15,11 +15,10 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String insert = "INSERT INTO cuenta (N_Cuenta, ID_Tipo, Fecha_cracion, CBU, Saldo, DNI, estado) VALUES (?,?, ?,?,?,?,?);";
 	private static final String listado = "SELECT * FROM cuenta";
 	private static final String listado_uno = "SELECT * FROM cuenta WHERE DNI = ";
+	private static final String update = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
 	
 	public boolean insert(cuenta cuenta)
 	{
-		
-		
 		PreparedStatement statement;
 		Connection Conexion = conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -33,7 +32,6 @@ public class cuentaDaoImplement implements cuentaDao {
 			statement.setDouble(5, cuenta.getSaldo());
 			statement.setInt(6, cuenta.getDNI());
 			statement.setBoolean(7, cuenta.getEstado());
-			
 			
 			if(statement.executeUpdate() > 0)
 			{
@@ -107,4 +105,30 @@ public class cuentaDaoImplement implements cuentaDao {
 		}
 		return lista;
 	}
+	
+	public boolean modificar(cuenta cuenta_m) {
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean isInsertExitoso = false;
+		try {
+			statement = Conexion.prepareStatement(update);
+			statement.setBoolean(1, cuenta_m.getEstado());
+			statement.setInt(2, cuenta_m.getN_Cuenta());
+			
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				isInsertExitoso = true;
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				try {
+					Conexion.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} 
+		return isInsertExitoso;
+	}
+	
 }
