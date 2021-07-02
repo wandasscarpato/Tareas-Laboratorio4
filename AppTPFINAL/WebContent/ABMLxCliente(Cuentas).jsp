@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="entidad.cuenta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -74,7 +76,11 @@
                     <div class="card--modif"></div>
                     <label for="">Ingrese el DNI del cliente a gestionar: </label> 
                     <input type="text" required>
-                    <input class="btnBuscar" type="submit" value="Buscar"> <br>
+                    
+                    <form method="post" action="ServletListarCuentas">
+                    <input type="submit" value="Buscar"name="btnBuscar">
+                    </form>
+                     <br>
                     <div class="card--modif"></div>
                     <label for="">Las cuentas del sr/sra "</label> 
                     <label for="">Carlos Ramirez</label> 
@@ -84,37 +90,34 @@
 			<p></p>
 			<table style="margin: 0 auto;" border="1">	
 			<tr>
-				<td><strong>N° Cuenta</strong></td>
-				<td><strong>Tipo</strong></td>
-				<td><strong>Moneda</strong></td>
-				<td><strong>CBU</strong></td>
-				<td><strong>Saldo</strong></td>
-				<td><strong>Seleccionar</strong></td>
+				<th><strong>N° CUENTA</strong></th>
+				<th><strong>TIPO</strong></th>
+				<th><strong>MONEDA</strong></th>
+				<th><strong>CBU</strong></th>
+				<th><strong>SALDO</strong></th>
+				<th><strong>ESTADO</strong></th>
+				<th><strong>SELECCIONAR</strong></th>
 			</tr>
-			<tr>
-				<td>00001</td>
-				<td>Caja Ahorro</td>
-				<td>Pesos</td>
-				<td>1234567891234567891234</td>
-				<td>122.000</td>
-				<td style="text-align: center;"><input type="radio" name="Cuenta" = Value="1" style-alig></td>
-			</tr>
-			<tr>
-				<td>00002</td>
-				<td>Cuenta Corriente</td>
-				<td>Pesos</td>
-				<td>1234567891234567891235</td>
-				<td>10.000</td>
-				<td style="text-align: center;"><input type="radio" name="Cuenta" = Value="2" style-alig></td>
-			</tr>
-			<tr>
-				<td>00001</td>
-				<td>Caja Ahorro</td>
-				<td>Dolares</td>
-				<td>1234567891234567891236</td>
-				<td>300</td>
-				<td style="text-align: center;"><input type="radio" name="Cuenta" = Value="3" style-alig></td>
-			</tr>
+			<%
+				//SE TRAE LA LISTA DE CUENTAS
+				if(request.getAttribute("ListarCuentas") !=null){
+					ArrayList<cuenta> listacuenta = new ArrayList<cuenta>();
+					listacuenta = (ArrayList<cuenta>) request.getAttribute("ListaCuentas");
+					
+					for(cuenta cue: listacuenta){%>
+					<tr>
+					<td><%= cue.getN_Cuenta() %></td>
+					<td><%= cue.getTipo() %></td>
+					<td><%= cue.getMoneda() %></td>				
+					<td><%= cue.getCBU() %></td>
+					<td><%= cue.getSaldo() %></td>
+					<td><%= cue.getEstado() %></td>
+					<td style="text-align: center;"><input type="radio" name="Cuenta" = Value="1" style-alig></td>
+					</tr>
+					<%
+					}
+					}
+					%>
 			</table>
 		</form>
      </div>
