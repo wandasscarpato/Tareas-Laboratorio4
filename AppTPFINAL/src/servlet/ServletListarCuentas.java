@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import entidad.cuenta;
 import negocio.cuentaNegocio;
@@ -41,8 +42,7 @@ public class ServletListarCuentas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("-----------------ENTRO EN SERVLET-----------------");
-		if(request.getParameter("btnBuscar") != null){
+		if(request.getParameter("") != null){
 			cuentaNegocio cueNeg = new cuentaNegocioImplement();
 			if(cueNeg.listarCuentas() != null) {
 				List<cuenta> lista = cueNeg.listarCuentas();
@@ -50,10 +50,21 @@ public class ServletListarCuentas extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ABMLxCliente(Cuentas).jsp");
 				dispatcher.forward(request, response);
 			}
-			else {
-				System.out.println("-----------------FALLO LISTADO DE CUENTAS-----------------");
+		}
+		else if(request.getParameter("btnBuscar") != null){
+			cuentaNegocio cueNeg = new cuentaNegocioImplement();
+			if(cueNeg.listarCuentas() != null) {
+				String dni = request.getParameter("txtDni");
+				//
+				//AGREGAR VERIFICACION DE DNI
+				//
+				List<cuenta> lista = cueNeg.ObtenerxDni(dni);
+				request.setAttribute("ListarCuentas", lista);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/ABMLxCliente(Cuentas).jsp");
+				dispatcher.forward(request, response);
 			}
 		}
+		
 	}
 
 }

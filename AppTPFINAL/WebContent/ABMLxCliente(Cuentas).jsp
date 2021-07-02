@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="entidad.cuenta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -70,23 +71,18 @@
       <div class="adminCuentas">
         <h1> Administración de cuentas
         </h1>
-        <form>
+        <form method="post" action="ServletListarCuentas">
         	<div class="form-divAdminCuentas">
                 <div>
                     <div class="card--modif"></div>
                     <label for="">Ingrese el DNI del cliente a gestionar: </label> 
-                    <input type="text" required>
-                    
-                    <form method="post" action="ServletListarCuentas">
-                    <input type="submit" value="Buscar"name="btnBuscar">
+                    <input type="text" name="txtDni">
+                    <input class="btnBuscar" type="submit" value="Buscar"name="btnBuscar"> <br>
+                    </div>
+                    </div>
                     </form>
-                     <br>
-                    <div class="card--modif"></div>
-                    <label for="">Las cuentas del sr/sra "</label> 
-                    <label for="">Carlos Ramirez</label> 
-                    <label for="">" son:</label> 
-                  </div>
             </div>
+            
 			<p></p>
 			<table style="margin: 0 auto;" border="1">	
 			<tr>
@@ -96,23 +92,25 @@
 				<th><strong>CBU</strong></th>
 				<th><strong>SALDO</strong></th>
 				<th><strong>ESTADO</strong></th>
-				<th><strong>SELECCIONAR</strong></th>
+				<th><strong>BAJA CUENTA</strong></th>
+				<th><strong>MOD. CUENTA</strong></th>
 			</tr>
 			<%
 				//SE TRAE LA LISTA DE CUENTAS
 				if(request.getAttribute("ListarCuentas") !=null){
-					ArrayList<cuenta> listacuenta = new ArrayList<cuenta>();
-					listacuenta = (ArrayList<cuenta>) request.getAttribute("ListaCuentas");
+					List<cuenta> listacuenta = new ArrayList<cuenta>();
+					listacuenta = (List<cuenta>) request.getAttribute("ListarCuentas");
 					
 					for(cuenta cue: listacuenta){%>
 					<tr>
-					<td><%= cue.getN_Cuenta() %></td>
-					<td><%= cue.getTipo() %></td>
-					<td><%= cue.getMoneda() %></td>				
-					<td><%= cue.getCBU() %></td>
-					<td><%= cue.getSaldo() %></td>
-					<td><%= cue.getEstado() %></td>
-					<td style="text-align: center;"><input type="radio" name="Cuenta" = Value="1" style-alig></td>
+						<td><%= cue.getN_Cuenta() %></td>
+						<td><%= cue.getTipo() %></td>
+						<td><%= cue.getMoneda() %></td>				
+						<td><%= cue.getCBU() %></td>
+						<td><%= cue.getSaldo() %></td>
+						<td><%= cue.getEstado() %></td>
+						<td><input type="submit" name="btnBaja" value="Eliminar"></td>
+						<td><input type="submit" name="btnModificar" value="Modificar"></td>
 					</tr>
 					<%
 					}

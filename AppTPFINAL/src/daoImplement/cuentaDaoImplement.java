@@ -9,12 +9,12 @@ import java.util.List;
 
 import dao.cuentaDao;
 import entidad.cuenta;
-import entidad.usuario;
 
 public class cuentaDaoImplement implements cuentaDao {
 	
 	private static final String insert = "INSERT INTO cuenta (N_Cuenta, ID_Tipo, Fecha_cracion, CBU, Saldo, DNI, estado) VALUES (?,?, ?,?,?,?,?);";
 	private static final String listado = "SELECT * FROM cuenta";
+	private static final String listado_uno = "SELECT * FROM cuenta WHERE DNI = ";
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -81,4 +81,30 @@ public class cuentaDaoImplement implements cuentaDao {
 		return lista;
 	}
 	
+	public List<cuenta> ObtenerxDni(String dni) {
+		PreparedStatement statement;
+		Connection cn = conexion.getConexion().getSQLConexion();
+		List<cuenta> lista = new ArrayList<cuenta>();
+		try {
+			statement = cn.prepareStatement(listado_uno + dni);
+		    ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				
+				cuenta cuentaRs = new cuenta();
+				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
+				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
+				cuentaRs.setTipo(rs.getString("Tipo"));
+				cuentaRs.setMoneda(rs.getString("Moneda"));
+				cuentaRs.setCBU(rs.getInt("CBU"));
+				cuentaRs.setSaldo(rs.getDouble("Saldo"));
+				cuentaRs.setEstado(rs.getBoolean("Estado"));
+				
+				lista.add(cuentaRs);
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return lista;
+	}
 }

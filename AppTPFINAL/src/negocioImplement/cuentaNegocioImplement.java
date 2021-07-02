@@ -28,4 +28,8 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 		return (List<cuenta>) cdao.readAll();
 	}
 	
+	public List<cuenta> ObtenerxDni(String dni){
+		return cdao.ObtenerxDni(dni);
+	}
+	
 }
