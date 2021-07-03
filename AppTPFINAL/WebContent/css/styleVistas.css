@@ -1,0 +1,63 @@
+@charset "ISO-8859-1";
+.buscadoresFechas{
+	display: flex;
+    width:100%;
+    justify-content:center;
+}
+
+.buscadoresFechas div{
+	margin:1rem;
+}
+.buscadoresFechas div input{
+		padding:0.3rem
+}
+input{
+	border-color:red
+}
+.btnBuscar{
+	color:red;
+	background-color:white
+}
+.btnBuscar:hover{
+	color:#ffffff;
+	padding:0.3rem;
+	background-color:red;
+	border-color:black
+}
+.cuentas.registrarse {
+    padding: 0;
+    border-bottom:none
+}
+input.btnBuscar{
+	width:100%
+}
+.adminCuentas2{
+	background-color:red;
+}
+.form-divAdminCuentas{
+	width:100%;
+	text-align:center;
+	justify-content:center
+}
+.adminCuentas{
+	padding:0!important;
+}
+table.tablaClientes {
+    width: 100%;
+}
+.form-divAdminCuentas__modif{
+	display:flex;
+	width:100%!important;
+	align-items: center;
+}
+.form-divAdminCuentas__modif div{
+margin:1rem;}
+.btnBuscar{
+	padding:0.2rem 1rem;
+}
+.btnBuscar:hover{
+	background-color:red;
+	color:#ffffff;
+	border-color:red;
+	padding:0.2rem 1rem;
+}
