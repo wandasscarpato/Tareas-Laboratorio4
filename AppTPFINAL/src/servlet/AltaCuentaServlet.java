@@ -40,8 +40,8 @@ public class AltaCuentaServlet extends HttpServlet {
 			
 			cuenta c = new cuenta();
 			
-			c.setN_Cuenta(7);
-			System.out.print("N CUENTA");
+			//c.setN_Cuenta(1);
+			//System.out.print("N CUENTA");
 			
 			c.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
 			System.out.print("DNI");
@@ -56,7 +56,7 @@ public class AltaCuentaServlet extends HttpServlet {
 			//c.setTipo(request.getParameter("tipo"));
 			prueba = request.getParameter("tipo");
 			System.out.println("Valor prueba = "+prueba);
-			c.setTipo(Integer.parseInt(request.getParameter("tipo")));
+			c.setTipo(request.getParameter("tipo").toString());
 			System.out.print("tipo" + c.getTipo());
 			
 			//c.setFecha_cracion(request.getParameter("txtFecha"));

@@ -4,7 +4,7 @@ import java.util.Date;
 public class cuenta {
 	
 	private int N_Cuenta;
-	private int Tipo;
+	private String Tipo;
 	//private String Moneda;
 	private Date Fecha_cracion = new Date(); 
 	private int CBU;
@@ -16,7 +16,7 @@ public class cuenta {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public cuenta(int n_Cuenta, int tipo, String moneda, Date fecha_cracion, int cBU, double saldo, int dNI, boolean estado) {
+	public cuenta(int n_Cuenta, String tipo, String moneda, Date fecha_cracion, int cBU, double saldo, int dNI, boolean estado) {
 		super();
 		N_Cuenta = n_Cuenta;
 		Tipo = tipo;
@@ -41,11 +41,11 @@ public class cuenta {
 	}
 
 
-	public int getTipo() {
+	public String getTipo() {
 		return Tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		Tipo = tipo;
 	}
 

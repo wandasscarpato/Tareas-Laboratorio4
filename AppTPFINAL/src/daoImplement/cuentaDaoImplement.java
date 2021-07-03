@@ -13,7 +13,7 @@ import entidad.cuenta;
 
 public class cuentaDaoImplement implements cuentaDao {
 	
-	private static final String insert = "INSERT INTO cuenta (`N_Cuenta`, `ID_Tipo`, `CBU`, `Saldo`, `DNI`, `Estado`) VALUES (?, ?, ?, ?, ?, ?)";
+	private static final String insert = "INSERT INTO cuenta ( `Tipo`, `CBU`, `Saldo`, `DNI`, `Estado`) VALUES ( ?, ?, ?, ?, ?);";
 	private static final String listado = "SELECT * FROM cuenta";
 	private static final String listado_uno = "SELECT * FROM cuenta WHERE DNI = ";
 	private static final String eliminar = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
@@ -35,13 +35,13 @@ public class cuentaDaoImplement implements cuentaDao {
 			
 			System.out.print("PREPARA LA CONSULTA");
 			
-			statement.setInt(1, cuenta.getN_Cuenta());
-			statement.setInt(2, cuenta.getTipo());
+			//statement.setInt(1, cuenta.getN_Cuenta());
+			statement.setString(1, cuenta.getTipo());
 			//statement.setDate(3, (Date) cuenta.getFecha_cracion());
-			statement.setInt(3, cuenta.getCBU());
-			statement.setDouble(4, cuenta.getSaldo());
-			statement.setInt(5, cuenta.getDNI());
-			statement.setBoolean(6, cuenta.getEstado());
+			statement.setInt(2, cuenta.getCBU());
+			statement.setDouble(3, cuenta.getSaldo());
+			statement.setInt(4, cuenta.getDNI());
+			statement.setBoolean(5, cuenta.getEstado());
 			
 			if(statement.executeUpdate() > 0)
 			{
