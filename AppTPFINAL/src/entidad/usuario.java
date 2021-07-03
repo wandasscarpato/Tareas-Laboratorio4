@@ -16,6 +16,12 @@ public class usuario {
 		this.DNI = DNI;
 		this.Pass = Pass;
 	}
+	
+	public usuario(String Usuario, String Pass) {
+		super();
+		this.Usuario = Usuario;
+		this.Pass = Pass;
+	}
 
 	public String getUsuario() {
 		return Usuario;

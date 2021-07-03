@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import entidad.usuario;
 import negocio.usuarioNegocio;
 import negocioImplement.usuarioNegocioImplement;
 
@@ -34,14 +36,28 @@ public class ServletLogIn extends HttpServlet {
 		int Estado = 0;
 		if(request.getParameter("btnAceptar")!=null){
 			usuarioNegocio udao = new usuarioNegocioImplement();
-			Estado = udao.ValidarUsuario(request.getParameter("usuario").toString(),request.getParameter("pass").toString());
-			System.out.print("Pass"+request.getParameter("pass").toString()+"Usuario"+request.getParameter("usuario").toString());
+			String Usuario = request.getParameter("usuario").toString();
+			String Pass = request.getParameter("pass").toString();
+			Estado = udao.ValidarUsuario(Usuario,Pass);
+			
 		}
 		
-		//REQUESTDISPATCHER
-		request.setAttribute("CanFilas", Estado);
-		RequestDispatcher rd = request.getRequestDispatcher("/InicioSesion.jsp");
-		rd.forward(request, response);
+		if(Estado != 0) {
+			String Usuario = request.getParameter("usuario").toString();
+			String Pass = request.getParameter("pass").toString();
+			usuario usu = new usuario(Usuario, Pass);
+			HttpSession Sesion = request.getSession();
+			Sesion.setAttribute("usuario", usu);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+		else
+		{
+			//REQUESTDISPATCHER
+			request.setAttribute("CanFilas", Estado);
+			RequestDispatcher rd = request.getRequestDispatcher("/InicioSesion.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 
 	/**

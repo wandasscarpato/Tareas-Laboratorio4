@@ -56,20 +56,17 @@
 					</div>
 					
 					<%
-					int Estado = 0;
-						if(request.getAttribute("CanFilas")!=null)
-						 	Estado = Integer.parseInt(request.getAttribute("CanFilas").toString());
-						
-						if(Estado == 0) {
-							%>El usuario o la contraseña son incorectas<%
-						}
-						
-						if(Estado != 0) {
-							%>Ingresaste<%
+					if(request.getParameter("btnAceptar") != null){
+						int Estado = 0;
+							if(request.getAttribute("CanFilas")!=null)
+							 	Estado = Integer.parseInt(request.getAttribute("CanFilas").toString());
 							
-							
-						}
-			
+							if(Estado == 0) {
+								%><div class="row align-items-center remember">
+									El usuario o la contraseña son incorrectas
+								</div><%
+							}
+					}
 					%>
 					
 				</form>
