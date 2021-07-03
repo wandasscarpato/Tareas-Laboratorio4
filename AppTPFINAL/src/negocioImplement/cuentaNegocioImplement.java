@@ -32,8 +32,15 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 		return cdao.ObtenerxDni(dni);
 	}
 	
-	public boolean modificar (cuenta cue) {
-		return cdao.modificar(cue);
+	public boolean eliminar (cuenta cue) {
+		return cdao.eliminar(cue);
+	}
+	
+	public boolean modificarEstado (cuenta cue) {
+		return cdao.modificarEstado(cue);
+	}
+	public boolean modificarTipo (cuenta cue) {
+		return cdao.modificarTipo(cue);
 	}
 	
 }

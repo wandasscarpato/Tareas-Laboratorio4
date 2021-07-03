@@ -73,6 +73,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 				
 				lista.add(usuarioRs);
 			}
+			cn.commit();
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -98,6 +99,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 			 usu.setPass(rs.getString("Pass"));	
 			 
 			 lista.add(usu);
+			 cn.commit();
 		 }
 		 catch(Exception e)
 		 {

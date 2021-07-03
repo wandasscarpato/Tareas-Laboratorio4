@@ -16,7 +16,9 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String insert = "INSERT INTO cuenta (`N_Cuenta`, `ID_Tipo`, `CBU`, `Saldo`, `DNI`, `Estado`) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String listado = "SELECT * FROM cuenta";
 	private static final String listado_uno = "SELECT * FROM cuenta WHERE DNI = ";
-	private static final String update = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
+	private static final String eliminar = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
+	private static final String updateEstado = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ? AND DNI= ?";
+	private static final String updateTipo = "UPDATE cuenta SET ID_Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -73,14 +75,15 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
 				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
-				cuentaRs.setTipo(rs.getInt("Tipo"));
-				cuentaRs.setMoneda(rs.getString("Moneda"));
+				cuentaRs.setTipo(rs.getInt("ID_Tipo"));
+				//cuentaRs.setMoneda(rs.getString("Moneda"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));
 				cuentaRs.setEstado(rs.getBoolean("Estado"));
 				
 				lista.add(cuentaRs);
 			}
+			cn.commit();
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -101,14 +104,15 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
 				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
-				cuentaRs.setTipo(rs.getString("Tipo"));
-				cuentaRs.setMoneda(rs.getString("Moneda"));
+				cuentaRs.setTipo(rs.getInt("ID_Tipo"));
+				//cuentaRs.setMoneda(rs.getString("Moneda"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));
 				cuentaRs.setEstado(rs.getBoolean("Estado"));
 				
 				lista.add(cuentaRs);
 			}
+			cn.commit();
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -116,12 +120,12 @@ public class cuentaDaoImplement implements cuentaDao {
 		return lista;
 	}
 	
-	public boolean modificar(cuenta cuenta_m) {
+	public boolean eliminar(cuenta cuenta_m) {
 		PreparedStatement statement;
 		Connection Conexion = conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
 		try {
-			statement = Conexion.prepareStatement(update);
+			statement = Conexion.prepareStatement(eliminar);
 			statement.setBoolean(1, cuenta_m.getEstado());
 			statement.setInt(2, cuenta_m.getN_Cuenta());
 			
@@ -141,4 +145,56 @@ public class cuentaDaoImplement implements cuentaDao {
 		return isInsertExitoso;
 	}
 	
+	public boolean modificarEstado(cuenta cuenta_m) {
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean isInsertExitoso = false;
+		try {
+			statement = Conexion.prepareStatement(updateEstado);
+			statement.setBoolean(1, true);			
+			statement.setInt(2, cuenta_m.getN_Cuenta());
+			statement.setInt(3, cuenta_m.getDNI());
+
+			
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				isInsertExitoso = true;
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				try {
+					Conexion.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} 
+		return isInsertExitoso;
+	}
+	public boolean modificarTipo(cuenta cuenta_m) {
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean isInsertExitoso = false;
+		try {
+			statement = Conexion.prepareStatement(updateTipo);
+			statement.setInt(1, cuenta_m.getTipo());			
+			statement.setInt(2, cuenta_m.getN_Cuenta());
+			statement.setInt(3, cuenta_m.getDNI());
+
+			
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				isInsertExitoso = true;
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				try {
+					Conexion.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} 
+		return isInsertExitoso;
+	}
 }

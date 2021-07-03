@@ -27,6 +27,7 @@ transition: 0.5s;
     margin: 4rem;
 }
 .menuDeCuentas{
+    padding: 5rem 0rem;
     display: flex;
     text-align: center;
     justify-content: space-evenly;
@@ -51,16 +52,10 @@ transition: 0.5s;
 transform: scale(1.05);
 }
 .btnMenuDeCuentas{
-    transition:1s ;
-    border-color: none;
-    background-color: white;
-    padding: 0.5rem 2rem;
-    color: red;
-}
-.btnMenuDeCuentas:hover{
     transform: scale(1.05) ;
-    border-color: red;
-    background-color: red;
+    border-color: none;
+    background-color: rgb(216, 9, 9);
+    padding: 0.5rem 2rem;
     color: white;
 }
 .btnModificar{

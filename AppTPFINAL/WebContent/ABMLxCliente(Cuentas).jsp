@@ -44,7 +44,7 @@
 				aria-haspopup="true" aria-expanded="false"> 
 				Cuentas 
 				</a>
-				<form class="form-divModContra" method= "post" action="ServletListarCuentas">
+				<form class="form-divModContra" method= "post" action="ServletCuenta">
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<button class="dropdown-item" name="btnList">Administrar cuentas</button>
 					<a class="dropdown-item" href="nuevaCuenta(ADMIN).jsp">Asignar cuentas</a>
@@ -77,7 +77,7 @@
 	<!--Finaliza el header-->
 	<div class="adminCuentas">
 		<h1>Administración de cuentas</h1>
-		<form method="post" action="ServletListarCuentas">
+		<form method="post" action="ServletCuenta">
 			<div class="form-divAdminCuentas admincuentas2">
 				<div class="card--modif"></div>
 
@@ -117,14 +117,14 @@
 					
 					for(cuenta cue: listacuenta){%>
 					<tr>
-						<form action="ServletListarCuentas" method="post">
+						<form action="ServletCuenta" method="post">
 						<td><%= cue.getN_Cuenta() %><input type="hidden" name="N_Cuenta" value ="<%= cue.getN_Cuenta() %>"></td>
 						<td><%= cue.getDNI() %><input type="hidden" name="N_DNI" value ="<%= cue.getDNI() %>"></td>
 						<td><%= cue.getTipo() %></td>
-						<td><%= cue.getMoneda() %></td>				
+						<td>F</td>				
 						<td><%= cue.getCBU() %></td>
 						<td><%= cue.getSaldo() %></td>
-						<td><%= cue.getEstado() %></td>
+						<td><%= cue.getEstado() %><input type="hidden" name="ESTADO" value ="<%= cue.getEstado() %>"></td>
 						<td><input type="submit" name="btnBaja" value="Eliminar"></td>
 						<td><input type="submit" name="btnModificar" value="Modificar"></td>
 						</form>
