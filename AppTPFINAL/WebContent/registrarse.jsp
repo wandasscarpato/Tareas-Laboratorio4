@@ -115,7 +115,7 @@
                     <input name="email" type="text"><br>
                     <label for="">Telefonos</label>
                     <input name="telefono" type="number"><br>
-                    <input class="btnRegistro" type="submit" value="Registrarme">
+                    <input class="btnRegistro" type="submit" value="Registrarlo">
                     <div class="card--modif cm2"></div>
                 </div>
             </div>

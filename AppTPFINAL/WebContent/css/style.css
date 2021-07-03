@@ -195,6 +195,7 @@ footer ul{
     display: grid;
     grid-template-columns: 40%;
     justify-content: center;
+    text-align: initial;
 }
 .form-div input, .genero{
     width: 69%;
@@ -207,7 +208,7 @@ footer ul{
     width: 30%;
     padding-bottom: 1rem;
 }
-.cuentas,.registrarse h1, .transacciones h1,.prestamo h1{
+.cuentas,.registrarse h1,.adminCuentas, .transacciones h1,.prestamo h1{
     padding: 20px;
     text-align: center;
     border-bottom: 1px red solid;
@@ -299,4 +300,14 @@ transform: scale(1.05);
  display:grid;
   grid-template-columns: 50% 50%;
 }
-.gridlistado
+form{
+	text-align:center;
+	justify-content:center
+}
+.btnEnviarAutorizacionP{
+	margin:1rem;
+}
+.tablaClientes{
+	width:100%;
+	text-align:center;
+}

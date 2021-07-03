@@ -9,6 +9,7 @@
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleVistas.css">
 
     <title>Document</title>
 </head>
@@ -67,14 +68,19 @@
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
       <p></p>
-      	<div class="buscadores">
+      <form>
+      	<div class="buscadoresFechas">
 		<div>
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<input class="primeraFecha" type="search" placeholder="Search" aria-label="Search">
 		</div>
 		<div>
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<input class="segundaFecha" type="search" placeholder="Search" aria-label="Search">
+		</div>
+		<div>
+			<input class="btnBuscar" type="submit" value="Buscar">
 		</div>
 		</div>
+		</form>
       <section class="sectionTiposDeCuentas">
         <div class="tiposDeCuentas">
             <div>
@@ -90,7 +96,7 @@
               <p>Cantiadad de usuarios:</p>
             </div>
         </div>
-
+	</section>
 
       <!--Comienza el footer-->
     <footer>

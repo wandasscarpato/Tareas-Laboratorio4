@@ -41,7 +41,6 @@ body{
 }
 header{
     text-align: center;
-    padding: 1rem;
     border-bottom: 1px rgb(221, 22, 22) solid;
 }
 header img{
@@ -72,7 +71,6 @@ ul{
 }
 .Form{
 	 width: 100%;
-  	max-width: 600px;
   	margin: 0 auto;
   	display: flex;
   	flex-direction: column;
@@ -91,4 +89,10 @@ ul{
   border: none;
   background: rgb(100, 200, 255);
   cursor: pointer;
+}
+.prestamo h1{
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px red solid;
+    background-color: white;
 }

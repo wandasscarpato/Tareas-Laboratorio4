@@ -15,6 +15,8 @@
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/cssIvan.css">
+   <link rel="stylesheet" href="./css/styleVistas.css">  
+   
 
     <title>Document</title>
 </head>
@@ -73,30 +75,28 @@
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
       <div class="adminCuentas">
-        <h1> Administración de cuentas
+        <h1> Administración de usuarios de clientes
         </h1>
-        <form>
-        	<div class="form-divAdminCuentas">
+                            <div class="card--modif"></div>
+        
+        <form class="form-divAdminCuentas">
+        	<div class="form-divAdminCuentas form-divAdminCuentas__modif">
                 <div>
-                    <div class="card--modif"></div>
                     <label for="">Ingrese el número de cuenta a gestionar: </label> 
-                    <input type="text" required>
-                    <input class="btnBuscar" type="submit" value="Buscar">
-                    <div class="card--modif"></div>
-                    <label for="">Datos de la cuenta N°"</label> 
-                    <label for="">1234</label> 
-                    <label for="">":</label> 
-                  </div>
+                    
+                </div>
+                <div>
+                <input type="text" required>
+                </div>
+                <div>
+                 <input class="btnBuscar" type="submit" value="Buscar">
+                
+                </div>
             </div>
             </form>
-            <form method="post" action="ServletListar">
-			<h3>Datos de los clientes</h3>
-			 <input class="btnBuscar" name="btnMostrarClientes" type="submit" value="Ver todas"> <br>
-			<div class="gridlistado">
-			
-			</div>
-			</form>	
-			<table border="1">
+                                <div class="card--modif"></div>
+            
+			<table class="tablaClientes" border="1">
 				<tr> 
 				<th>DNI</th> 
 				<th>CUIL</th>

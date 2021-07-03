@@ -11,10 +11,9 @@
     
     
     <link rel="stylesheet" href="./css/cssDali.css">
+    <link rel="stylesheet" href="./css/styleVistas.css">  
     <link rel="stylesheet" href="./css/style.css">
     
-    
-
     <title>Document</title>
 </head>
 <body>
