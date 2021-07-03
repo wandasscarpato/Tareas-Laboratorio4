@@ -1,6 +1,7 @@
 package daoImplement;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ import entidad.cuenta;
 
 public class cuentaDaoImplement implements cuentaDao {
 	
-	private static final String insert = "INSERT INTO cuenta (N_Cuenta, ID_Tipo, Fecha_cracion, CBU, Saldo, DNI, estado) VALUES (?,?, ?,?,?,?,?);";
+	private static final String insert = "INSERT INTO cuenta (`N_Cuenta`, `ID_Tipo`, `CBU`, `Saldo`, `DNI`, `Estado`) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String listado = "SELECT * FROM cuenta";
 	private static final String listado_uno = "SELECT * FROM cuenta WHERE DNI = ";
 	private static final String update = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
@@ -20,22 +21,29 @@ public class cuentaDaoImplement implements cuentaDao {
 	public boolean insert(cuenta cuenta)
 	{
 		PreparedStatement statement;
-		Connection Conexion = conexion.getConexion().getSQLConexion();
+		Connection cn = conexion.getConexion().getSQLConexion();
+		
 		boolean isInsertExitoso = false;
 		try
 		{
-			statement = Conexion.prepareStatement(insert);
+			
+			System.out.print("FUNCION PARA SQLLLLLLLLLLLLLLLLLLLLLLLLLLL AHREEE");
+			
+			statement = cn.prepareStatement(insert);
+			
+			System.out.print("PREPARA LA CONSULTA");
+			
 			statement.setInt(1, cuenta.getN_Cuenta());
-			//statement.setInt(2, cuenta.getID_Tipo());
-			//statement.setDate(3, cuenta.getFecha_cracion());
-			statement.setInt(4, cuenta.getCBU());
-			statement.setDouble(5, cuenta.getSaldo());
-			statement.setInt(6, cuenta.getDNI());
-			statement.setBoolean(7, cuenta.getEstado());
+			statement.setInt(2, cuenta.getTipo());
+			//statement.setDate(3, (Date) cuenta.getFecha_cracion());
+			statement.setInt(3, cuenta.getCBU());
+			statement.setDouble(4, cuenta.getSaldo());
+			statement.setInt(5, cuenta.getDNI());
+			statement.setBoolean(6, cuenta.getEstado());
 			
 			if(statement.executeUpdate() > 0)
 			{
-				Conexion.commit();
+				cn.commit();
 				isInsertExitoso = true;
 			}
 		} 
@@ -43,7 +51,7 @@ public class cuentaDaoImplement implements cuentaDao {
 		{
 			e.printStackTrace();
 			try {
-				Conexion.rollback();
+				cn.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -65,7 +73,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
 				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
-				cuentaRs.setTipo(rs.getString("Tipo"));
+				cuentaRs.setTipo(rs.getInt("Tipo"));
 				cuentaRs.setMoneda(rs.getString("Moneda"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));

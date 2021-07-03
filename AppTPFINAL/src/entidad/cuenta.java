@@ -4,8 +4,8 @@ import java.util.Date;
 public class cuenta {
 	
 	private int N_Cuenta;
-	private String Tipo;
-	private String Moneda;
+	private int Tipo;
+	//private String Moneda;
 	private Date Fecha_cracion = new Date(); 
 	private int CBU;
 	private double Saldo;
@@ -16,11 +16,11 @@ public class cuenta {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public cuenta(int n_Cuenta, String tipo, String moneda, Date fecha_cracion, int cBU, double saldo, int dNI, boolean estado) {
+	public cuenta(int n_Cuenta, int tipo, String moneda, Date fecha_cracion, int cBU, double saldo, int dNI, boolean estado) {
 		super();
 		N_Cuenta = n_Cuenta;
 		Tipo = tipo;
-		Moneda = moneda;
+		//Moneda = moneda;
 		Fecha_cracion = fecha_cracion;
 		CBU = cBU;
 		Saldo = saldo;
@@ -41,21 +41,21 @@ public class cuenta {
 	}
 
 
-	public String getTipo() {
+	public int getTipo() {
 		return Tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		Tipo = tipo;
 	}
 
-	public String getMoneda() {
-		return Moneda;
-	}
-
-	public void setMoneda(String moneda) {
-		Moneda = moneda;
-	}
+	//public String getMoneda() {
+	//	return Moneda;
+	//}
+//
+	//public void setMoneda(String moneda) {
+	//	Moneda = moneda;
+	//}
 
 
 	public Date getFecha_cracion() {

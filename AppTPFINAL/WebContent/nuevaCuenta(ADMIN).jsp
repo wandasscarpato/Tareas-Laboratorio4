@@ -76,35 +76,60 @@
       <h1>Nueva Cuenta</h1> <br>
       
       
-      <form class="form-div">
+      <form action="AltaCuentaServlet" method="get" class="form-div">
       
        <div><label for="">DNI usuario: </label> 
-                    <input type="text" required> <br> </div>
+                    <input type="text" name="txtDNI" required> <br> </div>
                     
         <div><label for="">CBU: </label> 
-                    <input type="text" required> <br> </div>
+                    <input type="text" name="txtCBU" required> <br> </div>
                     
         <div><label for="">Saldo: </label> 
-                    <input type="text" required> <br>  </div>
+                    <input type="text" name="txtSaldo" required> <br>  </div>
                                           
                                           
                                           
        <div> <label for="">Tipo de cuenta</label>
-                    <select class="cuenta" name="" id="" style="width: 69%;">
-                        <option value="">Caja de ahorro - Pesos</option>
-                        <option value="">Caja de ahorro - USD</option>
-                        <option value="">Cuenta corriente - Pesos</option>
-                        <option value="">Cuenta corriente - USD</option>
+                    <select class="cuenta" name="tipo" id="tipo" style="width: 69%;">
+                        <option value="1">Caja de ahorro - Pesos</option>
+                        <option value="2">Caja de ahorro - USD</option>
+                        <option value="3">Cuenta corriente - Pesos</option>
+                        <option value="4">Cuenta corriente - USD</option>
                         
                     </select><br></div>
       <div><label for="">Fecha creacion: </label> 
-                    <input type="text" required> <br></div>
+                    <input type="text" name="txtFecha" > <br></div>
       <br><br>
                     
-        <input class="btnRegistro" type="submit" value="Crear Cuenta">             
+        <input class="btnRegistro" type="submit" value="Crear Cuenta" name="btnCrear">             
                     
                     
       </form>
+      
+      <%
+      
+      
+      if(request.getAttribute("cantFilas") !=null){
+      
+      int filas= Integer.parseInt(request.getAttribute("cantFilas").toString());
+      
+      
+     
+      
+      if(filas==1)
+      {
+      
+      %>
+			Cuenta agregada con exito.      
+      <%
+      }
+      
+      }
+      
+     %> 
+       
+      
+      
       </div>
       
       <div class="card--modif cm2"></div>
