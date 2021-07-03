@@ -71,7 +71,7 @@ public class AltaCuentaServlet extends HttpServlet {
 				filas=1;
 				System.out.print("SI ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			}
-			if(cneg.insert(c)==false){ 
+			else{ 
 			{
 				System.out.print("NO ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			}

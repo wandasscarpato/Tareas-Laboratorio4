@@ -21,6 +21,8 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 				cuenta.setEstado(true);
 				estado=cdao.insert(cuenta);
 				estado = true;
+				
+				System.out.print(" PASA LA VALIDACION");
 			}
 			return estado;
 		}
