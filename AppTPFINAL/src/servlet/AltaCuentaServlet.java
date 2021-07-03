@@ -31,7 +31,7 @@ public class AltaCuentaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String prueba= "";
 		int filas=0;
 		if(request.getParameter("btnCrear")!=null)
 		{
@@ -40,7 +40,7 @@ public class AltaCuentaServlet extends HttpServlet {
 			
 			cuenta c = new cuenta();
 			
-			c.setN_Cuenta(4);
+			c.setN_Cuenta(7);
 			System.out.print("N CUENTA");
 			
 			c.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
@@ -54,8 +54,10 @@ public class AltaCuentaServlet extends HttpServlet {
 			//c.setSaldo(request.getParameter("txtSaldo"));
 			//c.setSaldo(request.getParameter("txtSaldo"));
 			//c.setTipo(request.getParameter("tipo"));
+			prueba = request.getParameter("tipo");
+			System.out.println("Valor prueba = "+prueba);
 			c.setTipo(Integer.parseInt(request.getParameter("tipo")));
-			System.out.print("tipo");
+			System.out.print("tipo" + c.getTipo());
 			
 			//c.setFecha_cracion(request.getParameter("txtFecha"));
 			//c.setFecha_cracion(fecha_cracion);

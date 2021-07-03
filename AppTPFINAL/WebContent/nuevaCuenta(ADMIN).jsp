@@ -98,7 +98,7 @@
                         
                     </select><br></div>
       <div><label for="">Fecha creacion: </label> 
-                    <input type="text" name="txtFecha" > <br></div>
+                    <input type="date" name="txtFecha" disabled > <br></div>
       <br><br>
                     
         <input class="btnRegistro" type="submit" value="Crear Cuenta" name="btnCrear">             
