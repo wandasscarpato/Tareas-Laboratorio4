@@ -63,6 +63,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				
 				cuenta cuentaRs = new cuenta();
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
+				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
 				cuentaRs.setTipo(rs.getString("Tipo"));
 				cuentaRs.setMoneda(rs.getString("Moneda"));
@@ -90,6 +91,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				
 				cuenta cuentaRs = new cuenta();
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
+				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
 				cuentaRs.setTipo(rs.getString("Tipo"));
 				cuentaRs.setMoneda(rs.getString("Moneda"));

@@ -29,23 +29,28 @@
 		class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> Administrador </a>
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+				aria-haspopup="true" aria-expanded="false"> 
+				Administrador 
+				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> <a
-						class="dropdown-item" href="#">Cerrar sesion</a>
-				</div></li>
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> Cuentas </a>
+					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> 
+					<a class="dropdown-item" href="#">Cerrar sesion</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+				aria-haspopup="true" aria-expanded="false"> 
+				Cuentas 
+				</a>
+				<form class="form-divModContra" method= "post" action="ServletListarCuentas">
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="ABMLxCliente(Cuentas).jsp">Administrar
-						cuentas</a> <a class="dropdown-item" href="nuevaCuenta(ADMIN).jsp">Asignar
-						cuentas</a>
-				</div></li>
+					<button class="dropdown-item" name="btnList">Administrar cuentas</button>
+					<a class="dropdown-item" href="nuevaCuenta(ADMIN).jsp">Asignar cuentas</a>
+				</div>
+				</form>
+			</li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -92,9 +97,10 @@
 		</form>
 
 		<p></p>
-		<table style="margin: 0 auto;" border="1">
+		<table style="margin: 0 auto;" border="1">	
 			<tr>
 				<th><strong>N° CUENTA</strong></th>
+				<th><strong>DNI</strong></th>
 				<th><strong>TIPO</strong></th>
 				<th><strong>MONEDA</strong></th>
 				<th><strong>CBU</strong></th>
@@ -105,30 +111,29 @@
 			</tr>
 			<%
 				//SE TRAE LA LISTA DE CUENTAS
-				if (request.getAttribute("ListarCuentas") != null) {
+				if(request.getAttribute("ListarCuentas") !=null){
 					List<cuenta> listacuenta = new ArrayList<cuenta>();
 					listacuenta = (List<cuenta>) request.getAttribute("ListarCuentas");
-
-					for (cuenta cue : listacuenta) {
-			%>
-			<tr>
-				<form action="ServletListarCuentas" method="post">
-					<td><%=cue.getN_Cuenta()%> <input type="hidden"
-						name="N_Cuenta" value="<%=cue.getN_Cuenta()%>"></td>
-					<td><%=cue.getTipo()%></td>
-					<td><%=cue.getMoneda()%></td>
-					<td><%=cue.getCBU()%></td>
-					<td><%=cue.getSaldo()%></td>
-					<td><%=cue.getEstado()%></td>
-					<td><input type="submit" name="btnBaja" value="Eliminar"></td>
-					<td><input type="submit" name="btnModificar" value="Modificar"></td>
-				</form>
-			</tr>
-			<%
-				}
-				}
-			%>
-		</table>
+					
+					for(cuenta cue: listacuenta){%>
+					<tr>
+						<form action="ServletListarCuentas" method="post">
+						<td><%= cue.getN_Cuenta() %><input type="hidden" name="N_Cuenta" value ="<%= cue.getN_Cuenta() %>"></td>
+						<td><%= cue.getDNI() %><input type="hidden" name="N_DNI" value ="<%= cue.getDNI() %>"></td>
+						<td><%= cue.getTipo() %></td>
+						<td><%= cue.getMoneda() %></td>				
+						<td><%= cue.getCBU() %></td>
+						<td><%= cue.getSaldo() %></td>
+						<td><%= cue.getEstado() %></td>
+						<td><input type="submit" name="btnBaja" value="Eliminar"></td>
+						<td><input type="submit" name="btnModificar" value="Modificar"></td>
+						</form>
+					</tr>
+					<%
+					}
+					}
+					%>
+			</table>
 		</form>
 	</div>
 	<p></p>
