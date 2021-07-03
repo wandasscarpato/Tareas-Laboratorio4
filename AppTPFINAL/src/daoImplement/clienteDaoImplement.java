@@ -6,10 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import dao.clienteDao;
-import daoImplement.conexion;
 import entidad.cliente;
 
 
@@ -56,6 +54,8 @@ public class clienteDaoImplement implements clienteDao {
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
+            
+            return false;
         }
         
         return isInsertExitoso;
@@ -98,6 +98,38 @@ public class clienteDaoImplement implements clienteDao {
 	            e.printStackTrace();
 	        }
 	        return clientes;
+	    }
+	 
+	 public ArrayList<String> BuscarProYLocClientes(int idPro, int idLoc)
+	    {
+	        PreparedStatement statement;
+	        ArrayList<String> LocYPro = new ArrayList<String>();
+	        String buscarLoc = "Select localidad from localidad where id_localidad = " + idLoc;
+	        String buscarPro = "Select provincia from privincia where id_provincia = " + idPro;
+	        ResultSet resultSetLoc;
+	        ResultSet resultSetPro;
+	        Connection Conexion = conexion.getConexion().getSQLConexion();
+	        try 
+	        {
+	            statement = Conexion.prepareStatement(buscarLoc);
+	            resultSetLoc = statement.executeQuery();
+	            statement = Conexion.prepareStatement(buscarPro);
+	            resultSetPro = statement.executeQuery();
+	            while(resultSetLoc.next())
+	            {
+	            	LocYPro.add(resultSetLoc.getString("localidad"));
+	            }
+	            while(resultSetPro.next())
+	            {
+	            	LocYPro.add(resultSetPro.getString("provincia"));
+	            }
+	            
+	        } 
+	        catch (SQLException e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        return LocYPro;
 	    }
 	
 	

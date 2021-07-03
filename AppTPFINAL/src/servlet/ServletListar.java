@@ -47,7 +47,6 @@ public class ServletListar extends HttpServlet {
 			
 			clienteDaoImplement cDao = new clienteDaoImplement();
 			ArrayList<cliente> lista = cDao.listarClientes();
-			request.setAttribute("lista","HOLA");
 			request.setAttribute("listaU",lista);
 			System.out.println();
 			RequestDispatcher rd = request.getRequestDispatcher("/BMLxCuenta(Cuentas).jsp");

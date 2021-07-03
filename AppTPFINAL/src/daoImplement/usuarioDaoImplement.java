@@ -53,6 +53,7 @@ public class usuarioDaoImplement implements usuarioDao  {
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
+            return false;
         }
         return isInsertExitoso;
 	}

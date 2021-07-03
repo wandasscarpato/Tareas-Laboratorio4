@@ -97,12 +97,10 @@ public class ServletRegistrarCliente extends HttpServlet {
         
 		if(clienteDao.insert(cli) && usuDao.insert(usu)) {
 			//me redirije
-			RequestDispatcher rd = request.getRequestDispatcher("/registrarse.jsp?Status=true");
-			rd.forward(request, response);
+			response.sendRedirect("registrarse.jsp?Status=true");
 		} else {
 			//me redirije
-			RequestDispatcher rd = request.getRequestDispatcher("/registrarse.jsp?Status=false");
-			rd.forward(request, response);
+			response.sendRedirect("registrarse.jsp?Status=false");
 		}
 	}
 

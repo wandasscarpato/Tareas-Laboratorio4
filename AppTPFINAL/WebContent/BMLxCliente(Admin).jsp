@@ -15,9 +15,14 @@
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/cssIvan.css">
-   <link rel="stylesheet" href="./css/styleVistas.css">  
+    <link rel="stylesheet" href="./css/styleVistas.css">  
+    <link rel="stylesheet" href="./css/jquery.dataTables.min.css">  
    
-
+	<script type="text/javascript">
+$(document).ready(function(){
+	$("#table_id").DataTable();
+});
+</script>
     <title>Document</title>
 </head>
 <body>
@@ -94,9 +99,9 @@
                 </div>
             </div>
             </form>
-                                <div class="card--modif"></div>
+            <div class="card--modif"></div>
             
-			<table class="tablaClientes" border="1">
+			<table id="tablaClientes"class="tablaClientes display" border="1">
 				<tr> 
 				<th>DNI</th> 
 				<th>CUIL</th>
@@ -142,26 +147,29 @@
 						ArrayList<cliente> lista = cDao.listarClientes();
 						listacliente2 = lista;
 						
-						for(cliente cli: listacliente2){%>
-						<tr>
-						<td><%= cli.getDNI() %></td>
-						<td><%= cli.getCUIL()%></td>
-						<td><%= cli.getNombre()%></td>				
-						<td><%= cli.getApellido()%></td>
-						<td><%= cli.getNacimiento()%></td>
-						<td><%= cli.getSexo()%></td>
-						<td><%= cli.getDireccion()%></td>
-						<td><%= cli.getID_Provincia()%></td>
-						<td><%= cli.getID_Localodad()%></td>
-						<td><%= cli.getTelefono()%></td>
-						<td><%= cli.getEmail()%></td>
-						<td><%= cli.getEstado()%></td>
-						</tr>
+						for(cliente cli: listacliente2){
+							ArrayList<String> listaProYLoc = cDao.BuscarProYLocClientes(cli.getID_Localodad(),cli.getID_Provincia());
+						
+							%>
+							
+							<tr>
+							<td><%= cli.getDNI() %></td>
+							<td><%= cli.getCUIL()%></td>
+							<td><%= cli.getNombre()%></td>				
+							<td><%= cli.getApellido()%></td>
+							<td><%= cli.getNacimiento()%></td>
+							<td><%= cli.getSexo()%></td>
+							<td><%= cli.getDireccion()%></td>
+							<td><%= listaProYLoc.get(0)%></td>
+							<td><%= listaProYLoc.get(1)%></td>
+							<td><%= cli.getTelefono()%></td>
+							<td><%= cli.getEmail()%></td>
+							<td><%= cli.getEstado()%></td>
+							</tr>
 						<%}
 					}
 					%>
 			</table>
-			
 				
   	<section class="sectionMenuDeCuentas">
         <div class="menuDeCuentas">
@@ -233,8 +241,14 @@
         </div>
     </footer>
 </body>
+<script src="./js/jquery.dataTables.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script>
+$(document).ready( function () {
+    $('#tablaClientes').DataTable();
+} );
+</script>
 </html>

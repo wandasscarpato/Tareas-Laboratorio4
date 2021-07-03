@@ -1,7 +1,13 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@page import="daoImplement.localidadesDaoImplement" %>
+<%@page import="entidad.localidad" %>
+<%@page import="daoImplement.ProvinciasDaoImplement" %>
+<%@page import="entidad.provincia" %>
+<%@page import="java.util.List" %>
+<%@page import="java.util.ArrayList" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -12,7 +18,7 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
-
+ 
     <title>Registro de Cliente</title>
 </head>
 
@@ -91,9 +97,8 @@
                     <input  name="CUIL" type="number"><br>
                     <label for="">Sexo</label>
                     <select class="genero" name="genero" id="genero">
-                        <option value="1">Masculino</option>
-                        <option value="2">Femenino</option>
-                        <option value="0">Otro</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femeninio">Femenino</option>
                     </select>
                     <label for="">Fecha de nacimiento</label>
                     <input  name="nacimiento" type="date"><br>
@@ -101,15 +106,25 @@
                     <input name="direccion" type="text"><br>
                     <label for="">Localidad</label>
                      <select class="genero" name="localidad" id="localidad">
-                        <option value="1">Pacheco</option>
-                        <option value="2">Almagro</option>
-                        <option value="3">Loma Verde</option>
+                        <% 
+                        ArrayList<localidad> listalocalidades = new ArrayList<localidad>();
+                    	localidadesDaoImplement lDao = new localidadesDaoImplement();
+                    	listalocalidades = lDao.listarLocalidades();
+                    	
+                    	for(localidad local: listalocalidades){%>
+						<option value="<%=local.getID()%>"><%= local.getLocalidad() %></option>
+						<%}%>
                     </select>
                     <label for="">Provincia</label>
                      <select class="genero" name="provincia" id="provincia">
-                        <option value="1">Argentino</option>
-                        <option value="2">Brasilero</option>
-                        <option value="3">Italiano</option>
+                        <% 
+                        ArrayList<provincia> listaProvincias = new ArrayList<provincia>();
+                    	ProvinciasDaoImplement pDao = new ProvinciasDaoImplement();
+                    	listaProvincias = pDao.listarProvincias();
+                    	
+                    	for(provincia prov: listaProvincias){%>
+						<option value="<%=prov.getID()%>"><%= prov.getProvincia() %></option>
+						<%}%>
                     </select>
                     <label for="">Correo electronico</label>
                     <input name="email" type="text"><br>
@@ -190,12 +205,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
     crossorigin="anonymous"></script>
-    <script>
-<% 
-  if (request.getParameter("Status")!=null){%>
- 	 	
- 		swal("Cliente creado", "", "success")
- 	 <%
-  }%>
+<script>
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var ParamStatus = urlParams.get('Status');
+if(ParamStatus == "true"){
+	swal("Cliente agregado correctamente", "", "success");
+}else if(ParamStatus == "false"){ 
+	swal("Hubo un error al cargar el cliente", "", "error");
+}
 </script>
 </html>
