@@ -35,7 +35,7 @@
 				<h3>Iniciar Sesion</h3>
 			</div>
 			<div class="card-body">
-				<form action="IniciarSesionServlet" method="post">
+				<form action="ServletLogIn" method="get">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -52,8 +52,26 @@
 						<input name="recordar"  type="checkbox">Recordar usuario
 					</div>
 					<div class="form-group" style="text-align: center;margin-top: 20px">
-						<input type="submit" value="Login" class="btn login_btn">
+						<input name="btnAceptar" type="submit" value="Login" class="btn login_btn">
 					</div>
+					
+					<%
+					int Estado = 0;
+						if(request.getAttribute("CanFilas")!=null)
+						 	Estado = Integer.parseInt(request.getAttribute("CanFilas").toString());
+						
+						if(Estado == 0) {
+							%>El usuario o la contraseña son incorectas<%
+						}
+						
+						if(Estado != 0) {
+							%>Ingresaste<%
+							
+							
+						}
+			
+					%>
+					
 				</form>
 			</div>
 			

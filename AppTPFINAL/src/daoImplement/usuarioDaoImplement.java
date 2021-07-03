@@ -128,7 +128,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 	}
 
 	@Override
-	public int VerificarUsuario(String Usuario, String Clave) {
+	public int ValidarUsuario(String Usuario, String Clave) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Connection Conexion = conexion.getConexion().getSQLConexion();
@@ -145,7 +145,6 @@ public class usuarioDaoImplement implements usuarioDao  {
 			return 1;
 			
 		} catch (SQLException ex) {
-			//Logger.getLogger(SqlUsuarios.Class.GetName()).log(Level.SEVERE, null, ex);
 			return 1;
 		}
 	}

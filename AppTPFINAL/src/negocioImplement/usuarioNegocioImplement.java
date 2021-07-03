@@ -36,7 +36,7 @@ public class usuarioNegocioImplement implements usuarioNegocio {
 
 	@Override
 	public int ValidarUsuario(String Usuario, String Clave) {
-		return usuDao.VerificarUsuario(Usuario, Clave);
+		return usuDao.ValidarUsuario(Usuario, Clave);
 	}
 
 }

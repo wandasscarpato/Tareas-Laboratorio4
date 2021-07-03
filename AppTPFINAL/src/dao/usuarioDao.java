@@ -11,5 +11,5 @@ public interface usuarioDao {
 	public List<usuario> readAll();
 	public List<usuario> obtenerUno(int dni);
 	public boolean insert(usuario usuario);
-	public int VerificarUsuario(String Usuario,String Clave);
+	public int ValidarUsuario(String Usuario,String Clave);
 }
