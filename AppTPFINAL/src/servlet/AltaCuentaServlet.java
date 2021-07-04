@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,6 +39,9 @@ public class AltaCuentaServlet extends HttpServlet {
 		{
 			System.out.print("DUDOSO ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			
+			Date fecha = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			request.setAttribute("fechanueva", formatter.format(fecha));
 			
 			cuenta c = new cuenta();
 			
