@@ -1,8 +1,12 @@
 package negocioImplement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dao.clienteDao;
 import daoImplement.clienteDaoImplement;
 import entidad.cliente;
+import entidad.cuenta;
 import negocio.clienteNegocio;
 
 public class clienteNegocioImplement implements clienteNegocio{
@@ -31,6 +35,9 @@ public class clienteNegocioImplement implements clienteNegocio{
 			return EstadoFunc;
 	}
 			
+		public ArrayList<cliente> listarClientes(){
+			return (ArrayList<cliente>) cdao.listarClientes();
+		}
 		
 		
 		

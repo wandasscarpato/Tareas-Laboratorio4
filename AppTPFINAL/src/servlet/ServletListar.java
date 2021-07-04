@@ -64,8 +64,10 @@ public class ServletListar extends HttpServlet {
 		// TODO Auto-generated method stub
 		if(request.getParameter("btnMostrarClientes")!=null) {
 			
-			clienteDaoImplement cDao = new clienteDaoImplement();
-			ArrayList<cliente> lista = cDao.listarClientes();
+			//clienteDaoImplement cDao = new clienteDaoImplement();
+			//ArrayList<cliente> lista = cDao.listarClientes();
+			clienteNegocioImplement cNeg=new clienteNegocioImplement();
+			ArrayList<cliente> lista = cNeg.listarClientes();
 			request.setAttribute("listaU",lista);
 			RequestDispatcher rd = request.getRequestDispatcher("/BMLxCuenta(Cuentas).jsp");
 			rd.forward(request, response);
