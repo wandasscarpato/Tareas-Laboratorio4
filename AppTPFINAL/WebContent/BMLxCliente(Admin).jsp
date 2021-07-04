@@ -17,8 +17,9 @@
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/cssIvan.css">
-    <link rel="stylesheet" href="./css/styleVistas.css">  
+    <link rel="stylesheet" href="./css/styleVistas.css"> 
     <link rel="stylesheet" href="./css/jquery.dataTables.min.css">  
+     
     <title>Document</title>
 </head>
 <body>
@@ -80,8 +81,7 @@
         </h1>
                             <div class="card--modif"></div>
         
-        <form class="form-divAdminCuentas">
-        	<div class="form-divAdminCuentas form-divAdminCuentas__modif">
+        	<!-- <div class="form-divAdminCuentas form-divAdminCuentas__modif">
                 <div>
                     <label for="">Ingrese el número de cuenta a gestionar: </label> 
                     
@@ -93,8 +93,7 @@
                  <input class="btnBuscar" type="submit" value="Buscar">
                 
                 </div>
-            </div>
-            </form>
+            </div> -->
             <div class="card--modif"></div>
             
 			<table id="tablaClientes"class="tablaClientes display" border="1">
@@ -193,8 +192,10 @@
 				
   	<section class="sectionMenuDeCuentas">
         <div class="menuDeCuentas">
-           
-           <form action="">
+            <!-- <div>
+              <input class="btnMenuDeCuentas" type="button" value="Dar de baja cuenta seleccionada">
+            </div> -->
+            <form action="">
           	<div>
               <input class="btnMenuDeCuentas" type="button" value="Modificar cuenta seleccionada">
           	</div>
@@ -266,6 +267,13 @@
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready( function () {
+    $('#tablaClientes').DataTable();
+} );
+</script>
+</html>="anonymous"></script>
 <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready( function () {
