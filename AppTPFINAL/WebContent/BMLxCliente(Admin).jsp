@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="entidad.usuario" %>
+<%@page import="daoImplement.usuarioDaoImplement" %>
 <%@page import="entidad.cliente" %>
 <%@page import="daoImplement.clienteDaoImplement" %>
 <%@page import="java.util.List" %>
@@ -98,6 +100,8 @@
 			<table id="tablaClientes"class="tablaClientes display" border="1">
 				<thead>
 					<tr>
+						<th>USUARIO</th> 
+						<th>CONTRASEÑA</th>
 						<th>DNI</th> 
 						<th>CUIL</th>
 						<th>NOMBRE</th>
@@ -120,9 +124,19 @@
 					
 					ArrayList<cliente> listacliente = new ArrayList<cliente>();
 					listacliente = (ArrayList<cliente>) request.getAttribute("listaU");
-					 
-						for(cliente cli: listacliente){%>
-							<tr>
+					
+					
+						for(cliente cli: listacliente){
+							
+							usuarioDaoImplement uDao = new usuarioDaoImplement();
+							ArrayList<usuario> listausuarios = (ArrayList<usuario>)uDao.obtenerUno(cli.getDNI());
+							
+							for(usuario usu: listausuarios){%>
+							    <tr>
+								<td><%= usu.getUsuario() %></td>
+								<td><%= usu.getPass()%></td>
+							<%}%>
+							
 							<td><%= cli.getDNI() %></td>
 							<td><%= cli.getCUIL()%></td>
 							<td><%= cli.getNombre()%></td>				
@@ -146,10 +160,15 @@
 						
 						for(cliente cli: listacliente2){
 							ArrayList<String> listaProYLoc = cDao.BuscarProYLocClientes(cli.getID_Localodad(),cli.getID_Provincia());
-						
-							%>
 							
-							<tr>
+							usuarioDaoImplement uDao = new usuarioDaoImplement();
+							ArrayList<usuario> listausuarios = (ArrayList<usuario>)uDao.obtenerUno(cli.getDNI());
+							
+							for(usuario usu: listausuarios){%>
+								<tr>
+								<td><%= usu.getUsuario() %></td>
+								<td><%= usu.getPass()%></td>
+							<%}%>
 							<td><%= cli.getDNI() %></td>
 							<td><%= cli.getCUIL()%></td>
 							<td><%= cli.getNombre()%></td>				

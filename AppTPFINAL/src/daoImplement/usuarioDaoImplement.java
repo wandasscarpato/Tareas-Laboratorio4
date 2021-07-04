@@ -84,11 +84,12 @@ public class usuarioDaoImplement implements usuarioDao  {
 	}
 			
 			
-	public List<usuario> obtenerUno(int dni) {
+	public ArrayList<usuario> obtenerUno(int dni) {
 		PreparedStatement statement;
 		Connection cn = conexion.getConexion().getSQLConexion();
-		List<usuario> lista = new ArrayList<usuario>();
+		ArrayList<usuario> lista = new ArrayList<usuario>();
 		usuario usu = new usuario();
+		System.out.println("sadsadasd");
 		try
 		 {
 			 statement = cn.prepareStatement("SELECT * FROM usuario WHERE DNI= " + dni);
@@ -100,6 +101,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 			 usu.setPass(rs.getString("Pass"));	
 			 
 			 lista.add(usu);
+			 
 			 cn.commit();
 		 }
 		 catch(Exception e)

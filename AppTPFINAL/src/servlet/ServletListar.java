@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import daoImplement.clienteDaoImplement;
+import daoImplement.usuarioDaoImplement;
 import entidad.cliente;
+import entidad.usuario;
 
 /**
  * Servlet implementation class ServletListar
@@ -48,7 +50,6 @@ public class ServletListar extends HttpServlet {
 			clienteDaoImplement cDao = new clienteDaoImplement();
 			ArrayList<cliente> lista = cDao.listarClientes();
 			request.setAttribute("listaU",lista);
-			System.out.println();
 			RequestDispatcher rd = request.getRequestDispatcher("/BMLxCuenta(Cuentas).jsp");
 			rd.forward(request, response);
 			
