@@ -17,12 +17,6 @@
     <link rel="stylesheet" href="./css/cssIvan.css">
     <link rel="stylesheet" href="./css/styleVistas.css">  
     <link rel="stylesheet" href="./css/jquery.dataTables.min.css">  
-   
-	<script type="text/javascript">
-$(document).ready(function(){
-	$("#table_id").DataTable();
-});
-</script>
     <title>Document</title>
 </head>
 <body>
@@ -102,20 +96,23 @@ $(document).ready(function(){
             <div class="card--modif"></div>
             
 			<table id="tablaClientes"class="tablaClientes display" border="1">
-				<tr> 
-				<th>DNI</th> 
-				<th>CUIL</th>
-				<th>NOMBRE</th>
-				<th>APELLIDO</th>
-				<th>NACIMIENTO</th>
-				<th>SEXO</th>
-				<th>DIRECCION</th>
-				<th>PROVINCIA</th>
-				<th>LOCALIDAD</th>
-				<th>TELEFONO</th>
-				<th>MAIL</th>
-				<th>ESTADO</th>
-				</tr>
+				<thead>
+					<tr>
+						<th>DNI</th> 
+						<th>CUIL</th>
+						<th>NOMBRE</th>
+						<th>APELLIDO</th>
+						<th>NACIMIENTO</th>
+						<th>SEXO</th>
+						<th>DIRECCION</th>
+						<th>PROVINCIA</th>
+						<th>LOCALIDAD</th>
+						<th>TELEFONO</th>
+						<th>MAIL</th>
+						<th>ESTADO</th>
+						</tr>
+					<thead>
+				<tbody>
 								<% 
 				//traigo la lista de usuarios
 				//me fijo que no este vacia
@@ -169,6 +166,7 @@ $(document).ready(function(){
 						<%}
 					}
 					%>
+					</tbody>
 			</table>
 				
   	<section class="sectionMenuDeCuentas">
@@ -241,11 +239,12 @@ $(document).ready(function(){
         </div>
     </footer>
 </body>
-<script src="./js/jquery.dataTables.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready( function () {
     $('#tablaClientes').DataTable();
