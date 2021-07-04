@@ -1,5 +1,6 @@
 package servlet;
 
+import java.awt.Window;
 import java.io.IOException;
 import java.util.List;
 
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
 
 import entidad.cuenta;
 import entidad.usuario;
@@ -65,7 +69,7 @@ public class ServletCuenta extends HttpServlet {
 				
 			    cue.setN_Cuenta(Integer.parseInt(request.getSession().getAttribute("Session_cuenta").toString()));
 				cue.setDNI(Integer.parseInt(request.getSession().getAttribute("Session_dni").toString()));
-				cue.setTipo(Integer.parseInt(request.getParameter("tipo")));
+				cue.setTipo(request.getParameter("tipo"));
 				
 					if(cueNeg.modificarTipo(cue)) {
 							resultado= 1;
@@ -109,6 +113,7 @@ public class ServletCuenta extends HttpServlet {
 								}
 							else {
 								//MOSTRAR ALERTA DE QUE NO ENCONTRO A NADIE
+								System.out.println("NO SE MODIFICO UN CHOTO");
 							}
 						}
 						else {
@@ -129,12 +134,19 @@ public class ServletCuenta extends HttpServlet {
 						
 						c.setN_Cuenta(N_cuenta);
 						c.setEstado(false);
-						cueNeg.eliminar(c);
-						//LLAMO A LA LISTA
-						List<cuenta> lista = cueNeg.listarCuentas();
-						request.setAttribute("ListarCuentas", lista);
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/ABMLxCliente(Cuentas).jsp");
-						dispatcher.forward(request, response);
+						
+						if(cueNeg.eliminar(c)) {
+							//LLAMO A LA LISTA COMPLETA SI SE MODIFICO
+							List<cuenta> lista = cueNeg.listarCuentas();
+							request.setAttribute("ListarCuentas", lista);
+							RequestDispatcher dispatcher = request.getRequestDispatcher("/ABMLxCliente(Cuentas).jsp");
+							dispatcher.forward(request, response);
+						}
+						else { //SI NO SE MODIFICA
+							System.out.println("MUESTRA MENSAJE");
+							//MUESTRA EL ERROR DEL MESNAJE ERROR
+						}
+						
 						
 					}				
 				

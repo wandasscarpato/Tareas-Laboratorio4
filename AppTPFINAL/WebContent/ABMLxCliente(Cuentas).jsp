@@ -102,7 +102,6 @@
 				<th><strong>N° CUENTA</strong></th>
 				<th><strong>DNI</strong></th>
 				<th><strong>TIPO</strong></th>
-				<th><strong>MONEDA</strong></th>
 				<th><strong>CBU</strong></th>
 				<th><strong>SALDO</strong></th>
 				<th><strong>ESTADO</strong></th>
@@ -120,8 +119,7 @@
 						<form action="ServletCuenta" method="post">
 						<td><%= cue.getN_Cuenta() %><input type="hidden" name="N_Cuenta" value ="<%= cue.getN_Cuenta() %>"></td>
 						<td><%= cue.getDNI() %><input type="hidden" name="N_DNI" value ="<%= cue.getDNI() %>"></td>
-						<td><%= cue.getTipo() %></td>
-						<td>F</td>				
+						<td><%= cue.getTipo() %></td>		
 						<td><%= cue.getCBU() %></td>
 						<td><%= cue.getSaldo() %></td>
 						<td><%= cue.getEstado() %><input type="hidden" name="ESTADO" value ="<%= cue.getEstado() %>"></td>

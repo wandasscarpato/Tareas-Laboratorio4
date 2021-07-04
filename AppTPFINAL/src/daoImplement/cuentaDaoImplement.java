@@ -18,7 +18,7 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String listado_uno = "SELECT * FROM cuenta WHERE DNI = ";
 	private static final String eliminar = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
 	private static final String updateEstado = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ? AND DNI= ?";
-	private static final String updateTipo = "UPDATE cuenta SET ID_Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
+	private static final String updateTipo = "UPDATE cuenta SET Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -75,8 +75,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
 				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
-				cuentaRs.setTipo(rs.getInt("ID_Tipo"));
-				//cuentaRs.setMoneda(rs.getString("Moneda"));
+				cuentaRs.setTipo(rs.getString("Tipo"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));
 				cuentaRs.setEstado(rs.getBoolean("Estado"));
@@ -104,8 +103,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setN_Cuenta(rs.getInt("N_Cuenta"));
 				cuentaRs.setDNI(rs.getInt("DNI"));
 				cuentaRs.setFecha_cracion(rs.getDate("Fecha_cracion"));
-				cuentaRs.setTipo(rs.getInt("ID_Tipo"));
-				//cuentaRs.setMoneda(rs.getString("Moneda"));
+				cuentaRs.setTipo(rs.getString("Tipo"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));
 				cuentaRs.setEstado(rs.getBoolean("Estado"));
@@ -128,7 +126,7 @@ public class cuentaDaoImplement implements cuentaDao {
 			statement = Conexion.prepareStatement(eliminar);
 			statement.setBoolean(1, cuenta_m.getEstado());
 			statement.setInt(2, cuenta_m.getN_Cuenta());
-			
+
 			if(statement.executeUpdate() > 0)
 			{
 				Conexion.commit();
@@ -177,7 +175,7 @@ public class cuentaDaoImplement implements cuentaDao {
 		boolean isInsertExitoso = false;
 		try {
 			statement = Conexion.prepareStatement(updateTipo);
-			statement.setInt(1, cuenta_m.getTipo());			
+			statement.setString(1, cuenta_m.getTipo());			
 			statement.setInt(2, cuenta_m.getN_Cuenta());
 			statement.setInt(3, cuenta_m.getDNI());
 
