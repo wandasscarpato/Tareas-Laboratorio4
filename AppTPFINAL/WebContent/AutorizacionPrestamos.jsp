@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="entidad.n_prestamo"%>
+<%@page import="daoImplement.prestamosDaoImplement"%>
+<%@page import="java.util.ArrayList"%>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,6 +15,8 @@
 <script src="https://kit.fontawesome.com/dd0dcbd0c6.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/jquery.dataTables.min.css">
+
 
 <title>Document</title>
 </head>
@@ -66,69 +71,55 @@
 	
 	<div class="prestamo">
 		<h1>Autorizar prestamo</h1>
-		<form class="formularioPrestamo">
-			<table style="margin: 0 auto;" border="1">
+		<form method="post" action="ServletPrestamo" class="formularioPrestamo">
+			<table id="tablaPrestamosAutorizados" class="tablaClientes display" border="1">
+			<thead>
 				<tr>
-					<td><strong>DNI</strong></td>
-					<td><strong>Fecha</strong></td>
-					<td><strong>Importe con intereses</strong></td>
-					<td><strong>Importe solicitado</strong></td>
-					<td><strong>Plazo</strong></td>
-					<td><strong>Monto por mes</strong></td>
-					<td><strong>Cuotas</strong></td>
-					<td><strong>Aceptado</strong></td>
+					<th>Nro Prestamo</th>
+					<th>DNI</th>
+					<th>Importe Solicitado</th>
+					<th>Intereses</th>
+					<th>Monto por mes</th>
+					<th>Cuotas</th>
+					<th>Plazo</th>
+					<th>Nro de cuenta a Depositar</th>
+					<th>Aprobar</th>
 				</tr>
-				<tr>
-					<td>41586203</td>
-					<td>21-06-2021</td>
-					<td>100.000</td>
-					<td>60.000</td>
-					<td>10 de cada mes</td>
-					<td>1.666,66</td>
-					<td>60</td>
-					<td>Si/No <input type="radio" name="Chec1" = Value="true"
-						style-alig></td>
-				</tr>
-				<tr>
-					<td>41586203</td>
-					<td>21-06-2021</td>
-					<td>100.000</td>
-					<td>60.000</td>
-					<td>10 de cada mes</td>
-					<td>1.666,66</td>
-					<td>60</td>
-					<td>Si/No <input type="radio" name="Chec2" = Value="true"
-						style-alig></td>
-				</tr>
-				<tr>
-					<td>41586203</td>
-					<td>21-06-2021</td>
-					<td>100.000</td>
-					<td>60.000</td>
-					<td>10 de cada mes</td>
-					<td>1.666,66</td>
-					<td>60</td>
-					<td>Si/No <input type="radio" name="Chec3" = Value="true"
-						style-alig></td>
-				</tr>
-				<tr>
-					<td>41586203</td>
-					<td>21-06-2021</td>
-					<td>100.000</td>
-					<td>60.000</td>
-					<td>10 de cada mes</td>
-					<td>1.666,66</td>
-					<td>60</td>
-					<td>Si/No <input type="radio" name="Chec4" = Value="true"
-						style-alig></td>
-				</tr>
+			</thead>
+			<tbody>
+
+
+				<%
+					prestamosDaoImplement pDao = new prestamosDaoImplement();
+					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pDao.listarPrestamos();
+
+					for (n_prestamo presta : listaPrestamos) {
+				%>
+				
+					<%if(presta.isEstado() != true){ %>
+					<tr>
+					<td><%=presta.getN_Prestamo()%></td>
+					<td><%=presta.getDNI()%></td>
+					<td><%=presta.getImporte_pedido()%></td>
+					<td><%=presta.getImporte_intereses()%></td>
+					<td><%=presta.getMontoxMes()%></td>
+					<td><%=presta.getCuotas()%></td>
+					<td><%=presta.getPlazo()%></td>
+					<td><%=presta.getN_cuentaADepositar()%></td>
+					<td><input type="checkbox" id="<%=presta.getN_Prestamo()%>"name="seleccion" value="<%=presta.getN_Prestamo()%>"></td>
+					</tr>
+					<%}%>
+				
+				<%
+					}
+				%>
+			</tbody>
 			</table>
-			<input class="btnEnviarAutorizacionP" type="button" value="Enviar">
+			<input class="btnEnviarAutorizacionP" type="button" value="enviar">
 
 		</form>
 	</div>
-	<p></p>
-	<p></p>
+	
 	<!--Comienza el footer-->
 	<footer>
 	<div>
@@ -165,12 +156,17 @@
 	</footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 	crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#tablaPrestamosAutorizados').DataTable();
+	});
+</script>
 
 </html>

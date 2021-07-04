@@ -120,46 +120,13 @@
 								<% 
 				//traigo la lista de usuarios
 				//me fijo que no este vacia
-				if(request.getAttribute("listaU")!=null){
-					
-					ArrayList<cliente> listacliente = new ArrayList<cliente>();
-					listacliente = (ArrayList<cliente>) request.getAttribute("listaU");
-					
-					
-						for(cliente cli: listacliente){
-							
-							usuarioDaoImplement uDao = new usuarioDaoImplement();
-							ArrayList<usuario> listausuarios = (ArrayList<usuario>)uDao.obtenerUno(cli.getDNI());
-							
-							for(usuario usu: listausuarios){%>
-							    <tr>
-								<td><%= usu.getUsuario() %></td>
-								<td><%= usu.getPass()%></td>
-							<%}%>
-							
-							<td><%= cli.getDNI() %></td>
-							<td><%= cli.getCUIL()%></td>
-							<td><%= cli.getNombre()%></td>				
-							<td><%= cli.getApellido()%></td>
-							<td><%= cli.getNacimiento()%></td>
-							<td><%= cli.getSexo()%></td>
-							<td><%= cli.getDireccion()%></td>
-							<td><%= cli.getID_Provincia()%></td>
-							<td><%= cli.getID_Localodad()%></td>
-							<td><%= cli.getTelefono()%></td>
-							<td><%= cli.getEmail()%></td>
-							<td><%= cli.getEstado()%></td>
-							<td><a href="ServletListar?action=cambiarEstado&dni=<%=cli.getDNI() %>&estado=<%=cli.getEstado()%>">cambiar estado</td>
-							</tr>
-							<%}
-						
-					} else {
-						ArrayList<cliente> listacliente2 = new ArrayList<cliente>();
+				
+						ArrayList<cliente> listacliente = new ArrayList<cliente>();
 						clienteDaoImplement cDao = new clienteDaoImplement();
 						ArrayList<cliente> lista = cDao.listarClientes();
-						listacliente2 = lista;
+						listacliente = lista;
 						
-						for(cliente cli: listacliente2){
+						for(cliente cli: listacliente){
 							ArrayList<String> listaProYLoc = cDao.BuscarProYLocClientes(cli.getID_Localodad(),cli.getID_Provincia());
 							
 							usuarioDaoImplement uDao = new usuarioDaoImplement();
@@ -184,9 +151,7 @@
 							<td><%= cli.getEstado()%></td>
 							<td><a href="ServletListar?action=cambiarEstado&dni=<%=cli.getDNI() %>&estado=<%=cli.getEstado()%>">cambiar estado</td>
 							</tr>
-						<%}
-					}
-					%>
+						<%}%>
 					</tbody>
 			</table>
 				

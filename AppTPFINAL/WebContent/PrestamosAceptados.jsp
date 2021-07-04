@@ -99,8 +99,9 @@
 
 					for (n_prestamo presta : listaPrestamos) {
 				%>
-				<tr>
+				
 					<%if(presta.isEstado() != false){ %>
+					<tr>
 					<td><%=presta.getN_Prestamo()%></td>
 					<td><%=presta.getDNI()%></td>
 					<td><%=presta.getImporte_pedido()%></td>
@@ -109,9 +110,10 @@
 					<td><%=presta.getCuotas()%></td>
 					<td><%=presta.getPlazo()%></td>
 					<td><%=presta.getN_cuentaADepositar()%></td>
+					</tr>
 					<%}%>
 					
-				</tr>
+				
 				<%
 					}
 				%>
