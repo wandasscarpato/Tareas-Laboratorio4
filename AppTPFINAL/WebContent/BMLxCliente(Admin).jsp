@@ -114,6 +114,7 @@
 						<th>TELEFONO</th>
 						<th>MAIL</th>
 						<th>ESTADO</th>
+						<th>Cambiar estado</th>
 						</tr>
 					<thead>
 				<tbody>
@@ -149,6 +150,7 @@
 							<td><%= cli.getTelefono()%></td>
 							<td><%= cli.getEmail()%></td>
 							<td><%= cli.getEstado()%></td>
+							<td><a href="ServletListar?action=cambiarEstado&dni=<%=cli.getDNI() %>&estado=<%=cli.getEstado()%>">cambiar estado</td>
 							</tr>
 							<%}
 						
@@ -181,6 +183,7 @@
 							<td><%= cli.getTelefono()%></td>
 							<td><%= cli.getEmail()%></td>
 							<td><%= cli.getEstado()%></td>
+							<td><a href="ServletListar?action=cambiarEstado&dni=<%=cli.getDNI() %>&estado=<%=cli.getEstado()%>">cambiar estado</td>
 							</tr>
 						<%}
 					}
@@ -190,12 +193,12 @@
 				
   	<section class="sectionMenuDeCuentas">
         <div class="menuDeCuentas">
-            <div>
-              <input class="btnMenuDeCuentas" type="button" value="Dar de baja cuenta seleccionada">
-            </div>
+           
+           <form action="">
           	<div>
               <input class="btnMenuDeCuentas" type="button" value="Modificar cuenta seleccionada">
           	</div>
+          	</form>
         </div>
  	</section>
       <!--Comienza el footer-->

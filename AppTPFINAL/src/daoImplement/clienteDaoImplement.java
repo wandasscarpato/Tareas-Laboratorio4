@@ -14,7 +14,7 @@ import entidad.cliente;
 
 public class clienteDaoImplement implements clienteDao {
 
-	private static final String listar = "SELECT DNI, CUIL, Nombre, Apellido, Sexo, Nacimiento, Direccion, ID_Localodad, ID_Provincia, Email, Telefono FROM CLiente";
+	private static final String listar = "SELECT DNI, CUIL, Nombre, Apellido, Sexo, Nacimiento, Direccion, ID_Localodad, ID_Provincia, Email, Telefono, Estado FROM CLiente";
 	//private static final String listar = "SELECT * FROM CLiente";
 	private static final String insert = "INSERT INTO lab4.Cliente (DNI, CUIL, Nombre, Apellido,Sexo, Nacimiento, Direccion,ID_Localodad, ID_Provincia, Email, Telefono, Estado) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String delete = "UPDATE cliente SET estado = ? where DNI = ?";
@@ -87,7 +87,7 @@ public class clienteDaoImplement implements clienteDao {
 		            clienteRs.setID_Provincia(resultSet.getInt("ID_Provincia"));
 		            clienteRs.setEmail(resultSet.getString("Email"));
 		            clienteRs.setTelefono(resultSet.getInt("Telefono"));
-		            clienteRs.setEstado(true);
+		            clienteRs.setEstado(resultSet.getBoolean("Estado"));
 		            
 		            clientes.add(clienteRs);
 
@@ -135,7 +135,7 @@ public class clienteDaoImplement implements clienteDao {
 	
 	//DELETE
 	
-	public boolean delete(int cliente_a_eliminar)
+	public boolean delete(int cliente_a_eliminar , boolean estadoC)
 	{
 		PreparedStatement statement;
 		Connection Conexion = conexion.getConexion().getSQLConexion();
@@ -143,7 +143,7 @@ public class clienteDaoImplement implements clienteDao {
 		try 
 		{
 			statement = Conexion.prepareStatement(delete);
-			statement.setBoolean(1, false);
+			statement.setBoolean(1, estadoC);
 			statement.setInt(2, cliente_a_eliminar);
 			if(statement.executeUpdate() > 0)
 			{

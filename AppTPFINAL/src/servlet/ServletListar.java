@@ -16,6 +16,8 @@ import daoImplement.clienteDaoImplement;
 import daoImplement.usuarioDaoImplement;
 import entidad.cliente;
 import entidad.usuario;
+import negocio.clienteNegocio;
+import negocioImplement.clienteNegocioImplement;
 
 /**
  * Servlet implementation class ServletListar
@@ -38,6 +40,21 @@ public class ServletListar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int dnibaja;
+		boolean estado;
+		if(request.getParameter("action").equals("cambiarEstado"))
+			{
+				dnibaja =Integer.parseInt(request.getParameter("dni"));
+				estado = Boolean.parseBoolean(request.getParameter("estado"));
+				clienteNegocio cneg = new clienteNegocioImplement();
+				cneg.delete(dnibaja,estado);
+			}
+		
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/BMLxCliente(Admin).jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**
