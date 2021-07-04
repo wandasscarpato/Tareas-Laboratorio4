@@ -57,10 +57,6 @@ public class ServletCuenta extends HttpServlet {
 						request.setAttribute("resultado", resultado);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/ModDeCuenta.jsp");
 						dispatcher.forward(request, response);
-						System.out.println("MODIFICA2");
-				}	
-				else {
-					System.out.println("NO SE MODIFICO UN CHOTO");
 				}
 			}
 		else if(request.getParameter("btnModificar2")!= null) {

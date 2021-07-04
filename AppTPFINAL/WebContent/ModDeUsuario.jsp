@@ -89,5 +89,23 @@
        			<input class="btnBuscar" type="submit" name= "btnModificar2" value="Modificar" style="width: 143px; "><br>
      	</div>
       </form>
+      <p></p>
+      <form method= "get" action="ServletUsuario">
+                		<div align="left">
+                		<%	if(request.getAttribute("resultado") !=null){
+      						int resultado= Integer.parseInt(request.getAttribute("resultado").toString());
+							if(resultado==1)
+      						{
+     					 %>
+								*Cambio de contraseña realizado con exito. <button class="btnBuscar" name="btnList" style="width: 286px; ">Volver a "Administrar Cuentas"</button> 
+      					<%
+     						}
+     						else{%>
+      							*Las contraseñas no coinciden, intente nuevamente por favor.
+     					  <%}
+     						}
+     						%>
+                 		</div>
+                 </form>
 </body>
 </html>

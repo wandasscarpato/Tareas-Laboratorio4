@@ -37,6 +37,7 @@ public class ServletUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("btnModificar2")!= null) {
+			int resultado=0;
 		    usuario usu = new usuario();
 		    usuarioNegocio usuNeg = new usuarioNegocioImplement();
 			
@@ -47,30 +48,17 @@ public class ServletUsuario extends HttpServlet {
 				usu.setPass(request.getParameter("txtPass").toString());
 				if(usuNeg.modificar(usu)) {
 					if(usuNeg.listarUsuarios()!=null) {
-						List<usuario> lista= usuNeg.listarUsuarios();
-						request.setAttribute("listaU", lista);	
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/ModxUsuario(Admin).jsp");
+						resultado= 1;
+						request.setAttribute("resultado", resultado);	
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/ModDeUsuario.jsp");
 						dispatcher.forward(request, response);
+						
 					}	
-				System.out.println("MODIFICA2" + usu.getPass());
-				}
-				else {
-					System.out.println("NO SE MODIFICO UN CHOTO");
 				}
 			}
 			else {
-				System.out.println("CONTRASEÑAS DISTINTAS");
-										
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/ModDeUsuario.jsp"); 
-				dispatcher.forward(request, response);
-			}
-		}
-		else {
-			usuarioNegocio usuNeg = new usuarioNegocioImplement();
-			if(usuNeg.listarUsuarios()!=null) {
-				List<usuario> lista= usuNeg.listarUsuarios();
-				request.setAttribute("listaU", lista);	
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/ModxUsuario(Admin).jsp");
+				request.setAttribute("resultado", resultado);	
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/ModDeUsuario.jsp");
 				dispatcher.forward(request, response);
 			}
 		}		
