@@ -129,9 +129,15 @@
 			Cuenta agregada con exito.      
       <%
       }
+      else
+      {
+      %>
+			No se pudo agregar la cuenta.      
+      <%
       
       }
       
+      }
      %> 
        
       
