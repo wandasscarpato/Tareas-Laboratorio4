@@ -49,7 +49,7 @@ public class ServletListar extends HttpServlet {
 		
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/BMLxCliente(Admin).jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/ServletBMLxCli");
 		rd.forward(request, response);
 		
 	}

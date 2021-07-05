@@ -66,8 +66,8 @@
 				aria-expanded="false"> Usuarios-Clientes </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
-					<a class="dropdown-item" href="./BMLxCliente(Admin).jsp">Administras
-						datos</a>
+					<a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
+
 				</div></li>
 		</ul>
 		<form class="form-inline my-2 my-lg-0"></form>

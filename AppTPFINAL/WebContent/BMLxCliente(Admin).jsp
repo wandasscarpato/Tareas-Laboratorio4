@@ -69,7 +69,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
-                <a class="dropdown-item" href="./BMLxCliente(Admin).jsp">Administras datos</a>
+                <a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
               </div>
             </li>
           </ul>
@@ -121,42 +121,8 @@
 						</tr>
 					<thead>
 				<tbody>
-								<% 
-				//traigo la lista de usuarios
-				//me fijo que no este vacia
-				
-						ArrayList<cliente> listacliente = new ArrayList<cliente>();
-						clienteDaoImplement cDao = new clienteDaoImplement();
-						ArrayList<cliente> lista = cDao.listarClientes();
-						listacliente = lista;
-						
-						for(cliente cli: listacliente){
-							ArrayList<String> listaProYLoc = cDao.BuscarProYLocClientes(cli.getID_Localodad(),cli.getID_Provincia());
-							
-							usuarioDaoImplement uDao = new usuarioDaoImplement();
-							ArrayList<usuario> listausuarios = (ArrayList<usuario>)uDao.obtenerUno(cli.getDNI());
-							
-							for(usuario usu: listausuarios){%>
-								<tr>
-								<td><%= usu.getUsuario() %></td>
-								<td><%= usu.getPass()%></td>
-							<%}%>
-							<td><%= cli.getDNI() %></td>
-							<td><%= cli.getCUIL()%></td>
-							<td><%= cli.getNombre()%></td>				
-							<td><%= cli.getApellido()%></td>
-							<td><%= cli.getNacimiento()%></td>
-							<td><%= cli.getSexo()%></td>
-							<td><%= cli.getDireccion()%></td>
-							<td><%= listaProYLoc.get(0)%></td>
-							<td><%= listaProYLoc.get(1)%></td>
-							<td><%= cli.getTelefono()%></td>
-							<!-- <td><%= cli.getEmail()%></td> -->
-							<td><%= cli.getEstado()%></td>
-							<td><a href="ServletListar?action=cambiarEstado&dni=<%=cli.getDNI() %>&estado=<%=cli.getEstado()%>">cambiar estado</td>
-							</tr>
-						<%}%>
-					</tbody>
+					<%=request.getAttribute("tabla") %>
+				</tbody>
 			</table>
 	</div>	
   	<!--<section class="sectionMenuDeCuentas">
@@ -242,7 +208,6 @@ $(document).ready( function () {
     $('#tablaClientes').DataTable();
 } );
 </script>
-</html>="anonymous"></script>
 <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready( function () {

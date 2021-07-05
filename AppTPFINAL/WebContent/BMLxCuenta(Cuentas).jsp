@@ -57,6 +57,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Usuarios a cambiar contraseña</a>
+                    <a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
                   </div>
                 </li>
               </ul>

@@ -35,7 +35,7 @@
 					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> <a
 						class="dropdown-item" href="#">Cerrar sesion</a>
 				</div></li>
-			<<li class="nav-item dropdown">
+			<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
 				aria-haspopup="true" aria-expanded="false"> 
 				Cuentas 
@@ -62,11 +62,9 @@
 				aria-expanded="false"> Usuarios-Clientes </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
-					<a class="dropdown-item" href="./BMLxCliente(Admin).jsp">Administras
-						datos</a>
+					<a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
 				</div></li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0"></form>
 	</div>
 	</nav> </header>
 	<div class="card--modif cm"></div>
@@ -74,7 +72,6 @@
 	
 	<div class="prestamo">
 		<h1>Autorizar a autorizar</h1>
-		<form method="post" class="formularioPrestamo" onsubmit="return validarSeleccionado();">
 			<table id="tablaPrestamosAutorizados" class="tablaClientes display" border="1">
 			<thead>
 				<tr>
@@ -101,16 +98,16 @@
 				
 					<%if(presta.isEstado() != true){ %>
 					<tr>
-					<form action="ServletListarPrestamos" onsubmit="return validarSeleccionado();" method="post">
-					<td><%=presta.getN_Prestamo()%> <input name="idPrestamo" value="<%=presta.getN_Prestamo()%>" type="hidden"></td>
-					<td><%=presta.getDNI()%></td>
-					<td><%=presta.getImporte_pedido()%></td>
-					<td><%=presta.getImporte_intereses()%></td>
-					<td><%=presta.getMontoxMes()%></td>
-					<td><%=presta.getCuotas()%></td>
-					<td><%=presta.getPlazo()%></td>
-					<td><%=presta.getN_cuentaADepositar()%></td>
-					<td><input class="btnEnviarAutorizacionP" name="btnAutorizar" type="submit"  value="Autorizar"></td>
+					<form method="post" action="ServletListarPrestamos" onsubmit="return validar()">
+						<td><%=presta.getN_Prestamo()%> <input name="idPrestamo" value="<%=presta.getN_Prestamo()%>" type="hidden"></td>
+						<td><%=presta.getDNI()%></td>
+						<td><%=presta.getImporte_pedido()%></td>
+						<td><%=presta.getImporte_intereses()%></td>
+						<td><%=presta.getMontoxMes()%></td>
+						<td><%=presta.getCuotas()%></td>
+						<td><%=presta.getPlazo()%></td>
+						<td><%=presta.getN_cuentaADepositar()%></td>
+						<td><input class="btnEnviarAutorizacionP" name="btnAutorizar" type="submit"  value="Autorizar" ></td>
 					</form>
 					</tr>
 					<%}%>
@@ -120,8 +117,6 @@
 				%>
 			</tbody>
 			</table>
-
-		</form>
 	</div>
 	
 	<!--Comienza el footer-->
@@ -159,25 +154,7 @@
 	</div>
 	</footer>
 </body>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<script>
-function validarSeleccionado(){
-	swal({title: "Esta seguro que desea autorizar este prestamo?", text: "", icon: "warning",buttons: true,dangerMode: true})
-		.then((willDelete) => {
-		  if (willDelete) {
-		    swal("Prestamo autorizado!", {
-		      icon: "success",
-		    });
-		    return true;
-		  } else {
-		    swal("No se autorizo el prestamo!");
-		    return false;
-		  }
-		});
-}
-</script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
@@ -190,6 +167,48 @@ function validarSeleccionado(){
 	$(document).ready(function() {
 		$('#tablaPrestamosAutorizados').DataTable();
 	});
+</script>
+<script>
+function validar(){
+	//event.preventDefault();
+	
+    //var form = $('input[type=submit]').closest("form");
+	//swal({title: "Esta seguro que desea autorizar este prestamo?", text: "", icon: "warning",buttons: true,dangerMode: true})
+		/*swal("Esta seguro que desea autorizar este prestamo?", {
+		  buttons: {
+		    cancel: false,
+		    catch: {
+		      text: "Cancelar",
+		      value: false,
+		    },
+		    autorizar: true,
+		  },
+		  dangerMode: true,
+		}).then((willDelete) => {
+		  if (willDelete) {
+			 return true;
+		    swal("Prestamo autorizado!", {
+		      icon: "success",
+		    });
+		    form.submit();
+		  } else {
+		    swal("No se autorizo el prestamo!");
+		    
+		    return false;
+		  }
+		})*/
+		var btn = confirm("Esta seguro que desea autorizar?")
+		if(btn==true){
+			return true;
+		} else {
+			return false;
+		}
+		/*swal("holis", {
+		  dangerMode: true,
+		  buttons: true});
+		
+	return false;*/
+}
 </script>
 
 </html>
