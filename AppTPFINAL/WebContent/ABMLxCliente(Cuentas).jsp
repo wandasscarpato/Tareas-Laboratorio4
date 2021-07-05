@@ -86,7 +86,7 @@
 						<label>Ingrese el DNI del cliente:</label>
 					</div>
 					<div>
-						<input type="text" name="txtDni">
+						<input type="text" name="txtDni" required>
 					</div>
 					<div>
 						<input class="btnBuscar" type="submit" value="Buscar"
