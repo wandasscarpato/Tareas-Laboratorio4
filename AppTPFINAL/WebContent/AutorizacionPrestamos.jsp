@@ -71,7 +71,7 @@
 	
 	<div class="prestamo">
 		<h1>Autorizar a autorizar</h1>
-		<form method="post" action="ServletPrestamo" class="formularioPrestamo">
+		<form method="post" class="formularioPrestamo" onsubmit="return validarSeleccionado();">
 			<table id="tablaPrestamosAutorizados" class="tablaClientes display" border="1">
 			<thead>
 				<tr>
@@ -115,7 +115,7 @@
 				%>
 			</tbody>
 			</table>
-			<input class="btnEnviarAutorizacionP" type="button" value="enviar">
+			<input class="btnEnviarAutorizacionP" type="button" value="enviar" onclick="validarSeleccionado()">
 
 		</form>
 	</div>
@@ -155,6 +155,25 @@
 	</div>
 	</footer>
 </body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+function validarSeleccionado(){
+	swal({title: "Esta seguro que desea autorizar este prestamo?", text: "", icon: "warning",buttons: true,dangerMode: true})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    swal("Prestamo autorizado!", {
+		      icon: "success",
+		    });
+		    return true;
+		  } else {
+		    swal("No se autorizo el prestamo!");
+		    return false;
+		  }
+		});
+}
+</script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
