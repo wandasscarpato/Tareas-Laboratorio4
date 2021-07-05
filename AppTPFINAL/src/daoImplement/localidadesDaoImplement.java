@@ -11,7 +11,7 @@ import entidad.localidad;
 
 public class localidadesDaoImplement {
 
-	private static final String listar = "SELECT * FROM lab4.localidad";
+	private static final String listar = "SELECT ID_Localidad,Localidad FROM lab4.localidad";
 	
 
 	 public ArrayList<localidad> listarLocalidades()
