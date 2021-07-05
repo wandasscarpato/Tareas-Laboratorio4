@@ -92,12 +92,14 @@ public class cuentaDaoImplement implements cuentaDao {
 			//	cn.commit();
 		 	//isVerifyExitoso = true;
 			
-		 	System.out.print("VUELVE DE LA VERIFICACIONNN ");
+		 	
 		 	
 			//}
 		} 
 		catch (SQLException e) 
 		{
+			System.out.print("NO PUEDE ADD");
+			
 			e.printStackTrace();
 			try {
 				cn.rollback();
@@ -106,6 +108,7 @@ public class cuentaDaoImplement implements cuentaDao {
 			}
 		}
 		
+		System.out.print("VUELVE DE LA VERIFICACIONNN ");
 		return cant;
 	}
 	
