@@ -271,8 +271,8 @@ transform: scale(1.05);
 }
 
 /*TRANSFERIS*/
-.transacciones div, .prestamo div{
-    margin: 4rem;
+.transacciones div, .prestamo div, .bml div{
+    margin: 0rem 2rem 2rem 2rem ;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 }

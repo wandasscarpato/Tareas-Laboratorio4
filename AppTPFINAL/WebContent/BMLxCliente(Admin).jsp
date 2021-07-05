@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="./css/cssIvan.css">
     <link rel="stylesheet" href="./css/styleVistas.css"> 
     <link rel="stylesheet" href="./css/jquery.dataTables.min.css">  
+        <link rel="stylesheet" href="./css/style.css">
+    
      
     <title>Document</title>
 </head>
@@ -76,8 +78,8 @@
 </header>
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
-      <div class="adminCuentas">
-        <h1> Administración de usuarios de clientes
+      <div class=" adminCuentas">
+        <h1> Administración de datos de clientes
         </h1>
                             <div class="card--modif"></div>
         
@@ -111,7 +113,7 @@
 						<th>PROVINCIA</th>
 						<th>LOCALIDAD</th>
 						<th>TELEFONO</th>
-						<th>MAIL</th>
+						<!-- <th>MAIL</th> -->
 						<th>ESTADO</th>
 						<th>Cambiar estado</th>
 						</tr>
@@ -147,26 +149,26 @@
 							<td><%= listaProYLoc.get(0)%></td>
 							<td><%= listaProYLoc.get(1)%></td>
 							<td><%= cli.getTelefono()%></td>
-							<td><%= cli.getEmail()%></td>
+							<!-- <td><%= cli.getEmail()%></td> -->
 							<td><%= cli.getEstado()%></td>
 							<td><a href="ServletListar?action=cambiarEstado&dni=<%=cli.getDNI() %>&estado=<%=cli.getEstado()%>">cambiar estado</td>
 							</tr>
 						<%}%>
 					</tbody>
 			</table>
-				
-  	<section class="sectionMenuDeCuentas">
+	</div>	
+  	<!--<section class="sectionMenuDeCuentas">
         <div class="menuDeCuentas">
-            <!-- <div>
+            <div>
               <input class="btnMenuDeCuentas" type="button" value="Dar de baja cuenta seleccionada">
-            </div> -->
-            <form action="">
+            </div>
+           <form action="">
           	<div>
               <input class="btnMenuDeCuentas" type="button" value="Modificar cuenta seleccionada">
           	</div>
           	</form>
         </div>
- 	</section>
+ 	</section>-->
       <!--Comienza el footer-->
     <footer>
         <div>
