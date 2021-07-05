@@ -75,7 +75,7 @@ public class ServletCuenta extends HttpServlet {
 							System.out.println("MODIFICA2");
 					}	
 					else {
-						System.out.println("NO SE MODIFICO UN CHOTO");
+						//No se modifico
 					}
 		}
 	}

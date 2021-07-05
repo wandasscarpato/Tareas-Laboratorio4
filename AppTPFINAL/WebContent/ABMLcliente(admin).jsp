@@ -30,15 +30,17 @@
                   </div>
                 </li>
                  <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Cuentas
-                  </a>  
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="ABMLxCliente(Cuentas).jsp">Administracion por cliente</a>
-                    <a class="dropdown-item" href="BMLxCuenta(Cuentas).jsp">Administración por cuenta específica</a>
-                  </div>  
-                </li>
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+				aria-haspopup="true" aria-expanded="false"> 
+				Cuentas 
+				</a>
+				<form class="form-divModContra" method= "post" action="ServletCuenta">
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<button class="dropdown-item" name="btnList">Administrar cuentas</button>
+					<a class="dropdown-item" href="nuevaCuenta(ADMIN).jsp">Asignar cuentas</a>
+				</div>
+				</form>
+			</li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
