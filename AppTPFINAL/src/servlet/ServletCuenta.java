@@ -108,8 +108,9 @@ public class ServletCuenta extends HttpServlet {
 								dispatcher.forward(request, response);
 								}
 							else {
-								//MOSTRAR ALERTA DE QUE NO ENCONTRO A NADIE
-								System.out.println("NO SE MODIFICO UN CHOTO");
+								//
+								//MOSTRAR ALERTA DE QUE NO SE ESCRIBIO NADA EN EL TXTBOX
+								//
 							}
 						}
 						else {
@@ -139,8 +140,9 @@ public class ServletCuenta extends HttpServlet {
 							dispatcher.forward(request, response);
 						}
 						else { //SI NO SE MODIFICA
-							System.out.println("MUESTRA MENSAJE");
-							//MUESTRA EL ERROR DEL MESNAJE ERROR
+							//
+							//MOSTRAR ALERTA DE QUE NO SE PUEDE DAR DE BAJA 2 VECES A LA MISMA CUENTA
+							//
 						}
 						
 						
@@ -168,10 +170,10 @@ public class ServletCuenta extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ModDeCuenta.jsp"); 
 				dispatcher.forward(request, response);
 				}
-				//CUANDO NO ENCUENTRA NADA
 				else {
+					//
 					//PENSANDO EN PONER UNA ALERTA
-					
+					//
 				}
 	}
 }
