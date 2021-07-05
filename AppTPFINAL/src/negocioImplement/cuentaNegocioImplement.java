@@ -27,6 +27,27 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 			return estado;
 		}
 	
+	public boolean verificar(cuenta cuenta) {
+		boolean crear;
+		
+		System.out.print(" ENRTRA A VERIFICAR DEL NEGOCIO");
+		
+		int cant = cdao.verificar(cuenta);
+		
+		if(cant < 3) {
+			//se puede crear la cuenta
+			crear = true;
+		}
+		else 
+		{
+			//no se puede crear la cuenta
+			crear = false;
+		}
+		
+		return crear;
+		
+	}
+	
 	public List<cuenta> listarCuentas(){
 		return (List<cuenta>) cdao.readAll();
 	}
@@ -45,5 +66,11 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 	public boolean modificarTipo (cuenta cue) {
 		return cdao.modificarTipo(cue);
 	}
+
 	
-}
+	
+	}
+
+	
+	
+

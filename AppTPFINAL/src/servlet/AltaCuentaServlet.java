@@ -71,16 +71,28 @@ public class AltaCuentaServlet extends HttpServlet {
 			System.out.print("DUDOSO  PERO NO TAN DUDOSO ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			cuentaNegocio cneg = new cuentaNegocioImplement();
 			
-			if(cneg.insert(c)==true)
+			if(cneg.verificar(c)==true) 
 			{
-				filas=1;
-				System.out.print("SI ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				
+				
+				if(cneg.insert(c)==true)
+				{
+					filas=1;
+					System.out.print("SI ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				}
+				else{ 
+				{
+					System.out.print("NO ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				}
+				}
+				
 			}
-			else{ 
+			else 
 			{
-				System.out.print("NO ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				System.out.print("NO SE PUEDE CREAR CUENTA + 3");
 			}
-			}
+			
+			
 			
 		}
 		

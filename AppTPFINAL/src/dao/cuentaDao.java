@@ -7,6 +7,7 @@ import entidad.cuenta;
 public interface cuentaDao {
 	
 	public boolean insert(cuenta cuenta);
+	public int verificar(cuenta cuenta);
 	public boolean eliminar(cuenta cuenta_a_modificar);
 	public boolean modificarEstado(cuenta cuenta_a_modificar);
 	public boolean modificarTipo(cuenta cuenta_modificar);
