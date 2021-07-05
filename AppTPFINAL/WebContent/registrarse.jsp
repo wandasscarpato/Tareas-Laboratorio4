@@ -18,7 +18,8 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
- 
+ <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
     <title>Registro de Cliente</title>
 </head>
 
@@ -79,14 +80,16 @@
     <div class="registrarse">
         <h1>   Registro de Cliente
         </h1>
-        <form action="ServletRegistrarCliente" method="post">
+        <form action="ServletRegistrarCliente" method="post" onsubmit="return validarClaves();">
             <div class="form-div">
                 <div>
                     <div class="card--modif"></div>
                     <label for="">Usuario</label> 
                     <input name="usuario" type="text" required> <br>
                     <label for="">Contraseña</label>
-                    <input  name="pass" type="password" required><br> 
+                    <input id="clave1" name="pass1" type="password" required><br> 
+                    <label  for="">Repita la contraseña</label>
+                    <input id="clave2" name="pass2" type="password" required><br>
                     <label for="">Nombre</label>
                     <input  name="nombre"type="text" required><br>
                     <label for="">Apellido</label>
@@ -94,18 +97,18 @@
                     <label for="">DNI</label>
                     <input  name="DNI" type="number" required><br>
                     <label for="">CUIL</label>
-                    <input  name="CUIL" type="number"><br>
+                    <input  name="CUIL" type="number" required><br>
                     <label for="">Sexo</label>
-                    <select class="genero" name="genero" id="genero">
+                    <select class="genero" name="genero" id="genero" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Femeninio">Femenino</option>
                     </select>
                     <label for="">Fecha de nacimiento</label>
-                    <input  name="nacimiento" type="date"><br>
+                    <input  name="nacimiento" type="date" required><br>
                     <label for="">Direccion</label>
-                    <input name="direccion" type="text"><br>
+                    <input name="direccion" type="text" required><br>
                     <label for="">Localidad</label>
-                     <select class="genero" name="localidad" id="localidad">
+                     <select class="genero" name="localidad" id="localidad" required>
                         <% 
                         ArrayList<localidad> listalocalidades = new ArrayList<localidad>();
                     	localidadesDaoImplement lDao = new localidadesDaoImplement();
@@ -116,7 +119,7 @@
 						<%}%>
                     </select>
                     <label for="">Provincia</label>
-                     <select class="genero" name="provincia" id="provincia">
+                     <select class="genero" name="provincia" id="provincia" required>
                         <% 
                         ArrayList<provincia> listaProvincias = new ArrayList<provincia>();
                     	ProvinciasDaoImplement pDao = new ProvinciasDaoImplement();
@@ -127,10 +130,12 @@
 						<%}%>
                     </select>
                     <label for="">Correo electronico</label>
-                    <input name="email" type="text"><br>
+                    <input name="email" type="text" required><br>
                     <label for="">Telefonos</label>
-                    <input name="telefono" type="number"><br>
+                    <input name="telefono" type="number" required><br>            
+                   <%  %>
                     <input class="btnRegistro" type="submit" value="Registrarlo">
+                         
                     <div class="card--modif cm2"></div>
                 </div>
             </div>
@@ -198,6 +203,24 @@
         </div>
     </footer>
 </body>
+<script>
+function confirmarEnvio(){
+	
+}
+function validarClaves(){
+	var clave1 = document.getElementById("clave1").value;
+	var clave2 = document.getElementById("clave2").value;
+	if(clave1===clave2){
+		return true;
+	}
+	else{
+		swal("Las contraseñas no coinciden", "", "error");
+		return false;
+	}
+	
+}
+</script>
+<script src="sweetalert2.all.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -210,9 +233,9 @@ var queryString = window.location.search;
 var urlParams = new URLSearchParams(queryString);
 var ParamStatus = urlParams.get('Status');
 if(ParamStatus == "true"){
-	swal("Cliente agregado correctamente", "", "success");
+	swal("Cliente agregado correctamente", "podra visualizarlo en Admin datos clientes", "success");
 }else if(ParamStatus == "false"){ 
-	swal("Hubo un error al cargar el cliente", "", "error");
+	swal("Hubo un error al cargar el cliente", "posiblemente ya se encuentre registrado", "error");
 }
 </script>
 </html>

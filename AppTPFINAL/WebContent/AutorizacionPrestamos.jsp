@@ -70,7 +70,7 @@
 	<!--Finaliza el header-->
 	
 	<div class="prestamo">
-		<h1>Autorizar prestamo</h1>
+		<h1>Autorizar a autorizar</h1>
 		<form method="post" action="ServletPrestamo" class="formularioPrestamo">
 			<table id="tablaPrestamosAutorizados" class="tablaClientes display" border="1">
 			<thead>
