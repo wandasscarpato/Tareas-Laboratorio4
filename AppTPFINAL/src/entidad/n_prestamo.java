@@ -104,5 +104,4 @@ public class n_prestamo {
 				+ ", Importe_pedido=" + Importe_pedido + ", Plazo=" + Plazo + ", MontoxMes=" + MontoxMes + ", Cuotas="
 				+ Cuotas + ", N_cuentaADepositar=" + N_cuentaADepositar + ", estado=" + estado + "]";
 	}
-	
 }

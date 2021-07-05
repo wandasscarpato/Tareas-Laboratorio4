@@ -14,6 +14,19 @@ public class clienteNegocioImplement implements clienteNegocio{
 	
 	clienteDao cdao = new clienteDaoImplement();
 		
+	public boolean insert(cliente cliente) {
+		
+		boolean estado=false;
+		if(cliente.getDNI()>0)
+		{
+			cliente.setEstado(true);
+			estado=cdao.insert(cliente);
+			estado = true;
+			
+		}
+		return estado;
+	}
+
 	
 		public boolean delete(int cliente_a_eliminar, boolean estadoC) {
 			//boolean estado=false;

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import entidad.n_prestamo;
 import negocioImplement.PrestamosNegocioImplement;
 
+
 /**
  * Servlet implementation class ServletListarPrestamos
  */
@@ -32,8 +33,6 @@ public class ServletListarPrestamos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -51,6 +50,7 @@ public class ServletListarPrestamos extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/PrestamosAceptados.jsp");
 			rd.forward(request, response);
 			
-		}	}
+		}	
+	}
 
 }
