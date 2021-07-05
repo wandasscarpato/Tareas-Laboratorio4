@@ -51,6 +51,9 @@ public class clienteNegocioImplement implements clienteNegocio{
 		public ArrayList<cliente> listarClientes(){
 			return (ArrayList<cliente>) cdao.listarClientes();
 		}
+
+
+		
 		
 		
 		
