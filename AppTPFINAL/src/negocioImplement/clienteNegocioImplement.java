@@ -52,11 +52,6 @@ public class clienteNegocioImplement implements clienteNegocio{
 			return (ArrayList<cliente>) cdao.listarClientes();
 		}
 
-
-		
-		
-		
-		
 		//public boolean insert(cliente cliente) {
 			// TODO Auto-generated method stub
 			//return false;

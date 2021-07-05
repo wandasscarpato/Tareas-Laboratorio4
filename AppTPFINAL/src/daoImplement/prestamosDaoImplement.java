@@ -14,7 +14,8 @@ import java.util.ArrayList;
 public class prestamosDaoImplement {
 
 	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo`";
-	 
+	private static final String estado = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
+
 	
 	public ArrayList<n_prestamo> listarPrestamos()
     {
@@ -53,4 +54,27 @@ public class prestamosDaoImplement {
     }
 	 
 
+	public boolean autorizar(int prestamoAutorizado)
+	{
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean cambioExitoso = false;
+		try 
+		{
+			statement = Conexion.prepareStatement(estado);
+			statement.setInt(1, prestamoAutorizado);
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				cambioExitoso = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return cambioExitoso;
+	}
+	
+	
 }

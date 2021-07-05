@@ -51,6 +51,17 @@ public class ServletListarPrestamos extends HttpServlet {
 			rd.forward(request, response);
 			
 		}	
+			if(request.getParameter("btnAutorizar")!=null) {
+				int id = Integer.parseInt(request.getParameter("idPrestamo").toString());
+				PrestamosNegocioImplement cNeg = new PrestamosNegocioImplement();
+				cNeg.autorizar(id);
+				
+				ArrayList<n_prestamo> lista = cNeg.listarPrestamos();
+				request.setAttribute("listaP",lista);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/AutorizacionPrestamos.jsp");
+				rd.forward(request, response);
+			} 
 	}
 
 }

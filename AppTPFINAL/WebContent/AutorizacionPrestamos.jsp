@@ -86,7 +86,7 @@
 					<th>Cuotas</th>
 					<th>Plazo</th>
 					<th>Nro de cuenta a Depositar</th>
-					<th>Aprobar</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -101,7 +101,8 @@
 				
 					<%if(presta.isEstado() != true){ %>
 					<tr>
-					<td><%=presta.getN_Prestamo()%></td>
+					<form action="ServletListarPrestamos" onsubmit="return validarSeleccionado();" method="post">
+					<td><%=presta.getN_Prestamo()%> <input name="idPrestamo" value="<%=presta.getN_Prestamo()%>" type="hidden"></td>
 					<td><%=presta.getDNI()%></td>
 					<td><%=presta.getImporte_pedido()%></td>
 					<td><%=presta.getImporte_intereses()%></td>
@@ -109,7 +110,8 @@
 					<td><%=presta.getCuotas()%></td>
 					<td><%=presta.getPlazo()%></td>
 					<td><%=presta.getN_cuentaADepositar()%></td>
-					<td><input type="checkbox" id="<%=presta.getN_Prestamo()%>"name="seleccion" value="<%=presta.getN_Prestamo()%>"></td>
+					<td><input class="btnEnviarAutorizacionP" name="btnAutorizar" type="submit"  value="Autorizar"></td>
+					</form>
 					</tr>
 					<%}%>
 				
@@ -118,7 +120,6 @@
 				%>
 			</tbody>
 			</table>
-			<input class="btnEnviarAutorizacionP" type="button" value="enviar" onclick="validarSeleccionado()">
 
 		</form>
 	</div>
