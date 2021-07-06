@@ -39,6 +39,7 @@ public class ServletLogIn extends HttpServlet {
 				String Usuario = request.getParameter("usuario").toString();
 				String Pass = request.getParameter("pass").toString();
 				Estado = udao.ValidarAdmin(Usuario,Pass);
+				System.out.println(Estado);
 				if(Estado!=0) {
 					session.setAttribute("TipoLog", "Administrador");
 					response.sendRedirect("Reportes.jsp");
