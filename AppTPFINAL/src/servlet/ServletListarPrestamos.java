@@ -40,7 +40,7 @@ public class ServletListarPrestamos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			if(request.getParameter("btnMostrarPrestamos")!=null) {
+		/**if(request.getParameter("btnMostrarPrestamos")!=null) {
 			
 			//clienteDaoImplement cDao = new clienteDaoImplement();
 			//ArrayList<cliente> lista = cDao.listarClientes();
@@ -61,7 +61,7 @@ public class ServletListarPrestamos extends HttpServlet {
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/AutorizacionPrestamos.jsp");
 				rd.forward(request, response);
-			} 
+			} */
 	}
 
 }

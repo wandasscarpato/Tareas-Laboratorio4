@@ -87,34 +87,7 @@
 				</tr>
 			</thead>
 			<tbody>
-
-
-				<%
-					prestamosDaoImplement pDao = new prestamosDaoImplement();
-					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pDao.listarPrestamos();
-
-					for (n_prestamo presta : listaPrestamos) {
-				%>
-				
-					<%if(presta.isEstado() != true){ %>
-					<tr>
-					<form method="post" action="ServletListarPrestamos" onsubmit="return validar()">
-						<td><%=presta.getN_Prestamo()%> <input name="idPrestamo" value="<%=presta.getN_Prestamo()%>" type="hidden"></td>
-						<td><%=presta.getDNI()%></td>
-						<td><%=presta.getImporte_pedido()%></td>
-						<td><%=presta.getImporte_intereses()%></td>
-						<td><%=presta.getMontoxMes()%></td>
-						<td><%=presta.getCuotas()%></td>
-						<td><%=presta.getPlazo()%></td>
-						<td><%=presta.getN_cuentaADepositar()%></td>
-						<td><input class="btnEnviarAutorizacionP" name="btnAutorizar" type="submit"  value="Autorizar" ></td>
-					</form>
-					</tr>
-					<%}%>
-				
-				<%
-					}
-				%>
+				<%=request.getAttribute("tabla") %>
 			</tbody>
 			</table>
 	</div>

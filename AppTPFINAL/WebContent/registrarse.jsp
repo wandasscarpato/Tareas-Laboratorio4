@@ -111,31 +111,16 @@
                     <input name="direccion" type="text" required><br>
                     <label for="">Localidad</label>
                      <select class="genero" name="localidad" id="localidad" required>
-                        <% 
-                        ArrayList<localidad> listalocalidades = new ArrayList<localidad>();
-                    	localidadesDaoImplement lDao = new localidadesDaoImplement();
-                    	listalocalidades = lDao.listarLocalidades();
-                    	
-                    	for(localidad local: listalocalidades){%>
-						<option value="<%=local.getID()%>"><%= local.getLocalidad() %></option>
-						<%}%>
+                         <%=request.getAttribute("SelectLoc") %>
                     </select>
                     <label for="">Provincia</label>
                      <select class="genero" name="provincia" id="provincia" required>
-                        <% 
-                        ArrayList<provincia> listaProvincias = new ArrayList<provincia>();
-                    	ProvinciasDaoImplement pDao = new ProvinciasDaoImplement();
-                    	listaProvincias = pDao.listarProvincias();
-                    	
-                    	for(provincia prov: listaProvincias){%>
-						<option value="<%=prov.getID()%>"><%= prov.getProvincia() %></option>
-						<%}%>
+                        <%=request.getAttribute("SelectProv") %>
                     </select>
                     <label for="">Correo electronico</label>
                     <input name="email" type="text" required><br>
                     <label for="">Telefonos</label>
                     <input name="telefono" type="number" required><br>            
-                   <%  %>
                     <input class="btnRegistro" type="submit" value="Registrarlo">
                          
                     <div class="card--modif cm2"></div>
