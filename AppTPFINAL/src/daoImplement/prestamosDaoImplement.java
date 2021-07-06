@@ -15,7 +15,46 @@ public class prestamosDaoImplement {
 
 	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo`";
 	private static final String estado = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
+	private static final String insert = "INSERT INTO `lab4`.`n_prestamo`(`N_Prestamo`,`DNI`,`importe_intereses`,`importe_pedido`,`plazo`,`montoXMes`,`Cuotas`,`N_CuentaADepositar`,`Estado`)VALUES(?,?,?,?,?,?,?,?,0);\r\n" + 
+			"";
 	private static final String listarXdni = "SELECT * FROM n_prestamo WHERE DNI = ?";
+	
+	public boolean insert(n_prestamo prestamo) {
+        PreparedStatement statement;
+        Connection Conexion = conexion.getConexion().getSQLConexion();
+        boolean isInsertExitoso = false;
+        try
+        {
+            statement = Conexion.prepareStatement(insert);
+            statement.setInt(1, prestamo.getN_Prestamo());
+            statement.setInt(2, prestamo.getDNI());
+            statement.setFloat(3, prestamo.getImporte_intereses());
+            statement.setFloat(4, prestamo.getImporte_pedido());
+            statement.setInt(5, prestamo.getPlazo());
+            statement.setFloat(6, prestamo.getMontoxMes());
+            statement.setInt(7, prestamo.getCuotas());
+            statement.setInt(8, prestamo.getN_cuentaADepositar());
+       
+            if(statement.executeUpdate() > 0)
+            {
+                Conexion.commit();
+                isInsertExitoso = true;
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            try {
+                Conexion.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            
+            return false;
+        }
+        
+        return isInsertExitoso;
+    }
 	
 	
 	public ArrayList<n_prestamo> listarPrestamos()
@@ -35,10 +74,10 @@ public class prestamosDaoImplement {
             
             	prestamoRs.setDNI(resultSet.getInt("DNI"));
             	prestamoRs.setN_Prestamo(resultSet.getInt("N_Prestamo"));
-            	prestamoRs.setImporte_intereses(resultSet.getString("importe_intereses"));
-            	prestamoRs.setImporte_pedido(resultSet.getString("Importe_pedido"));
+            	prestamoRs.setImporte_intereses(resultSet.getFloat("importe_intereses"));
+            	prestamoRs.setImporte_pedido(resultSet.getFloat("Importe_pedido"));
             	prestamoRs.setPlazo(resultSet.getInt("plazo"));
-            	prestamoRs.setMontoxMes(resultSet.getString("montoXMes"));
+            	prestamoRs.setMontoxMes(resultSet.getFloat("montoXMes"));
             	prestamoRs.setCuotas(resultSet.getInt("Cuotas"));
             	prestamoRs.setN_cuentaADepositar(resultSet.getInt("N_cuentaADepositar"));
             	prestamoRs.setEstado(resultSet.getBoolean("Estado"));
@@ -74,10 +113,10 @@ public class prestamosDaoImplement {
             
             	prestamoRs.setDNI(resultSet.getInt("DNI"));
             	prestamoRs.setN_Prestamo(resultSet.getInt("N_Prestamo"));
-            	prestamoRs.setImporte_intereses(resultSet.getString("importe_intereses"));
-            	prestamoRs.setImporte_pedido(resultSet.getString("Importe_pedido"));
+            	prestamoRs.setImporte_intereses(resultSet.getFloat("importe_intereses"));
+            	prestamoRs.setImporte_pedido(resultSet.getFloat("Importe_pedido"));
             	prestamoRs.setPlazo(resultSet.getInt("plazo"));
-            	prestamoRs.setMontoxMes(resultSet.getString("montoXMes"));
+            	prestamoRs.setMontoxMes(resultSet.getFloat("montoXMes"));
             	prestamoRs.setCuotas(resultSet.getInt("Cuotas"));
             	prestamoRs.setN_cuentaADepositar(resultSet.getInt("N_cuentaADepositar"));
             	prestamoRs.setEstado(resultSet.getBoolean("Estado"));

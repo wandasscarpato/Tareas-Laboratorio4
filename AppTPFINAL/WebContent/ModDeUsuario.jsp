@@ -27,7 +27,7 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> 
-					<a class="dropdown-item" href="#">Cerrar sesion</a>
+                    <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
 				</div>
 			</li>
 						<li class="nav-item dropdown">

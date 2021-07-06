@@ -3,18 +3,18 @@ package entidad;
 public class n_prestamo {
 	private int N_Prestamo;
 	private int DNI;
-	private String Importe_intereses;
-	private String Importe_pedido;
+	private float Importe_intereses;
+	private float Importe_pedido;
 	private int Plazo;
-	private String MontoxMes;
+	private float MontoxMes;
 	private int Cuotas;
 	private int N_cuentaADepositar;
 	private boolean estado;
 	
 	public n_prestamo(){}
 
-	public n_prestamo(int n_Prestamo, int dNI, String importe_intereses, String importe_pedido, int plazo,
-			String montoxMes, int cuotas, int n_cuentaADepositar, boolean estado) {
+	public n_prestamo(int n_Prestamo, int dNI, float importe_intereses, float importe_pedido, int plazo,
+			float montoxMes, int cuotas, int n_cuentaADepositar, boolean estado) {
 		this.N_Prestamo = n_Prestamo;
 		this.DNI = dNI;
 		this.Importe_intereses = importe_intereses;
@@ -42,19 +42,19 @@ public class n_prestamo {
 		DNI = dNI;
 	}
 
-	public String getImporte_intereses() {
+	public float getImporte_intereses() {
 		return Importe_intereses;
 	}
 
-	public void setImporte_intereses(String importe_intereses) {
+	public void setImporte_intereses(float importe_intereses) {
 		Importe_intereses = importe_intereses;
 	}
 
-	public String getImporte_pedido() {
+	public float getImporte_pedido() {
 		return Importe_pedido;
 	}
 
-	public void setImporte_pedido(String importe_pedido) {
+	public void setImporte_pedido(float importe_pedido) {
 		Importe_pedido = importe_pedido;
 	}
 
@@ -66,11 +66,11 @@ public class n_prestamo {
 		Plazo = plazo;
 	}
 
-	public String getMontoxMes() {
+	public float getMontoxMes() {
 		return MontoxMes;
 	}
 
-	public void setMontoxMes(String montoxMes) {
+	public void setMontoxMes(float montoxMes) {
 		MontoxMes = montoxMes;
 	}
 

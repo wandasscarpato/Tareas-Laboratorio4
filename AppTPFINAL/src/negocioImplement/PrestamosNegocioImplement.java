@@ -12,6 +12,20 @@ public class PrestamosNegocioImplement implements prestamosNegocio{
 	
 	prestamosDaoImplement cdao = new prestamosDaoImplement();
 	
+		public boolean insert(n_prestamo prestamo) {
+		
+		boolean estado=false;
+		if(prestamo.getDNI()>0)
+		{
+			prestamo.setEstado(true);
+			estado=cdao.insert(prestamo);
+			estado = true;
+			
+		}
+		return estado;
+	}
+
+	
 	public boolean autorizar(int prestamoAutorizar) {
 		//boolean estado=false;
 			

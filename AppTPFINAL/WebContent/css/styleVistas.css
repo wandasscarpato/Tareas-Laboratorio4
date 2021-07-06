@@ -61,3 +61,7 @@ margin:1rem;}
 	border-color:red;
 	padding:0.2rem 1rem;
 }
+h6.usuarioLogueado{
+    font-size: 2rem!important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
+}

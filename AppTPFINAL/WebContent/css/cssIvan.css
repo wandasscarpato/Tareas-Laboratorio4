@@ -70,3 +70,7 @@ font-size: 10px;
     grid-template-columns: 50%;
     justify-content: left;
 }
+h6.usuarioLogueado{
+    font-size: 2rem!important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
+}

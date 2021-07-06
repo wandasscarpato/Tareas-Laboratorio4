@@ -17,20 +17,20 @@
     <title>Document</title>
 </head>
 <body>
-  <header>
+    <header>
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
+
+					<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Cuenta
+                    Inicio
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Mis datos</a>
-                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
-                    <a class="dropdown-item" href="#">Agregar cuenta</a>
+                    <a class="dropdown-item" href="PerfilCliente.jsp">Mi cuenta</a>
+                    <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -40,7 +40,17 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
-                    <a class="dropdown-item" href="#">Historial</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Cuentas
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
+                    <a class="dropdown-item" href="#">Solicitar cuentas</a>
+                   
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -49,7 +59,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Mis prestamos</a>
+                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Solicitar prestamo</a> 
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -58,14 +68,13 @@
                       Menu de pagos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Pagos</a>
+                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis prestamos</a>
                     </div>
                   </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              <div class="form-inline my-2 my-lg-0">
+              <h6 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size:2rem; color:red"class="usuarioLogueado">Usuario: <%= session.getAttribute("Usuario") %> <!--  DNI: <%= session.getAttribute("DNI") %> --></h6>
+             </div>
             </div>
           </nav>
     </header>
@@ -158,6 +167,20 @@
             </ul>
         </div>
     </footer>
+    <%if(session.getAttribute("TipoLog")=="Usuario"){
+} else {
+    if(session.getAttribute("TipoLog")=="Administrador"){
+        %><script>
+        location.href = "Reportes.jsp";
+        </script><%
+    } else {
+        %><script>
+        location.href = "InicioSesion.jsp?NoLog=1&Redirect=PAGINAINTENTOENTRAR";
+        </script><%
+    }
+}
+%>
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

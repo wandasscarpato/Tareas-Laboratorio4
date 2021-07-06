@@ -33,7 +33,7 @@
 				aria-expanded="false"> Administrador </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> <a
-						class="dropdown-item" href="#">Cerrar sesion</a>
+                    <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
 				</div></li>
 			<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
@@ -127,7 +127,19 @@
 		</ul>
 	</div>
 	</footer>
-
+<%if(session.getAttribute("TipoLog")=="Administrador"){
+} else {
+    if(session.getAttribute("TipoLog")=="Usuario"){
+        %><script>
+        location.href = "PerfilCliente.jsp";
+        </script><%
+    } else {
+        %><script>
+        location.href = "InicioSesion.jsp?NoLog=1&Redirect=PAGINAINTENTOENTRAR";
+        </script><%
+    }
+}
+%>
 	
 </body>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

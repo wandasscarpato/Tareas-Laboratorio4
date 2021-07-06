@@ -96,3 +96,7 @@ ul{
     border-bottom: 1px red solid;
     background-color: white;
 }
+h6.usuarioLogueado{
+    font-size: 2rem!important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
+}

@@ -14,6 +14,19 @@
     <title>Document</title>
 </head>
 <body>
+<%if(session.getAttribute("TipoLog")=="Administrador"){
+    } else {
+    	if(session.getAttribute("DNI")!=null){
+    		%><script>
+        	location.href = "PerfilCliente.jsp";
+        	</script><%
+    	} else {%>
+	    	<script>
+	    	location.href = "InicioSesion.jsp";
+	    	</script>
+    	<%}
+    }
+    %>
    <header>
     <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,7 +39,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="Reportes.jsp">Inicio</a>
-                <a class="dropdown-item" href="#">Cerrar sesion</a>
+                    <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
               </div>
             </li>
              			<li class="nav-item dropdown">
@@ -99,19 +112,7 @@
             </div>
         </div>
 	</section>
-	<%if(session.getAttribute("TipoLog")=="Administrador"){
-    } else {
-    	if(session.getAttribute("DNI")!=null){
-    		%><script>
-        	location.href = "PerfilCliente.jsp";
-        	</script><%
-    	} else {%>
-	    	<script>
-	    	location.href = "InicioSesion.jsp";
-	    	</script>
-    	<%}
-    }
-    %>
+	
 
       <!--Comienza el footer-->
     <footer>
