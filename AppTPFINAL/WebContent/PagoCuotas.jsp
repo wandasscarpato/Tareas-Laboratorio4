@@ -66,50 +66,50 @@
 		      <p></p>
 	<div>
 		<form>
-			<table style="margin: 0 auto;" border="1">	
-			<tr>
-				<td><strong>Nº de cuota</strong></td>
-				<td><strong>Fecha</strong></td>
-				<td><strong>Importe</strong></td>
-				<td><strong>Pagado</strong></td>
-			</tr>
-			<tr>
-				<td>1/60</td>
-				<td>21-01-2021</td>
-				<td>1.666,66</td>
-				<td><input type="radio" name="Chec1" = Value="true" style-alig></td>
-			</tr>
-			<tr>
-				<td>2/60</td>
-				<td>21-02-2021</td>
-				<td>1.666,66</td>
-				<td><input type="radio" name="Chec2" = Value="true" style-alig></td>
-			</tr>
-			<tr>
-				<td>3/60</td>
-				<td>21-03-2021</td>
-				<td>1.666,66</td>
-				<td><input type="radio" name="Chec3" = Value="true" style-alig></td>
-			</tr>
-			<tr>
-				<td>4/60</td>
-				<td>21-04-2021</td>
-				<td>1.666,66</td>
-				<td><input type="radio" name="Chec4" = Value="true" style-alig></td>
-			</tr>
-			<tr>
-				<td>5/60</td>
-				<td>21-05-2021</td>
-				<td>1.666,66</td>
-				<td><input type="radio" name="Chec5" = Value="true" style-alig></td>
-			</tr>
-			<tr>
-				<td>6/60</td>
-				<td>21-06-2021</td>
-				<td>1.666,66</td>
-				<td><input type="radio" name="Chec6" = Value="true" style-alig></td>
-			</tr>
-			</table>
+			<table id="tablaClientes" class="tablaClientes display" border="1">
+			<thead>
+				<tr>
+					<th>Nro Prestamo</th>
+					<th>DNI</th>
+					<th>Importe Solicitado</th>
+					<th>Intereses</th>
+					<th>Monto por mes</th>
+					<th>Cuotas</th>
+					<th>Plazo</th>
+					<th>Nro de cuenta a Depositar</th>
+					<th>PAGAR</th>
+				</tr>
+			<thead>
+			<tbody>
+
+
+				<%
+					prestamosDaoImplement pDao = new prestamosDaoImplement();
+					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pDao.listarPrestamos();
+
+					for (n_prestamo presta : listaPrestamos) {
+				%>
+				
+					<%if(presta.isEstado() != false){ %>
+					<tr>
+					<td><%=presta.getN_Prestamo()%></td>
+					<td><%=presta.getDNI()%></td>
+					<td><%=presta.getImporte_pedido()%></td>
+					<td><%=presta.getImporte_intereses()%></td>
+					<td><%=presta.getMontoxMes()%></td>
+					<td><%=presta.getCuotas()%></td>
+					<td><%=presta.getPlazo()%></td>
+					<td><%=presta.getN_cuentaADepositar()%></td>
+					<td><a href= "#"> PAGAR</td>
+					</tr>
+					<%}%>
+					
+				
+				<%
+					}
+				%>
+			</tbody>
+		</table>
 		</form>
      </div>
      <p></p>
