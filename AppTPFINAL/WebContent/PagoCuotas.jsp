@@ -65,12 +65,11 @@
       <!--Finaliza el header-->
 		      <p></p>
 	<div>
-		<form>
+		<form action="PagoCuotasServlet" method="post">
 			<table id="tablaClientes" class="tablaClientes display" border="1">
 			<thead>
 				<tr>
 					<th>Nro Prestamo</th>
-					<th>DNI</th>
 					<th>Importe Solicitado</th>
 					<th>Intereses</th>
 					<th>Monto por mes</th>
@@ -84,8 +83,8 @@
 
 
 				<%
-					prestamosDaoImplement pDao = new prestamosDaoImplement();
-					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pDao.listarPrestamos();
+					prestamosNegocio pNeg = new prestamosNegocioImplement();
+					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pNeg.listarPrestamosxDni(123);
 
 					for (n_prestamo presta : listaPrestamos) {
 				%>
@@ -93,7 +92,6 @@
 					<%if(presta.isEstado() != false){ %>
 					<tr>
 					<td><%=presta.getN_Prestamo()%></td>
-					<td><%=presta.getDNI()%></td>
 					<td><%=presta.getImporte_pedido()%></td>
 					<td><%=presta.getImporte_intereses()%></td>
 					<td><%=presta.getMontoxMes()%></td>

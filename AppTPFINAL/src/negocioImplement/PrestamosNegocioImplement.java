@@ -24,4 +24,9 @@ public class PrestamosNegocioImplement implements prestamosNegocio{
 	public ArrayList<n_prestamo> listarPrestamos(){
 		return (ArrayList<n_prestamo>) cdao.listarPrestamos();
 	}
+
+	@Override
+	public ArrayList<n_prestamo> listarPrestamosxDni(int dni) {
+		return (ArrayList<n_prestamo>) cdao.listarPrestamosxDni(dni);
+	}
 }

@@ -15,7 +15,8 @@ public class prestamosDaoImplement {
 
 	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo`";
 	private static final String estado = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
-
+	private static final String listarXdni = "SELECT * FROM n_prestamo WHERE DNI = ?";
+	
 	
 	public ArrayList<n_prestamo> listarPrestamos()
     {
@@ -52,6 +53,48 @@ public class prestamosDaoImplement {
         }
         return n_prestamo;
     }
+	
+	
+	///LISTAR x DNI
+	
+	public ArrayList<n_prestamo> listarPrestamosxDni(int dni)
+    {
+        PreparedStatement statement;
+        ResultSet resultSet; //Guarda el resultado de la query
+        ArrayList<n_prestamo> n_prestamo = new ArrayList<n_prestamo>();
+        Connection Conexion = conexion.getConexion().getSQLConexion();
+        try 
+        {
+            statement = Conexion.prepareStatement(listarXdni);
+            resultSet = statement.executeQuery();
+            while(resultSet.next())
+            {
+        
+            	n_prestamo prestamoRs = new n_prestamo();
+            
+            	prestamoRs.setDNI(resultSet.getInt("DNI"));
+            	prestamoRs.setN_Prestamo(resultSet.getInt("N_Prestamo"));
+            	prestamoRs.setImporte_intereses(resultSet.getString("importe_intereses"));
+            	prestamoRs.setImporte_pedido(resultSet.getString("Importe_pedido"));
+            	prestamoRs.setPlazo(resultSet.getInt("plazo"));
+            	prestamoRs.setMontoxMes(resultSet.getString("montoXMes"));
+            	prestamoRs.setCuotas(resultSet.getInt("Cuotas"));
+            	prestamoRs.setN_cuentaADepositar(resultSet.getInt("N_cuentaADepositar"));
+            	prestamoRs.setEstado(resultSet.getBoolean("Estado"));
+            	
+            	statement.setInt(1, dni);
+	            
+            	n_prestamo.add(prestamoRs);
+
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return n_prestamo;
+    }
+	 
 	 
 
 	public boolean autorizar(int prestamoAutorizado)
