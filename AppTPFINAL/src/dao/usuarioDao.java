@@ -13,4 +13,5 @@ public interface usuarioDao {
 	public ArrayList<usuario> obtenerUno(int dni);
 	public boolean insert(usuario usuario);
 	public int ValidarUsuario(String Usuario,String Clave);
+	public int ValidarAdmin(String Usuario, String Clave);
 }

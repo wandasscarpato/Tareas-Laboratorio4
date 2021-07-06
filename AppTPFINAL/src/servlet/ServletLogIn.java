@@ -19,52 +19,54 @@ import negocioImplement.usuarioNegocioImplement;
  */
 @WebServlet("/ServletLogIn")
 public class ServletLogIn extends HttpServlet {
+	HttpSession session;
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ServletLogIn() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		int Estado = 0;
-		if(request.getParameter("btnAceptar")!=null){
+		session = request.getSession();
+		
+		
+		
+		if(request.getParameter("admin")!=null) {
+				
+				usuarioNegocio udao = new usuarioNegocioImplement();
+				String Usuario = request.getParameter("usuario").toString();
+				String Pass = request.getParameter("pass").toString();
+				Estado = udao.ValidarAdmin(Usuario,Pass);
+				if(Estado!=0) {
+					session.setAttribute("TipoLog", "Administrador");
+					response.sendRedirect("Reportes.jsp");
+				} else {
+					session.setAttribute("TipoLog", "");
+					RequestDispatcher rd = request.getRequestDispatcher("/InicioSesion.jsp?error=1");
+					rd.forward(request, response);
+				
+				}
+			
+		} else {
+		
 			usuarioNegocio udao = new usuarioNegocioImplement();
 			String Usuario = request.getParameter("usuario").toString();
 			String Pass = request.getParameter("pass").toString();
 			Estado = udao.ValidarUsuario(Usuario,Pass);
-			
-		}
-		
-		if(Estado != 0) {
-			String Usuario = request.getParameter("usuario").toString();
-			String Pass = request.getParameter("pass").toString();
-			usuario usu = new usuario(Usuario, Pass);
-			HttpSession Sesion = request.getSession();
-			Sesion.setAttribute("usuario", usu);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
-		else
-		{
-			//REQUESTDISPATCHER
-			request.setAttribute("CanFilas", Estado);
-			RequestDispatcher rd = request.getRequestDispatcher("/InicioSesion.jsp");
-			rd.forward(request, response);
-		}
-		
-	}
+			if(Estado!=0) {
+				session.setAttribute("TipoLog", "Usuario");
+				response.sendRedirect("PerfilCliente.jsp");
+			}else {
+				session.setAttribute("TipoLog", "");
+				RequestDispatcher rd = request.getRequestDispatcher("/InicioSesion.jsp?error=1");
+				rd.forward(request, response);
+			}
+				
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		}
 	}
 
 }

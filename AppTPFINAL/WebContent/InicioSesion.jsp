@@ -35,7 +35,7 @@
 				<h3>Iniciar Sesion</h3>
 			</div>
 			<div class="card-body">
-				<form action="ServletLogIn" method="get">
+				<form action="ServletLogIn" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -49,23 +49,17 @@
 						<input name="pass" type="password" class="form-control" placeholder="Contraseña">
 					</div>
 					<div class="row align-items-center remember">
-						<input name="recordar"  type="checkbox">Recordar usuario
+						<input name="admin" value="1" type="checkbox">Acceso Administrador
 					</div>
 					<div class="form-group" style="text-align: center;margin-top: 20px">
 						<input name="btnAceptar" type="submit" value="Login" class="btn login_btn">
 					</div>
 					
 					<%
-					if(request.getParameter("btnAceptar") != null){
-						int Estado = 0;
-							if(request.getAttribute("CanFilas")!=null)
-							 	Estado = Integer.parseInt(request.getAttribute("CanFilas").toString());
-							
-							if(Estado == 0) {
+					if(request.getParameter("error") != null){
 								%><div class="row align-items-center remember">
 									El usuario o la contraseña son incorrectas
 								</div><%
-							}
 					}
 					%>
 					
