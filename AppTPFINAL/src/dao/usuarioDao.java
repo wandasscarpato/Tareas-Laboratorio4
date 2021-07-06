@@ -14,4 +14,5 @@ public interface usuarioDao {
 	public boolean insert(usuario usuario);
 	public int ValidarUsuario(String Usuario,String Clave);
 	public int ValidarAdmin(String Usuario, String Clave);
+	public int buscarDNIUsuario(String usuario);
 }

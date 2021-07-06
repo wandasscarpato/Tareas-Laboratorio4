@@ -10,4 +10,5 @@ public interface usuarioNegocio {
 	public boolean modificar (usuario usu);
 	public int ValidarUsuario(String Usuario,String Clave);
 	public int ValidarAdmin(String usuario, String pass);
+	public int buscarDNIUsuario(String usuario);
 }

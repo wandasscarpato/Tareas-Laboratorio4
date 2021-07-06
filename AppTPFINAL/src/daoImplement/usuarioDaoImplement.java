@@ -21,6 +21,7 @@ public class usuarioDaoImplement implements usuarioDao  {
 	private static final String update = "UPDATE usuario SET Pass= ? WHERE DNI= ?";
 	private static final String Verificar = "Select count(DNI) from Usuario where Usuario= ? and Pass= ?";
 	private static final String VerificarAdmin = "Select count(Usuario) from administrador where Usuario= ? and Pass= ?";
+	private static final String ObtenerDNI = "Select DNI from Usuario where Usuario= ?";
 	
 	private conexion cn;
 	
@@ -164,6 +165,27 @@ public class usuarioDaoImplement implements usuarioDao  {
 			ps = Conexion.prepareStatement(VerificarAdmin);
 			ps.setString(1, Usuario);
 			ps.setString(2, Clave);
+			rs = ps.executeQuery();
+			if(rs.next()) 
+			{
+				return rs.getInt(1);
+			}
+			
+			return 0;
+			
+		} catch (SQLException ex) {
+			return 0;
+		}
+	}
+	
+	@Override
+	public int buscarDNIUsuario(String Usuario) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		try {
+			ps = Conexion.prepareStatement(ObtenerDNI);
+			ps.setString(1, Usuario);
 			rs = ps.executeQuery();
 			if(rs.next()) 
 			{

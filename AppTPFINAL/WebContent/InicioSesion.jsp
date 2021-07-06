@@ -54,7 +54,18 @@
 					<div class="form-group" style="text-align: center;margin-top: 20px">
 						<input name="btnAceptar" type="submit" value="Login" class="btn login_btn">
 					</div>
-					
+					<%if(session.getAttribute("TipoLog")=="Administrador"){
+						%><script>
+			        	location.href = "Reportes.jsp";
+			        	</script><%
+					    } else {
+					    	if(session.getAttribute("DNI")!=null){
+					    		%><script>
+					        	location.href = "PerfilCliente.jsp";
+					        	</script><%
+					    	}
+					    }
+				    %>
 					<%
 					if(request.getParameter("error") != null){
 								%><div class="row align-items-center remember">

@@ -23,11 +23,18 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
+
+					<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Cuenta
                   </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="PerfilCliente.jsp">Inicio</a>
+                    <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
+                  </div>
+                </li>
+				<li class="nav-item dropdown">
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Mis datos</a>
                     <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
@@ -40,8 +47,9 @@
                     Transferencias
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
-                    <a class="dropdown-item" href="#">Historial</a>
+                    <a class="dropdown-item" href="transferencias.jsp">Cuenta</a>
+                    <a class="dropdown-item" href="PerfilCliente.jsp">Inicio</a>
+                    <a class="dropdown-item" href="/ServletLogout">Cerrar sesion</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -63,17 +71,23 @@
                     </div>
                   </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              <div class="form-inline my-2 my-lg-0">
+              <h6>Usuario: <%= session.getAttribute("Usuario") %> DNI: <%= session.getAttribute("DNI") %></h6>
+             </div>
             </div>
           </nav>
     </header>
     <div class="card--modif cm"></div>
     <!--Finaliza el header-->
     <br>
-    
+    <%if(session.getAttribute("TipoLog")!="Administrador" && session.getAttribute("DNI")!=null){
+    } else {%>
+	    	<script>
+	    	location.href = "InicioSesion.jsp";
+	    	</script>
+    	<%
+    }
+    %>
    <form class="Form" >
     <div >
     <b><h2 class="Centar-Izquierda"><u>Mi Perfil</u></h2></b>
@@ -183,4 +197,13 @@
 
 
 </body>
+
+<script type="text/javascript"
+src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+crossorigin="anonymous"></script>
 </html>

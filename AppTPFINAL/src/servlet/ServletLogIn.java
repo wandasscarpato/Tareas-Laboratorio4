@@ -30,10 +30,9 @@ public class ServletLogIn extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int Estado = 0;
-		session = request.getSession();
-		
-		
-		
+		int DNI = 0;
+		session = request.getSession(true);
+
 		if(request.getParameter("admin")!=null) {
 				
 				usuarioNegocio udao = new usuarioNegocioImplement();
@@ -57,7 +56,10 @@ public class ServletLogIn extends HttpServlet {
 			String Pass = request.getParameter("pass").toString();
 			Estado = udao.ValidarUsuario(Usuario,Pass);
 			if(Estado!=0) {
+				DNI = udao.buscarDNIUsuario(Usuario);
 				session.setAttribute("TipoLog", "Usuario");
+				session.setAttribute("DNI", DNI);
+				session.setAttribute("Usuario", Usuario);
 				response.sendRedirect("PerfilCliente.jsp");
 			}else {
 				session.setAttribute("TipoLog", "");

@@ -43,5 +43,10 @@ public class usuarioNegocioImplement implements usuarioNegocio {
 	public int ValidarAdmin(String Usuario, String Clave) {
 		return usuDao.ValidarAdmin(Usuario, Clave);
 	}
+	
+	@Override
+	public int buscarDNIUsuario(String Usuario) {
+		return usuDao.buscarDNIUsuario(Usuario);
+	}
 
 }
