@@ -127,6 +127,20 @@
 		</ul>
 	</div>
 	</footer>
+	<%if(session.getAttribute("TipoLog")=="Administrador"){
+    } else {
+    	if(session.getAttribute("DNI")!=null){
+    		%><script>
+        	location.href = "PerfilCliente.jsp";
+        	</script><%
+    	} else {%>
+	    	<script>
+	    	location.href = "InicioSesion.jsp";
+	    	</script>
+    	<%}
+    }
+    %>
+	
 </body>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -144,33 +158,7 @@
 </script>
 <script>
 function validar(){
-	//event.preventDefault();
 	
-    //var form = $('input[type=submit]').closest("form");
-	//swal({title: "Esta seguro que desea autorizar este prestamo?", text: "", icon: "warning",buttons: true,dangerMode: true})
-		/*swal("Esta seguro que desea autorizar este prestamo?", {
-		  buttons: {
-		    cancel: false,
-		    catch: {
-		      text: "Cancelar",
-		      value: false,
-		    },
-		    autorizar: true,
-		  },
-		  dangerMode: true,
-		}).then((willDelete) => {
-		  if (willDelete) {
-			 return true;
-		    swal("Prestamo autorizado!", {
-		      icon: "success",
-		    });
-		    form.submit();
-		  } else {
-		    swal("No se autorizo el prestamo!");
-		    
-		    return false;
-		  }
-		})*/
 		var btn = confirm("Esta seguro que desea autorizar?")
 		if(btn==true){
 			return true;

@@ -72,7 +72,7 @@
                   </li>
               </ul>
               <div class="form-inline my-2 my-lg-0">
-              <h6>Usuario: <%= session.getAttribute("Usuario") %> DNI: <%= session.getAttribute("DNI") %></h6>
+              <h6>Usuario: <%= session.getAttribute("Usuario") %> <!--  DNI: <%= session.getAttribute("DNI") %> --></h6>
              </div>
             </div>
           </nav>
@@ -194,6 +194,19 @@
             </ul>
         </div>
     </footer>
+<%if(session.getAttribute("TipoLog")=="Administrador"){
+    } else {
+    	if(session.getAttribute("DNI")!=null){
+    		%><script>
+        	location.href = "PerfilCliente.jsp";
+        	</script><%
+    	} else {%>
+	    	<script>
+	    	location.href = "InicioSesion.jsp";
+	    	</script>
+    	<%}
+    }
+    %>
 
 
 </body>

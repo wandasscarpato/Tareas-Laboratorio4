@@ -181,6 +181,19 @@
             </ul>
         </div>
     </footer>
+<%if(session.getAttribute("TipoLog")=="Administrador"){
+    } else {
+    	if(session.getAttribute("DNI")!=null){
+    		%><script>
+        	location.href = "PerfilCliente.jsp";
+        	</script><%
+    	} else {%>
+	    	<script>
+	    	location.href = "InicioSesion.jsp";
+	    	</script>
+    	<%}
+    }
+    %>
 
 
 </body>
