@@ -48,7 +48,7 @@ public class ServletSolicitarPrestamo extends HttpServlet {
     	String SelectCuenta = "";
     	
     	if(!(listarCuentas.isEmpty())) {
-	    	
+    		
 	    	for(cuenta cuen: listarCuentas){
 	    		String tipo="";
 	    		if(Integer.parseInt(cuen.getTipo())==1) {
@@ -63,7 +63,7 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 	    		if(Integer.parseInt(cuen.getTipo())==4) {
 	    			tipo="Cta cte en USD";
 	    		}
-	    		SelectCuenta +="<option value="+'"'+ cuen.getN_Cuenta() +'"'+ ">" +"tipo:" + tipo +" ,Nro "+ cuen.getCBU() +", saldo actual "+cuen.getSaldo()+"</option>";
+	    		SelectCuenta +="<option value="+'"'+ cuen.getN_Cuenta() +'"'+ ">" + tipo +" ,CBU "+ cuen.getCBU() +", saldo actual "+cuen.getSaldo()+"</option>";
 			}
     	}else{
     		SelectCuenta = null;
@@ -105,10 +105,10 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 		pres.setN_cuentaADepositar(Integer.parseInt(request.getParameter("cuentas")));
 		if(prestamoNeg.insert(pres)) {
 			//me redirije
-			response.sendRedirect("solicitarPrestamo.jsp?Status=true");
+			response.sendRedirect("ServletSolicitarPrestamo?Status=true");
 		} else {
 			//me redirije
-			response.sendRedirect("solicitarPrestamo.jsp?Status=false");
+			response.sendRedirect("ServletSolicitarPrestamo?Status=false");
 		}
 	}
 

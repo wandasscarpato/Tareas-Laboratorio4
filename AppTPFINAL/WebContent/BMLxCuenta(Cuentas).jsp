@@ -90,7 +90,7 @@
                   </div>
             </div>
 			<p></p>
-			<table style="margin: 0 auto;" border="1">	
+			<table id="tablaCuenta"style="margin: 0 auto;" border="1">	
 			<tr>
 				<td><strong>DNI</strong></td>
 				<td><strong>Tipo</strong></td>
