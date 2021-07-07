@@ -2,6 +2,7 @@ package servlet;
 
 import java.awt.Window;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 
+import entidad.AceptarCuenta;
 import entidad.cuenta;
 import entidad.usuario;
 import negocio.cuentaNegocio;
@@ -233,5 +235,16 @@ public class ServletCuenta extends HttpServlet {
 				      RequestDispatcher dispatcher = request.getRequestDispatcher("ServletMovimientos?btnList");
 				      dispatcher.forward((ServletRequest)request, (ServletResponse)response);
 				    } 
+				
+				if(request.getParameter("btnCargar")!=null) {
+					cuentaNegocio cNeg = new cuentaNegocioImplement();
+					ArrayList<AceptarCuenta> ListarAceptarCuenta = cNeg.listarAceptarCuentas();
+					
+					request.setAttribute("ListarC", ListarAceptarCuenta);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/AceptarCuentas(Admin).jsp");
+					rd.forward(request, response);
+				 }
+				
 	}
 }

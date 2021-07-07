@@ -1,3 +1,6 @@
+<%@page import="entidad.*"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -89,6 +92,8 @@
 		<h1>Aceptar Cuentas</h1>
 
 
+		<form class="form-divModContra" method= "post" action="ServletCuenta">
+
 		<table id="tablaClientes" class="tablaClientes display" border="1">
 			<thead>
 				<tr>
@@ -98,30 +103,32 @@
 				</tr>
 			<thead>
 			<tbody>
-
-
 				<%
-					prestamosDaoImplement pDao = new prestamosDaoImplement();
-					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pDao.listarPrestamos();
-
-					for (n_prestamo presta : listaPrestamos) {
-				%>
+				List<AceptarCuenta> ListarCuenta = new ArrayList<AceptarCuenta>();
 				
-					<%if(presta.isEstado() != false){ %>
-					<tr>
-					<td><%=presta.getDNI()%></td>
-					<td><%=presta.getImporte_pedido()%></td>
-					<td> Aceptar<input type="radio" name="Estado" value="Aceptar">
-						Rechazar<input type="radio" name="Estado" value="Rechazar"></td>
-					</tr>
-					<%}%>
+					if(request.getAttribute("ListarC")!=null){	
+						ListarCuenta = (List<AceptarCuenta>)request.getAttribute("ListarC");
+						System.out.print("Anda mierda-----");
+						for (AceptarCuenta User : ListarCuenta) {
 					
-				
-				<%
+							if(User.isEstado() != true){ %>
+						<tr>
+							<td><%=User.getDNI()%></td>
+							<td><%=User.getTipo()%></td>
+							<td> Aceptar<input type="radio" name="Estado" value="Aceptar">
+								Rechazar<input type="radio" name="Estado" value="Rechazar"></td>
+						</tr>
+						<%}	
+							
+						}
 					}
+					
 				%>
 			</tbody>
 		</table>
+		<input type="submit" value="Aceptar Cambios" name="btnAceptar">
+		<input type="submit" value="Cargar Lista" name="btnCargar">
+</form>
 
 <input type="submit" value="Aceptar Cambios" name="btnAceptar">
 <input type="submit" value="Cancelar Cambios" name="btnCancelar">

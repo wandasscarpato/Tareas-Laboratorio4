@@ -1,10 +1,12 @@
 package negocioImplement;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.cuentaDao;
 import daoImplement.cuentaDaoImplement;
+import entidad.AceptarCuenta;
 import entidad.cuenta;
 import negocio.cuentaNegocio;
 
@@ -73,6 +75,11 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 	
 	public boolean modificarSaldo(cuenta cuenta_m) {
 		return cdao.modificarSaldo(cuenta_m);
+	}
+
+	@Override
+	public ArrayList<AceptarCuenta> listarAceptarCuentas() {
+		return (ArrayList<AceptarCuenta>) cdao.ListarAceptarCuenta();
 	}
 }
 

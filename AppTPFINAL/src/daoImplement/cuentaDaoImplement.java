@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.cuentaDao;
+import entidad.AceptarCuenta;
 import entidad.cuenta;
 
 public class cuentaDaoImplement implements cuentaDao {
@@ -22,6 +23,7 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String updateTipo = "UPDATE cuenta SET Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
 	private static final String updateSaldo = "UPDATE cuenta SET Saldo= ? WHERE CBU= ? OR CBU=?";
 	private static final String ObtenerSaldo = "SELECT Saldo FROM cuenta WHERE N_Cuenta = ? OR CBU=?";
+	private static final String ListarAceptarCuenta = "SELECT `cliente`.`DNI`,`cuenta`.`tipo` from cliente inner join cuenta on `cliente`.`DNI` = `cuenta`.`DNI` where `cliente`.`estado` = 1";
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -297,6 +299,37 @@ public class cuentaDaoImplement implements cuentaDao {
 				return 0;
 			}
 		}
+
+
+	@Override
+	public ArrayList<AceptarCuenta> ListarAceptarCuenta() {
+			PreparedStatement statement;
+	        ResultSet resultSet; //Guarda el resultado de la query
+	        ArrayList<AceptarCuenta> AceptarCuenta = new ArrayList<AceptarCuenta>();
+	        Connection Conexion = conexion.getConexion().getSQLConexion();
+	        try 
+	        {
+	        	
+	            statement = Conexion.prepareStatement(ListarAceptarCuenta);
+	            resultSet = statement.executeQuery();
+	            while(resultSet.next())
+	            {
+	        
+	            	AceptarCuenta AceptarC = new AceptarCuenta();
+	            
+	            	AceptarC.setDNI(resultSet.getInt("DNI"));
+	            	AceptarC.setTipo(resultSet.getString("tipo"));
+		            
+	            	
+	            	AceptarCuenta.add(AceptarC);
+	            }
+	            
+	        } 
+	        catch (SQLException e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        return AceptarCuenta;
+		}
+	}
 	
-	
-}
