@@ -15,8 +15,7 @@ public class prestamosDaoImplement {
 
 	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo`";
 	private static final String estado = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
-	private static final String insert = "INSERT INTO `lab4`.`n_prestamo`(`N_Prestamo`,`DNI`,`importe_intereses`,`importe_pedido`,`plazo`,`montoXMes`,`Cuotas`,`N_CuentaADepositar`,`Estado`)VALUES(?,?,?,?,?,?,?,?,0);\r\n" + 
-			"";
+	private static final String insert = "INSERT INTO `lab4`.`n_prestamo`(`DNI`,`importe_intereses`,`importe_pedido`,`plazo`,`montoXMes`,`Cuotas`,`N_CuentaADepositar`,`Estado`)VALUES(?,?,?,?,?,?,?,0)" ;
 	private static final String listarXdni = "SELECT * FROM n_prestamo WHERE DNI = ?";
 	
 	public boolean insert(n_prestamo prestamo) {
@@ -26,14 +25,13 @@ public class prestamosDaoImplement {
         try
         {
             statement = Conexion.prepareStatement(insert);
-            statement.setInt(1, prestamo.getN_Prestamo());
-            statement.setInt(2, prestamo.getDNI());
-            statement.setFloat(3, prestamo.getImporte_intereses());
-            statement.setFloat(4, prestamo.getImporte_pedido());
-            statement.setInt(5, prestamo.getPlazo());
-            statement.setFloat(6, prestamo.getMontoxMes());
-            statement.setInt(7, prestamo.getCuotas());
-            statement.setInt(8, prestamo.getN_cuentaADepositar());
+            statement.setInt(1, prestamo.getDNI());
+            statement.setFloat(2, prestamo.getImporte_intereses());
+            statement.setFloat(3, prestamo.getImporte_pedido());
+            statement.setInt(4, prestamo.getPlazo());
+            statement.setFloat(5, prestamo.getMontoxMes());
+            statement.setInt(6, prestamo.getCuotas());
+            statement.setInt(7, prestamo.getN_cuentaADepositar());
        
             if(statement.executeUpdate() > 0)
             {
