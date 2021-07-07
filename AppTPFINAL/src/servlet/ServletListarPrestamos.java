@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidad.cuenta;
 import entidad.n_prestamo;
+import negocio.cuentaNegocio;
 import negocio.prestamosNegocio;
 import negocioImplement.PrestamosNegocioImplement;
+import negocioImplement.cuentaNegocioImplement;
 
 
 /**
@@ -50,6 +53,16 @@ public class ServletListarPrestamos extends HttpServlet {
 			
 			ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(123);
 			request.setAttribute("listaPresDni", listaPresDni);
+			
+			cuentaNegocio cNeg = new cuentaNegocioImplement();
+			
+			
+			System.out.print("LLEGA AL SERVLET ALMENOS BRO");
+			
+			ArrayList<cuenta> listaCuentaDni = (ArrayList<cuenta>) cNeg.ObtenerxDni("123");
+			request.setAttribute("listaCuentaDni", listaCuentaDni);
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/PagoCuotas.jsp");
 			rd.forward(request, response);
 			

@@ -83,8 +83,9 @@
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
 		      <p></p>
+		      <form action="ServletListarPrestamos" method="post">
 	<div>
-		<form action="PagoCuotasServlet" method="post">
+		
 			<table id="tablaClientes" class="tablaClientes display" border="1">
 			<thead>
 				<tr>
@@ -93,8 +94,8 @@
 					<th>Intereses</th>
 					<th>Monto por mes</th>
 					<th>Cuotas</th>
-					<th>Plazo</th>
 					<th>Nro de cuenta a Depositar</th>
+					<th>Cuota a pagar</th>
 					<th>Cuenta a pagar</th>
 					<th>PAGAR</th>
 				</tr>
@@ -118,16 +119,18 @@
 					<td><%=presta.getImporte_intereses()%></td>
 					<td><%=presta.getMontoxMes()%></td>
 					<td><%=presta.getCuotas()%></td>
-					<td><%=presta.getPlazo()%></td>
 					<td><%=presta.getN_cuentaADepositar()%></td>
+					<td><input name="cuotasAPagar" type="text" required style="width: ; height: 020"></td>
 					<td><select name="ddlCuentas">
 					
 					<%
 					List<cuenta> listacuentas = new ArrayList<cuenta>();
-					if(request.getAttribute("ListarCuentaPres") != null)
+					if(request.getAttribute("listaCuentaDni") != null)
 					{
 					
-					listacuentas = (List<cuenta>) request.getAttribute("ListarC_Tranfe");
+					System.out.print("HOLA BROTHER");
+					
+					listacuentas = (List<cuenta>) request.getAttribute("listaCuentaDni");
 					for(cuenta cue: listacuentas)
 					{
 					%>
@@ -155,10 +158,11 @@
 				%>
 			</tbody>
 		</table>
-		</form>
+		
      </div>
+     </form>
      <p></p>
-     <input class="btnEnviarAutorizacionP" type="button" value="Pagar">
+     <input class="btnEnviarAutorizacionP" name="btnPagar" type="button" value="Pagar">
       <p></p>
       <!--Comienza el footer-->
     <footer>
