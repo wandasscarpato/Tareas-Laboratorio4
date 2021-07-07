@@ -22,7 +22,6 @@
   <header>
     <a href="index.jsp"><img src="./imgs/logo.png"></a>
     <div class="ingresar">
-    <a href="./registrarse.jsp">Registrarme</a>
     <a href="./InicioSesion.jsp">Iniciar sesion</a>
     </div>
   </header>
@@ -37,11 +36,10 @@
         <br>
         Descubrinos
       </h3>
-      <a href="./registrarse.jsp">
-      <input type="button" value="Registrarse">
+      <a href="InicioSesion.jsp">
+      <input type="button" value="Iniciar sesion">
       </a>
       <br>
-      <a href="InicioSesion.jsp">ya tengo cuenta</a>
     </section>
     </div>
     <div class="index-derecha">

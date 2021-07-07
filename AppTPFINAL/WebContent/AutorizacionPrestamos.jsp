@@ -82,7 +82,6 @@
 					<th>Intereses</th>
 					<th>Monto por mes</th>
 					<th>Cuotas</th>
-					<th>Plazo</th>
 					<th>Nro de cuenta a Depositar</th>
 					<th></th>
 				</tr>

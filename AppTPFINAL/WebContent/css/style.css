@@ -218,17 +218,16 @@ footer ul{
     width: 22.5%;
     border: 1px solid rgb(214, 6, 6);
 }
-form .btnRegistro,.btnAgregarCuenta,.btnTransferir:hover,.btnPrestamo:HOVER{
+form .btnRegistro,.btnAgregarCuenta,.btnTransferir,.btnPrestamo{
 margin: auto;
-border: rgb(216, 9, 9) 2px solid;
 padding: 0.5rem 2rem;
 background-color: white;
 color: rgb(216, 9, 9);
 width: 99.5%;
 transition: 0.5s;
-
+border: red solid 2px;
 }
-form .btnRegistro:hover,.btnAgregarCuenta:hover,.btnTransferir,.btnPrestamo,.btnEnviarAutorizacionP{
+form .btnRegistro:hover,.btnAgregarCuenta:hover,.btnTransferir:hover,.btnPrestamo:hover,.btnEnviarAutorizacionP{
     transform: scale(1.05) ;
     border-color: none;
     background-color: rgb(216, 9, 9);
@@ -310,4 +309,7 @@ form{
 .tablaClientes{
 	width:100%;
 	text-align:center;
+}
+#btnCancelar,#btnSolicitar{
+	border: 1px solid red
 }

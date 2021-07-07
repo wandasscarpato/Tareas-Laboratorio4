@@ -102,7 +102,6 @@
 					<th>Intereses</th>
 					<th>Monto por mes</th>
 					<th>Cuotas</th>
-					<th>Plazo</th>
 					<th>Nro de cuenta a Depositar</th>
 				</tr>
 			<thead>
@@ -124,7 +123,6 @@
 					<td><%=presta.getImporte_intereses()%></td>
 					<td><%=presta.getMontoxMes()%></td>
 					<td><%=presta.getCuotas()%></td>
-					<td><%=presta.getPlazo()%></td>
 					<td><%=presta.getN_cuentaADepositar()%></td>
 					</tr>
 					<%}%>

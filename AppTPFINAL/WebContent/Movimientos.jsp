@@ -52,7 +52,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Mis prestamos</a>
+                    <a class="dropdown-item" href="ServletSolicitarPrestamo">Mis prestamos</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">

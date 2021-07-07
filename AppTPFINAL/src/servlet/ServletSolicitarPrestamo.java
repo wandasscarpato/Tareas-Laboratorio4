@@ -40,9 +40,41 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		session = request.getSession(true);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		List<cuenta> listarCuentas = new ArrayList<cuenta>();
+    	cuentaNegocioImplement cNeg = new cuentaNegocioImplement();
+    	listarCuentas = cNeg.ObtenerxDni(session.getAttribute("DNI").toString());
     	
+    	String SelectCuenta = "";
+    	
+    	if(!(listarCuentas.isEmpty())) {
+	    	
+	    	for(cuenta cuen: listarCuentas){
+	    		String tipo="";
+	    		if(Integer.parseInt(cuen.getTipo())==1) {
+	    			tipo="Caja de ahorro $";
+	    		}
+	    		if(Integer.parseInt(cuen.getTipo())==2) {
+	    			tipo="Caja de ahorro USD";
+	    		}
+	    		if(Integer.parseInt(cuen.getTipo())==3) {
+	    			tipo="Cta cte en pesos";
+	    		}
+	    		if(Integer.parseInt(cuen.getTipo())==4) {
+	    			tipo="Cta cte en USD";
+	    		}
+	    		SelectCuenta +="<option value="+'"'+ cuen.getN_Cuenta() +'"'+ ">" +"tipo:" + tipo +" ,Nro "+ cuen.getCBU() +", saldo actual "+cuen.getSaldo()+"</option>";
+			}
+    	}else{
+    		SelectCuenta = null;
+    	}
+    	
+    	request.setAttribute("SelectCuenta",SelectCuenta);
+    	
+    	//System.out.println(SelectCuenta);
+
+    	RequestDispatcher rd = request.getRequestDispatcher("solicitarPrestamo.jsp");
+    	rd.forward(request, response);
 	}
 
 	/**
@@ -50,14 +82,11 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
 		/*INVIO DE FORMULARIO CON LOS DATOS*/
 		PrestamosNegocioImplement prestamoNeg = new PrestamosNegocioImplement();
 		n_prestamo pres = new n_prestamo();
 		//guardo el monto solicitado
-		float inicial=(Integer.parseInt(request.getParameter("monto")));
+		float inicial=Float.parseFloat(request.getParameter("monto"));
 		//guardo la cantidad de cuotas
 		int cuo=(Integer.parseInt(request.getParameter("cuotas")));
 		//
@@ -67,10 +96,8 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 		
 		float mensual= montoFinal/12;
 		
-		int plazo=cuo/12;
 		
 		pres.setMontoxMes(mensual);
-		pres.setPlazo(plazo);
 		pres.setImporte_intereses(montoint);
 		pres.setDNI(Integer.parseInt(request.getParameter("dni")));
 		pres.setImporte_pedido(inicial);

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <title>Document</title>
+    <title>SOLICITAR PRESTAMO</title>
 </head>
 <body>
     <header>
@@ -56,7 +56,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Solicitar prestamo</a> 
+                    <a class="dropdown-item" href="ServletSolicitarPrestamo">Solicitar prestamo</a> 
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -84,7 +84,7 @@
         <div>
           <form action="ServletSolicitarPrestamo" method="post" onsubmit="return validarNumeroYEnvio();" class="formulario-prestamo">
             <label for="">Ingresar monto que desee solicitar</label>           
-            <input type="number" id="monto"name="monto" required>
+            <input id="monto"name="monto" required>
             <label>Ingrese la cantidad de cuotas</label>           
             <input type="number" name="cuotas" required>
             
@@ -92,12 +92,12 @@
             <label>Seleccione una cuenta en la cual recibirlo</label>            
             <div class="card--modif cm1"></div>
             <input name="dni" value="<%= session.getAttribute("DNI") %>" type="hidden">
-            <select name="cuentas" required>
+            <select name="cuentas" id="cuentasSelect" required>
                 <%=request.getAttribute("SelectCuenta") %>
               </select>
             <br>
-            <input type="reset" class="btnPrestamo" value="CANCELAR">
-            <input type="submit" class="btnPrestamo" value="SOLICITAR">
+            <input type="reset" class="btnPrestamo" id="btnCancelar" value="CANCELAR">
+            <input type="submit" class="btnPrestamo" id="btnSolicitar" value="SOLICITAR">
           </form>
         </div>
         <div class="card--modif cm"></div>
@@ -175,6 +175,15 @@
     }
 }
 %>
+
+<%if(request.getAttribute("SelectCuenta")==null){%>
+	<script>
+		document.getElementById("cuentasSelect").disabled = true;
+		// FUNCA LO DE BLOQUEAR EL BOTON PORQUE SINO ME DIRIA LO DE LAS VALIDACIONES, PERO NO
+		// TE DAS CUENTA QUE ESTA DESHABILITADO POR EL ESTILO
+		document.getElementById("btnSolicitar").disabled = true;
+   	</script>
+<%}%>
 <script>
 function validarNumeroYEnvio(){
 	var importe=document.getElementById("monto").value;

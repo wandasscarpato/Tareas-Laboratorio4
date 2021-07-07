@@ -40,7 +40,6 @@ public class ServletAutorizarPrestamos extends HttpServlet {
 				tabla +="<td>" + presta.getImporte_intereses() + "</td>";
 				tabla +="<td>" + presta.getMontoxMes() + "</td>";
 				tabla +="<td>" + presta.getCuotas() + "</td>";
-				tabla +="<td>" + presta.getPlazo() + "</td>";
 				tabla +="<td>" + presta.getN_cuentaADepositar() + "</td>";
 				tabla +="<td><input class=" + '"' + "btnEnviarAutorizacionP" + '"'+ "name=" + '"' + "btnAutorizar" + '"' + "type=" + '"' + "submit" + '"' + "value=" + '"' + "Autorizar" + '"' + "></td></form></tr>";
 			

@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
 
-    <title>Document</title>
+    <title>MIS CUENTAS!</title>
 </head>
 <body>
     <header>
@@ -55,7 +55,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Solicitar prestamo</a> 
+                    <a class="dropdown-item" href="ServletSolicitarPrestamo">Solicitar prestamo</a> 
                   </div>
                 </li>
                 <li class="nav-item dropdown">

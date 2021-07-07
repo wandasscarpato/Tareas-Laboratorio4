@@ -182,3 +182,11 @@ h6.usuarioLogueado{
     font-size: 2rem!important;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
 }
+body {
+    text-align: center!important;
+}
+.errorIngreso{
+	background-color:red;
+	color:white;
+	padding:0.5rem
+}

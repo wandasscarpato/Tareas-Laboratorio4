@@ -65,7 +65,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Solicitar prestamo</a> 
+                    <a class="dropdown-item" href="ServletSolicitarPrestamo">Solicitar prestamo</a> 
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -88,7 +88,7 @@
     <!--Finaliza el header-->
     <br>
    <section class="sectionTiposDeCuenta">
-        <div class="tiposDeCuentas">
+        <div class="tiposDeCuentas tiposDeCuentas--modif">
 			<div>
 			<%
 			List<cliente> lista = new ArrayList<cliente>();

@@ -33,7 +33,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="PerfilCliente.jsp">Mis datos</a>
-                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
+                    <a class="dropdown-item" href="ServletLogIn">Mis cuentas</a>
                     <a class="dropdown-item" href="#">Agregar cuenta</a>
                   </div>
                 </li>
@@ -55,7 +55,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Mis prestamos</a>
+                    <a class="dropdown-item" href="ServletSolicitarPrestamo">Mis prestamos</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
