@@ -67,9 +67,14 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 		return cdao.modificarTipo(cue);
 	}
 
-	
-	
+	public double ObtenerSaldo(cuenta cuenta_m) {
+		return cdao.ObtenerSaldo(cuenta_m);
 	}
+	
+	public boolean modificarSaldo(cuenta cuenta_m) {
+		return cdao.modificarSaldo(cuenta_m);
+	}
+}
 
 	
 	

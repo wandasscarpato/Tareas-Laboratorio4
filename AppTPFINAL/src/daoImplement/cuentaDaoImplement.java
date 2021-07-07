@@ -20,6 +20,8 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String eliminar = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ?";
 	private static final String updateEstado = "UPDATE cuenta SET Estado= ? WHERE N_Cuenta= ? AND DNI= ?";
 	private static final String updateTipo = "UPDATE cuenta SET Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
+	private static final String updateSaldo = "UPDATE cuenta SET Saldo= ? WHERE CBU= ? OR CBU=?";
+	private static final String ObtenerSaldo = "SELECT Saldo FROM cuenta WHERE N_Cuenta = ? OR CBU=?";
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -222,6 +224,33 @@ public class cuentaDaoImplement implements cuentaDao {
 			} 
 		return isInsertExitoso;
 	}
+	
+	public boolean modificarSaldo(cuenta cuenta_m) {
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean isInsertExitoso = false;
+		try {
+			statement = Conexion.prepareStatement(updateSaldo);
+			statement.setDouble(1, cuenta_m.getSaldo());
+			statement.setInt(2, cuenta_m.getN_Cuenta());
+			statement.setInt(3, cuenta_m.getCBU());
+			
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				isInsertExitoso = true;
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				try {
+					Conexion.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} 
+		return isInsertExitoso;
+	}
+	
 	public boolean modificarTipo(cuenta cuenta_m) {
 		PreparedStatement statement;
 		Connection Conexion = conexion.getConexion().getSQLConexion();
@@ -248,4 +277,26 @@ public class cuentaDaoImplement implements cuentaDao {
 			} 
 		return isInsertExitoso;
 	}
+
+	public double ObtenerSaldo(cuenta cuenta_m) {
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		try {
+			statement = Conexion.prepareStatement(ObtenerSaldo);
+			statement.setInt(1, cuenta_m.getN_Cuenta());
+			statement.setInt(2, cuenta_m.getCBU());
+			ResultSet rs = statement.executeQuery();
+			
+			if(rs.next())
+			{
+				return rs.getDouble("Saldo");
+			}
+			
+			return 0;
+			} catch (SQLException ex) {
+				return 0;
+			}
+		}
+	
+	
 }

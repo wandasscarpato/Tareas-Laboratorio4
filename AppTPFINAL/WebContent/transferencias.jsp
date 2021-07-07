@@ -1,3 +1,7 @@
+<%@page import="entidad.cuenta"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="negocioImplement.cuentaNegocioImplement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,20 +21,20 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+  <header>
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-
-					<li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Inicio
+                    Cuenta
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PerfilCliente.jsp">Mi cuenta</a>
-                    <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
+                    <a class="dropdown-item" href="PerfilCliente.jsp">Mis datos</a>
+                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
+                    <a class="dropdown-item" href="#">Agregar cuenta</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -38,20 +42,12 @@
                     aria-haspopup="true" aria-expanded="false">
                     Transferencias
                   </a>
+                  <form class="form-divModContra" method= "post" action="ServletCuenta">
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
+                  <button class="dropdown-item" name="btnTranferir_H">Tranferir</button>
+                    <a class="dropdown-item" href="#">Historial</a>
                   </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Cuentas
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
-                    <a class="dropdown-item" href="#">Solicitar cuentas</a>
-                   
-                  </div>
+                  </form>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -59,7 +55,7 @@
                     Prestamos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Solicitar prestamo</a> 
+                    <a class="dropdown-item" href="solicitarPrestamo.jsp">Mis prestamos</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -68,42 +64,48 @@
                       Menu de pagos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis prestamos</a>
+                      <a class="dropdown-item" href="#">Pagos</a>
                     </div>
                   </li>
               </ul>
-              <div class="form-inline my-2 my-lg-0">
-              <h6 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size:2rem; color:red"class="usuarioLogueado">Usuario: <%= session.getAttribute("Usuario") %> <!--  DNI: <%= session.getAttribute("DNI") %> --></h6>
-             </div>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
             </div>
           </nav>
     </header>
-   
-    
       <!--Finaliza el header-->
       <section class="transacciones">
         <h1>Transferir</h1>
         <div class="card--modif cm2"></div>
         <div>
-          <form action="" class="formulario-transaccion">
+          <form method="post" action="ServletCuenta" class="formulario-transaccion">
+            <!-- Empieza el DROP DOWN -->
             <label for="">Seleccione la cuenta desde la cual transferir</label>
-            <select>
-              <option value="">Cta corriente 39493932 Disponible $33000</option>
-              <option value="">Caja de ahorros 2894922 Disponible $53000</option>
-              <option value="">Caja de ahorros 39994930 Disponible $13000</option>
+            <select name = "ddlCuentas" requerid>
+              <%
+        			List<cuenta> listacuentas = new ArrayList<cuenta>();
+              		if(request.getAttribute("ListarC_Tranfe") != null){
+            		listacuentas = (List<cuenta>) request.getAttribute("ListarC_Tranfe");
+            			for(cuenta cue: listacuentas){%>
+            			<option value ="<%=cue.getN_Cuenta() %>">Tipo de cuenta: <%= cue.getTipo()%> CBU: <%=cue.getCBU()%> DISPONIBLE $<%=cue.getSaldo() %></option>
+            			<%}
+            		}%>
             </select>
+            <!-- Termina el DROP DOWN -->
             <br>
             <label>Ingrese el CBU del destinatario</label>            <br>
-
-            <input type="number">
+			<!-- DEFINIR EL MAXIMO Y MINIMO DEL CBU -->
+            <input type="number" name="txtCBU_T">
             <br>
             <label>Ingrese monto que desea transferir</label>            <br>
             <div class="card--modif cm1"></div>
-            <input type="number">
+            <input type="number" name="txtMonto_T">
             <br>
-            <input type="reset" class="btnTransferir" value="CANCELAR">
-            <input type="submit" class="btnTransferir" value="TRANSFERIR">
-          </form>
+            <input type="reset" class="btnCancelar" value="CANCELAR">
+            <input type="submit" class="btnTransferir" name="btnTrans" value="TRANSFERIR">
+            </form>
         </div>
         <div class="card--modif cm"></div>
       </section>
@@ -167,25 +169,14 @@
             </ul>
         </div>
     </footer>
-    <%if(session.getAttribute("TipoLog")=="Usuario"){
-} else {
-    if(session.getAttribute("TipoLog")=="Administrador"){
-        %><script>
-        location.href = "Reportes.jsp";
-        </script><%
-    } else {
-        %><script>
-        location.href = "InicioSesion.jsp?NoLog=1&Redirect=PAGINAINTENTOENTRAR";
-        </script><%
-    }
-}
-%>
-    
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
+<script>
+var e = document.getElementById("ddlCuentas");
+var strUser = e.value;
+</script>
 
 </html>

@@ -11,7 +11,9 @@ public interface cuentaDao {
 	public boolean eliminar(cuenta cuenta_a_modificar);
 	public boolean modificarEstado(cuenta cuenta_a_modificar);
 	public boolean modificarTipo(cuenta cuenta_modificar);
+	public boolean modificarSaldo(cuenta cuenta_m);
 	public List<cuenta> ObtenerxDni(String dni);
 	public List<cuenta> readAll();
+	public double ObtenerSaldo(cuenta cuenta_m);
 
 }

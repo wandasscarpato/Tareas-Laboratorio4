@@ -13,4 +13,7 @@ public interface cuentaNegocio {
 	public boolean eliminar (cuenta usu);
 	public boolean modificarEstado (cuenta usu);
 	public boolean modificarTipo (cuenta usu);
+	public boolean modificarSaldo(cuenta cuenta_m);
+	public double ObtenerSaldo(cuenta cuenta_m);
+	
 }
