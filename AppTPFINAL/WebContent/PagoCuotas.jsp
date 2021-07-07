@@ -1,3 +1,4 @@
+<%@page import="com.sun.org.apache.bcel.internal.generic.Select"%>
 <%@page import="entidad.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -94,6 +95,7 @@
 					<th>Cuotas</th>
 					<th>Plazo</th>
 					<th>Nro de cuenta a Depositar</th>
+					<th>Cuenta a pagar</th>
 					<th>PAGAR</th>
 				</tr>
 			<thead>
@@ -118,6 +120,30 @@
 					<td><%=presta.getCuotas()%></td>
 					<td><%=presta.getPlazo()%></td>
 					<td><%=presta.getN_cuentaADepositar()%></td>
+					<td><select name="ddlCuentas">
+					
+					<%
+					List<cuenta> listacuentas = new ArrayList<cuenta>();
+					if(request.getAttribute("ListarCuentaPres") != null)
+					{
+					
+					listacuentas = (List<cuenta>) request.getAttribute("ListarC_Tranfe");
+					for(cuenta cue: listacuentas)
+					{
+					%>
+					
+					<option value ="<%=cue.getN_Cuenta() %>">Tipo de cuenta: <%= cue.getTipo()%> CBU: <%=cue.getCBU()%> DISPONIBLE $<%=cue.getSaldo() %></option>
+					
+					<%
+					}
+					
+					}
+					
+					%>
+					 
+			
+					
+					</select></td>
 					<td><a href= "#"> PAGAR</td>
 					</tr>
 					<%}%>
