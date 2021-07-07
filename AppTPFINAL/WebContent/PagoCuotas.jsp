@@ -1,3 +1,6 @@
+<%@page import="entidad.*"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -64,7 +67,9 @@
                       Menu de pagos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis prestamos</a>
+                    <form method= "post" action="ServletListarPrestamos">
+                    <button class="dropdown-item" name="btnListarPrestamos">Mis Prestamos</button>
+                    </form>
                     </div>
                   </li>
               </ul>
@@ -96,9 +101,11 @@
 
 
 				<%
-					prestamosNegocio pNeg = new prestamosNegocioImplement();
-					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pNeg.listarPrestamosxDni(123);
-
+					List <n_prestamo> listaPrestamos = new ArrayList <n_prestamo>();
+					if(request.getAttribute("listaPresDni")!=null){
+					
+					listaPrestamos = (List<n_prestamo>)request.getAttribute("listaPresDni");
+					
 					for (n_prestamo presta : listaPrestamos) {
 				%>
 				
@@ -117,6 +124,7 @@
 					
 				
 				<%
+				}
 					}
 				%>
 			</tbody>

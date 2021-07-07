@@ -103,6 +103,7 @@ public class prestamosDaoImplement {
         try 
         {
             statement = Conexion.prepareStatement(listarXdni);
+            statement.setInt(1, dni);
             resultSet = statement.executeQuery();
             while(resultSet.next())
             {
@@ -119,8 +120,7 @@ public class prestamosDaoImplement {
             	prestamoRs.setN_cuentaADepositar(resultSet.getInt("N_cuentaADepositar"));
             	prestamoRs.setEstado(resultSet.getBoolean("Estado"));
             	
-            	statement.setInt(1, dni);
-	            
+            	
             	n_prestamo.add(prestamoRs);
 
             }
