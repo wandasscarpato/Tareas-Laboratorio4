@@ -35,7 +35,9 @@
                     Inicio
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PerfilCliente.jsp">Mi cuenta</a>
+                    <form method="post" action="ServletCliente">
+                    <button class="dropdown-item" name="btnList">Mis datos</button>
+                </form>
                     <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
                   </div>
                 </li>
@@ -55,7 +57,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
-                    <a class="dropdown-item" href="#">Solicitar cuentas</a>
+                    <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
                    
                   </div>
                 </li>
@@ -74,7 +76,7 @@
                       Menu de pagos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis prestamos</a>
+                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis pagos</a>
                     </div>
                   </li>
               </ul>

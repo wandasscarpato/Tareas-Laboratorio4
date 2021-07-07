@@ -13,7 +13,7 @@
     <title>MIS CUENTAS!</title>
 </head>
 <body>
-    <header>
+       <header>
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,7 +25,7 @@
                     Inicio
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PerfilCliente.jsp">Mi cuenta</a>
+                    <a class="dropdown-item" href="ServletLogIn">Mis datos</a>
                     <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
                   </div>
                 </li>
@@ -45,7 +45,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
-                    <a class="dropdown-item" href="#">Solicitar cuentas</a>
+                    <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
                    
                   </div>
                 </li>
@@ -64,7 +64,7 @@
                       Menu de pagos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis prestamos</a>
+                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis pagos</a>
                     </div>
                   </li>
               </ul>

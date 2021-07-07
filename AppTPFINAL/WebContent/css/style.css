@@ -310,6 +310,6 @@ form{
 	width:100%;
 	text-align:center;
 }
-#btnCancelar,#btnSolicitar{
+#btnCancelar,#btnSolicitar,#btnTrans{
 	border: 1px solid red
 }

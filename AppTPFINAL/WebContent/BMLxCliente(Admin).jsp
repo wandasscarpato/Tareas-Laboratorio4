@@ -25,7 +25,7 @@
     <title>Document</title>
 </head>
 <body>
-<header>
+	<header>
     <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -71,7 +71,10 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
                 <a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
-              </div>
+                <form method="post" action="ServletUsuario">
+                    <button class="dropdown-item" name="btnList">Cambio de contraseñas</button>
+                </form>
+            </div>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
