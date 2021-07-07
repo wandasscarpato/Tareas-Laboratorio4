@@ -29,7 +29,7 @@ public class prestamosDaoImplement {
             statement.setFloat(2, prestamo.getImporte_intereses());
             statement.setFloat(3, prestamo.getImporte_pedido());
             statement.setFloat(4, prestamo.getMontoxMes());
-            statement.setInt(4, prestamo.getCuotas());
+            statement.setInt(5, prestamo.getCuotas());
             statement.setInt(6, prestamo.getN_cuentaADepositar());
        
             if(statement.executeUpdate() > 0)

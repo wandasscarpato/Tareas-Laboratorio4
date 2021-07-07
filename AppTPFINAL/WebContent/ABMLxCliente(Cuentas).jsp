@@ -142,22 +142,7 @@
 		</form>
 	</div>
 	<p></p>
-	<section class="sectionMenuDeCuentas">
-	<div class="menuDeCuentas">
-		<div>
-			<input class="btnMenuDeCuentas" type="button"
-				value="Dar de alta nueva cuenta">
-		</div>
-		<div>
-			<input class="btnMenuDeCuentas" type="button"
-				value="Dar de baja cuenta seleccionada">
-		</div>
-		<div>
-			<input class="btnMenuDeCuentas" type="button"
-				value="Modificar cuenta seleccionada">
-		</div>
-	</div>
-	</section>
+
 	<!--Comienza el footer-->
 	<footer>
 	<div>

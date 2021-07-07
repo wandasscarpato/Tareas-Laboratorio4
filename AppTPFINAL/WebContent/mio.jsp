@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
+    
+    
+    <link rel="stylesheet" href="./css/cssDali.css">
     <link rel="stylesheet" href="./css/style.css">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    
 
-    <title>SOLICITAR PRESTAMO</title>
+    <title>Document</title>
 </head>
 <body>
-        <header>
+      <header>
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -77,35 +81,41 @@
             </div>
           </nav>
     </header>
+    <div class="card--modif cm"></div>
+      <!--Finaliza el header-->
     
-     <!--Finaliza el header-->
-      <section class="prestamo">
-        <h1>Solicitar prestamo</h1>
-        <div class="card--modif cm2"></div>
-        <div>
-          <form action="ServletSolicitarPrestamo" method="post" onsubmit="return validarNumeroYEnvio();" class="formulario-prestamo">
-            <label for="">Ingresar monto que desee solicitar</label>           
-            <input type="number" step="0.01" id="monto" name="monto" min="1" required>
-            <label>Ingrese la cantidad de cuotas</label>           
-            <input type="number" name="cuotas" min="1" max="36" required>
-            
-            <br>
-            <label>Seleccione una cuenta en la cual recibirlo</label>            
-            <div class="card--modif cm1"></div>
-            <input name="dni" value="<%= session.getAttribute("DNI") %>" type="hidden">
-            <select name="cuentas" id="cuentasSelect" required>
-                <%=request.getAttribute("SelectCuenta") %>
-              </select>
-            <br>
-            <input type="reset" class="btnPrestamo" id="btnCancelar" value="CANCELAR">
-            <input type="submit" class="btnPrestamo" id="btnSolicitar" value="SOLICITAR">
-          </form>
-        </div>
-        <div class="card--modif cm"></div>
-      </section>
-     <!--Empieza footer-->
+      
+      <div class="registrarse">
+      
+      <h1>Nueva Cuenta</h1> <br>
+      
+      
+      <form class="form-div">
+       <label for="">Tipo de cuenta</label>
+                    <select class="cuenta" name="TipoCuenta" id="">
+                        <option value="">Caja de ahorro</option>
+                        <option value="">Cuenta corriente</option>
+                        
+                    </select><br>
+      
+      <label for="">Tipo de moneda</label>
+                    <select class="cuenta" name="TipoMoneda" id="">
+                        <option value="">ARS</option>
+                        <option value="">USD</option>
+                       
+                    </select><br><br>
+                    
+        <input class="btnRegistro" type="submit" value="Crear Cuenta">             
+                    
+                    
+      </form>
+      </div>
+      
+      <div class="card--modif cm2"></div>
+      <div class="card--modif cm3"></div>
+
       <!--Comienza el footer-->
-      <footer>
+    <footer>
         <div>
             <span>Navegacion</span>
             <ul>
@@ -163,57 +173,7 @@
             </ul>
         </div>
     </footer>
-    <%if(session.getAttribute("TipoLog")=="Usuario"){
-} else {
-    if(session.getAttribute("TipoLog")=="Administrador"){
-        %><script>
-        location.href = "Reportes.jsp";
-        </script><%
-    } else {
-        %><script>
-        location.href = "InicioSesion.jsp?NoLog=1&Redirect=PAGINAINTENTOENTRAR";
-        </script><%
-    }
-}
-%>
-
-<%if(request.getAttribute("SelectCuenta")==null){%>
-	<script>
-		document.getElementById("cuentasSelect").disabled = true;
-		// FUNCA LO DE BLOQUEAR EL BOTON PORQUE SINO ME DIRIA LO DE LAS VALIDACIONES
-		document.getElementById("btnSolicitar").disabled = true;
-   	</script>
-<%}%>
-<script>
-function validarNumeroYEnvio(){
-	var importe=document.getElementById("monto").value;
-	if(isNaN(importe)){
-		console.log("importe invalido")
-		swal("El importe solicitado no es valido","","error");
-		return false
-
-	}else{
-		var btn = confirm("Esta seguro que desea solicitar?")
-		if(btn==true){
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
-</script>
 </body>
-<script>
-document.getElementById("cuentasSelect").selectedIndex = -1;
-var queryString = window.location.search;
-var urlParams = new URLSearchParams(queryString);
-var ParamStatus = urlParams.get('Status');
-if(ParamStatus == "true"){
-	swal("Prestamo solicitado correctamente", "", "success");
-}else if(ParamStatus == "false"){ 
-	swal("Hubo un error al solicitar el prestamo", "", "error");
-}
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
