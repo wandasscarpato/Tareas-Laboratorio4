@@ -1,20 +1,29 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import entidad.cuenta;
 import entidad.n_prestamo;
 import negocioImplement.PrestamosNegocioImplement;
+import negocioImplement.clienteNegocioImplement;
+import negocioImplement.cuentaNegocioImplement;
 
 /**
  * Servlet implementation class ServletSolicitarPrestamo
  */
 @WebServlet("/ServletSolicitarPrestamo")
 public class ServletSolicitarPrestamo extends HttpServlet {
+	HttpSession session;
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -30,7 +39,10 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		session = request.getSession(true);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+    	
 	}
 
 	/**
@@ -38,6 +50,10 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
+		/*INVIO DE FORMULARIO CON LOS DATOS*/
 		PrestamosNegocioImplement prestamoNeg = new PrestamosNegocioImplement();
 		n_prestamo pres = new n_prestamo();
 		//guardo el monto solicitado
@@ -62,7 +78,6 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 		pres.setN_cuentaADepositar(Integer.parseInt(request.getParameter("cuentas")));
 		if(prestamoNeg.insert(pres)) {
 			//me redirije
-System.out.println("PASO!!!!!!!");
 			response.sendRedirect("solicitarPrestamo.jsp?Status=true");
 		} else {
 			//me redirije

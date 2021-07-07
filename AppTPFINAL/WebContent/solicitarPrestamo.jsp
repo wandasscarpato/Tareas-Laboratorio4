@@ -93,9 +93,7 @@
             <div class="card--modif cm1"></div>
             <input name="dni" value="<%= session.getAttribute("DNI") %>" type="hidden">
             <select name="cuentas" required>
-                <option value="1">Cta corriente 39493932 Disponible $33000</option>
-                <option value="2">Caja de ahorros 2894922 Disponible $53000</option>
-                <option value="3">Caja de ahorros 39994930 Disponible $13000</option>
+                <%=request.getAttribute("SelectCuenta") %>
               </select>
             <br>
             <input type="reset" class="btnPrestamo" value="CANCELAR">
