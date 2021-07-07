@@ -58,13 +58,7 @@
 						%><script>
 			        	location.href = "Reportes.jsp";
 			        	</script><%
-					    } else {
-					    	if(session.getAttribute("DNI")!=null){
-					    		%><script>
-					        	location.href = "PerfilCliente.jsp";
-					        	</script><%
-					    	}
-					    }
+					    } 
 				    %>
 					<%
 					if(request.getParameter("error") != null){

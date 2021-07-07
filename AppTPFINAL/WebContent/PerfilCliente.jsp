@@ -1,3 +1,6 @@
+<%@page import="entidad.*"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +13,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./css/cssAdriel.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cssIvan.css" type=”text/css”>
+    <link rel="stylesheet" href="./css/styleVistas.css"> 
 
     <title>Document</title>
     <script src="https://kit.fontawesome.com/dd0dcbd0c6.js" crossorigin="anonymous"></script>
@@ -82,52 +87,60 @@
     <div class="card--modif cm"></div>
     <!--Finaliza el header-->
     <br>
-   <form class="Form" >
-    <div >
-    <b><h2 class="Centar-Izquierda"><u>Mi Perfil</u></h2></b>
-    	<br>
-    		<div class="container" class="Centar">
-  				<div class="row">
-	    			<div class="col"><h5>Cuil:</h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">20413140790</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Nombre:</h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">Adriel</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Apellido:</h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">Lopez</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Nacionalidad:</h5> </div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">Argentina</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Fecha de Nacimiento:<h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">16/02/1999</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Direccion:</h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">Las Retamas 916</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Localidad:</h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">Escobar</div>
-	    			<div class="w-100"></div>
-	    			<div class="col"><h5>Provincia:</h5></div>
-	    			<!-- En un futuro cambiar la segunda columna por <!=Variable-->
-	    			<div class="col">Buenos Aires</div>
-	    			<div class="w-100"></div>
-  				</div>
+   <section class="sectionTiposDeCuenta">
+        <div class="tiposDeCuentas">
+			<div>
+			<%
+			List<cliente> lista = new ArrayList<cliente>();
+			String loc="";
+			String prov="";
+			if (request.getAttribute("ListaCliente") != null && request.getAttribute("Localidad") != null) {
+				lista = (List<cliente>) request.getAttribute("ListaCliente");
+				loc= request.getAttribute("Localidad").toString();
+				prov= request.getAttribute("Provincia").toString();
+			for (cliente clie : lista) {
+			%>
+			<h2><%=clie.getApellido()%>, <%=clie.getNombre()%></h2>
+			<table class="table" style="width:200">
+			<tr>
+				<td>DNI: </td>
+				<td><%=clie.getDNI()%></td>
+			</tr>
+			<tr>
+				<th>CUIL: </th>
+				<th><%=clie.getCUIL()%></th>
+			</tr>
+			<tr>
+				<th>SEXO: </th>
+				<th><%=clie.getSexo()%></th>
+			</tr>
+			<tr>
+				<th>NACIMIENTO: </th>
+				<th><%=clie.getNacimiento()%></th>
+			</tr>
+			<tr>
+				<th>DIRECCION: </th>
+				<th><%=clie.getDireccion()%></th>
+			</tr>
+			<tr>
+				<th>LOCALIDAD: </th>
+				<th><%=loc%></th>
+			</tr>
+			<tr>
+				<th>PROVINCIA: </th>
+				<th><%=prov%></th>
+			</tr>	
+			<%
+			}
+			}
+			%>
+			</table>
 			</div>
-    		<br>
-    		<br>
-    		<br>
-   		 </div>
-    </form>
-   
+	  	</div>
+     </section>
+	
+      <div class="card--modif cm2"></div>
+      <div class="card--modif cm3"></div>
    
     <!--Comienza el footer-->
     <footer>

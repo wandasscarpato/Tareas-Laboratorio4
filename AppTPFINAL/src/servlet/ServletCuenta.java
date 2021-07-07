@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -224,5 +226,12 @@ public class ServletCuenta extends HttpServlet {
 					listarcuentas_btnTranferir_H(request, response, "/transferencias.jsp");
 
 				}
+				else if (request.getParameter("btnVerMovimientos") != null) {
+				      HttpSession session = request.getSession();
+				      int n_cuenta = 4;
+				      session.setAttribute("Session_cuenta", Integer.valueOf(n_cuenta));
+				      RequestDispatcher dispatcher = request.getRequestDispatcher("ServletMovimientos?btnList");
+				      dispatcher.forward((ServletRequest)request, (ServletResponse)response);
+				    } 
 	}
 }

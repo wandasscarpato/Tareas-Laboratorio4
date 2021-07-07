@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +63,9 @@ public class ServletLogIn extends HttpServlet {
 				session.setAttribute("TipoLog", "Usuario");
 				session.setAttribute("DNI", DNI);
 				session.setAttribute("Usuario", Usuario);
-				response.sendRedirect("PerfilCliente.jsp");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ServletCliente?btnList");
+			    dispatcher.forward((ServletRequest)request, (ServletResponse)response);
 			}else {
 				session.setAttribute("TipoLog", "");
 				RequestDispatcher rd = request.getRequestDispatcher("/InicioSesion.jsp?error=1");

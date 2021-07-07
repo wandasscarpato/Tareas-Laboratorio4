@@ -62,7 +62,7 @@ public class clienteNegocioImplement implements clienteNegocio{
 			// TODO Auto-generated method stub
 		//	return false;
 		//}
-	
-	
-	
+		public ArrayList<cliente> listarClienteLogueado(int dni) {
+		    return this.cdao.listarClienteLogueado(dni);
+		  }
 }

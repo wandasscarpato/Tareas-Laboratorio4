@@ -11,6 +11,6 @@ public interface clienteDao {
 		public boolean delete(int cliente_a_eliminar, boolean estadoC);
 		//public boolean modificar(usuario usuario_a_modificar);
 		//public List<usuario> readAll();
-
+		ArrayList<cliente> listarClienteLogueado(int paramInt);
 	}
 	

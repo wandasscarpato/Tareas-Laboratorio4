@@ -10,4 +10,5 @@ public interface clienteNegocio {
 	public boolean delete(int cliente_a_eliminar, boolean estadoC);
 	public boolean insert(cliente cliente);
 	//public boolean delete(int cliente_a_eliminar);
+	ArrayList<cliente> listarClienteLogueado(int paramInt);
 }

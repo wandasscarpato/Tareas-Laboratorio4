@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.localidadesDao;
 import entidad.localidad;
 
-public class localidadesDaoImplement {
+public class localidadesDaoImplement implements localidadesDao{
 
 	private static final String listar = "SELECT ID_Localidad,Localidad FROM lab4.localidad";
 	
@@ -42,4 +43,18 @@ public class localidadesDaoImplement {
 	        }
 	        return localidades;
 	    }
+	 public String buscarNombreLocalidad(int id) {
+		    String localidad = "";
+		    Connection Conexion = conexion.getConexion().getSQLConexion();
+		    try {
+		      PreparedStatement statement = Conexion.prepareStatement("SELECT Localidad FROM lab4.localidad WHERE ID_Localidad=" + id);
+		      ResultSet resultSet = statement.executeQuery();
+		      if (resultSet.next())
+		        localidad = resultSet.getString("Localidad"); 
+		      return localidad;
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		      return localidad;
+		    } 
+		  }
 }

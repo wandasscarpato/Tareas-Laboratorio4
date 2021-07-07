@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.provinciasDao;
 import entidad.provincia;
 
-public class ProvinciasDaoImplement {
+public class ProvinciasDaoImplement implements provinciasDao {
 	private static final String listar = "SELECT `privincia`.`ID_Provincia`,`privincia`.`Provincia` FROM `lab4`.`privincia`";
 	
 
@@ -41,4 +42,19 @@ public class ProvinciasDaoImplement {
 	        }
 	        return provincias;
 	    }
+	 
+	 public String buscarNombreprovincia(int id) {
+		    String provincia = "";
+		    Connection Conexion = conexion.getConexion().getSQLConexion();
+		    try {
+		      PreparedStatement statement = Conexion.prepareStatement("SELECT provincia FROM lab4.privincia WHERE ID_provincia=" + id);
+		      ResultSet resultSet = statement.executeQuery();
+		      if (resultSet.next())
+		        provincia = resultSet.getString("provincia"); 
+		      return provincia;
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		      return provincia;
+		    } 
+		  }
 }

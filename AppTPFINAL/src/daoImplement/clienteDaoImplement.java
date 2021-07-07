@@ -158,4 +158,32 @@ public class clienteDaoImplement implements clienteDao {
 		return isdeleteExitoso;
 	}
 	
+	public ArrayList<cliente> listarClienteLogueado(int dni) {
+	    ArrayList<cliente> clientes = new ArrayList<>();
+	    Connection Conexion = conexion.getConexion().getSQLConexion();
+	    try {
+	      PreparedStatement statement = Conexion.prepareStatement("SELECT DNI, CUIL, Nombre, Apellido, Sexo, Nacimiento, Direccion, ID_Localodad, ID_Provincia, Email, Telefono, Estado FROM CLiente WHERE DNI=" + dni);
+	      ResultSet resultSet = statement.executeQuery();
+	      while (resultSet.next()) {
+	        cliente clienteRs = new cliente();
+	        clienteRs.setDNI(resultSet.getInt("DNI"));
+	        clienteRs.setCUIL(resultSet.getInt("CUIL"));
+	        clienteRs.setNombre(resultSet.getString("Nombre"));
+	        clienteRs.setApellido(resultSet.getString("Apellido"));
+	        clienteRs.setSexo(resultSet.getString("Sexo"));
+	        clienteRs.setNacimiento(resultSet.getString("Nacimiento"));
+	        clienteRs.setDireccion(resultSet.getString("Direccion"));
+	        clienteRs.setID_Localodad(resultSet.getInt("ID_Localodad"));
+	        clienteRs.setID_Provincia(resultSet.getInt("ID_Provincia"));
+	        clienteRs.setEmail(resultSet.getString("Email"));
+	        clienteRs.setTelefono(resultSet.getInt("Telefono"));
+	        clienteRs.setEstado(resultSet.getBoolean("Estado"));
+	        clientes.add(clienteRs);
+	      } 
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    } 
+	    return clientes;
+	  }
+	
 }
