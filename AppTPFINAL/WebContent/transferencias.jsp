@@ -114,7 +114,7 @@
             <input type="number" name="txtMonto_T">
             <br>
             <input type="reset" class="btnCancelar" value="CANCELAR">
-            <input type="submit" class="btnTransferir" name="btnTrans" value="TRANSFERIR">
+            <input type="submit" class="btnTransferir" id="btnTrans" name="btnTrans" value="TRANSFERIR">
             </form>
         </div>
         <div class="card--modif cm"></div>
@@ -179,6 +179,19 @@
             </ul>
         </div>
     </footer>
+    <%if(session.getAttribute("TipoLog")=="Usuario"){
+} else {
+    if(session.getAttribute("TipoLog")=="Administrador"){
+        %><script>
+        location.href = "Reportes.jsp";
+        </script><%
+    } else {
+        %><script>
+        location.href = "InicioSesion.jsp?NoLog=1&Redirect=PAGINAINTENTOENTRAR";
+        </script><%
+    }
+}
+%>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

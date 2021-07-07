@@ -25,7 +25,9 @@
                     Inicio
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="ServletLogIn">Mis datos</a>
+                    <form method="post" action="ServletCliente">
+                    <button class="dropdown-item" name="btnList">Mis datos</button>
+                </form>
                     <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
                   </div>
                 </li>

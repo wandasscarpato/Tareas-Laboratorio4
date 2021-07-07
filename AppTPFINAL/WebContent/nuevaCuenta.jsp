@@ -18,7 +18,7 @@
     <title>Document</title>
 </head>
 <body>
-        <header>
+      <header>
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -85,7 +85,7 @@
       <!--Finaliza el header-->
     
       
-      <div class="cuentas registrarse">
+      <div class="registrarse">
       
       <h1>Nueva Cuenta</h1> <br>
       

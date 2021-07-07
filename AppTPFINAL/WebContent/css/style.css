@@ -209,10 +209,10 @@ footer ul{
     padding-bottom: 1rem;
 }
 .cuentas,.registrarse h1,.adminCuentas, .transacciones h1,.prestamo h1{
-    padding: 20px;
     text-align: center;
     border-bottom: 1px red solid;
     background-color: white;
+    padding:2rem
 }
 .fecha{
     width: 22.5%;
