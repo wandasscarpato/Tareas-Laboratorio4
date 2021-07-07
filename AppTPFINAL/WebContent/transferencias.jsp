@@ -84,6 +84,7 @@
             <!-- Empieza el DROP DOWN -->
             <label for="">Seleccione la cuenta desde la cual transferir</label>
             <select name = "ddlCuentas" requerid>
+            	<option>---</option>
               <%
         			List<cuenta> listacuentas = new ArrayList<cuenta>();
               		if(request.getAttribute("ListarC_Tranfe") != null){
