@@ -82,19 +82,20 @@
         <h1>Solicitar prestamo</h1>
         <div class="card--modif cm2"></div>
         <div>
-          <form action="" onsubmit="return validarNumeroYEnvio();" class="formulario-prestamo">
+          <form action="ServletSolicitarPrestamo" method="post" onsubmit="return validarNumeroYEnvio();" class="formulario-prestamo">
             <label for="">Ingresar monto que desee solicitar</label>           
-            <input type="" id="monto"name="monto" request>
+            <input type="number" id="monto"name="monto" required>
             <label>Ingrese la cantidad de cuotas</label>           
-            <input type="number" name="cuotas" request>
+            <input type="number" name="cuotas" required>
             
             <br>
             <label>Seleccione una cuenta en la cual recibirlo</label>            
             <div class="card--modif cm1"></div>
-            <select>
-                <option name="1" value="">Cta corriente 39493932 Disponible $33000</option>
-                <option name="2" value="">Caja de ahorros 2894922 Disponible $53000</option>
-                <option name="3"value="">Caja de ahorros 39994930 Disponible $13000</option>
+            <input name="dni" value="<%= session.getAttribute("DNI") %>" type="hidden">
+            <select name="cuentas" required>
+                <option value="1">Cta corriente 39493932 Disponible $33000</option>
+                <option value="2">Caja de ahorros 2894922 Disponible $53000</option>
+                <option value="3">Caja de ahorros 39994930 Disponible $13000</option>
               </select>
             <br>
             <input type="reset" class="btnPrestamo" value="CANCELAR">
@@ -181,16 +182,30 @@ function validarNumeroYEnvio(){
 	var importe=document.getElementById("monto").value;
 	if(isNaN(importe)){
 		console.log("importe invalido")
-		swal("El importe solicitado no es valido");
+		swal("El importe solicitado no es valido","","error");
 		return false
 
 	}else{
-		console.log("GOOOD")
-return false
+		var btn = confirm("Esta seguro que desea solicitar?")
+		if(btn==true){
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 </script>
 </body>
+<script>
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var ParamStatus = urlParams.get('Status');
+if(ParamStatus == "true"){
+	swal("Prestamo solicitado correctamente", "", "success");
+}else if(ParamStatus == "false"){ 
+	swal("Hubo un error al solicitar el prestamo", "", "error");
+}
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"

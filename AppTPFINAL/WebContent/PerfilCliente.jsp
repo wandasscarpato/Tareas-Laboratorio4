@@ -82,14 +82,6 @@
     <div class="card--modif cm"></div>
     <!--Finaliza el header-->
     <br>
-    <%if(session.getAttribute("TipoLog")!="Administrador" && session.getAttribute("DNI")!=null){
-    } else {%>
-	    	<script>
-	    	location.href = "InicioSesion.jsp";
-	    	</script>
-    	<%
-    }
-    %>
    <form class="Form" >
     <div >
     <b><h2 class="Centar-Izquierda"><u>Mi Perfil</u></h2></b>

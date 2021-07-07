@@ -32,7 +32,7 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> Administrador </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> <a
+					<a class="dropdown-item" href="Reportes.jsp">Inicio</a> 
                     <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
 				</div></li>
 			<li class="nav-item dropdown">

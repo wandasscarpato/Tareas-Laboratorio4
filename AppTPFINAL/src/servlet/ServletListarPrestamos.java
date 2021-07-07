@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidad.n_prestamo;
+import negocio.prestamosNegocio;
 import negocioImplement.PrestamosNegocioImplement;
 
 
@@ -40,9 +41,19 @@ public class ServletListarPrestamos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/**if(request.getParameter("btnMostrarPrestamos")!=null) {
+		if(request.getParameter("btnListarPrestamos")!=null) {
 			
-			//clienteDaoImplement cDao = new clienteDaoImplement();
+			prestamosNegocio pNeg = new PrestamosNegocioImplement();
+			
+			//String dniUsuario = "Dali";
+			//request.getSession().setAttribute("dniusu", dniUsuario);
+			
+			ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(123);
+			request.setAttribute("listaPresDni", listaPresDni);
+			RequestDispatcher rd = request.getRequestDispatcher("/PagoCuotas.jsp");
+			rd.forward(request, response);
+			
+			/*//clienteDaoImplement cDao = new clienteDaoImplement();
 			//ArrayList<cliente> lista = cDao.listarClientes();
 			PrestamosNegocioImplement cNeg = new PrestamosNegocioImplement();
 			ArrayList<n_prestamo> lista = cNeg.listarPrestamos();
@@ -64,4 +75,5 @@ public class ServletListarPrestamos extends HttpServlet {
 			} */
 	}
 
+}
 }
