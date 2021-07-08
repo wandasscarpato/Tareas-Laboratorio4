@@ -54,10 +54,15 @@
                   </form>
                 </li>
                 <li class="nav-item dropdown">
-                  <form method="post" action="ServletCuenta">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Cuentas
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <form method="post" action="ServletCuenta">
                     	<button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
                 	</form>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
                    
                   </div>
                 </li>
