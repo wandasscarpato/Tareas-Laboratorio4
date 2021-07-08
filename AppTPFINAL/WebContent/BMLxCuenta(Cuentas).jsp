@@ -37,7 +37,7 @@
 				<form class="form-divModContra" method= "post" action="ServletCuenta">
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<button class="dropdown-item" name="btnList">Administrar cuentas</button>
-					<a class="dropdown-item" href="nuevaCuenta(ADMIN).jsp">Asignar cuentas</a>
+					<a class="dropdown-item" href="./AceptarCuentas(Admin).jsp">Asignar cuentas</a>
 				</div>
 				</form>
 			</li>

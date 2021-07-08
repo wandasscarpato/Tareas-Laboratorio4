@@ -55,7 +55,7 @@ public class AltaCuentaServlet extends HttpServlet {
 			
 			
 			//c.setDNI(Integer.parseInt(session.getAttribute("DNI").toString()));
-			c.setDNI(3);
+			c.setDNI(Integer.parseInt(session.getAttribute("DNI").toString()));
 			System.out.print("DNI");
 			c.setCBU(numRandom);
 			System.out.print("CBU ");
@@ -114,12 +114,13 @@ public class AltaCuentaServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("cantFilas", filas);
-		RequestDispatcher rd = request.getRequestDispatcher("NuevaCuenta(ADMIN).jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 		
 		
 	}
-
+		
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -55,7 +55,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="./ServletPrestamosAceptados">Prestamos autorizados</a>
-                                <a class="dropdown-item" href="./ServletAutorizarPrestamos">Prestamos a autorizar</a>
+					<a class="dropdown-item" href="./AceptarCuentas(Admin).jsp">Asignar cuentas</a>
 
               </div>
             </li>
