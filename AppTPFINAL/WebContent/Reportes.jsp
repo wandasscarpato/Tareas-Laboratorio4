@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@page import="java.util.ArrayList"%>
+	<%@page import="java.util.List"%>
+	<%@page import="entidad.n_prestamo"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -87,37 +90,48 @@
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
       <p></p>
-      <form>
+      <form method="post" action="ServletPrestamosAceptados">
       	<div class="buscadoresFechas">
 		<div>
-			<input class="primeraFecha" type="search" placeholder="Search" aria-label="Search">
+			<input class="primeraFecha" type="date" id="primeraFecha" name="primeraFecha" max='2000-13-13' requerid>
 		</div>
 		<div>
-			<input class="segundaFecha" type="search" placeholder="Search" aria-label="Search">
+			<input class="segundaFecha" type="date" id="segundaFecha" name="segundaFecha" max='2000-13-13' requerid>
 		</div>
 		<div>
-			<input class="btnBuscar" type="submit" value="Buscar">
+			<input class="btnBuscar" type="submit" value="Buscar" name="btnFechas">
 		</div>
 		</div>
 		</form>
-      <section class="sectionTiposDeCuentas">
-        <div class="tiposDeCuentas">
-            <div>
-              <h2>Cantidad de clientes</h2>
-              <p>X</p>
-            </div>
-            <div>
-              <h2>Total en prestamos</h2>
-              <p>Total:</p>
-          </div>
-            <div>
-              <h2>Cambios de contraseñas</h2>
-              <p>Cantiadad de usuarios:</p>
-            </div>
-        </div>
-	</section>
-	
-
+      <!--Comienza el review -->
+		
+	<!--Termina el review -->
+		
+	<!--Comienza el listado -->
+			<table style="margin: 0 auto;" border="1">	
+			<tr>
+				<th><strong>TOTAL GANADO</strong></th>
+				<th><strong>CANTIDAD DE PRESTAMOS</strong></th>
+				<th><strong>FECHA</strong></th>
+			</tr>
+			<%
+				if(request.getAttribute("Reporte1") !=null){
+					List<n_prestamo> listaReporte = new ArrayList<n_prestamo>();
+					listaReporte = (List<n_prestamo>) request.getAttribute("Reporte1");
+					
+					for(n_prestamo n_p: listaReporte){%>
+					<tr>
+						<td> <%= n_p.getImporte_intereses() %> </td>
+						<td> <%= n_p.getDNI() %></td>
+						<td> <%= n_p.getFecha() %></td>
+					</tr>
+					<%
+					}
+					}
+					%>
+			</table>
+	  <!--Termina el listado -->
+      
       <!--Comienza el footer-->
     <footer>
         <div>
@@ -182,6 +196,23 @@
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+<script>
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("primeraFecha").setAttribute("max", today);
+document.getElementById("segundaFecha").setAttribute("max", today);
+</script>
 
 
 </html>
