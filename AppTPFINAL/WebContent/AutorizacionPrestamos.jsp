@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="./css/jquery.dataTables.min.css">
 
 
-<title>Document</title>
+<title>Autorizar prestamos</title>
 </head>
 <body>
 		<header>

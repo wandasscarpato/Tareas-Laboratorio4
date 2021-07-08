@@ -15,12 +15,7 @@ public class movimientosNegocioImplement implements movimientosNegocio {
   public boolean insertAltaPrestamo(movimientos movimiento) {
 		
 		boolean estado=false;
-		if(movimiento.getID_Tipo()>0)
-		{
-			estado=mdao.insertAltaPrestamo(movimiento);
-			estado = true;
-			
-		}
+		estado=mdao.insertAltaPrestamo(movimiento);
 		return estado;
 	} 
   

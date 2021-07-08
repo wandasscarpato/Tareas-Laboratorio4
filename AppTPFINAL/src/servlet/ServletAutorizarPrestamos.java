@@ -63,6 +63,7 @@ public class ServletAutorizarPrestamos extends HttpServlet {
 			float pedido = Float.parseFloat(request.getParameter("pedido").toString());
 			float importeFinal=pedido+interes;
 			PrestamosNegocioImplement cNeg = new PrestamosNegocioImplement();
+			
 			movimientosNegocioImplement mNeg = new movimientosNegocioImplement();
 			
 			movimientos mov = new movimientos();
