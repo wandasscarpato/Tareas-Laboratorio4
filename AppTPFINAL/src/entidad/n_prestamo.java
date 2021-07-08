@@ -9,12 +9,12 @@ public class n_prestamo {
 	private float MontoxMes;
 	private int Cuotas;
 	private int N_cuentaADepositar;
-	private boolean estado;
+	private int estado;
 	
 	public n_prestamo(){}
 
 	public n_prestamo(int n_Prestamo, int dNI, float importe_intereses, float importe_pedido, int plazo,
-			float montoxMes, int cuotas, int n_cuentaADepositar, boolean estado) {
+			float montoxMes, int cuotas, int n_cuentaADepositar, int estado) {
 		this.N_Prestamo = n_Prestamo;
 		this.DNI = dNI;
 		this.Importe_intereses = importe_intereses;
@@ -90,11 +90,11 @@ public class n_prestamo {
 		N_cuentaADepositar = n_cuentaADepositar;
 	}
 
-	public boolean isEstado() {
+	public int isEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 

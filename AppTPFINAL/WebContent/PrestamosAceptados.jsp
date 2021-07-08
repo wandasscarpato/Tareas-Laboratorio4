@@ -58,7 +58,7 @@
                 Prestamos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="./PrestamosAceptados.jsp">Prestamos autorizados</a>
+                <a class="dropdown-item" href="./ServletPrestamosAceptados">Prestamos autorizados</a>
                                 <a class="dropdown-item" href="./ServletAutorizarPrestamos">Prestamos a autorizar</a>
 
               </div>
@@ -115,31 +115,7 @@
 				</tr>
 			<thead>
 			<tbody>
-
-
-				<%
-					prestamosDaoImplement pDao = new prestamosDaoImplement();
-					ArrayList<n_prestamo> listaPrestamos = (ArrayList<n_prestamo>) pDao.listarPrestamos();
-
-					for (n_prestamo presta : listaPrestamos) {
-				%>
-				
-					<%if(presta.isEstado() != false){ %>
-					<tr>
-					<td><%=presta.getN_Prestamo()%></td>
-					<td><%=presta.getDNI()%></td>
-					<td><%=presta.getImporte_pedido()%></td>
-					<td><%=presta.getImporte_intereses()%></td>
-					<td><%=presta.getMontoxMes()%></td>
-					<td><%=presta.getCuotas()%></td>
-					<td><%=presta.getN_cuentaADepositar()%></td>
-					</tr>
-					<%}%>
-					
-				
-				<%
-					}
-				%>
+				<%=request.getAttribute("tabla") %>
 			</tbody>
 		</table>
 

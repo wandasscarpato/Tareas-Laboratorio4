@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class prestamosDaoImplement {
 
-	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo` WHERE (n_prestamo!=2)";
+	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo`";
 	private static final String aceptar = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
 	private static final String rechazar = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 2 WHERE `N_Prestamo` = ?";
 	private static final String actualizarMonto = "UPDATE cuenta INNER JOIN n_prestamo on n_prestamo.n_prestamo = ? SET cuenta.Saldo = (cuenta.Saldo+n_prestamo.importe_pedido) WHERE (cuenta.DNI = n_prestamo.DNI) AND (cuenta.N_Cuenta = n_prestamo.N_CuentaADepositar) AND (n_prestamo.n_prestamo = ?)";
@@ -79,7 +79,7 @@ public class prestamosDaoImplement {
             	prestamoRs.setMontoxMes(resultSet.getFloat("montoXMes"));
             	prestamoRs.setCuotas(resultSet.getInt("Cuotas"));
             	prestamoRs.setN_cuentaADepositar(resultSet.getInt("N_cuentaADepositar"));
-            	prestamoRs.setEstado(resultSet.getBoolean("Estado"));
+            	prestamoRs.setEstado(resultSet.getInt("Estado"));
 	            
             	n_prestamo.add(prestamoRs);
 
@@ -119,7 +119,7 @@ public class prestamosDaoImplement {
             	prestamoRs.setMontoxMes(resultSet.getFloat("montoXMes"));
             	prestamoRs.setCuotas(resultSet.getInt("Cuotas"));
             	prestamoRs.setN_cuentaADepositar(resultSet.getInt("N_cuentaADepositar"));
-            	prestamoRs.setEstado(resultSet.getBoolean("Estado"));
+            	prestamoRs.setEstado(resultSet.getInt("Estado"));
             	
             	
             	n_prestamo.add(prestamoRs);
@@ -183,10 +183,6 @@ public class prestamosDaoImplement {
 				Conexion.commit();
 				cambioExitoso = true;
 			}
-				if(statement.executeUpdate() > 0)
-				{
-					Conexion.commit();
-				}
 			
 		} 
 		catch (SQLException e) 

@@ -11,8 +11,42 @@ import java.util.List;
 
 public class movimientosDaoImplement implements movimientosDao {
   private static final String listado = "SELECT ID_Movimiento, Fecha, Detalle, Importe, ID_TIPO_M FROM movimientos";
-  
+  private static final String altaPrestamo="INSERT INTO `lab4`.`movimientos`(`Importe`,`Detalle`,`ID_TIPO_M`,`N_Cuenta`)VALUES(?,?,2,?)";
   private static final String listado2 = "SELECT ID_Movimiento, Fecha, Detalle, Importe, ID_TIPO_M FROM movimientos where N_Cuenta =";
+  
+  public boolean insertAltaPrestamo(movimientos movimiento) {
+      PreparedStatement statement;
+      Connection Conexion = conexion.getConexion().getSQLConexion();
+      boolean isInsertExitoso = false;
+      try
+      {
+          statement = Conexion.prepareStatement(altaPrestamo);
+          
+          statement.setFloat(1, movimiento.getImporte());
+          statement.setInt(2, movimiento.getN_Cuenta());
+          statement.setInt(4, movimiento.getN_Cuenta());
+    
+          if(statement.executeUpdate() > 0)
+          {
+              Conexion.commit();
+              isInsertExitoso = true;
+          }
+      } 
+      catch (SQLException e) 
+      {
+          e.printStackTrace();
+          try {
+              Conexion.rollback();
+          } catch (SQLException e1) {
+              e1.printStackTrace();
+          }
+          
+          return false;
+      }
+      
+      return isInsertExitoso;
+  }
+	
   
   public List<movimientos> readAll() {
     Connection cn = conexion.getConexion().getSQLConexion();
@@ -25,7 +59,7 @@ public class movimientosDaoImplement implements movimientosDao {
         movimientosRs.setID_Movimiento(rs.getInt("ID_Movimiento"));
         movimientosRs.setFecha(rs.getDate("Fecha"));
         movimientosRs.setDetalle(rs.getString("Detalle"));
-        movimientosRs.setImporte(rs.getDouble("Importe"));
+        movimientosRs.setImporte(rs.getFloat("Importe"));
         movimientosRs.setID_Tipo(rs.getInt("ID_TIPO_M"));
         lista.add(movimientosRs);
       } 
@@ -47,7 +81,7 @@ public class movimientosDaoImplement implements movimientosDao {
         movimientosRs.setID_Movimiento(rs.getInt("ID_Movimiento"));
         movimientosRs.setFecha(rs.getDate("Fecha"));
         movimientosRs.setDetalle(rs.getString("Detalle"));
-        movimientosRs.setImporte(rs.getDouble("Importe"));
+        movimientosRs.setImporte(rs.getFloat("Importe"));
         movimientosRs.setID_Tipo(rs.getInt("ID_TIPO_M"));
         lista.add(movimientosRs);
       } 
