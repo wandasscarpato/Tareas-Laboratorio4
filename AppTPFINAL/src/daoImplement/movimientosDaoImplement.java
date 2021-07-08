@@ -23,8 +23,8 @@ public class movimientosDaoImplement implements movimientosDao {
           statement = Conexion.prepareStatement(altaPrestamo);
           
           statement.setFloat(1, movimiento.getImporte());
-          statement.setInt(2, movimiento.getN_Cuenta());
-          statement.setInt(4, movimiento.getN_Cuenta());
+          statement.setString(2, movimiento.getDetalle());
+          statement.setInt(3, movimiento.getN_Cuenta());
     
           if(statement.executeUpdate() > 0)
           {
