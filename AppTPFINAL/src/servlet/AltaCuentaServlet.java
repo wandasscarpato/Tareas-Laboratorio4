@@ -66,7 +66,7 @@ public class AltaCuentaServlet extends HttpServlet {
 			
 			//c.setFecha_cracion(request.getParameter("txtFecha"));
 			//c.setFecha_cracion(fecha_cracion);
-			c.setEstado(true);
+			c.setEstado(3);
 			
 			System.out.print("DUDOSO  PERO NO TAN DUDOSO ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			cuentaNegocio cneg = new cuentaNegocioImplement();

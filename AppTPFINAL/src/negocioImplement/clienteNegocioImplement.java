@@ -19,7 +19,7 @@ public class clienteNegocioImplement implements clienteNegocio{
 		boolean estado=false;
 		if(cliente.getDNI()>0)
 		{
-			cliente.setEstado(1);
+			cliente.setEstado(true);
 			estado=cdao.insert(cliente);
 			estado = true;
 			

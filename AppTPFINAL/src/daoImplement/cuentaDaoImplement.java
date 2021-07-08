@@ -50,7 +50,7 @@ public class cuentaDaoImplement implements cuentaDao {
 			statement.setInt(2, cuenta.getCBU());
 			statement.setDouble(3, cuenta.getSaldo());
 			statement.setInt(4, cuenta.getDNI());
-			statement.setBoolean(5, cuenta.getEstado());
+			statement.setInt(5, cuenta.getEstado());
 			
 			if(statement.executeUpdate() > 0)
 			{
@@ -139,7 +139,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setTipo(rs.getString("Tipo"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));
-				cuentaRs.setEstado(rs.getBoolean("Estado"));
+				cuentaRs.setEstado(rs.getInt("Estado"));
 				
 				lista.add(cuentaRs);
 			}
@@ -167,7 +167,7 @@ public class cuentaDaoImplement implements cuentaDao {
 				cuentaRs.setTipo(rs.getString("Tipo"));
 				cuentaRs.setCBU(rs.getInt("CBU"));
 				cuentaRs.setSaldo(rs.getDouble("Saldo"));
-				cuentaRs.setEstado(rs.getBoolean("Estado"));
+				cuentaRs.setEstado(rs.getInt("Estado"));
 				
 				lista.add(cuentaRs);
 			}
@@ -185,7 +185,7 @@ public class cuentaDaoImplement implements cuentaDao {
 		boolean isInsertExitoso = false;
 		try {
 			statement = Conexion.prepareStatement(eliminar);
-			statement.setBoolean(1, cuenta_m.getEstado());
+			statement.setInt(1, cuenta_m.getEstado());
 			statement.setInt(2, cuenta_m.getN_Cuenta());
 
 			if(statement.executeUpdate() > 0)

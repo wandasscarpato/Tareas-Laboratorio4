@@ -20,7 +20,7 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 			boolean estado=false;
 			if(cuenta.getCBU()>0)
 			{
-				cuenta.setEstado(true);
+				cuenta.setEstado(1);
 				estado=cdao.insert(cuenta);
 				estado = true;
 				
