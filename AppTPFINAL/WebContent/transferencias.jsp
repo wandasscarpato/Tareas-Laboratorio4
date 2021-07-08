@@ -39,14 +39,17 @@
                     <a class="dropdown-item" href="ServletLogout">Cerrar sesion</a>
                   </div>
                 </li>
-                <li class="nav-item dropdown">
+                  <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Transferencias
                   </a>
+                  <form class="form-divModContra" method= "post" action="ServletCuenta">
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
+                  <button class="dropdown-item" name="btnTranferir_H">Tranferir</button>
+                    <a class="dropdown-item" href="#">Historial</a>
                   </div>
+                  </form>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -92,7 +95,7 @@
           <form method="post" action="ServletCuenta" class="formulario-transaccion">
             <!-- Empieza el DROP DOWN -->
             <label for="">Seleccione la cuenta desde la cual transferir</label>
-            <select name = "ddlCuentas" requerid>
+            <select name = "ddlCuentas" >
             	<option>---</option>
               <%
         			List<cuenta> listacuentas = new ArrayList<cuenta>();

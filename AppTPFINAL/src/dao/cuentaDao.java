@@ -18,5 +18,5 @@ public interface cuentaDao {
 	public List<cuenta> readAll();
 	public double ObtenerSaldo(cuenta cuenta_m);
 	public ArrayList<AceptarCuenta> ListarAceptarCuenta();
-
+	public int ObtenerN_Cuenta (cuenta cuenta_m);
 }

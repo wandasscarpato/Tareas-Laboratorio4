@@ -81,6 +81,11 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 	public ArrayList<AceptarCuenta> listarAceptarCuentas() {
 		return (ArrayList<AceptarCuenta>) cdao.ListarAceptarCuenta();
 	}
+	
+	public int ObtenerN_Cuenta (cuenta cuenta_m) {
+		return cdao.ObtenerN_Cuenta(cuenta_m);
+	}
+	
 }
 
 	

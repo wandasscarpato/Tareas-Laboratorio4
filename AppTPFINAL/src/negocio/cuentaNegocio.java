@@ -18,4 +18,5 @@ public interface cuentaNegocio {
 	public boolean modificarSaldo(cuenta cuenta_m);
 	public double ObtenerSaldo(cuenta cuenta_m);
 	public ArrayList<AceptarCuenta> listarAceptarCuentas();
+	public int ObtenerN_Cuenta (cuenta cuenta_m);
 }

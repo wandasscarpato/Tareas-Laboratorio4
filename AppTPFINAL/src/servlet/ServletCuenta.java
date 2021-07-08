@@ -20,10 +20,13 @@ import com.sun.java.swing.plaf.windows.resources.windows;
 
 import entidad.AceptarCuenta;
 import entidad.cuenta;
+import entidad.movimientos;
 import entidad.usuario;
 import negocio.cuentaNegocio;
+import negocio.movimientosNegocio;
 import negocio.usuarioNegocio;
 import negocioImplement.cuentaNegocioImplement;
+import negocioImplement.movimientosNegocioImplement;
 import negocioImplement.usuarioNegocioImplement;
 
 /**
@@ -98,11 +101,11 @@ public class ServletCuenta extends HttpServlet {
 	}
 	
 	private void listarcuentas_btnTranferir_H(HttpServletRequest request, HttpServletResponse response,String page) throws ServletException, IOException {
-		String dni = "1";
-		request.getSession().setAttribute("usu",dni);
+
 		cuentaNegocio cueNeg = new cuentaNegocioImplement();
-		if(cueNeg.ObtenerxDni(request.getSession().getAttribute("usu").toString())!=null) {
-			List<cuenta> lista= cueNeg.ObtenerxDni(request.getSession().getAttribute("usu").toString());
+		System.out.println(request.getSession().getAttribute("DNI").toString());
+		if(cueNeg.ObtenerxDni(request.getSession().getAttribute("DNI").toString())!=null) {
+			List<cuenta> lista= cueNeg.ObtenerxDni(request.getSession().getAttribute("DNI").toString());
 			request.setAttribute("ListarC_Tranfe", lista);	
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
@@ -111,6 +114,7 @@ public class ServletCuenta extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				//LISTA TODO
+			System.out.println("ENTRO AL SERVLET");
 				if(request.getParameter("btnList") != null) 
 				{
 					listarcuentas_btnList(request, response,"/ABMLxCliente(Cuentas).jsp");
@@ -202,6 +206,10 @@ public class ServletCuenta extends HttpServlet {
 					int cbu_enviar=0;
 					Double monto_ing=0.0,monto_t=0.0,monto_credito=0.0;
 					
+					//MOVIMIENTOS
+					movimientosNegocio movNeg = new movimientosNegocioImplement();
+					movimientos m_debito = new movimientos();
+					movimientos m_credito = new movimientos();
 					//VERIFICA QUE SE OBTENGA EL SALDO
 					if(cueNeg.ObtenerSaldo(c_debito) != 0) {
 						monto_ing = Double.parseDouble(request.getParameter("txtMonto_T"));
@@ -219,6 +227,23 @@ public class ServletCuenta extends HttpServlet {
 							monto_credito = (Double) (cueNeg.ObtenerSaldo(c_credito)+monto_ing);
 							c_credito.setSaldo(monto_credito);
 							cueNeg.modificarSaldo(c_credito);
+							
+							//
+							//EL ID DE MOVIMIENTO TIENE QUE SER AUTONUMERICO
+							// 
+							
+							//GENERA LOS MOVIMIENTOS DEBITO
+							m_debito.setImporte(monto_t.floatValue());
+							m_debito.setID_Movimiento(4);
+							m_debito.setDetalle("");
+							m_debito.setN_Cuenta(Integer.parseInt( request.getParameter("ddlCuentas")));
+							movNeg.insertAltaPrestamo(m_debito);
+							//GENERA LOS MOVIMIENTOS CREDITO
+							m_credito.setImporte(monto_ing.floatValue());
+							m_credito.setID_Movimiento(4);
+							m_credito.setDetalle("");
+							m_credito.setN_Cuenta(cueNeg.ObtenerN_Cuenta(c_credito));
+							movNeg.insertAltaPrestamo(m_credito);
 						}
 						else {
 							//MONTO MAYOR INGRESADO AL SALDO DISPONIBLE

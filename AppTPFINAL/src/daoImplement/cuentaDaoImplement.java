@@ -24,6 +24,8 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String updateSaldo = "UPDATE cuenta SET Saldo= ? WHERE CBU= ? OR CBU=?";
 	private static final String ObtenerSaldo = "SELECT Saldo FROM cuenta WHERE N_Cuenta = ? OR CBU=?";
 	private static final String ListarAceptarCuenta = "SELECT `cliente`.`DNI`,`cuenta`.`tipo` from cliente inner join cuenta on `cliente`.`DNI` = `cuenta`.`DNI` where `cliente`.`estado` = 1";
+	private static final String ObtenerN_Cuenta = "SELECT N_cuenta FROM cuenta WHERE CBU=?";
+	
 	
 	public boolean insert(cuenta cuenta)
 	{
@@ -331,5 +333,24 @@ public class cuentaDaoImplement implements cuentaDao {
 	        }
 	        return AceptarCuenta;
 		}
+	
+	public int ObtenerN_Cuenta (cuenta cuenta_m) {
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		try {
+			statement = Conexion.prepareStatement(ObtenerN_Cuenta);
+			statement.setInt(1, cuenta_m.getCBU());
+			ResultSet rs = statement.executeQuery();
+			
+			if(rs.next())
+			{
+				return rs.getInt("N_Cuenta");
+			}
+			
+			return 0;
+			} catch (SQLException ex) {
+				return 0;
+			}
 	}
+}
 	
