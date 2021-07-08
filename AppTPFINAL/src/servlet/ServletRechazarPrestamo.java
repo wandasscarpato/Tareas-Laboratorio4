@@ -25,13 +25,9 @@ public class ServletRechazarPrestamo extends HttpServlet {
 		if(request.getParameter("btnRechazar")!=null) {
 			int id = Integer.parseInt(request.getParameter("idPrestamo").toString());
 			PrestamosNegocioImplement cNeg = new PrestamosNegocioImplement();
+			cNeg.rechazar(id);
 			
-			if(cNeg.rechazar(id)) {
-			
-			response.sendRedirect("ServletAutorizarPrestamos?StatusS=true");
-			}else {
-				response.sendRedirect("ServletAutorizarPrestamos?StatusS=false");
-			}
+			response.sendRedirect("ServletAutorizarPrestamos?Status=true");
 		}
 	}
 

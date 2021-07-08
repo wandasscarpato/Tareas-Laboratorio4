@@ -72,11 +72,10 @@ public class ServletAutorizarPrestamos extends HttpServlet {
 			mov.setImporte(importeFinal);
 			mov.setDetalle("Se autorizo el prestamo solicitado");
 			
-			if(mNeg.insertAltaPrestamo(mov) && cNeg.autorizar(id)) {
-			response.sendRedirect("ServletAutorizarPrestamos?Status=true");
-			}else {
-				response.sendRedirect("ServletAutorizarPrestamos?Status=false");
-			}
+			mNeg.insertAltaPrestamo(mov);
+			cNeg.autorizar(id);
+			
+			doGet(request, response);
 		} 
 	}
 

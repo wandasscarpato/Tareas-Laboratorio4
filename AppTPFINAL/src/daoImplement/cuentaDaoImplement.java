@@ -23,7 +23,7 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String updateTipo = "UPDATE cuenta SET Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
 	private static final String updateSaldo = "UPDATE cuenta SET Saldo= ? WHERE CBU= ? OR CBU=?";
 	private static final String ObtenerSaldo = "SELECT Saldo FROM cuenta WHERE N_Cuenta = ? OR CBU=?";
-	private static final String ListarAceptarCuenta = "SELECT `cliente`.`DNI`,`cuenta`.`tipo`,`N_Cuenta` from cliente inner join cuenta on `cliente`.`DNI` = `cuenta`.`DNI` where `cuenta`.`estado` = 1";
+	private static final String ListarAceptarCuenta = "SELECT `cliente`.`DNI`,`cuenta`.`tipo`,`N_Cuenta` from cliente inner join cuenta on `cliente`.`DNI` = `cuenta`.`DNI` where `cuenta`.`estado` = 3";
 	private static final String ObtenerN_Cuenta = "SELECT N_cuenta FROM cuenta WHERE CBU=?";
 	private static final String ModiEstRechazar = "UPDATE `lab4`.`cuenta` SET `Estado` = '0' WHERE (`N_Cuenta` = ?)";
 	private static final String ModiEstAceptar = "UPDATE `lab4`.`cuenta` SET `Estado` = '1' WHERE (`N_Cuenta` = ?)";

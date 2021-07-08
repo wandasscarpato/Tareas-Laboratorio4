@@ -38,7 +38,7 @@ public class clienteDaoImplement implements clienteDao {
             statement.setInt(9, cliente.getID_Provincia());
             statement.setString(10, cliente.getEmail());
             statement.setInt(11, cliente.getTelefono());
-            statement.setBoolean(12, true);
+            statement.setInt(12, 3);
 
             if(statement.executeUpdate() > 0)
             {
@@ -87,7 +87,7 @@ public class clienteDaoImplement implements clienteDao {
 		            clienteRs.setID_Provincia(resultSet.getInt("ID_Provincia"));
 		            clienteRs.setEmail(resultSet.getString("Email"));
 		            clienteRs.setTelefono(resultSet.getInt("Telefono"));
-		            clienteRs.setEstado(resultSet.getBoolean("Estado"));
+		            clienteRs.setEstado(resultSet.getInt("Estado"));
 		            
 		            clientes.add(clienteRs);
 
@@ -177,7 +177,7 @@ public class clienteDaoImplement implements clienteDao {
 	        clienteRs.setID_Provincia(resultSet.getInt("ID_Provincia"));
 	        clienteRs.setEmail(resultSet.getString("Email"));
 	        clienteRs.setTelefono(resultSet.getInt("Telefono"));
-	        clienteRs.setEstado(resultSet.getBoolean("Estado"));
+	        clienteRs.setEstado(resultSet.getInt("Estado"));
 	        clientes.add(clienteRs);
 	      } 
 	    } catch (SQLException e) {
