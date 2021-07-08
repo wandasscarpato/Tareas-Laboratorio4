@@ -103,7 +103,7 @@ public class ServletCuenta extends HttpServlet {
 	private void listarcuentas_btnTranferir_H(HttpServletRequest request, HttpServletResponse response,String page) throws ServletException, IOException {
 
 		cuentaNegocio cueNeg = new cuentaNegocioImplement();
-		System.out.println(request.getSession().getAttribute("DNI").toString());
+		System.out.println("DNI DEL USUARIO LOGEADO: " + request.getSession().getAttribute("DNI").toString());
 		if(cueNeg.ObtenerxDni(request.getSession().getAttribute("DNI").toString())!=null) {
 			List<cuenta> lista= cueNeg.ObtenerxDni(request.getSession().getAttribute("DNI").toString());
 			request.setAttribute("ListarC_Tranfe", lista);	
@@ -114,7 +114,6 @@ public class ServletCuenta extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				//LISTA TODO
-			System.out.println("ENTRO AL SERVLET");
 				if(request.getParameter("btnList") != null) 
 				{
 					listarcuentas_btnList(request, response,"/ABMLxCliente(Cuentas).jsp");
@@ -228,22 +227,18 @@ public class ServletCuenta extends HttpServlet {
 							c_credito.setSaldo(monto_credito);
 							cueNeg.modificarSaldo(c_credito);
 							
-							//
-							//EL ID DE MOVIMIENTO TIENE QUE SER AUTONUMERICO
-							// 
-							
 							//GENERA LOS MOVIMIENTOS DEBITO
 							m_debito.setImporte(monto_t.floatValue());
 							m_debito.setID_Movimiento(4);
-							m_debito.setDetalle("");
+							m_debito.setDetalle("Debito");
 							m_debito.setN_Cuenta(Integer.parseInt( request.getParameter("ddlCuentas")));
-							movNeg.insertAltaPrestamo(m_debito);
+							movNeg.InsertMovimientos(m_debito);
 							//GENERA LOS MOVIMIENTOS CREDITO
 							m_credito.setImporte(monto_ing.floatValue());
 							m_credito.setID_Movimiento(4);
-							m_credito.setDetalle("");
+							m_credito.setDetalle("Credito");
 							m_credito.setN_Cuenta(cueNeg.ObtenerN_Cuenta(c_credito));
-							movNeg.insertAltaPrestamo(m_credito);
+							movNeg.InsertMovimientos(m_credito);
 						}
 						else {
 							//MONTO MAYOR INGRESADO AL SALDO DISPONIBLE

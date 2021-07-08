@@ -12,6 +12,7 @@ import java.util.List;
 public class movimientosDaoImplement implements movimientosDao {
   private static final String listado = "SELECT ID_Movimiento, Fecha, Detalle, Importe, ID_TIPO_M FROM movimientos";
   private static final String altaPrestamo="INSERT INTO `lab4`.`movimientos`(`Importe`,`Detalle`,`ID_TIPO_M`,`N_Cuenta`)VALUES(?,?,2,?)";
+  private static final String InsertMovimientos="INSERT INTO movimientos (`Importe`,`Detalle`,`ID_TIPO_M`,`N_Cuenta`)VALUES(?,?,?,?)";
   private static final String listado2 = "SELECT ID_Movimiento, Fecha, Detalle, Importe, ID_TIPO_M FROM movimientos where N_Cuenta =";
   
   public boolean insertAltaPrestamo(movimientos movimiento) {
@@ -46,7 +47,40 @@ public class movimientosDaoImplement implements movimientosDao {
       
       return isInsertExitoso;
   }
-	
+
+  public boolean InsertMovimientos(movimientos movimiento) {
+	  PreparedStatement statement;
+      Connection Conexion = conexion.getConexion().getSQLConexion();
+      boolean isInsertExitoso = false;
+      try
+      {
+          statement = Conexion.prepareStatement(InsertMovimientos);
+          
+          statement.setFloat(1, movimiento.getImporte());
+          statement.setString(2, movimiento.getDetalle());
+          statement.setInt(3, movimiento.getID_Movimiento());
+          statement.setInt(4, movimiento.getN_Cuenta());
+          
+          if(statement.executeUpdate() > 0)
+          {
+              Conexion.commit();
+              isInsertExitoso = true;
+          }
+      }
+      catch (SQLException e) 
+      {
+          e.printStackTrace();
+          try {
+              Conexion.rollback();
+          } catch (SQLException e1) {
+              e1.printStackTrace();
+          }
+          
+          return false;
+      }
+      
+      return isInsertExitoso;
+  }
   
   public List<movimientos> readAll() {
     Connection cn = conexion.getConexion().getSQLConexion();

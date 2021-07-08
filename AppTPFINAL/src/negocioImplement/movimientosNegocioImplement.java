@@ -22,4 +22,9 @@ public class movimientosNegocioImplement implements movimientosNegocio {
   public List<movimientos> ObtenerxN_Cuenta(int n_cuenta) {
     return this.mdao.ObtenerxN_Cuenta(n_cuenta);
   }
+  
+  public boolean InsertMovimientos(movimientos movimiento) {
+	return mdao.InsertMovimientos(movimiento);  
+  }
+  
 }
