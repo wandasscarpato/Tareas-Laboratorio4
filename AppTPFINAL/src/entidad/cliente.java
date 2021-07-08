@@ -13,13 +13,13 @@ public class cliente {
 	private int ID_Provincia;
 	private String Email;
 	private int Telefono;
-	private int estado;
+	private boolean estado;
 	
 	public cliente() {
 		
 	}
 	
-	public cliente(int DNI,int CUIL,String Nombre,String Apellido,String Sexo, String Nacimiento, String Direccion, int ID_Localodad,int ID_Provincia, String Email, int Telefono, int estado) {
+	public cliente(int DNI,int CUIL,String Nombre,String Apellido,String Sexo, String Nacimiento, String Direccion, int ID_Localodad,int ID_Provincia, String Email, int Telefono, boolean estado) {
         this.DNI = DNI;
         this.CUIL = CUIL;
         this.Nombre = Nombre;
@@ -144,15 +144,15 @@ public class cliente {
 		Telefono = telefono;
 	}
 
-	public int getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
-	public int isEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
 
-	public void setEstado(int estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 	

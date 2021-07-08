@@ -155,7 +155,7 @@ public class ServletCuenta extends HttpServlet {
 						cuenta c = new cuenta();
 						
 						c.setN_Cuenta(N_cuenta);
-						c.setEstado(false);
+						c.setEstado(0);
 						
 						if(cueNeg.eliminar(c)) {
 							//LLAMO A LA LISTA COMPLETA SI SE MODIFICO
