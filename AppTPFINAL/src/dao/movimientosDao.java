@@ -9,4 +9,5 @@ public interface movimientosDao {
 	public List<movimientos> readAll();
 	public boolean insertAltaPrestamo(movimientos movimiento);
 	public boolean InsertMovimientos(movimientos movimiento);
-}
+	String buscarNombreTipo(int paramInt);
+}	

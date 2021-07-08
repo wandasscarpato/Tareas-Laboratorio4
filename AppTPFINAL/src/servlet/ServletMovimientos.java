@@ -3,6 +3,7 @@ package servlet;
 import entidad.cuenta;
 import entidad.movimientos;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,16 +24,23 @@ public class ServletMovimientos extends HttpServlet {
   }
   
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (request.getParameter("btnList") != null) {
-      cuenta cue = new cuenta();
-      cue.setN_Cuenta(Integer.parseInt(request.getSession().getAttribute("Session_cuenta").toString()));
-      movimientosNegocioImplement movimientosNegocioImplement = new movimientosNegocioImplement();
-      if (movimientosNegocioImplement.ObtenerxN_Cuenta(cue.getN_Cuenta()) != null) {
-        List<movimientos> lista = movimientosNegocioImplement.ObtenerxN_Cuenta(cue.getN_Cuenta());
-        request.setAttribute("listaM", lista);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Movimientos.jsp");
-        dispatcher.forward((ServletRequest)request, (ServletResponse)response);
-      } 
-    } 
+	  if (request.getParameter("btnList") != null) {
+	      
+		  cuenta cue = new cuenta();
+	      cue.setN_Cuenta(Integer.parseInt(request.getSession().getAttribute("Session_cuenta").toString()));
+	      
+	      ArrayList<String> nombreTipo = new ArrayList<>();
+	      movimientosNegocioImplement movimientosNegocioImplement = new movimientosNegocioImplement();
+	      
+	      if (movimientosNegocioImplement.ObtenerxN_Cuenta(cue.getN_Cuenta()) != null) {
+	        List<movimientos> lista = movimientosNegocioImplement.ObtenerxN_Cuenta(cue.getN_Cuenta());
+	        for (movimientos mov : lista)
+	        	nombreTipo.add(movimientosNegocioImplement.buscarNombreTipo(mov.getID_Tipo())); 
+	        	request.setAttribute("listaM", lista);
+	        	request.setAttribute("tipo", nombreTipo);
+	        	RequestDispatcher dispatcher = request.getRequestDispatcher("/Movimientos.jsp");
+	        	dispatcher.forward((ServletRequest)request, (ServletResponse)response);
+	      } 
+	    } 
   }
 }

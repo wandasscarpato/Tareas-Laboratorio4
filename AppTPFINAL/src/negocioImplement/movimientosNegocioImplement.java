@@ -27,4 +27,7 @@ public class movimientosNegocioImplement implements movimientosNegocio {
 	return mdao.InsertMovimientos(movimiento);  
   }
   
+  public String buscarNombreTipo(int id) {
+	    return this.mdao.buscarNombreTipo(id);
+  }
 }

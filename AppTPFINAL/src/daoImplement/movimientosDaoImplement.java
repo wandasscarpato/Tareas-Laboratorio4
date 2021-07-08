@@ -14,6 +14,7 @@ public class movimientosDaoImplement implements movimientosDao {
   private static final String altaPrestamo="INSERT INTO `lab4`.`movimientos`(`Importe`,`Detalle`,`ID_TIPO_M`,`N_Cuenta`)VALUES(?,?,2,?)";
   private static final String InsertMovimientos="INSERT INTO movimientos (`Importe`,`Detalle`,`ID_TIPO_M`,`N_Cuenta`)VALUES(?,?,?,?)";
   private static final String listado2 = "SELECT ID_Movimiento, Fecha, Detalle, Importe, ID_TIPO_M FROM movimientos where N_Cuenta =";
+  private static final String obtenerNombreTipo = "SELECT Tipo_Movimiento FROM lab4.tipo_movimiento WHERE ID_Tipo =";
   
   public boolean insertAltaPrestamo(movimientos movimiento) {
       PreparedStatement statement;
@@ -125,4 +126,19 @@ public class movimientosDaoImplement implements movimientosDao {
     } 
     return lista;
   }
+  
+  public String buscarNombreTipo(int id) {
+	    String nombreTipo = "";
+	    Connection Conexion = conexion.getConexion().getSQLConexion();
+	    try {
+	      PreparedStatement statement = Conexion.prepareStatement(obtenerNombreTipo + id);
+	      ResultSet resultSet = statement.executeQuery();
+	      if (resultSet.next())
+	        nombreTipo = resultSet.getString("Tipo_Movimiento"); 
+	      return nombreTipo;
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	      return nombreTipo;
+	    } 
+	  }
 }

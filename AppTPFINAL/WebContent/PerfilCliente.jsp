@@ -55,8 +55,8 @@
                 </li>
                 <li class="nav-item dropdown">
                   <form method="post" action="ServletCuenta">
-                        <button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
-                    </form>
+                    	<button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
+                	</form>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                    
                   </div>
@@ -107,8 +107,8 @@
 			<h2><%=clie.getApellido()%>, <%=clie.getNombre()%></h2>
 			<table class="table" style="width:200">
 			<tr>
-				<td>DNI: </td>
-				<td><%=clie.getDNI()%></td>
+				<th>DNI: </th>
+				<th><%=clie.getDNI()%></th>
 			</tr>
 			<tr>
 				<th>CUIL: </th>

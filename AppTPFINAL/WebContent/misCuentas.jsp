@@ -1,3 +1,6 @@
+<%@page import="entidad.*"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,7 +49,9 @@
                     Cuentas
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
+                    <form method="post" action="ServletCuenta">
+                    	<button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
+                	</form>
                     <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
                    
                   </div>
@@ -81,46 +86,60 @@
     <div class="card--modif cm"></div>
       <!--Finaliza el header-->
       <section class="sectionTiposDeCuentas">
-       <form method= "post" action="ServletCuenta">
-        <div class="tiposDeCuentas">
-            <div>
-              <h2>Cuenta 1</h2>
-              <p>Alias:</p>
-              <p>Fecha de creacion:</p>
-              <p>Tipo de cuenta:</p>
-              <p>Numero de cuenta:</p>
-              <p>CBU:</p>
-              <p>Saldo:</p>
-              <p>Moneda:</p>
-              <p><button class="btnBuscar" name="btnVerMovimientos" style="width: 120px; ">Ver movimientos</button></p>
-            </div>
-            <div>
-              <h2>Cuenta 2</h2>
-              <p>Alias:</p>
-              <p>Fecha de creacion:</p>
-              <p>Tipo de cuenta:</p>
-              <p>Numero de cuenta:</p>
-              <p>CBU:</p>
-              <p>Saldo:</p>
-              <p>Moneda:</p>
-              <p><button class="btnBuscar" name="btnVerMovimientos" style="width: 120px; ">Ver movimientos</button></p>
-          </div>
-          
-            <div>
-              <h2>Cuenta 3</h2>
-              <p>Alias:</p>
-              <p>Fecha de creacion:</p>
-              <p>Tipo de cuenta:</p>
-              <p>Numero de cuenta:</p>
-              <p>CBU:</p>
-              <p>Saldo:</p>
-              <p>Moneda:</p>
-              <p><button class="btnBuscar" name="btnVerMovimientos" style="width: 120px; ">Ver movimientos</button></p>
-            </div>
-        </div>
-        <input class="btnAgregarCuenta" type="button" value="Agregar cuenta">
-        </form>
-      </section>
+       		<div class="tiposDeCuentas tiposDeCuentas--modif">
+        	<%
+        	List<cuenta> lista = new ArrayList<cuenta>();
+			if (request.getAttribute("ListaC") != null) {
+				lista = (List<cuenta>) request.getAttribute("ListaC");
+			for (cuenta cue : lista) {
+			%>			
+			<div>
+			<form method= "post" action="ServletCuenta">		
+			<h2>CUENTA N° <%=cue.getN_Cuenta()%><input type="hidden" name="ncuenta" value="<%=cue.getN_Cuenta()%>"></h2>
+			<table class="table" style="width:200">
+			<tr>
+				<th>TIPO: </th>
+				<th><%=cue.getTipo()%></th>
+			</tr>
+			<tr>
+				<th>FECHA DE CREACION: </th>
+				<th><%=cue.getFecha_cracion()%></th>
+			</tr>
+			<tr>
+				<th>CBU: </th>
+				<th><%=cue.getCBU()%></th>
+			</tr>
+			<tr>
+				<th>SALDO: </th>
+				<th><%=cue.getSaldo()%></th>
+			</tr>
+			<tr>
+				<th>ESTADO: </th>
+				<th>
+				<%
+					if(cue.getEstado()== true){%>
+					Activada			
+					<%
+					}
+					else{%>
+					Desactivada
+				<%}%>
+				</th>
+			</tr>	
+			</table>
+				<button class="btnBuscar" name="btnVerMovimientos" style="width: 120px;">Ver movimientos</button>
+			</form>
+			</div>	
+			<%
+			}
+			}
+			%>
+		</div>
+      </section> 
+      <div>
+      	<input class="btnAgregarCuenta" type="button" value="Agregar cuenta">
+      </div>
+	  <p></p>
       <div class="card--modif cm2"></div>
       <div class="card--modif cm3"></div>
 

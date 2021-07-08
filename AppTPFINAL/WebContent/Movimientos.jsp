@@ -108,10 +108,12 @@
 			</tr>
 			<%
 			List<movimientos> lista = new ArrayList<movimientos>();
-			if (request.getAttribute("listaM") != null) {
+			List<String> listaTipo = new ArrayList<String>();
+			if (request.getAttribute("listaM") != null && request.getAttribute("tipo") != null) {
 				lista = (List<movimientos>) request.getAttribute("listaM");
+				listaTipo = (List<String>) request.getAttribute("tipo");
 			}
-			
+			int i=0;
 			
 			if(lista!=null)
 			for (movimientos mov : lista) {
@@ -122,17 +124,18 @@
 				<td><%=mov.getFecha()%></td>
 				<td><%=mov.getDetalle()%></td>
 				<td><%=mov.getImporte()%></td>
-				<td><%=mov.getID_Tipo()%></td>
+				<td><%=listaTipo.get(i)%></td>
 			</form>
 			</tr>
 			<%
+			i++;
 			}
 			%>
 			</table>
 			<p></p>
 			<form method= "post" action="ServletCuenta">
 			<div style="text-align: center;">
-				<button class="btnBuscar" name="" style="width: 286px; ">Volver a "Mis Cuentas"</button>
+				<button class="btnBuscar" name="btnListxDni" style="width: 286px; ">Volver a "Mis Cuentas"</button>
 			</div>
 			</form>
 		</section>

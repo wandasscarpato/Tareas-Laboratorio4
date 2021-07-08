@@ -252,10 +252,23 @@ public class ServletCuenta extends HttpServlet {
 				}
 				else if (request.getParameter("btnVerMovimientos") != null) {
 				      HttpSession session = request.getSession();
-				      int n_cuenta = 4;
+				      String n_cuenta = request.getParameter("ncuenta").toString();
+				      session.setAttribute("Session_cuenta", n_cuenta);
 				      session.setAttribute("Session_cuenta", Integer.valueOf(n_cuenta));
 				      RequestDispatcher dispatcher = request.getRequestDispatcher("ServletMovimientos?btnList");
 				      dispatcher.forward((ServletRequest)request, (ServletResponse)response);
+				    }
+				else if (request.getParameter("btnListxDni") != null) {
+				      cuentaNegocioImplement cuentaNegocioImplement = new cuentaNegocioImplement();
+				      if (request.getSession().getAttribute("DNI") != null) {
+				        String dni = request.getSession().getAttribute("DNI").toString();
+				        if (cuentaNegocioImplement.ObtenerxDni(dni) != null) {
+				          List<cuenta> lista = cuentaNegocioImplement.ObtenerxDni(dni);
+				          request.setAttribute("ListaC", lista);
+				          RequestDispatcher dispatcher = request.getRequestDispatcher("/misCuentas.jsp");
+				          dispatcher.forward((ServletRequest)request, (ServletResponse)response);
+				        } 
+				      } 
 				    } 
 				
 				if(request.getParameter("btnCargar")!=null) {
