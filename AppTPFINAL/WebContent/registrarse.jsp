@@ -68,7 +68,7 @@
                 Usuarios-Clientes
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
+                <a class="dropdown-item" href="./ServletRegistro">Crear usuario</a>
                 <a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
                 <form method="post" action="ServletUsuario">
                     <button class="dropdown-item" name="btnList">Cambio de contraseñas</button>
@@ -129,11 +129,12 @@
                     <input name="direccion" type="text" required><br>
                     <label for="">Localidad</label>
                      <select class="genero" name="localidad" id="localidad" required>
+                     		
                          <%=request.getAttribute("SelectLoc") %>
                     </select>
                     <label for="">Provincia</label>
                      <select class="genero" name="provincia" id="provincia" required>
-                        <%=request.getAttribute("SelectProv") %>
+                         <%=request.getAttribute("SelectProv") %> 
                     </select>
                     <label for="">Correo electronico</label>
                     <input name="email" type="text" required><br>

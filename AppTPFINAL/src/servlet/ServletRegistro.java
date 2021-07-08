@@ -28,22 +28,22 @@ public class ServletRegistro extends HttpServlet {
 		ArrayList<provincia> listaProvincias = new ArrayList<provincia>();
     	ProvinciasDaoImplement pDao = new ProvinciasDaoImplement();
     	listaProvincias = pDao.listarProvincias();
-    	
+
     	String SelectProv = "";
     	String SelectLoc = "";
-    	
+
     	for(provincia prov: listaProvincias){
     		SelectProv +="<option value="+'"'+ prov.getID() +'"'+ ">" + prov.getProvincia() + "</option>";
 		}
-    	
+
     	ArrayList<localidad> listalocalidades = new ArrayList<localidad>();
     	localidadesDaoImplement lDao = new localidadesDaoImplement();
     	listalocalidades = lDao.listarLocalidades();
-    	
+
     	for(localidad local: listalocalidades){
     		SelectLoc += "<option value="+'"'+local.getID()+'"'+">"+local.getLocalidad()+"</option>";
     	}
-    	
+
     	request.setAttribute("SelectProv",SelectProv);
     	request.setAttribute("SelectLoc",SelectLoc);
 		RequestDispatcher rd = request.getRequestDispatcher("registrarse.jsp");

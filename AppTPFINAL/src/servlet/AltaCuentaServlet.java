@@ -97,7 +97,7 @@ public class AltaCuentaServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("cantFilas", filas);
-		RequestDispatcher rd = request.getRequestDispatcher("/nuevaCuenta(ADMIN).jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("AltaCuentaServlet?Status=true");
 		rd.forward(request, response);
 		
 		

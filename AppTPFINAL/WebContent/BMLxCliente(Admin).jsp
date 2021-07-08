@@ -69,7 +69,7 @@
                 Usuarios-Clientes
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="./registrarse.jsp">Crear usuario</a>
+                <a class="dropdown-item" href="./ServletRegistro">Crear usuario</a>
                 <a class="dropdown-item" href="./ServletBMLxCli">Administras datos</a>
                 <form method="post" action="ServletUsuario">
                     <button class="dropdown-item" name="btnList">Cambio de contraseñas</button>
