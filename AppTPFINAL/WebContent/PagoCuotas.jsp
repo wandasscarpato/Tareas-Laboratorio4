@@ -112,7 +112,7 @@
 					for (n_prestamo presta : listaPrestamos) {
 				%>
 				
-					<%if(presta.isEstado() != 0){ %>
+					<%if(presta.isEstado() == 1){ %>
 					<tr>
 					<td><%=presta.getN_Prestamo()%></td>
 					<td><%=presta.getImporte_pedido()%></td>
@@ -223,6 +223,19 @@
             </ul>
         </div>
     </footer>
+    <%if(session.getAttribute("TipoLog")=="Usuario"){
+} else {
+    if(session.getAttribute("TipoLog")=="Administrador"){
+        %><script>
+        location.href = "Reportes.jsp";
+        </script><%
+    } else {
+        %><script>
+        location.href = "InicioSesion.jsp?NoLog=1&Redirect=PAGINAINTENTOENTRAR";
+        </script><%
+    }
+}
+%>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
