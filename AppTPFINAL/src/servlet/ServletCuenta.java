@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 
+import dao.cuentaDao;
+import daoImplement.cuentaDaoImplement;
 import entidad.AceptarCuenta;
 import entidad.cuenta;
 import entidad.movimientos;
@@ -265,6 +267,30 @@ public class ServletCuenta extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("/AceptarCuentas(Admin).jsp");
 					rd.forward(request, response);
 				 }
+				
+				if(request.getParameter("btnRechazar")!=null) {
+					int N_Cuenta = Integer.parseInt(request.getParameter("N_Cuenta"));
+					cuentaDao cDao = new cuentaDaoImplement();
+					cDao.ModificarEstadoCuenta(N_Cuenta, false);
+					ArrayList<AceptarCuenta> ListarAceptarCuenta = cDao.ListarAceptarCuenta();
+					
+					request.setAttribute("ListarC", ListarAceptarCuenta);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/AceptarCuentas(Admin).jsp");
+					rd.forward(request, response);
+				}
+				
+				if(request.getParameter("btnAceptar")!=null) {
+					int N_Cuenta = Integer.parseInt(request.getParameter("N_Cuenta"));
+					cuentaDao cDao = new cuentaDaoImplement();
+					cDao.ModificarEstadoCuenta(N_Cuenta, true);
+					ArrayList<AceptarCuenta> ListarAceptarCuenta = cDao.ListarAceptarCuenta();
+					
+					request.setAttribute("ListarC", ListarAceptarCuenta);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/AceptarCuentas(Admin).jsp");
+					rd.forward(request, response);
+				}			
 				
 	}
 }

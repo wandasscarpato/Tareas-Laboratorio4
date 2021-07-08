@@ -85,6 +85,11 @@ public class cuentaNegocioImplement implements cuentaNegocio {
 	public int ObtenerN_Cuenta (cuenta cuenta_m) {
 		return cdao.ObtenerN_Cuenta(cuenta_m);
 	}
+
+	@Override
+	public boolean ModificarEstadoCuenta(int N_Cuenta, boolean B) {
+		return cdao.ModificarEstadoCuenta(N_Cuenta, B);
+	}
 	
 }
 

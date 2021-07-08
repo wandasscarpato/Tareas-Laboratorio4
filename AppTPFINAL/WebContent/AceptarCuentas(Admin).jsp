@@ -99,39 +99,37 @@
 				<tr>
 					<th>DNI</th>
 					<th>Tipo de Cuenta</th>
+					<th>Ncuenta</th>
 					<th>Pendiente</th>
 				</tr>
 			<thead>
 			<tbody>
 				<%
 				List<AceptarCuenta> ListarCuenta = new ArrayList<AceptarCuenta>();
-				
+				int I=1;
 					if(request.getAttribute("ListarC")!=null){	
 						ListarCuenta = (List<AceptarCuenta>)request.getAttribute("ListarC");
-						System.out.print("Anda mierda-----");
 						for (AceptarCuenta User : ListarCuenta) {
-					
 							if(User.isEstado() != true){ %>
 						<tr>
-							<td><%=User.getDNI()%></td>
-							<td><%=User.getTipo()%></td>
-							<td> Aceptar<input type="radio" name="Estado" value="Aceptar">
-								Rechazar<input type="radio" name="Estado" value="Rechazar"></td>
+						  	<form action="ServletCuenta" method="post">
+								<td><%=User.getDNI()%></td>
+								<td><%=User.getTipo()%></td>
+								<td><%=User.getN_Cuenta()%> <input type="hidden" name="N_Cuenta" value="<%=User.getN_Cuenta()%>"> </td>
+								<td> <input type="submit" value="Aceptar" name="btnAceptar">
+									 <input type="submit" value="Rechazar" name="btnRechazar"></td>
+						  	</form>
 						</tr>
-						<%}	
-							
+							<%}	
+							}
 						}
-					}
 					
 				%>
 			</tbody>
 		</table>
-		<input type="submit" value="Aceptar Cambios" name="btnAceptar">
-		<input type="submit" value="Cargar Lista" name="btnCargar">
+		<input class="btnPrestamo" type="submit" value="Cargar Lista" name="btnCargar">
 </form>
 
-<input type="submit" value="Aceptar Cambios" name="btnAceptar">
-<input type="submit" value="Cancelar Cambios" name="btnCancelar">
 	</div>
 	<!--Comienza el footer-->
 	<footer>

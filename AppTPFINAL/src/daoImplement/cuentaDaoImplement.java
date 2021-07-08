@@ -23,8 +23,10 @@ public class cuentaDaoImplement implements cuentaDao {
 	private static final String updateTipo = "UPDATE cuenta SET Tipo= ? WHERE N_Cuenta= ? AND DNI= ?";
 	private static final String updateSaldo = "UPDATE cuenta SET Saldo= ? WHERE CBU= ? OR CBU=?";
 	private static final String ObtenerSaldo = "SELECT Saldo FROM cuenta WHERE N_Cuenta = ? OR CBU=?";
-	private static final String ListarAceptarCuenta = "SELECT `cliente`.`DNI`,`cuenta`.`tipo` from cliente inner join cuenta on `cliente`.`DNI` = `cuenta`.`DNI` where `cliente`.`estado` = 1";
+	private static final String ListarAceptarCuenta = "SELECT `cliente`.`DNI`,`cuenta`.`tipo`,`N_Cuenta` from cliente inner join cuenta on `cliente`.`DNI` = `cuenta`.`DNI` where `cuenta`.`estado` = 1";
 	private static final String ObtenerN_Cuenta = "SELECT N_cuenta FROM cuenta WHERE CBU=?";
+	private static final String ModiEstRechazar = "UPDATE `lab4`.`cuenta` SET `Estado` = '0' WHERE (`N_Cuenta` = ?)";
+	private static final String ModiEstAceptar = "UPDATE `lab4`.`cuenta` SET `Estado` = '1' WHERE (`N_Cuenta` = ?)";
 	
 	
 	public boolean insert(cuenta cuenta)
@@ -321,6 +323,7 @@ public class cuentaDaoImplement implements cuentaDao {
 	            
 	            	AceptarC.setDNI(resultSet.getInt("DNI"));
 	            	AceptarC.setTipo(resultSet.getString("tipo"));
+	            	AceptarC.setN_Cuenta(resultSet.getInt("N_Cuenta"));
 		            
 	            	
 	            	AceptarCuenta.add(AceptarC);
@@ -351,6 +354,38 @@ public class cuentaDaoImplement implements cuentaDao {
 			} catch (SQLException ex) {
 				return 0;
 			}
+	}
+
+
+	@Override
+	public boolean ModificarEstadoCuenta(int N_Cuenta, boolean B) {
+		PreparedStatement statement = null;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean isInsertExitoso = false;
+		try {
+			if(B==true) {
+			statement = Conexion.prepareStatement(ModiEstAceptar);		
+			statement.setInt(1, N_Cuenta);
+			}
+			if(B==false) {
+				statement = Conexion.prepareStatement(ModiEstRechazar);		
+				statement.setInt(1, N_Cuenta);
+			}
+			
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				isInsertExitoso = true;
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				try {
+					Conexion.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} 
+		return isInsertExitoso;
 	}
 }
 	
