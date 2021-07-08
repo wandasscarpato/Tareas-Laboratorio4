@@ -119,7 +119,7 @@
 				<th>ESTADO: </th>
 				<th>
 				<%
-					if(cue.getEstado()== true){%>
+					if(cue.getEstado() == 1){%>
 					Activada			
 					<%
 					}

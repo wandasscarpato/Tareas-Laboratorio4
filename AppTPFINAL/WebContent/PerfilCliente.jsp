@@ -59,13 +59,10 @@
                     Cuentas
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <form method="post" action="ServletCuenta">
-                    	<button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
-                	</form>
-                    <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
-                   
-                  </div>
-                </li>
+                  <form method="post" action="ServletCuenta">
+                        <button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
+                    </form></li>
+                    
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -74,18 +71,19 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="ServletSolicitarPrestamo">Solicitar prestamo</a> 
                   </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      Menu de pagos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <form method= "post" action="ServletListarPrestamos">
-                    <button class="dropdown-item" name="btnListarPrestamos">Mis Prestamos</button>
+           <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Cuentas
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <form method="post" action="ServletCuenta">
+                        <button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
                     </form>
-                    </div>
-                  </li>
+                    <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
+
+                  </div>
+                </li>
               </ul>
               <div class="form-inline my-2 my-lg-0">
               <h6 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size:2rem; color:red"class="usuarioLogueado">Usuario: <%= session.getAttribute("Usuario") %> <!--  DNI: <%= session.getAttribute("DNI") %> --></h6>
