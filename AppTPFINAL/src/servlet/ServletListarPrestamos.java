@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entidad.cuenta;
 import entidad.n_prestamo;
@@ -23,6 +24,7 @@ import negocioImplement.cuentaNegocioImplement;
  */
 @WebServlet("/ServletListarPrestamos")
 public class ServletListarPrestamos extends HttpServlet {
+	HttpSession session;
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -44,6 +46,8 @@ public class ServletListarPrestamos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		session = request.getSession(true);
+		
 		if(request.getParameter("btnListarPrestamos")!=null) {
 			
 			prestamosNegocio pNeg = new PrestamosNegocioImplement();
@@ -51,15 +55,15 @@ public class ServletListarPrestamos extends HttpServlet {
 			//String dniUsuario = "Dali";
 			//request.getSession().setAttribute("dniusu", dniUsuario);
 			
-			ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(123);
+			ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(Integer.parseInt(session.getAttribute("DNI").toString()));
 			request.setAttribute("listaPresDni", listaPresDni);
 			
 			cuentaNegocio cNeg = new cuentaNegocioImplement();
 			
 			
-			System.out.print("LLEGA AL SERVLET ALMENOS BRO");
+			//System.out.print("LLEGA AL SERVLET ALMENOS BRO");
 			
-			ArrayList<cuenta> listaCuentaDni = (ArrayList<cuenta>) cNeg.ObtenerxDni("123");
+			ArrayList<cuenta> listaCuentaDni = (ArrayList<cuenta>) cNeg.ObtenerxDni(session.getAttribute("DNI").toString());
 			request.setAttribute("listaCuentaDni", listaCuentaDni);
 			
 			

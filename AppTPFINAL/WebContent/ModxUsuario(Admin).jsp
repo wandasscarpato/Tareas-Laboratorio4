@@ -53,8 +53,8 @@
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Prestamos </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./PrestamosAceptados.jsp">Prestamos
-                            autorizados</a>
+                                        <a class="dropdown-item" href="./ServletPrestamosAceptados">Prestamos autorizados</a>
+
                         <a class="dropdown-item" href="./ServletAutorizarPrestamos">Prestamos a autorizar</a>
 
                     </div>

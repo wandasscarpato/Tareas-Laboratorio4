@@ -7,11 +7,22 @@ import java.util.List;
 import negocio.movimientosNegocio;
 
 public class movimientosNegocioImplement implements movimientosNegocio {
-  movimientosDao mdao = (movimientosDao)new movimientosDaoImplement();
+  movimientosDao mdao = new movimientosDaoImplement();
   
   public List<movimientos> listarMovimientos() {
     return this.mdao.readAll();
   }
+  public boolean insertAltaPrestamo(movimientos movimiento) {
+		
+		boolean estado=false;
+		if(movimiento.getID_Tipo()>0)
+		{
+			estado=mdao.insertAltaPrestamo(movimiento);
+			estado = true;
+			
+		}
+		return estado;
+	} 
   
   public List<movimientos> ObtenerxN_Cuenta(int n_cuenta) {
     return this.mdao.ObtenerxN_Cuenta(n_cuenta);

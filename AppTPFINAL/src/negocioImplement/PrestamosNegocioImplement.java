@@ -17,7 +17,7 @@ public class PrestamosNegocioImplement implements prestamosNegocio{
 		boolean estado=false;
 		if(prestamo.getDNI()>0)
 		{
-			prestamo.setEstado(true);
+			prestamo.setEstado(1);
 			estado=cdao.insert(prestamo);
 			estado = true;
 			

@@ -9,7 +9,7 @@ public class movimientos {
   
   private String Detalle;
   
-  private double Importe;
+  private float Importe;
   
   private int ID_Tipo;
   
@@ -17,7 +17,7 @@ public class movimientos {
   
   public movimientos() {}
   
-  public movimientos(int id_movimiento, Date fecha, String detalle, double importe, int tipo, int n_cuenta) {
+  public movimientos(int id_movimiento, Date fecha, String detalle, float importe, int tipo, int n_cuenta) {
     this.ID_Movimiento = id_movimiento;
     this.Fecha = fecha;
     this.Detalle = detalle;
@@ -50,11 +50,11 @@ public class movimientos {
     this.Detalle = detalle;
   }
   
-  public double getImporte() {
+  public float getImporte() {
     return this.Importe;
   }
   
-  public void setImporte(double importe) {
+  public void setImporte(float importe) {
     this.Importe = importe;
   }
   
