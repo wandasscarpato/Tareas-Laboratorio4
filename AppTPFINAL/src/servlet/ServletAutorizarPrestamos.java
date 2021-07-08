@@ -41,8 +41,9 @@ public class ServletAutorizarPrestamos extends HttpServlet {
 				tabla +="<td>" + presta.getMontoxMes() + "</td>";
 				tabla +="<td>" + presta.getCuotas() + "</td>";
 				tabla +="<td>" + presta.getN_cuentaADepositar() + "</td>";
-				tabla +="<td><input class='btnEnviarAutorizacionP'"+ "name=" + '"' + "btnAutorizar" + '"' + "type=" + '"' + "submit" + '"' + "value=" + '"' + "Autorizar" + '"' + "></td></form></tr>";
-			
+				tabla +="<td><input class='btnEnviarAutorizacionP'"+ "name=" + '"' + "btnAutorizar" + '"' + "type=" + '"' + "submit" + '"' + "value=" + '"' + "Autorizar" + '"' + "></td></form>";
+				tabla +="<form method='post' action='ServletAutorizarPrestamo' onsubmit='return validarRechazo()'><input name='idPrestamo' value= '"+ presta.getN_Prestamo() + "type='hidden'><td><input class='btnEnviarAutorizacionP' name='btnRechazar'type='submit' value='Rechazar'></td></form></tr>";
+
 			}
 		}
 		

@@ -92,7 +92,8 @@
 					<th>Intereses</th>
 					<th>Monto por mes</th>
 					<th>Cuotas</th>
-					<th>Nro de cuenta a Depositar</th>
+					<th>CBU</th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -168,17 +169,28 @@
 <script>
 function validar(){
 	
-		var btn = confirm("Esta seguro que desea autorizar?")
+
+	
+		var btn = confirm("Esta seguro que desea autorizar este prestamo?");
 		if(btn==true){
 			return true;
 		} else {
 			return false;
 		}
-		/*swal("holis", {
-		  dangerMode: true,
-		  buttons: true});
 		
-	return false;*/
+
+}
+function validarRechazo(){
+	
+
+	
+		var btn = confirm("Esta seguro que desea rechazar el prestamo?");
+		if(btn==true){
+			return true;
+		} else {
+			return false;
+		
+}
 }
 </script>
 

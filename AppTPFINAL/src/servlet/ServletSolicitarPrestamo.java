@@ -91,10 +91,10 @@ public class ServletSolicitarPrestamo extends HttpServlet {
 		int cuo=(Integer.parseInt(request.getParameter("cuotas")));
 		//
 		float interes= 5 / 4 ;
-		float montoint = (inicial*interes);
+		float montoint = (inicial*interes)/4;
 		float montoFinal= montoint+inicial;
 		
-		float mensual= montoFinal/12;
+		float mensual= montoFinal/cuo;
 		
 		
 		pres.setMontoxMes(mensual);

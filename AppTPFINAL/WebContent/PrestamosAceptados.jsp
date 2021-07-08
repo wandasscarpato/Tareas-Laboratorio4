@@ -111,7 +111,7 @@
 					<th>Intereses</th>
 					<th>Monto por mes</th>
 					<th>Cuotas</th>
-					<th>Nro de cuenta a Depositar</th>
+					<th>CBU</th>
 				</tr>
 			<thead>
 			<tbody>

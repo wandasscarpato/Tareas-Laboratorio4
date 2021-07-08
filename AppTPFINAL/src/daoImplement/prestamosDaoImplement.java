@@ -13,8 +13,10 @@ import java.util.ArrayList;
 
 public class prestamosDaoImplement {
 
-	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo`";
-	private static final String estado = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
+	private static final String listar = "SELECT `n_prestamo`.`N_Prestamo`,`n_prestamo`.`DNI`,`n_prestamo`.`Fecha`,`n_prestamo`.`importe_intereses`,`n_prestamo`.`importe_pedido`,`n_prestamo`.`plazo`,`n_prestamo`.`montoXMes`,`n_prestamo`.`Cuotas`,`n_prestamo`.`N_CuentaADepositar`,`n_prestamo`.`Estado`FROM `lab4`.`n_prestamo` WHERE (n_prestamo!=2)";
+	private static final String aceptar = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 1 WHERE `N_Prestamo` = ?";
+	private static final String rechazar = "UPDATE `lab4`.`n_prestamo` SET `Estado` = 2 WHERE `N_Prestamo` = ?";
+	private static final String actualizarMonto = "UPDATE cuenta INNER JOIN n_prestamo on n_prestamo.n_prestamo = ? SET cuenta.Saldo = (cuenta.Saldo+n_prestamo.importe_pedido) WHERE (cuenta.DNI = n_prestamo.DNI) AND (cuenta.N_Cuenta = n_prestamo.N_CuentaADepositar) AND (n_prestamo.n_prestamo = ?)";
 	private static final String insert = "INSERT INTO `lab4`.`n_prestamo`(`DNI`,`importe_intereses`,`importe_pedido`,`montoXMes`,`Cuotas`,`N_CuentaADepositar`,`Estado`)VALUES(?,?,?,?,?,?,0)" ;
 	private static final String listarXdni = "SELECT * FROM n_prestamo WHERE DNI = ?";
 	
@@ -140,13 +142,52 @@ public class prestamosDaoImplement {
 		boolean cambioExitoso = false;
 		try 
 		{
-			statement = Conexion.prepareStatement(estado);
+			statement = Conexion.prepareStatement(aceptar);
 			statement.setInt(1, prestamoAutorizado);
 			if(statement.executeUpdate() > 0)
 			{
 				Conexion.commit();
 				cambioExitoso = true;
 			}
+			
+			if(cambioExitoso == true) {
+				statement = Conexion.prepareStatement(actualizarMonto);
+				statement.setInt(1, prestamoAutorizado);
+				statement.setInt(2, prestamoAutorizado);
+				
+				if(statement.executeUpdate() > 0)
+				{
+					Conexion.commit();
+				}
+			}
+			
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return cambioExitoso;
+	}
+	
+	public boolean rechazar(int prestamoRechazado)
+	{
+		PreparedStatement statement;
+		Connection Conexion = conexion.getConexion().getSQLConexion();
+		boolean cambioExitoso = false;
+		try 
+		{
+			statement = Conexion.prepareStatement(rechazar);
+			statement.setInt(1, prestamoRechazado);
+			if(statement.executeUpdate() > 0)
+			{
+				Conexion.commit();
+				cambioExitoso = true;
+			}
+				if(statement.executeUpdate() > 0)
+				{
+					Conexion.commit();
+				}
+			
 		} 
 		catch (SQLException e) 
 		{

@@ -34,7 +34,14 @@ public class PrestamosNegocioImplement implements prestamosNegocio{
 		//return estado;
 		return estado;
 }
+	public boolean rechazar(int prestamoRechazar) {
+		//boolean estado=false;
+			
+			boolean estado=cdao.rechazar(prestamoRechazar);
 		
+		//return estado;
+		return estado;
+}
 	public ArrayList<n_prestamo> listarPrestamos(){
 		return (ArrayList<n_prestamo>) cdao.listarPrestamos();
 	}
