@@ -236,28 +236,20 @@ public class prestamosDaoImplement {
         List<n_prestamo> n_prestamo = new ArrayList<n_prestamo>();
         Connection Conexion = conexion.getConexion().getSQLConexion();
         
-        System.out.println("-----------");
-        System.out.println("DAO");
-        System.out.println(d1);
-        System.out.println("-----------");
-        System.out.println(d2);
+        String aux;
+        
+        if(d1.compareTo(d2) < 0) {
+        	aux = d1;
+        	d1 = d2;
+        	d2=aux;
+        }
         
         try 
         {
             statement = Conexion.prepareStatement(Filter_Reporte_1);
             
-            System.out.println(d1.compareTo(d2));
-            System.out.println(d2.compareTo(d1));
-            
-            if(d1.compareTo(d2) > 0) {
-            	// d1>d2
             	statement.setString(1, d1);
             	statement.setString(2, d2);
-            } else if(d1.compareTo(d2) < 0){
-            	// d2>d1
-            	statement.setString(1, d2);
-            	statement.setString(2, d1);
-            }
             
             resultSet = statement.executeQuery();
             while(resultSet.next())
@@ -266,10 +258,13 @@ public class prestamosDaoImplement {
             	n_prestamo prestamoRs = new n_prestamo();
             	// Me trae el total ganado (IMP.INTE - IMP.SOL)
             	prestamoRs.setImporte_intereses(resultSet.getFloat("Total_ganado"));
+            	System.out.println(resultSet.getFloat("Total_ganado"));
             	// ME TRAE cantidad de prestamos por mes
 	            prestamoRs.setDNI(resultSet.getInt("Cantidad_Prestamo"));
+	            System.out.println(resultSet.getInt("Cantidad_Prestamo"));
             	// ME TRAE Fecha
 	            prestamoRs.setFecha(resultSet.getString("Fecha"));
+	            System.out.println(resultSet.getString("Fecha"));
 	            
             	n_prestamo.add(prestamoRs);
             }

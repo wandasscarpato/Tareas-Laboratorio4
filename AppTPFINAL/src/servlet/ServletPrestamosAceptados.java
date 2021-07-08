@@ -77,8 +77,11 @@ public class ServletPrestamosAceptados extends HttpServlet {
 			prestamosNegocio pNeg = new PrestamosNegocioImplement();
 			
 				if(pNeg.Filter_reporte_1(date_1, date_2) != null) {
+					System.out.println("ENTRA 1");
 					List<n_prestamo> lista= pNeg.Filter_reporte_1(date_1, date_2);
-					request.setAttribute("Reporte1", lista);	
+					System.out.println(lista);
+					request.setAttribute("Reporte1", lista);
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/Reportes.jsp");
 					dispatcher.forward(request, response);
 				}
