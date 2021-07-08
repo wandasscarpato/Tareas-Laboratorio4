@@ -98,7 +98,7 @@
      					}
                 	if(session.getAttribute("Session_estado")!= null){
 
-                		if(session.getAttribute("Session_estado").toString().equals("false")){%>
+                		if(session.getAttribute("Session_estado").toString().equals("0")){%>
 	                		La cuenta se encuentra desactivada, para activarla haga click aquí: 
 	                		<input class="btnBuscar" type="submit" name= "btnActivar" value="Activar" style="width: 143px;"><br>
                 		<%
@@ -109,21 +109,18 @@
                 		<% }
                 		}
                 		}
-                		else if(session.getAttribute("Session_estado").toString().equals("true")){%>
+                		else if(session.getAttribute("Session_estado").toString().equals("1")){%>
 	                		<p></p>
 	                		<div>
 	                		Seleccione el nuevo tipo de cuenta:
 	                		<select class="genero" name="tipo" id="tipo" style="width: 180px; ">
-	                        <option value="1">Cuenta Corriente AR$</option>
-	                        <option value="2">Caja de Ahorro AR$</option>
-	                        <option value="3">Cuenta Corriente USD$</option>
-	                        <option value="4">Caja de Ahorro USD$</option>
+	                        <option value="1">Cuenta Corriente</option>
+	                        <option value="2">Caja de Ahorro</option>
 	                   		</select>
 	                   		</div>
 	                   		<p></p>
 	                   		<div>
 	                		<input class="btnBuscar" type="submit" name="btnModificar2" value="Modificar" style="width: 143px;">
-	                		<input class="btnBuscar" type="submit" name="btnCancelar" value="Cancelar" style="width: 143px;"><br> 
 	                		</div>	
                 		<%}
                 		}
