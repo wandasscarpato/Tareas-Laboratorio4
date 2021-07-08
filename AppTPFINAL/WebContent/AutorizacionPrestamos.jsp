@@ -181,16 +181,28 @@ function validar(){
 
 }
 function validarRechazo(){
-	
-
-	
 		var btn = confirm("Esta seguro que desea rechazar el prestamo?");
 		if(btn==true){
 			return true;
 		} else {
 			return false;
-		
 }
+}
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var ParamStatus = urlParams.get('Status');
+if(ParamStatus == "true"){
+	swal("Prestamo aceptado correctamente", "podra visualizarlo en prestamos aceptados", "success");
+}else if(ParamStatus == "false"){ 
+	swal("El prestamo no se pudo autorizar", "algo salio mal", "error");
+}
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var ParamStatus = urlParams.get('StatusS');
+if(ParamStatus == "true"){
+	swal("Prestamo rechazado correctamente", "ya no se podra visualizar", "success");
+}else if(ParamStatus == "false"){ 
+	swal("El prestamo no se pudo rechazar", "algo salio mal", "error");
 }
 </script>
 
