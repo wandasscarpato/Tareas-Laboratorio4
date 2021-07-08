@@ -304,6 +304,15 @@ public class ServletCuenta extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("/AceptarCuentas(Admin).jsp");
 					rd.forward(request, response);
 				}			
+				if(request.getParameter("btnCargar")!=null) {
+					cuentaNegocio cNeg = new cuentaNegocioImplement();
+					ArrayList<AceptarCuenta> ListarAceptarCuenta = cNeg.listarAceptarCuentas();
+					
+					request.setAttribute("ListarC", ListarAceptarCuenta);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/AceptarCuentas(Admin).jsp");
+					rd.forward(request, response);
+				 }
 				
 	}
 }
