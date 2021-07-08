@@ -94,36 +94,19 @@
       <h1>Nueva Cuenta</h1> <br>
       
       
-      <form action="AltaCuentaServlet" method="get" class="form-div">
-      
-       <div><label for="">DNI usuario: </label> 
-                    <input type="text" name="txtDNI" required> <br> </div>
-                    
-        <div><label for="">CBU: </label> 
-                    <input type="text" name="txtCBU" required> <br> </div>
-                    
-        <div><label for="">Saldo: </label> 
-                    <input type="text" name="txtSaldo" required> <br>  </div>
-                                          
+      <form action="AltaCuentaServlet" method="post" class="form-div">
+                             
                                           
                                           
        <div> <label for="">Tipo de cuenta</label>
                     <select class="cuenta" name="tipo" id="tipo" style="width: 69%;">
                         <option value="1">Caja de ahorro - Pesos</option>
-                        <option value="2">Caja de ahorro - USD</option>
                         <option value="3">Cuenta corriente - Pesos</option>
-                        <option value="4">Cuenta corriente - USD</option>
                         
                     </select><br></div>
                    <%!String asd; %>  
-                  <% 
-                    if(request.getAttribute("fechanueva") !=null){
-                     asd= request.getAttribute("fechanueva").toString();
-                      }
-                     %>
-      <div><label for="">Fecha creacion: </label> 
-                    <label ><%=asd %></label> <br></div>
-      <br><br>
+                  
+   
                     
         <input class="btnRegistro" type="submit" value="Crear Cuenta" name="btnCrear">             
                     
