@@ -144,7 +144,7 @@ public class AltaCuentaServlet extends HttpServlet {
 			
 			
 			//c.setDNI(Integer.parseInt(session.getAttribute("DNI").toString()));
-			c.setDNI(5);
+			c.setDNI(Integer.parseInt(session.getAttribute("DNI").toString()));
 			System.out.print("DNI");
 			c.setCBU(numRandom);
 			System.out.print("CBU ");
