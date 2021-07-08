@@ -76,7 +76,9 @@
                       Menu de pagos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="PagoCuotas.jsp">Mis pagos</a>
+                    <form method= "post" action="ServletListarPrestamos">
+                    <button class="dropdown-item" name="btnListarPrestamos">Mis Prestamos</button>
+                    </form>
                     </div>
                   </li>
               </ul>
