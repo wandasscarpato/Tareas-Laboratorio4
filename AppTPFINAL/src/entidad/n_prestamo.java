@@ -10,7 +10,8 @@ public class n_prestamo {
 	private int Cuotas;
 	private int N_cuentaADepositar;
 	private int estado;
-	
+	private String Fecha;
+
 	public n_prestamo(){}
 
 	public n_prestamo(int n_Prestamo, int dNI, float importe_intereses, float importe_pedido, int plazo,
@@ -98,6 +99,18 @@ public class n_prestamo {
 		this.estado = estado;
 	}
 
+	public String getFecha() {
+		return Fecha;
+	}
+
+	public void setFecha(String fecha) {
+		Fecha = fecha;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+	
 	@Override
 	public String toString() {
 		return "n_prestamo [N_Prestamo=" + N_Prestamo + ", DNI=" + DNI + ", Importe_intereses=" + Importe_intereses

@@ -1,5 +1,7 @@
 package negocioImplement;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,4 +52,13 @@ public class PrestamosNegocioImplement implements prestamosNegocio{
 	public ArrayList<n_prestamo> listarPrestamosxDni(int dni) {
 		return (ArrayList<n_prestamo>) cdao.listarPrestamosxDni(dni);
 	}
+	
+	public List<n_prestamo> listarReporte_1(){
+		return cdao.listarReporte_1();
+	}
+	
+	public List<n_prestamo> Filter_reporte_1(String date_1,String date_2){
+		return cdao.Filter_reporte_1(date_1, date_2);
+	}
+	
 }

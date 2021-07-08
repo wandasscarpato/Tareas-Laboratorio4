@@ -1,6 +1,8 @@
 package daoImplement;
 
 import java.sql.Connection;
+import java.sql.Date;
+
 import daoImplement.conexion;
 
 import entidad.n_prestamo;
@@ -8,7 +10,11 @@ import entidad.n_prestamo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class prestamosDaoImplement {
@@ -19,6 +25,8 @@ public class prestamosDaoImplement {
 	private static final String actualizarMonto = "UPDATE cuenta INNER JOIN n_prestamo on n_prestamo.n_prestamo = ? SET cuenta.Saldo = (cuenta.Saldo+n_prestamo.importe_pedido) WHERE (cuenta.DNI = n_prestamo.DNI) AND (cuenta.N_Cuenta = n_prestamo.N_CuentaADepositar) AND (n_prestamo.n_prestamo = ?)";
 	private static final String insert = "INSERT INTO `lab4`.`n_prestamo`(`DNI`,`importe_intereses`,`importe_pedido`,`montoXMes`,`Cuotas`,`N_CuentaADepositar`,`Estado`)VALUES(?,?,?,?,?,?,0)" ;
 	private static final String listarXdni = "SELECT * FROM n_prestamo WHERE DNI = ?";
+	private static final String Reporte_1 = "SELECT sum(importe_intereses) - SUM(importe_pedido)  as 'Total_ganado', count(date_format(fecha,'%y-%m-%d')) as 'Cantidad_Prestamo' ,date_format(fecha,'%y-%m-%d') as 'Fecha' FROM n_prestamo GROUP BY date_format(fecha,'%y-%m-%d') ";
+	private static final String Filter_Reporte_1 = "SELECT sum(importe_intereses) - SUM(importe_pedido)  as 'Total_ganado', count(date_format(fecha,'%y-%m-%d')) as 'Cantidad_Prestamo' ,date_format(fecha,'%y-%m-%d') as 'Fecha' FROM n_prestamo WHERE fecha between ? and ? GROUP BY fecha";
 	
 	public boolean insert(n_prestamo prestamo) {
         PreparedStatement statement;
@@ -132,8 +140,6 @@ public class prestamosDaoImplement {
         }
         return n_prestamo;
     }
-	 
-	 
 
 	public boolean autorizar(int prestamoAutorizado)
 	{
@@ -192,5 +198,87 @@ public class prestamosDaoImplement {
 		return cambioExitoso;
 	}
 	
+	public List<n_prestamo> listarReporte_1(){
+		PreparedStatement statement;
+        ResultSet resultSet;
+        List<n_prestamo> n_prestamo = new ArrayList<n_prestamo>();
+        Connection Conexion = conexion.getConexion().getSQLConexion();
+        try 
+        {
+            statement = Conexion.prepareStatement(Reporte_1);
+            resultSet = statement.executeQuery();
+            while(resultSet.next())
+            {
+        
+            	n_prestamo prestamoRs = new n_prestamo();
+            
+            	// Me trae el total ganado (IMP.INTE - IMP.SOL)
+            	prestamoRs.setImporte_intereses(resultSet.getFloat("Total_ganado"));
+            	// ME TRAE cantidad de prestamos por mes
+	            prestamoRs.setDNI(resultSet.getInt("Cantidad_Prestamo"));
+            	// ME TRAE Fecha
+	            prestamoRs.setFecha(resultSet.getString("Fecha"));
+	            
+            	n_prestamo.add(prestamoRs);
+
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return n_prestamo;
+	}
+	
+	public List<n_prestamo> Filter_reporte_1(String d1, String d2){
+		PreparedStatement statement;
+        ResultSet resultSet;
+        List<n_prestamo> n_prestamo = new ArrayList<n_prestamo>();
+        Connection Conexion = conexion.getConexion().getSQLConexion();
+        
+        System.out.println("-----------");
+        System.out.println("DAO");
+        System.out.println(d1);
+        System.out.println("-----------");
+        System.out.println(d2);
+        
+        try 
+        {
+            statement = Conexion.prepareStatement(Filter_Reporte_1);
+            
+            System.out.println(d1.compareTo(d2));
+            System.out.println(d2.compareTo(d1));
+            
+            if(d1.compareTo(d2) > 0) {
+            	// d1>d2
+            	statement.setString(1, d1);
+            	statement.setString(2, d2);
+            } else if(d1.compareTo(d2) < 0){
+            	// d2>d1
+            	statement.setString(1, d2);
+            	statement.setString(2, d1);
+            }
+            
+            resultSet = statement.executeQuery();
+            while(resultSet.next())
+            {
+        
+            	n_prestamo prestamoRs = new n_prestamo();
+            	// Me trae el total ganado (IMP.INTE - IMP.SOL)
+            	prestamoRs.setImporte_intereses(resultSet.getFloat("Total_ganado"));
+            	// ME TRAE cantidad de prestamos por mes
+	            prestamoRs.setDNI(resultSet.getInt("Cantidad_Prestamo"));
+            	// ME TRAE Fecha
+	            prestamoRs.setFecha(resultSet.getString("Fecha"));
+	            
+            	n_prestamo.add(prestamoRs);
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return n_prestamo;
+	}
 	
 }

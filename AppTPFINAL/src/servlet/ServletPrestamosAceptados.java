@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidad.cuenta;
 import entidad.n_prestamo;
+import negocio.cuentaNegocio;
+import negocio.prestamosNegocio;
 import negocioImplement.PrestamosNegocioImplement;
+import negocioImplement.cuentaNegocioImplement;
 
 /**
  * Servlet implementation class ServletPrestamosAceptados
@@ -61,8 +67,23 @@ public class ServletPrestamosAceptados extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(request.getParameter("btnFechas") != null) 
+		{
+			String date_1 = request.getParameter("primeraFecha");
+			System.out.println("LA PRIMERA FECHA ES: "+request.getParameter("primeraFecha"));
+			String date_2 = request.getParameter("segundaFecha");
+			System.out.println("LA SEGUNDA FECHA ES: "+request.getParameter("segundaFecha"));
+			
+			prestamosNegocio pNeg = new PrestamosNegocioImplement();
+			
+				if(pNeg.Filter_reporte_1(date_1, date_2) != null) {
+					List<n_prestamo> lista= pNeg.Filter_reporte_1(date_1, date_2);
+					request.setAttribute("Reporte1", lista);	
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/Reportes.jsp");
+					dispatcher.forward(request, response);
+				}
+			
+		}
 	}
 
 }
