@@ -20,7 +20,7 @@
 </head>
 <body>
      <!--Finaliza el header-->
-    <header>
+<header>
         <img src="https://1.bp.blogspot.com/-Oxolc8k-Ub8/V-QmH4vkFGI/AAAAAAAABx8/TK7MzZsZ_TEqTaQxZGeh2qzFNtpOyGFQgCLcB/s1600/BAnk%2BOf%2Bamerica%2BLogo.jpg" alt="">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,15 +43,17 @@
                     aria-haspopup="true" aria-expanded="false">
                     Transferencias
                   </a>
+                  <form class="form-divModContra" method= "post" action="ServletCuenta">
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="transferencias.jsp">Transferir</a>
+                  <button class="dropdown-item" name="btnTranferir_H">Tranferir</button>
+                    <a class="dropdown-item" href="#">Historial</a>
                   </div>
+                  </form>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Cuentas
-                  </a>
+                  <form method="post" action="ServletCuenta">
+                        <button class="dropdown-item" name="btnListxDni">Mis cuentas</button>
+                  </form>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="misCuentas.jsp">Mis cuentas</a>
                     <a class="dropdown-item" href="nuevaCuenta.jsp">Solicitar cuenta</a>
