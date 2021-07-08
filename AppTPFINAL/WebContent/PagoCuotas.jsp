@@ -147,7 +147,8 @@
 			
 					
 					</select></td>
-					<td><a href= "#"> PAGAR</td>
+					<td><a href= "servletListarPrestamos?action=pagarCuotas&Ncuenta=<%=request.getParameter("ddlCuentas")%>&cuotas=<%=presta.getCuotas() %>"> PAGAR</a></td>
+					
 					</tr>
 					<%}%>
 					
@@ -155,6 +156,7 @@
 				<%
 				}
 					}
+					System.out.print("LA CUENTA SELEC ES: "+request.getParameter("ddlCuentas") +" LAS CUOTAS SON");
 				%>
 			</tbody>
 		</table>
@@ -162,7 +164,7 @@
      </div>
      </form>
      <p></p>
-     <input class="btnEnviarAutorizacionP" name="btnPagar" type="button" value="Pagar">
+    
       <p></p>
       <!--Comienza el footer-->
     <footer>

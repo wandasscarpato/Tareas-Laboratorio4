@@ -39,7 +39,24 @@ public class ServletListarPrestamos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String prueba = "";
+		
+		prueba = request.getParameter("");
+		
+		
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/PagoCuotas.jsp");
+		rd.forward(request, response);
+		
+		
 	}
+	
+	
+	
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

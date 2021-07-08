@@ -9,13 +9,13 @@ public class cuenta {
 	private int CBU;
 	private double Saldo;
 	private int DNI;
-	private boolean estado;
+	private int estado;
 	
 	public cuenta() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public cuenta(int n_Cuenta, String tipo, Date fecha_cracion, int cBU, double saldo, int dNI, boolean estado) {
+	public cuenta(int n_Cuenta, String tipo, Date fecha_cracion, int cBU, double saldo, int dNI, int estado) {
 		super();
 		N_Cuenta = n_Cuenta;
 		Tipo = tipo;
@@ -95,13 +95,13 @@ public class cuenta {
 
 
 
-	public boolean getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
 
 
-	public void setEstado(boolean estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 	
