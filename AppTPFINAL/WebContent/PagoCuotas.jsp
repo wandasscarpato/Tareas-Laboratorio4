@@ -112,7 +112,7 @@
 					for (n_prestamo presta : listaPrestamos) {
 				%>
 				
-					<%if(presta.isEstado() != false){ %>
+					<%if(presta.isEstado() != 0){ %>
 					<tr>
 					<td><%=presta.getN_Prestamo()%></td>
 					<td><%=presta.getImporte_pedido()%></td>

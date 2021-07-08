@@ -55,15 +55,17 @@ public class ServletListarPrestamos extends HttpServlet {
 			//String dniUsuario = "Dali";
 			//request.getSession().setAttribute("dniusu", dniUsuario);
 			
-			ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(Integer.parseInt(session.getAttribute("DNI").toString()));
+			//ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(Integer.parseInt(session.getAttribute("DNI").toString()));
+			ArrayList<n_prestamo> listaPresDni = pNeg.listarPrestamosxDni(123);
 			request.setAttribute("listaPresDni", listaPresDni);
 			
 			cuentaNegocio cNeg = new cuentaNegocioImplement();
 			
 			
-			//System.out.print("LLEGA AL SERVLET ALMENOS BRO");
+			System.out.print("LLEGA AL SERVLET ALMENOS BRO");
 			
-			ArrayList<cuenta> listaCuentaDni = (ArrayList<cuenta>) cNeg.ObtenerxDni(session.getAttribute("DNI").toString());
+			//ArrayList<cuenta> listaCuentaDni = (ArrayList<cuenta>) cNeg.ObtenerxDni(session.getAttribute("DNI").toString());
+			ArrayList<cuenta> listaCuentaDni = (ArrayList<cuenta>) cNeg.ObtenerxDni("123");
 			request.setAttribute("listaCuentaDni", listaCuentaDni);
 			
 			
